@@ -550,8 +550,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <!------------------------ For Sliding  ------------------------>
 
   <!-- Javascript file -->
-  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/bootstrap/js/popper.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="bootstrap/js/popper.min.js"></script>
 </body>
 
 </html>

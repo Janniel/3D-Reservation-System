@@ -14,9 +14,9 @@ require 'session.php';
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
     <title>Reserve3D</title>
     <!------------------------ Bootstrap 5.3.0 ------------------------>
-    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
     <!------------------------ CSS Link ------------------------>
-    <link rel="stylesheet" type="text/css" href="assets/css/timer.css" />
+    <link rel="stylesheet" type="text/css" href="css/timer.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
 </head>
