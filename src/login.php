@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["last_name"] = $user_row['last_name'];
         $_SESSION["reservation_count"] = $user_row['reservation_count'];
 
-        header("Location: home.php");
+        header("Location: index.php");
         exit();
       } else {
         $error_message = "Invalid username or password";
@@ -548,7 +548,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </script>
 
   <!------------------------ For Sliding  ------------------------>
-  <script src="assets/js/login.js"></script>
 
   <!-- Javascript file -->
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>

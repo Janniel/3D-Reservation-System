@@ -9,6 +9,8 @@ module.exports = {
         home: path.resolve(__dirname, 'src/home.js'),
         clock: path.resolve(__dirname, 'src/clock.js'),
         login: path.resolve(__dirname, 'src/login.js'),
+        profile: path.resolve(__dirname, 'src/profile.js'),
+        timer: path.resolve(__dirname, 'src/timer.js'),
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -107,6 +109,18 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             inject: true,
+            filename: 'profile.php',
+            template: 'src/profile.php',
+            chunks: ['profile']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/timer.php',
+            template: 'src/php/timer.php',
+            chunks: ['timer']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
             filename: 'php/connect.php',
             template: 'src/php/connect.php',
             chunks: ['']
@@ -151,6 +165,42 @@ module.exports = {
             inject: true,
             filename: 'php/login_modal.php',
             template: 'src/php/login_modal.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/footer.php',
+            template: 'src/php/footer.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/profile_tab1.php',
+            template: 'src/php/profile_tab1.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/profile_tab2.php',
+            template: 'src/php/profile_tab2.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/profile_tab3.php',
+            template: 'src/php/profile_tab3.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/toCancelReservation.php',
+            template: 'src/php/toCancelReservation.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'toLogout.php',
+            template: 'src/toLogout.php',
             chunks: ['']
         }),
     ]
