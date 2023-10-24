@@ -87,7 +87,12 @@ module.exports = {
                   from: 'src/img',
                   to: 'img',
                 },
+                {
+                    from: 'src/bootstrap',
+                    to: 'bootstrap',
+                },
               ],
+              
         }),
         new HtmlWebpackPlugin({
             inject: true,
@@ -118,6 +123,12 @@ module.exports = {
             filename: 'php/timer.php',
             template: 'src/php/timer.php',
             chunks: ['timer']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/receipt.php',
+            template: 'src/php/receipt.php',
+            chunks: ['profile']
         }),
         new HtmlWebpackPlugin({
             inject: true,

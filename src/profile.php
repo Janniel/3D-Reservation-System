@@ -15,10 +15,10 @@ require 'php/occupancy_timer.php';
     <title>My Profile</title>
 
     <!------------------------ Bootstrap 5.3.0 ------------------------>
-    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/bootstrap/js/popper.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/popper.min.js"></script>
     <!------------------------ CSS Link ------------------------>
     <link rel="stylesheet" type="text/css" href="css/profile.css" />
     <!------------------------ ICONS ------------------------>
@@ -382,8 +382,8 @@ require 'php/occupancy_timer.php';
     </div>
 
 </body>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/bootstrap/js/popper.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="bootstrap/js/popper.min.js"></script>
 
 
 
