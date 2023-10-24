@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve",
     "build": "webpack",
-    "dev": "php -S localhost:8080 -t dist"
+    "dev": "webpack serve"
   },
   "keywords": [],
   "author": "",

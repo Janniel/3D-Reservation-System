@@ -11,6 +11,7 @@ module.exports = {
         login: path.resolve(__dirname, 'src/login.js'),
         profile: path.resolve(__dirname, 'src/profile.js'),
         timer: path.resolve(__dirname, 'src/timer.js'),
+        update_profile: path.resolve(__dirname, 'src/update_profile.js'),
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -212,6 +213,37 @@ module.exports = {
             inject: true,
             filename: 'toLogout.php',
             template: 'src/toLogout.php',
+            chunks: ['']
+        }),
+
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'update_profile.php',
+            template: 'src/update_profile.php',
+            chunks: ['update_profile']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/toUpdateAcc.php',
+            template: 'src/php/toUpdateAcc.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/toUpdateInfo.php',
+            template: 'src/php/toUpdateInfo.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/toUpdatePass.php',
+            template: 'src/php/toUpdatePass.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/toUpdateRFID.php',
+            template: 'src/php/toUpdateRFID.php',
             chunks: ['']
         }),
     ]
