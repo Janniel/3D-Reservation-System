@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <title>BulSU Reservation</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   </head>
 
   <body>
 
     <nav>
-      <a href="home.php">BulSU E-Library</a>
+      <a href="index.php">BulSU E-Library</a>
       <ul>
         <li>Reservation</li>
         <li>Profile</li>
