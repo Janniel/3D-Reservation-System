@@ -12,6 +12,19 @@ module.exports = {
         profile: path.resolve(__dirname, 'src/profile.js'),
         timer: path.resolve(__dirname, 'src/timer.js'),
         update_profile: path.resolve(__dirname, 'src/update_profile.js'),
+        loginAdmin: path.resolve(__dirname, 'src/loginAdmin.js'),
+        admin: path.resolve(__dirname, 'src/admin.js'),
+        manageAdmin: path.resolve(__dirname, 'src/manageAdmin.js'),
+        flatpickr: path.resolve(__dirname, 'src/flatpickr.js'),
+        seats_info: path.resolve(__dirname, 'src/seats_info.js'),
+        analytics: path.resolve(__dirname, 'src/analytics.js'),
+        reserved: path.resolve(__dirname, 'src/reserved.js'),
+        users: path.resolve(__dirname, 'src/users.js'),
+        export: path.resolve(__dirname, 'src/export.js'),
+        history: path.resolve(__dirname, 'src/history.js'),
+        adminProfile: path.resolve(__dirname, 'src/adminProfile.js'),
+        adminReviews: path.resolve(__dirname, 'src/adminReviews.js'),
+
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -91,6 +104,14 @@ module.exports = {
                 {
                     from: 'src/bootstrap',
                     to: 'bootstrap',
+                },
+                {
+                    from: 'src/models/6thFloorV2.glb',
+                    to: 'models',
+                },
+                {
+                    from: 'src/models/spruit_sunrise_1k_HDR.hdr',
+                    to: 'models',
                 },
               ],
               
@@ -228,6 +249,9 @@ module.exports = {
             chunks: ['']
         }),
 
+
+
+
         new HtmlWebpackPlugin({
             inject: true,
             filename: 'update_profile.php',
@@ -263,6 +287,137 @@ module.exports = {
             filename: 'php/toAddHistory.php',
             template: 'src/php/toAddHistory.php',
             chunks: ['']
+        }),
+
+
+
+
+
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'loginAdmin.php',
+            template: 'src/loginAdmin.php',
+            chunks: ['loginAdmin']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'admin.php',
+            template: 'src/admin.php',
+            chunks: ['admin']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/manageAdmin.php',
+            template: 'src/php/manageAdmin.php',
+            chunks: ['manageAdmin']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/seats-info.php',
+            template: 'src/php/seats-info.php',
+            chunks: ['seats_info']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/libraries_admin.php',
+            template: 'src/php/libraries_admin.php',
+            chunks: ['flatpickr']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/view-2d_Admin.php',
+            template: 'src/php/view-2d_Admin.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/view-3d_Admin.php',
+            template: 'src/php/view-3d_Admin.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/analytics.php',
+            template: 'src/php/analytics.php',
+            chunks: ['analytics']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/reserved.php',
+            template: 'src/php/reserved.php',
+            chunks: ['reserved']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/toArchive.php',
+            template: 'src/php/toArchive.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/toDelete.php',
+            template: 'src/php/toDelete.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/toRestore.php',
+            template: 'src/php/toRestore.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/user-list.php',
+            template: 'src/php/user-list.php',
+            chunks: ['users','export','history']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/history.php',
+            template: 'src/php/history.php',
+            chunks: ['users','export','history']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/adminProfile.php',
+            template: 'src/php/adminProfile.php',
+            chunks: ['adminProfile']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/adminReviews.php',
+            template: 'src/php/adminReviews.php',
+            chunks: ['adminReviews']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/toUpdateAdmin.php',
+            template: 'src/php/toUpdateAdmin.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/toUpdateAdminPass.php',
+            template: 'src/php/toUpdateAdminPass.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/toUpdateAdminSA.php',
+            template: 'src/php/toUpdateAdminSA.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/toUpdateAdminUname.php',
+            template: 'src/php/toUpdateAdminUname.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/settings.php',
+            template: 'src/php/settings.php',
+            chunks: ['analytics']
         }),
     ]
 }
