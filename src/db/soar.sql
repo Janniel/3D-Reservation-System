@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2023 at 11:05 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Oct 25, 2023 at 03:01 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,12 +43,14 @@ CREATE TABLE `account` (
 
 INSERT INTO `account` (`account_id`, `username`, `password`, `email`, `picture`, `account_type`, `reservation_count`) VALUES
 (1, 'ricardojeyms', '$2y$10$21Nsa5xTf5CQ.DfiUWM0xuxp7MsINW7DyQWhOfI2TiNq5L3wm2cye', 'richard@soar.com', NULL, 'admin', 0),
-(8, 'mj23', '$2y$10$3Dq.7xWhJ2vtM1UVR9nmSeR2DchdRmQLyfK/nO9wjjY.QOdEAs//e', 'mj23@gmail.com', NULL, 'admin', 0),
 (9, 'robertooo', '$2y$10$xJ3QMeO6eDXwBtvLHrsyrel.BAmbmuukB3vZB/5SdRFDrSsEd55KK', 'robert@gmail.com', NULL, 'admin', 0),
 (19, '3030', '$2y$10$1A2qthrmbJ5LKWka1xuuruACm8AGqPu8sILhdnoxZ9hbMzoG5606y', 'tifa@gmail.com', 'assets/img/profile3059def6aaa5eba65ac68c26731821ca.jpg', 'student', 0),
 (21, '7777', '$2y$10$e.xI/C4JTp9aShfpMxeIu.4q/iAmMzH0JJuWfcrq0CSH8VWAC/6mW', 'cloud@gmail.com', 'assets/img/profilecloud-strife-playable-character-ff7remake-wiki-guide-small.jpg', 'student', 0),
 (23, '4040', '$2y$10$oXs00rYeFlj9qBmyKd2aO.KAsS1.VvC8k4lLAfZhlcw/0ovBX164e', 'mina@gmail.com', NULL, 'faculty', 0),
-(26, 'lbj', '$2y$10$tSWF9Rnkh5.X2c/UYDFSNenSZy5ZEIdpiN3pEW3LCEZrWMHO7Rf4y', 'lbj@gmail.com', NULL, 'admin', 0);
+(26, 'lbj', '$2y$10$tSWF9Rnkh5.X2c/UYDFSNenSZy5ZEIdpiN3pEW3LCEZrWMHO7Rf4y', 'lbj@gmail.com', NULL, 'admin', 0),
+(27, '2020103475', '$2y$10$kNq6s8VAQSQztxGfXHBXqOuNj.F/WL0Z5KusrW8gsXhkFUHEDThpO', 'jeaysmie.digo.m@bulsu.edu.ph', 'assets/img/profile3d-casual-life-delivery-boy-on-scooter-1.png', 'student', 0),
+(31, '2010', '$2y$10$oDiHh3HLvaUH78tNJRFpU.mpz95K3JLMIOkr9zI51HZobDRDyGS7S', 'jeaysmie.digo.m@bulsu.edu.ph', NULL, 'alumni', 0),
+(32, '2011', '$2y$10$N0B39vhJr/BnMiFzdowR2.7CsOnhkDlr9NiYNtoL4GvhNrhSUOjMW', 'facultyName@soar.com', NULL, 'faculty', 0);
 
 -- --------------------------------------------------------
 
@@ -78,8 +80,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `isSuperAdmin`, `rfid_no`, `department`, `first_name`, `last_name`, `gender`, `mobile_no`, `tel_no`, `fb_link`, `linkedIn_link`, `home_address`, `work_status`, `account_id`) VALUES
-('lbj', 'no', NULL, 'CAL', 'lebron', 'james', 'Male', NULL, NULL, NULL, NULL, NULL, 'Permanent', 26),
-('mj23', 'no', NULL, 'CICT', 'Michaela ', 'Jordan', 'Female', NULL, NULL, NULL, NULL, NULL, 'Temporary', 8),
+('lbj', 'no', NULL, 'CAL', 'lebron', 'james', 'Male', '', '016', '', '', '', 'Permanent', 26),
 ('ricardojeym', 'yes', NULL, 'CICT', 'Richard James', 'Bagay', 'Male', '0976263839', '794-2677', 'facebook.com/ricardojeyms', 'facebook.com/ricardojeyms', 'Barangay Balayong Malolos Bulacan', 'Permanent', 1),
 ('robertooo', 'no', NULL, 'CLAW', 'Robert', 'Deniro', 'Male', NULL, NULL, NULL, NULL, NULL, 'Permanent', 9);
 
@@ -186,6 +187,15 @@ CREATE TABLE `rating` (
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `rating`
+--
+
+INSERT INTO `rating` (`rating_id`, `rating`, `review`, `date`, `user_id`) VALUES
+(7, 5, '', '2023-10-24', 2020103475),
+(8, 4, '', '2023-10-24', 2020103475),
+(9, 4, '', '2023-10-24', 2020103475);
+
 -- --------------------------------------------------------
 
 --
@@ -203,15 +213,6 @@ CREATE TABLE `reservation` (
   `is_archived` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `reservation`
---
-
-INSERT INTO `reservation` (`reservation_id`, `date`, `start_time`, `end_time`, `user_id`, `seat_id`, `isDone`, `is_archived`) VALUES
-(96, '2023-10-16', '11:20:00', '12:20:00', 3030, 1, 0, 0),
-(97, '2023-10-16', '13:01:00', '15:01:00', 7777, 4, 0, 1),
-(98, '2023-10-17', '13:02:00', '15:02:00', 7777, 3, 0, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -222,19 +223,20 @@ CREATE TABLE `seat` (
   `seat_id` int(11) NOT NULL,
   `seat_number` varchar(50) DEFAULT NULL,
   `data_surface` varchar(255) NOT NULL,
-  `status` varchar(50) DEFAULT NULL
+  `status` varchar(50) DEFAULT NULL,
+  `is_defect` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `seat`
 --
 
-INSERT INTO `seat` (`seat_id`, `seat_number`, `data_surface`, `status`) VALUES
-(1, '1', '221 2 495 496 497 0.513 0.203 0.284\r\n', '0'),
-(2, '2', '220 3 7 10 9 0.179 0.274 0.547', '0'),
-(3, '3', '219 3 11 10 12 0.125 0.438 0.437', '0'),
-(4, '4', '218 1 823 824 826 0.428 0.044 0.528\r\n', '0'),
-(5, '5', '222 1 437 438 478 0.134 0.069 0.796', '0');
+INSERT INTO `seat` (`seat_id`, `seat_number`, `data_surface`, `status`, `is_defect`) VALUES
+(1, '1', '221 2 495 496 497 0.513 0.203 0.284\r\n', '0', 0),
+(2, '2', '220 3 7 10 9 0.179 0.274 0.547', '0', 0),
+(3, '3', '219 3 11 10 12 0.125 0.438 0.437', '0', 0),
+(4, '4', '218 1 823 824 826 0.428 0.044 0.528\r\n', '0', 0),
+(5, '5', '222 1 437 438 478 0.134 0.069 0.796', '0', 0);
 
 -- --------------------------------------------------------
 
@@ -258,7 +260,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`settings_id`, `reservation`, `minDuration`, `maxDuration`, `reservePerDay`, `start_hour`, `end_hour`, `disabled_dates`) VALUES
-(1, 0, 1, 4, 4, '10:00:00', '17:00:00', '[\"2023-10-01\",\"2023-10-08\",\"2023-10-15\",\"2023-10-22\",\"2023-10-29\",\"2023-10-07\",\"2023-10-14\",\"2023-10-28\",\"2023-10-21\",\"2023-09-02\",\"2023-09-09\",\"2023-09-16\",\"2023-09-23\",\"2023-09-30\",\"2023-11-05\",\"2023-11-12\",\"2023-11-19\",\"2023-11-26\",\"2023-12-03\",\"2023-12-10\",\"2023-12-17\",\"2023-12-24\",\"2023-12-31\",\"2023-12-02\",\"2023-12-09\",\"2023-12-16\",\"2023-12-30\",\"2023-12-23\",\"2023-12-25\",\"2023-11-25\",\"2023-11-18\",\"2023-11-11\",\"2023-11-04\",\"2024-01-07\",\"2024-01-14\",\"2024-01-21\",\"2024-01-28\",\"2024-01-06\",\"2024-01-13\",\"2024-01-20\",\"2024-01-27\",\"2024-02-03\",\"2024-02-10\",\"2024-02-17\",\"2023-09-24\",\"2023-09-17\",\"2023-09-10\",\"2023-09-03\",\"2023-08-27\"]');
+(1, 0, 2, 4, 4, '10:00:00', '17:00:00', '[\"2023-10-08\",\"2023-10-15\",\"2023-10-07\",\"2023-10-14\",\"2023-10-28\",\"2023-10-21\",\"2023-09-02\",\"2023-09-09\",\"2023-09-16\",\"2023-09-23\",\"2023-09-30\",\"2023-11-05\",\"2023-11-12\",\"2023-11-19\",\"2023-11-26\",\"2023-12-03\",\"2023-12-10\",\"2023-12-17\",\"2023-12-24\",\"2023-12-31\",\"2023-12-02\",\"2023-12-09\",\"2023-12-16\",\"2023-12-30\",\"2023-12-23\",\"2023-12-25\",\"2023-11-25\",\"2023-11-18\",\"2023-11-11\",\"2023-11-04\",\"2024-01-07\",\"2024-01-14\",\"2024-01-21\",\"2024-01-28\",\"2024-01-06\",\"2024-01-13\",\"2024-01-20\",\"2024-01-27\",\"2024-02-03\",\"2024-02-10\",\"2024-02-17\",\"2023-09-24\",\"2023-09-17\",\"2023-09-10\",\"2023-09-03\",\"2023-08-27\",\"2023-10-01\",\"2023-10-29\"]');
 
 -- --------------------------------------------------------
 
@@ -276,6 +278,8 @@ CREATE TABLE `users` (
   `yearsec_id` int(11) DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
   `contact_number` varchar(20) DEFAULT NULL,
+  `bday` date DEFAULT NULL,
+  `gender` varchar(20) DEFAULT NULL,
   `is_archived` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -283,9 +287,12 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `rfid_no`, `first_name`, `last_name`, `account_id`, `course_code`, `yearsec_id`, `age`, `contact_number`, `is_archived`) VALUES
-(3030, '202010', 'Tifa', 'Lockhart', 19, 'BSIT', 261, 21, '09453661518', 0),
-(7777, '202011', 'Cloud', 'Strife', 21, 'BLIS', 113, 23, '09453661517', 0);
+INSERT INTO `users` (`user_id`, `rfid_no`, `first_name`, `last_name`, `account_id`, `course_code`, `yearsec_id`, `age`, `contact_number`, `bday`, `gender`, `is_archived`) VALUES
+(2010, NULL, 'oldStud', 'oldStud', 31, 'ALUMNI', 261, 21, '09166750154', '2023-10-26', 'Male', 0),
+(2011, NULL, 'facultyName', 'facultyName', 32, 'FACULTY', 261, NULL, NULL, NULL, NULL, 0),
+(3030, '202010', 'Tifa', 'Lockhart', 19, 'BSIT', 261, 21, '09453661518', '2023-10-22', 'Female', 0),
+(7777, '202011', 'Cloud', 'Strife', 21, 'BLIS', 113, 25, '09453661517', '2023-10-22', 'Male', 0),
+(2020103475, '441', 'Jeays', 'Digo', 27, 'BSIT', 165, 21, '09166750154', '2002-08-25', 'Male', 0);
 
 -- --------------------------------------------------------
 
@@ -671,31 +678,31 @@ ALTER TABLE `yearsec`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `history_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `history_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `occupy`
 --
 ALTER TABLE `occupy`
-  MODIFY `occupy_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `occupy_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `rating`
 --
 ALTER TABLE `rating`
-  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- Constraints for dumped tables

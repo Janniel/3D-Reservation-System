@@ -96,7 +96,7 @@ $result = $conn->query($sql);
                         href="manageAdmin.php"><span class="las la-users-cog"></span>
                         <span>Manage Accounts</span></a>
                 </li>
-                <li class="logout"> <a href="toLogout.php">
+                <li class="logout"> <a href="../toLogout.php">
                         <span>Logout</span></a>
                 </li>
             </ul>
@@ -136,7 +136,7 @@ $result = $conn->query($sql);
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <li><a class="dropdown-item" href="adminProfile.php">Profile</a></li>
-                    <li><a class="dropdown-item" href="toLogout.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="../toLogout.php">Logout</a></li>
                 </div>
             </div>
         </header>

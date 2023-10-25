@@ -176,7 +176,7 @@ $result = $conn->query($sql);
                     </button>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="adminProfile.php">Profile</a></li>
+                        <li><a class="dropdown-item" href="php/adminProfile.php">Profile</a></li>
                         <li><a class="dropdown-item" href="toLogout.php">Logout</a></li>
                     </div>
                 </div>
@@ -236,7 +236,7 @@ $result = $conn->query($sql);
                             <div class="card">
                                 <div class="card-header">
                                     <h3>Pending Reservation</h3>
-                                    <a href="reserved.php" class="button" id="tabButtons">See all <span
+                                    <a href="php/reserved.php" class="button" id="tabButtons">See all <span
                                             class="las la-arrow-right"></span></a>
                                 </div>
                                 <div class="card-body">
@@ -327,7 +327,7 @@ $result = $conn->query($sql);
                             <div class="card">
                                 <div class="card-header">
                                     <h3>Recent History</h3>
-                                    <a href="history.php" class="button">See all <span class="las la-arrow-right"></span></a>
+                                    <a href="php/history.php" class="button">See all <span class="las la-arrow-right"></span></a>
                                 </div>
                                 <div class="card-body">
 
