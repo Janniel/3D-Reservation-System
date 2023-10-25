@@ -1,4 +1,4 @@
-import "./styles/admin.css"
+import "./styles/analytics.css"
 
 const ctx = document.getElementById("myChart");
 const ctx2 = document.getElementById("myChart2");

@@ -37,7 +37,7 @@ require 'session.php';
 
         <div class="sidebar-menu" id="tabButton">
             <ul>
-                <li class="tabs"> <a href="admin.php" data-tabName="dashboard" id="tabButtons"><span
+                <li class="tabs"> <a href="../admin.php" data-tabName="dashboard" id="tabButtons"><span
                             class="las la-th-large"></span>
                         <span>Dashboard</span></a>
                 </li>

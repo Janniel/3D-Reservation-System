@@ -110,27 +110,27 @@ $result = $conn->query($sql);
                                 class="las la-th-large"></span>
                             <span>Dashboard</span></a>
                     </li>
-                    <li class="tabs"> <a href="seats-info.php" ><span class="las la-check"></span>
+                    <li class="tabs"> <a href="php/seats-info.php" ><span class="las la-check"></span>
                             <span>Seats Information</span></a>
                     </li>
-                    <li class="tabs"> <a href="reserved.php"><span class="las la-clock"></span>
+                    <li class="tabs"> <a href="php/reserved.php"><span class="las la-clock"></span>
                             <span>Reserved</span></a>
                     </li>
-                    <li class="tabs"> <a href="user-list.php"><span
+                    <li class="tabs"> <a href="php/user-list.php"><span
                                 class="las la-user-friends"></span>
                             <span>User List</span></a>
                     </li>
-                    <li class="tabs"> <a href="history.php"><span class="las la-history"></span>
+                    <li class="tabs"> <a href="php/history.php"><span class="las la-history"></span>
                             <span>History</span></a>
                     </li>
-                    <li class="tabs"> <a href="adminReviews.php"><span class="las la-star"></span>
+                    <li class="tabs"> <a href="php/adminReviews.php"><span class="las la-star"></span>
                             <span>Reviews</span></a>
                     </li>
-                    <li class="tabs"> <a href="analytics.php"><span
+                    <li class="tabs"> <a href="php/analytics.php"><span
                                 class="las la-chart-bar"></span>
                             <span>Analytics</span></a>
                     </li>
-                    <li class="tabs"> <a href="settings.php"><span class="las la-cog"></span>
+                    <li class="tabs"> <a href="php/settings.php"><span class="las la-cog"></span>
                             <span>Settings</span></a>
                     </li>
                     <li id="hidden" class="manage tabs" data-toggle="modal" data-target="#exampleModal"> <a
