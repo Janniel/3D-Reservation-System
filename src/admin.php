@@ -57,7 +57,7 @@ $result = $conn->query($sql);
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <a href="manageAdmin.php" class="btn btn-danger">Proceed</a>
+                    <a href="php/manageAdmin.php" class="btn btn-danger">Proceed</a>
                 </div>
             </div>
         </div>
@@ -134,7 +134,7 @@ $result = $conn->query($sql);
                             <span>Settings</span></a>
                     </li>
                     <li id="hidden" class="manage tabs" data-toggle="modal" data-target="#exampleModal"> <a
-                            href="manageAdmin.php"><span class="las la-users-cog"></span>
+                            href="php/manageAdmin.php"><span class="las la-users-cog"></span>
                             <span>Manage Accounts</span></a>
                     </li>
                     <li class="logout"> <a href="toLogout.php">
