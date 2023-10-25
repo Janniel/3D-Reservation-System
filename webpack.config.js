@@ -133,6 +133,18 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             inject: true,
+            filename: 'occupy.php',
+            template: 'src/occupy.php',
+            chunks: ['update_profile']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'occupyProcess.php',
+            template: 'src/occupyProcess.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
             filename: 'php/connect.php',
             template: 'src/php/connect.php',
             chunks: ['']
@@ -244,6 +256,12 @@ module.exports = {
             inject: true,
             filename: 'php/toUpdateRFID.php',
             template: 'src/php/toUpdateRFID.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/toAddHistory.php',
+            template: 'src/php/toAddHistory.php',
             chunks: ['']
         }),
     ]
