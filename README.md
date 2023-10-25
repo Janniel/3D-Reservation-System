@@ -10,3 +10,7 @@ Originally https://github.com/rykagene/capstone
 5. Run `npm run build` to create the dist folder
 6. Start Apache and MySQL in XAMPP
 7. Open `localhost/project-name/dist`
+
+# Issues yet to be resolved:
+1. CORS blocking requests
+2. ...
