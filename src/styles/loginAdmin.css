@@ -1,0 +1,120 @@
+@import url(https://fonts.googleapis.com/css?family?=Source+Sans+Pro);
+
+*, *::before, *::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Source Sans Pro", sans-serif;
+	color: #ffffff;
+}
+html, body {
+	height: 100%;
+	width: 100%;
+}
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: linear-gradient(135deg, #C83636, #FF7F7F);
+}
+.container {
+	padding: 6rem 5rem;
+	align-content: center;
+	border-radius: 1rem;
+	animation: appear 1s forwards;
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+	outline: 4px solid #ffffff40; 
+}
+form {
+	display: grid;
+	justify-items: center;
+	row-gap: 1.5rem;
+}
+input, button {
+	font-size: 2rem;
+	padding: 0.75rem 1.5rem;
+	background-color: #ffffff20;
+	color: #ffffffaa;
+	text-align: center;
+	border: none;
+	border-radius: 2rem;
+}
+input::placeholder {
+	color: #f4eeeed8;
+	text-align: center;
+	letter-spacing: 0;
+}
+input[type="password"] {
+	letter-spacing: 0.1rem;
+}
+input:focus {
+    text-align: left;
+    background-color: #ffffff80;
+    outline: 2px solid #ffffff; 
+
+}
+.loginButton {
+	margin-top: 1rem;
+    border-radius: 2rem;
+    padding: 0.75rem 2.5rem;
+    text-align: center;
+    background-color: #ffffff;
+    color: #bc375c;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.4s;
+}
+
+
+.loginButton:hover {
+    background-color: #ffffffcc;
+}
+
+.container img {
+    width: 200px;
+    height: 200px;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+h1 {
+	text-align: center;
+    padding-bottom: 3rem;
+}
+
+form p a {
+    color: #ffffff;
+}
+
+form p a:hover {
+    color: #dddddd; 
+}
+
+
+@keyframes appear {
+	from {
+		opacity: 0;
+		transform: translateY(2rem);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+
+@media screen and (min-width: 426px) {
+	.container {
+		border: 2px solid #ffffff40;
+	}
+}
+
+
+
+
+
+
