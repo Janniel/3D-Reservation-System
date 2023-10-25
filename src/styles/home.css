@@ -162,6 +162,7 @@ body,html{
   text-align: center;
   margin-top: 750px;
   margin-left: 350px;
+  z-index: 10;
 }
 
 /* Banner/Cover */

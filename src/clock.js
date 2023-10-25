@@ -1,3 +1,5 @@
+import "./styles/home.css"
+
 function updateTime() {
     const clock = document.getElementById('clock');
     
