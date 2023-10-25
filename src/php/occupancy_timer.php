@@ -1,5 +1,5 @@
 <?php 
-require 'php/connect.php';
+require 'connect.php';
 
 
 $ongoing_query = "SELECT occupy.*, seat.seat_number, reservation.start_time, reservation.end_time 
