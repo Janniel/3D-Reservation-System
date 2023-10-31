@@ -288,6 +288,42 @@ module.exports = {
             template: 'src/php/toAddHistory.php',
             chunks: ['']
         }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'get_seat_status.php',
+            template: 'src/get_seat_status.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'toReserve.php',
+            template: 'src/php/toReserve.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'viewSeats.php',
+            template: 'src/php/viewSeats.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'fetchSeatInfo.php',
+            template: 'src/php/fetchSeatInfo.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'fetchSeatId.php',
+            template: 'src/php/fetchSeatId.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'get_disabled_dates.php',
+            template: 'src/get_disabled_dates.php',
+            chunks: ['']
+        }),
 
 
 
