@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2023 at 03:01 AM
+-- Generation Time: Oct 31, 2023 at 11:45 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -50,7 +50,7 @@ INSERT INTO `account` (`account_id`, `username`, `password`, `email`, `picture`,
 (26, 'lbj', '$2y$10$tSWF9Rnkh5.X2c/UYDFSNenSZy5ZEIdpiN3pEW3LCEZrWMHO7Rf4y', 'lbj@gmail.com', NULL, 'admin', 0),
 (27, '2020103475', '$2y$10$kNq6s8VAQSQztxGfXHBXqOuNj.F/WL0Z5KusrW8gsXhkFUHEDThpO', 'jeaysmie.digo.m@bulsu.edu.ph', 'assets/img/profile3d-casual-life-delivery-boy-on-scooter-1.png', 'student', 0),
 (31, '2010', '$2y$10$oDiHh3HLvaUH78tNJRFpU.mpz95K3JLMIOkr9zI51HZobDRDyGS7S', 'jeaysmie.digo.m@bulsu.edu.ph', NULL, 'alumni', 0),
-(32, '2011', '$2y$10$N0B39vhJr/BnMiFzdowR2.7CsOnhkDlr9NiYNtoL4GvhNrhSUOjMW', 'facultyName@soar.com', NULL, 'faculty', 0);
+(32, '2011', '$2y$10$N0B39vhJr/BnMiFzdowR2.7CsOnhkDlr9NiYNtoL4GvhNrhSUOjMW', 'facultyName@soar.com', 'assets/img/profilecasual-life-3d-round-check-mark-yellow.png', 'faculty', 0);
 
 -- --------------------------------------------------------
 
@@ -194,7 +194,16 @@ CREATE TABLE `rating` (
 INSERT INTO `rating` (`rating_id`, `rating`, `review`, `date`, `user_id`) VALUES
 (7, 5, '', '2023-10-24', 2020103475),
 (8, 4, '', '2023-10-24', 2020103475),
-(9, 4, '', '2023-10-24', 2020103475);
+(9, 4, '', '2023-10-24', 2020103475),
+(10, 0, '', '2023-10-30', 2020103475),
+(11, 0, '', '2023-10-30', 2020103475),
+(12, 0, '', '2023-10-30', 2020103475),
+(13, 0, '', '2023-10-30', 2020103475),
+(14, 0, '', '2023-10-30', 2020103475),
+(15, 0, '', '2023-10-30', 2020103475),
+(16, 0, '', '2023-10-30', 2020103475),
+(17, 0, '', '2023-10-30', 2020103475),
+(18, 0, '', '2023-10-30', 2020103475);
 
 -- --------------------------------------------------------
 
@@ -222,7 +231,7 @@ CREATE TABLE `reservation` (
 CREATE TABLE `seat` (
   `seat_id` int(11) NOT NULL,
   `seat_number` varchar(50) DEFAULT NULL,
-  `data_surface` varchar(255) NOT NULL,
+  `seat_name` varchar(50) NOT NULL,
   `status` varchar(50) DEFAULT NULL,
   `is_defect` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -231,12 +240,18 @@ CREATE TABLE `seat` (
 -- Dumping data for table `seat`
 --
 
-INSERT INTO `seat` (`seat_id`, `seat_number`, `data_surface`, `status`, `is_defect`) VALUES
-(1, '1', '221 2 495 496 497 0.513 0.203 0.284\r\n', '0', 0),
-(2, '2', '220 3 7 10 9 0.179 0.274 0.547', '0', 0),
-(3, '3', '219 3 11 10 12 0.125 0.438 0.437', '0', 0),
-(4, '4', '218 1 823 824 826 0.428 0.044 0.528\r\n', '0', 0),
-(5, '5', '222 1 437 438 478 0.134 0.069 0.796', '0', 0);
+INSERT INTO `seat` (`seat_id`, `seat_number`, `seat_name`, `status`, `is_defect`) VALUES
+(1, '1_CompChair_1', 'B1', '0', 0),
+(2, '1_CompChair_2', 'B2', '0', 0),
+(3, '1_CompChair_3', 'B3', '1', 0),
+(4, '1_CompChair_4', 'B4', '1', 0),
+(5, '1_CompChair_5', 'B5', '0', 0),
+(6, '2_CompChair_1', 'B6', '0', 0),
+(7, '2_CompChair_2', 'B7', '0', 0),
+(8, '2_CompChair_3', 'B8', '0', 0),
+(9, '2_CompChair_4', 'B9', '0', 0),
+(10, '2_CompChair_5', 'B10', '0', 0),
+(11, '3_CompChair_1', 'B11', '0', 0);
 
 -- --------------------------------------------------------
 
@@ -260,7 +275,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`settings_id`, `reservation`, `minDuration`, `maxDuration`, `reservePerDay`, `start_hour`, `end_hour`, `disabled_dates`) VALUES
-(1, 0, 2, 4, 4, '10:00:00', '17:00:00', '[\"2023-10-08\",\"2023-10-15\",\"2023-10-07\",\"2023-10-14\",\"2023-10-28\",\"2023-10-21\",\"2023-09-02\",\"2023-09-09\",\"2023-09-16\",\"2023-09-23\",\"2023-09-30\",\"2023-11-05\",\"2023-11-12\",\"2023-11-19\",\"2023-11-26\",\"2023-12-03\",\"2023-12-10\",\"2023-12-17\",\"2023-12-24\",\"2023-12-31\",\"2023-12-02\",\"2023-12-09\",\"2023-12-16\",\"2023-12-30\",\"2023-12-23\",\"2023-12-25\",\"2023-11-25\",\"2023-11-18\",\"2023-11-11\",\"2023-11-04\",\"2024-01-07\",\"2024-01-14\",\"2024-01-21\",\"2024-01-28\",\"2024-01-06\",\"2024-01-13\",\"2024-01-20\",\"2024-01-27\",\"2024-02-03\",\"2024-02-10\",\"2024-02-17\",\"2023-09-24\",\"2023-09-17\",\"2023-09-10\",\"2023-09-03\",\"2023-08-27\",\"2023-10-01\",\"2023-10-29\"]');
+(1, 0, 2, 4, 100, '10:00:00', '17:00:00', '[\"2023-10-08\",\"2023-10-15\",\"2023-10-07\",\"2023-10-14\",\"2023-10-28\",\"2023-10-21\",\"2023-09-02\",\"2023-09-09\",\"2023-09-16\",\"2023-09-23\",\"2023-09-30\",\"2023-11-05\",\"2023-11-12\",\"2023-11-19\",\"2023-11-26\",\"2023-12-03\",\"2023-12-10\",\"2023-12-17\",\"2023-12-24\",\"2023-12-31\",\"2023-12-02\",\"2023-12-09\",\"2023-12-16\",\"2023-12-30\",\"2023-12-23\",\"2023-12-25\",\"2023-11-25\",\"2023-11-18\",\"2023-11-04\",\"2024-01-07\",\"2024-01-14\",\"2024-01-21\",\"2024-01-28\",\"2024-01-06\",\"2024-01-13\",\"2024-01-20\",\"2024-01-27\",\"2024-02-03\",\"2024-02-10\",\"2024-02-17\",\"2023-09-24\",\"2023-09-17\",\"2023-09-10\",\"2023-09-03\",\"2023-08-27\",\"2023-10-01\",\"2023-10-29\"]');
 
 -- --------------------------------------------------------
 
@@ -684,25 +699,25 @@ ALTER TABLE `account`
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `history_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `history_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `occupy`
 --
 ALTER TABLE `occupy`
-  MODIFY `occupy_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `occupy_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `rating`
 --
 ALTER TABLE `rating`
-  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
 -- Constraints for dumped tables

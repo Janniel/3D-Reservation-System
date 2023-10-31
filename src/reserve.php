@@ -82,13 +82,13 @@ require 'php/session.php';
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                            <!-- <label for="start_time">Start Time</label> -->
+                            <label for="start_time">from</label>
                             <input type="time" class="form-control  text-white bg-transparent" name="start_time" id="start_time" >
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
-                            <!-- <label for="end_time">End Time</label> -->
+                            <label for="end_time">to</label>
                             <input type="time" class="form-control  text-white bg-transparent" name="end_time" id="end_time">
                         </div>
                     </div>
