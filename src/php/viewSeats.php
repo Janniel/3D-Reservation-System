@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $end_time = $_POST['end_time'];
 
         // Query to fetch seat_id based on the specified conditions
-        $sql = "SELECT seat_id FROM reservation WHERE `date` = '$date' AND `start_time` <= '$start_time' AND `end_time` >= '$end_time' AND `isDone` = 0";
+        $sql = "SELECT seat_id FROM reservation WHERE `date` = '$date' AND `start_time` <= '$start_time' AND `end_time` >= '$start_time' AND `isDone` = 0";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
