@@ -1,7 +1,9 @@
 <?php
 session_start();
-require 'assets/php/connect.php';
-require 'assets/php/session.php';
+require 'connect.php';
+require 'session.php';
+
+
 
 $sql = "SELECT r.reservation_id, r.user_id, r.date, r.start_time, r.end_time, a.username, u.user_id, r.seat_id, u.first_name, u.last_name, u.rfid_no, u.contact_number, u.course_code, u.age, a.email, a.picture, a.account_type, u.course_code, c.college_code
         FROM reservation AS r
@@ -27,8 +29,8 @@ $result = $conn->query($sql);
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
     <!------------------------ CSS Link ------------------------>
-    <link rel="stylesheet" type="text/css" href="assets/css/reserved.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/user-list.css" />
+    <link rel="stylesheet" type="text/css" href="css/reserved.css" />
+    <link rel="stylesheet" type="text/css" href="css/user-list.css" />
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="path-to-bootstrap/bootstrap.min.css">
 
@@ -60,26 +62,26 @@ $result = $conn->query($sql);
     <!------------------------ SIDEBAR ------------------------>
     <div class="sidebar">
         <div class="sidebar-brand">
-            <img src="assets/img/bulsu logo.png" alt="bulsu logo" class="logo">
+            <img src="../img/bulsu logo.png" alt="bulsu logo" class="logo">
             <h2> <span>SOAR Admin</span></h2>
         </div>
 
         <div class="sidebar-menu" id="tabButton">
             <ul>
-                <li class="tabs"> <a href="admin.php" data-tabName="dashboard" id="tabButtons"><span
+                <li class="tabs"> <a href="../admin.php" data-tabName="dashboard" id="tabButtons"><span
                             class="las la-th-large"></span>
                         <span>Dashboard</span></a>
                 </li>
                 <li class="tabs"> <a href="seats-info.php"><span class="las la-check"></span>
                         <span>Seats Information</span></a>
                 </li>
-                <li class="tabs"> <a href="reserved.php" class="active"><span class="las la-clock"></span>
+                <li class="tabs"> <a href="reserved.php"><span class="las la-clock"></span>
                         <span>Reserved</span></a>
                 </li>
                 <li class="tabs"> <a href="user-list.php"><span class="las la-user-friends"></span>
                         <span>User List</span></a>
                 </li>
-                <li class="tabs"> <a href="history.php"><span class="las la-history"></span>
+                <li class="tabs"> <a href="history.php" class="active"><span class="las la-history"></span>
                         <span>History</span></a>
                 </li>
                 <li class="tabs"> <a href="adminReviews.php"><span class="las la-star"></span>
@@ -95,7 +97,7 @@ $result = $conn->query($sql);
                         href="manageAdmin.php"><span class="las la-users-cog"></span>
                         <span>Manage Accounts</span></a>
                 </li>
-                <li class="logout"> <a href="toLogout.php">
+                <li class="logout"> <a href="../toLogout.php">
                         <span>Logout</span></a>
                 </li>
             </ul>
@@ -176,27 +178,25 @@ $result = $conn->query($sql);
                                             <div class="input-group">
                                                 <input type="search" placeholder="Search Data...">
                                                 <div class="search-icon">
-                                                    <img src="assets/img/search.png" alt="Search">
+                                                    <img src="../img/search.png" alt="Search">
                                                 </div>
                                             </div>
 
                                             <div class="export__file">
-                                                
-
                                                 <label for="export-file" class="export__file-btn" title="Export File">
-                                                    <img src="assets/img/export1.png" alt="Export" class="export_ic">
+                                                    <img src="../img/export1.png" alt="Export" class="export_ic">
                                                 </label>
                                                 <input type="checkbox" id="export-file">
                                                 <div class="export__file-options">
                                                     <label>Export As &nbsp; &#10140;</label>
                                                     <label for="export-file" id="toPDF">PDF <img
-                                                            src="assets/img/pdf.png" alt=""></label>
+                                                            src="../img/pdf.png" alt=""></label>
                                                     <label for="export-file" id="toJSON">JSON <img
-                                                            src="assets/img/json.png" alt=""></label>
+                                                            src="../img/json.png" alt=""></label>
                                                     <label for="export-file" id="toCSV">CSV <img
-                                                            src="assets/img/csv.png" alt=""></label>
+                                                            src="../img/csv.png" alt=""></label>
                                                     <label for="export-file" id="toEXCEL">EXCEL <img
-                                                            src="assets/img/excel.png" alt=""></label>
+                                                            src="../img/excel.png" alt=""></label>
                                                 </div>
                                             </div>
                                         </section>
