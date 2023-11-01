@@ -19,6 +19,8 @@ require 'php/session.php';
   <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
   <script src="https://cdn.jsdelivr.net/npm/timepicker@1.14.1/jquery.timepicker.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/timepicker@1.14.1/jquery.timepicker.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
   
 
 
@@ -62,11 +64,13 @@ require 'php/session.php';
           <b id="chosen_time">10:00 AM to 11:00 AM</b>
         </h6>
       </div>
+   
+      <button class="filterBtn" >Filter &nbsp; <i class="fas fa-sliders-h" style="color: #ffffff;"></i></button>
       <button class="section1">Section A</button>
       <button class="section2">Section B</button>
       <button class="section3">Section C</button>
       <button class="section4">Section D</button>
-      <button class="filterBtn">Filter Date</button>
+     
     </div>
     
     
@@ -85,14 +89,14 @@ require 'php/session.php';
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                            <label for="start_time">from</label>
-                            <input type="text" class="form-control  text-white bg-transparent" name="start_time" id="start_time" >
+                            <label for="start_time"></label>
+                            <input type="text" class="form-control  text-white bg-transparent" name="start_time" id="start_time" placeholder="Starts from" >
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
-                            <label for="end_time">to</label>
-                            <input type="text" class="form-control text-white bg-transparent" name="end_time" id="end_time">
+                            <label for="end_time"></label>
+                            <input type="text" class="form-control text-white bg-transparent" name="end_time" id="end_time" placeholder="Ends at ">
 
                         </div>
                     </div>
@@ -128,74 +132,79 @@ require 'php/session.php';
         })
         .catch((error) => console.error('Error fetching disabled dates.'));
 
-
-      // $(document).ready(function() {
-      //   $('#start_time').timepicker({
-      //     // 'timeFormat': 'h:i: A',
-      //   });
-
-      //   $('#end_time').timepicker({
-      //     'maxTime': '11:30pm',
-      //     'step': 15,
-      //     'showDuration': true
-      //   });
-
-      //   // Add an event listener to the start_time input to update the minTime of end_time
-      //   $('#start_time').on('change', function() {
-      //     var startTimeValue = $(this).val();
-      //     $('#end_time').timepicker('option', 'minTime', startTimeValue);
-      //   });
-      // });
-
-      // Function to convert time from AM/PM format to 24-hour format
-function convertTimeTo24HourFormat(time) {
+        function convertTimeTo24HourFormat(time) {
   const [timeStr, ampm] = time.split(' ');
   const [hours, minutes] = timeStr.split(':').map(Number);
 
+  let convertedHours = hours;
+
   if (ampm === 'PM' && hours !== 12) {
-    hours += 12;
+    convertedHours += 12;
   } else if (ampm === 'AM' && hours === 12) {
-    hours = 0;
+    convertedHours = 0;
   }
 
-  return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+  const formattedHours = convertedHours.toString().padStart(2, '0');
+  const formattedMinutes = minutes.toString().padStart(2, '0');
+
+  return `${formattedHours}:${formattedMinutes}`;
 }
 
 $(document).ready(function () {
   $('#start_time').timepicker({
-    'timeFormat': 'h:i A', // Set the time format to AM/PM
-    'onSelect': function (time) {
-      // Convert the selected time to 24-hour format
-      const startTimeIn24Hour = convertTimeTo24HourFormat(time);
-
-      // Display the converted 24-hour time in the same input field
-      $('#start_time').val(startTimeIn24Hour);
-    },
+    'timeFormat': 'h:i A',
+    'forceRoundTime': true,
   });
 
   $('#end_time').timepicker({
     'maxTime': '11:30pm',
-          'step': 15,
-          'showDuration': true,
-    'timeFormat': 'h:i A', // Set the time format to AM/PM
-    'onSelect': function (time) {
-      // Convert the selected time to 24-hour format
-      const endTimeIn24Hour = convertTimeTo24HourFormat(time);
-
-      // Display the converted 24-hour time in the same input field
-      $('#end_time').val(endTimeIn24Hour);
-    },
+    'step': 15,
+    'showDuration': true,
+    'timeFormat': 'h:i A',
   });
 
-  $('#start_time').on('change', function() {
-          var startTimeValue = $(this).val();
-          $('#end_time').timepicker('option', 'minTime', startTimeValue);
-        });
+  $('#start_time').on('change', function () {
+    var startTimeValue = $(this).val();
+    $('#end_time').timepicker('option', 'minTime', startTimeValue);
+    validateTimeSelection();
+  });
+
+  $('#end_time').on('change', function () {
+    validateTimeSelection();
+  });
+
+  $('#viewSeatsButton').prop('disabled', true);
+
+
+ // Function to validate and disable the button if necessary
+function validateTimeSelection() {
+  const startTime = $('#start_time').val();
+  const endTime = $('#end_time').val();
+
+  // Check if the start time and end time are empty
+  if (startTime === '' || endTime === '') {
+    $('#viewSeatsButton').prop('disabled', true);
+    return;
+  }
+
+  // Parse the time values to compare them
+  const startTime24Hour = convertTimeTo24HourFormat(startTime);
+  const endTime24Hour = convertTimeTo24HourFormat(endTime);
+
+  if (startTime24Hour < endTime24Hour) {
+    $('#viewSeatsButton').prop('disabled', false);
+  } else {
+    $('#viewSeatsButton').prop('disabled', true);
+  }
+}
+
+
+
 });
 
 
 
-        
+   
     });
     </script>
     
