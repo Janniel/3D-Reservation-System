@@ -355,13 +355,8 @@ function showsection() {
 
   const formattedDate = formatDate(date);
 
-  // Convert the start time and end time to AM/PM format
-  const formattedStartTime = formatTimeToAMPM(startTime);
-  const formattedEndTime = formatTimeToAMPM(endTime);
-
-  // Update the content of the chosen_date and chosen_time elements
   chosenDate.textContent = `${formattedDate}`;
-  chosenTime.textContent = `, from ${formattedStartTime} to ${formattedEndTime}`;
+  chosenTime.textContent = `, from ${startTime} to ${endTime}`;
 }
 
 function formatDate(dateStr) {
@@ -433,15 +428,13 @@ function showSeatInfo(selectedSeatNumber, date, startTime, endTime) {
       const dateParagraph = seatInfoDiv.querySelector("p:nth-of-type(1)");
       const timeParagraph = seatInfoDiv.querySelector("p:nth-of-type(2)");
 
-      //format time
+      //format date
       const formattedDate = formatDate(date);
-      const formattedStartTime = formatTimeToAMPM(startTime);
-      const formattedEndTime = formatTimeToAMPM(endTime);
 
       // Display the seat_name instead of selectedSeatNumber
       seatNumberHeading.textContent = `SEAT ${seatName}`;
       dateParagraph.textContent = `on ${formattedDate}`;
-      timeParagraph.textContent = `${formattedStartTime} to ${formattedEndTime}`;
+      timeParagraph.textContent = `${startTime} to ${endTime}`;
 
       seatInfoDiv.style.display = "block";
 
@@ -511,13 +504,23 @@ reserveBtn.addEventListener("click", () => {
   }
 });
 
+
+// Function to convert time to 24-hour format
+function convertTo24HourFormat(time) {
+  const date = new Date("2000-01-01 " + time);
+  return date.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
+}
+
+
 //function when clicking the seat button
 function reserveSeat(seat_id) {
 
   // Display SweetAlert to confirm seat reservation
   Swal.fire({
     title: 'Confirm Reservation',
-    html: 'Seat No.: ' + seat_id + '<br>Date: ' + $('#date').val() + '<br>Time: ' + $('#start_time').val() + ' - ' + $('#end_time').val() + '',
+    html: 'Seat No.: ' + seat_id + '<br>Date: ' + $('#date').val() +
+      '<br>Time: ' + $('#start_time').val() +
+      ' - ' + $('#end_time').val(),
     icon: 'question',
     showCancelButton: true,
     confirmButtonText: 'Confirm',
@@ -529,8 +532,8 @@ function reserveSeat(seat_id) {
       var reservationData = {
         seat_id: seat_id,
         date: $('#date').val(),
-        start_time: $('#start_time').val(),
-        end_time: $('#end_time').val(),
+        start_time: convertTo24HourFormat($('#start_time').val()),
+        end_time: convertTo24HourFormat($('#end_time').val()),
       };
     
       console.log(reservationData);

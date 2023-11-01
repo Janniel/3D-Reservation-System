@@ -17,6 +17,9 @@ require 'php/session.php';
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
+  <script src="https://cdn.jsdelivr.net/npm/timepicker@1.14.1/jquery.timepicker.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/timepicker@1.14.1/jquery.timepicker.min.css">
+  
 
 
 </head>
@@ -83,13 +86,14 @@ require 'php/session.php';
                     <div class="col">
                         <div class="form-group">
                             <label for="start_time">from</label>
-                            <input type="time" class="form-control  text-white bg-transparent" name="start_time" id="start_time" >
+                            <input type="text" class="form-control  text-white bg-transparent" name="start_time" id="start_time" >
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
                             <label for="end_time">to</label>
-                            <input type="time" class="form-control  text-white bg-transparent" name="end_time" id="end_time">
+                            <input type="text" class="form-control text-white bg-transparent" name="end_time" id="end_time">
+
                         </div>
                     </div>
                 </div>
@@ -105,26 +109,94 @@ require 'php/session.php';
 
     <script>
       document.addEventListener('DOMContentLoaded', function () {
-  let disabledDates;
+      let disabledDates;
 
-  // Fetch disabled dates from PHP
-  fetch('get_disabled_dates.php')
-    .then((response) => response.json())
-    .then((data) => {
-      disabledDates = data;
+      // Fetch disabled dates from PHP
+      fetch('get_disabled_dates.php')
+        .then((response) => response.json())
+        .then((data) => {
+          disabledDates = data;
 
-      flatpickr("#date", {
-        theme: "dark",
-        inline: false,
-        dateFormat: "Y-m-d",
-        minDate: "today",
-        defaultDate: "today",
-        disable: disabledDates, // Use the fetched disabled dates
-      });
-    })
-    .catch((error) => console.error('Error fetching disabled dates.'));
+          flatpickr("#date", {
+            theme: "dark",
+            inline: false,
+            dateFormat: "Y-m-d",
+            minDate: "today",
+            defaultDate: "today",
+            disable: disabledDates, // Use the fetched disabled dates
+          });
+        })
+        .catch((error) => console.error('Error fetching disabled dates.'));
+
+
+      // $(document).ready(function() {
+      //   $('#start_time').timepicker({
+      //     // 'timeFormat': 'h:i: A',
+      //   });
+
+      //   $('#end_time').timepicker({
+      //     'maxTime': '11:30pm',
+      //     'step': 15,
+      //     'showDuration': true
+      //   });
+
+      //   // Add an event listener to the start_time input to update the minTime of end_time
+      //   $('#start_time').on('change', function() {
+      //     var startTimeValue = $(this).val();
+      //     $('#end_time').timepicker('option', 'minTime', startTimeValue);
+      //   });
+      // });
+
+      // Function to convert time from AM/PM format to 24-hour format
+function convertTimeTo24HourFormat(time) {
+  const [timeStr, ampm] = time.split(' ');
+  const [hours, minutes] = timeStr.split(':').map(Number);
+
+  if (ampm === 'PM' && hours !== 12) {
+    hours += 12;
+  } else if (ampm === 'AM' && hours === 12) {
+    hours = 0;
+  }
+
+  return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+}
+
+$(document).ready(function () {
+  $('#start_time').timepicker({
+    'timeFormat': 'h:i A', // Set the time format to AM/PM
+    'onSelect': function (time) {
+      // Convert the selected time to 24-hour format
+      const startTimeIn24Hour = convertTimeTo24HourFormat(time);
+
+      // Display the converted 24-hour time in the same input field
+      $('#start_time').val(startTimeIn24Hour);
+    },
+  });
+
+  $('#end_time').timepicker({
+    'maxTime': '11:30pm',
+          'step': 15,
+          'showDuration': true,
+    'timeFormat': 'h:i A', // Set the time format to AM/PM
+    'onSelect': function (time) {
+      // Convert the selected time to 24-hour format
+      const endTimeIn24Hour = convertTimeTo24HourFormat(time);
+
+      // Display the converted 24-hour time in the same input field
+      $('#end_time').val(endTimeIn24Hour);
+    },
+  });
+
+  $('#start_time').on('change', function() {
+          var startTimeValue = $(this).val();
+          $('#end_time').timepicker('option', 'minTime', startTimeValue);
+        });
 });
 
+
+
+        
+    });
     </script>
     
     <div class="tooltip">
@@ -146,6 +218,7 @@ require 'php/session.php';
   </div>
 
   <script>
+    
   document.addEventListener('DOMContentLoaded', function () {
     // Get references to the form and the submit button
     var form = document.getElementById('reservationForm');
