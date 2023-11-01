@@ -100,7 +100,7 @@ window.addEventListener("resize", () => {
     //Update Camera
     camera.aspect = sizes.width / sizes.height
     camera.updateProjectionMatrix()
-    renderer.setSize(sizes.width, sizes.height)
+    renderer.setSize(sizes.width/3, sizes.height/3)
     // labelRenderer.setSize(sizes.width, sizes.height)
   })
 
