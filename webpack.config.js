@@ -6,6 +6,7 @@ module.exports = {
     mode: 'development',
     entry: {
         reserve: path.resolve(__dirname, 'src/reserve.js'),
+        seatsInfo: path.resolve(__dirname, 'src/seats-info3D.js'),
         home: path.resolve(__dirname, 'src/home.js'),
         clock: path.resolve(__dirname, 'src/clock.js'),
         login: path.resolve(__dirname, 'src/login.js'),
@@ -121,6 +122,12 @@ module.exports = {
             filename: 'reserve.php',
             template: 'src/reserve.php',
             chunks: ['reserve']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'seats-info3D.php',
+            template: 'src/seats-info3D.php',
+            chunks: ['seatsInfo']
         }),
         new HtmlWebpackPlugin({
             inject: true,
@@ -409,6 +416,12 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             inject: true,
+            filename: 'php/get_monthly_data.php',
+            template: 'src/php/get_monthly_data.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
             filename: 'php/toRestore.php',
             template: 'src/php/toRestore.php',
             chunks: ['']
@@ -424,6 +437,24 @@ module.exports = {
             filename: 'php/history.php',
             template: 'src/php/history.php',
             chunks: ['users','export','history']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/toArchiveHistory.php',
+            template: 'src/php/toArchiveHistory.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/toRestoreHistory.php',
+            template: 'src/php/toRestoreHistory.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/toDeleteHistory.php',
+            template: 'src/php/toDeleteHistory.php',
+            chunks: ['']
         }),
         new HtmlWebpackPlugin({
             inject: true,
