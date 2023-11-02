@@ -6,6 +6,7 @@ module.exports = {
     mode: 'development',
     entry: {
         reserve: path.resolve(__dirname, 'src/reserve.js'),
+        seatsInfo: path.resolve(__dirname, 'src/seats-info3D.js'),
         home: path.resolve(__dirname, 'src/home.js'),
         clock: path.resolve(__dirname, 'src/clock.js'),
         login: path.resolve(__dirname, 'src/login.js'),
@@ -121,6 +122,12 @@ module.exports = {
             filename: 'reserve.php',
             template: 'src/reserve.php',
             chunks: ['reserve']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'seats-info3D.php',
+            template: 'src/seats-info3D.php',
+            chunks: ['seatsInfo']
         }),
         new HtmlWebpackPlugin({
             inject: true,
@@ -393,6 +400,12 @@ module.exports = {
             inject: true,
             filename: 'php/toDelete.php',
             template: 'src/php/toDelete.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/get_monthly_data.php',
+            template: 'src/php/get_monthly_data.php',
             chunks: ['']
         }),
         new HtmlWebpackPlugin({
