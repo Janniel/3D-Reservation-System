@@ -58,7 +58,7 @@ require 'php/occupancy_timer.php';
         $seat_query = "SELECT * FROM seat WHERE seat_id = '$seat_id'";
         $seat_result = mysqli_query($conn, $seat_query);
         $seat_row = mysqli_fetch_assoc($seat_result);
-        $seat_number = $seat_row['seat_number'];
+        $seat_number = $seat_row['seat_name'];
         
 
         // Generate QR code content (e.g., reservation details)
@@ -161,6 +161,6 @@ require 'php/occupancy_timer.php';
 
     <!------------------------ HEADER --------------------->
 
-    <?php include 'php/footer.php'; ?>
+   
 
 <!------------------------ END HEADER --------------------->

@@ -72,9 +72,9 @@ require 'php/connect.php';
             <img class="banner" src="img/lib building_bg.jpg" id="lib-front">
 
             <div class="title">
-                <h1 id="parallax-home-text-lib" data-aos="fade-right">Library</h1>
-                <h1 id="parallax-home-text-school" data-aos="fade-up">BULACAN STATE UNIVERSITY</h1>
-                <h1 id="parallax-home-text-disc" data-aos="fade-left">Discover and Learn</h1>
+            <h1 id="parallax-home-text-lib" data-aos="fade-up" data-aos="fade-up" data-aos-duration="500">Library</h1>
+                <h1 id="parallax-home-text-school" data-aos="fade-up" data-aos-duration="800">BULACAN STATE UNIVERSITY</h1>
+                <h1 id="parallax-home-text-disc" data-aos="fade-up" data-aos-duration="1100">Discover and Learn</h1>
             </div>
         </div>
         <!------------------------ END OF COVER ------------------------>

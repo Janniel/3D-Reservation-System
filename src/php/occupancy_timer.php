@@ -16,6 +16,7 @@ if ($result && mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
     $start_time = strtotime($row['start_time']);
     $end_time = strtotime($row['end_time']);
+    $reservation_id = $row['reservation_id'];
     // Convert the times to milliseconds since JavaScript works with milliseconds
     $start_time_milliseconds = $start_time * 1000;
     $end_time_milliseconds = $end_time * 1000;
@@ -57,6 +58,9 @@ if ($result && mysqli_num_rows($result) > 0) {
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.1/dist/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.1/dist/sweetalert2.min.css">
+
 
 <script>
     $(document).ready(function() {
@@ -71,6 +75,7 @@ if ($result && mysqli_num_rows($result) > 0) {
         function hideToast() {
             $('#toastContainer').toast('hide');
             clearInterval(timerInterval);
+       
         }
 
         function updateRemainingTime() {
@@ -89,6 +94,36 @@ if ($result && mysqli_num_rows($result) > 0) {
 
             if (remainingTime <= 0) {
                 hideToast();
+                $.ajax({
+                url: 'php/toAddHistory.php?reservation_id=<?php echo $reservation_id; ?>',
+                type: 'GET',
+                success: function (response) {
+                    console.log(' completed');
+                    Swal.fire({
+                        title: 'Time\'s Up',
+                        text: 'Your reservation time is up!',
+                        icon: 'success',
+                        confirmButtonColor: '#a81c1c',
+                        confirmButtonText: 'OK',
+                        showConfirmButton: false
+                    }).then(() => {
+                        window.location.href = `survey.php`;
+                        
+                    });
+                   
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('errpr adding to history. [occupancy timer said]');
+                    Swal.fire({
+                        
+                        title: 'Error',
+                        text: 'An error occurred while marking the reservation as done.',
+                        icon: 'error',
+                        confirmButtonColor: '#d33',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            });
             }
         }
 
@@ -100,40 +135,51 @@ if ($result && mysqli_num_rows($result) > 0) {
 
 
 <?php
-
-$query = "SELECT * FROM reservation WHERE date >= CURDATE() and end_time <= curtime() and isDOne = 0";
+$query = "SELECT * FROM reservation WHERE date >= CURDATE() AND end_time <= CURTIME() AND isDone = 0";
 $result = mysqli_query($conn, $query);
-      
 
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
-      $reservation_id = $row['reservation_id'];
-      $date = date('F j, Y', strtotime($row['date'])); // Convert date to desired format
-      $start_time = date('h:i A', strtotime($row['start_time'])); // Convert start time to AM/PM format
-      $end_time = date('h:i A', strtotime($row['end_time'])); // Convert end time to AM/PM forma
-      $seat_id = $row['seat_id'];
-      $isDone = $row['isDone'];
+        $reservation_id = $row['reservation_id'];
+        $date = date('F j, Y', strtotime($row['date']));
+        $start_time = date('h:i A', strtotime($row['start_time']));
+        $end_time = date('h:i A', strtotime($row['end_time']));
+        $seat_id = $row['seat_id'];
+        $isDone = $row['isDone'];
 
-      ?>
-      <script>
-              $.ajax({
-                url: `toAddHistory.php?reservation_id=<?php echo $reservation_id;?>`,  
-                type: 'GET',
-                success: function (response) {
-                  console.log('some reservation is completed');
-                   
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                  console.log('error adding to histo');
-                }
-            });
-            console.log('error');
+        // Calculate the time remaining in seconds
+        $end_timestamp = strtotime($row['date'] . ' ' . $row['end_time']);
+        $current_timestamp = time();
+        $time_remaining = $end_timestamp - $current_timestamp;
+
+        if ($time_remaining <= 0) {
+            // If the reservation time has expired, trigger the PHP script
+            ?>
+            <script>
+                // Swal.fire({
+                //     title: 'Your time has ended!',
+                //     text: 'Your reservation time has expired.',
+                //     icon: 'warning',
+                //     showConfirmButton: false,
+                //     timer: 3000,
+                // });
+
             
-      </script>
-
-      <?php
-
-    
+                    // After 3 seconds, trigger the PHP script using AJAX
+                    $.ajax({
+                        url: 'toAddHistory.php?reservation_id=<?php echo $reservation_id; ?>',
+                        type: 'GET',
+                        success: function (response) {
+                            console.log('Some reservation is completed');
+                        },
+                        error: function (xhr, textStatus, errorThrown) {
+                            console.log('Error adding to history');
+                        }
+                    });
+               
+            </script>
+            <?php
+        }
     }
 }
 ?>

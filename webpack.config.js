@@ -148,8 +148,8 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             inject: true,
-            filename: 'php/receipt.php',
-            template: 'src/php/receipt.php',
+            filename: 'receipt.php',
+            template: 'src/receipt.php',
             chunks: ['profile']
         }),
         new HtmlWebpackPlugin({
@@ -324,6 +324,18 @@ module.exports = {
             template: 'src/get_disabled_dates.php',
             chunks: ['']
         }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/validateReservation.php',
+            template: 'src/php/validateReservation.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/maintenance.php',
+            template: 'src/php/maintenance.php',
+            chunks: ['']
+        }),
 
 
 
@@ -455,5 +467,6 @@ module.exports = {
             template: 'src/php/settings.php',
             chunks: ['analytics']
         }),
+  
     ]
 }

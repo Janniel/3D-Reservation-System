@@ -2,6 +2,67 @@
 session_start();
 require 'php/connect.php';
 require 'php/session.php';
+
+// Fetch the reservation status from the settings table
+$settings_query = "SELECT reservation FROM settings WHERE settings_id = '1'";
+$settings_result = mysqli_query($conn, $settings_query);
+$settings_row = mysqli_fetch_assoc($settings_result);
+
+$reservation_status = $settings_row['reservation'];
+
+// Check if the reservation status is disabled
+if ($reservation_status != '0') {
+  header("Location: php/maintenance.php");
+  exit();
+}
+
+// Fetch the settings from the database
+$query = "SELECT * FROM settings WHERE settings_id = '1'";
+$result = $conn->query($query);
+
+if ($result->num_rows > 0) {
+    // Output data of each row
+    while ($row = $result->fetch_assoc()) {
+        // $reservation = $row["reservation"];
+        // $minDuration = $row["minDuration"];
+        // $maxDuration = $row["maxDuration"];
+        // $reservePerDay = $row["reservePerDay"];
+        $start_hour = $row["start_hour"];
+        $end_hour = $row["end_hour"];
+        // $disabled_dates = json_decode($row["disabled_dates"]);
+    }
+} else {
+    echo "No settings found";
+}
+
+$count_query = "SELECT COUNT(*) AS reservation_count FROM reservation WHERE user_id = '{$_SESSION['user_id']}' AND date >= CURDATE()";
+$count_result = mysqli_query($conn, $count_query);
+$count_row = mysqli_fetch_assoc($count_result);
+$reservation_count = $count_row['reservation_count'];
+
+// Retrieve the maximum reservation per day from the settings table
+$settings_query = "SELECT reservePerDay FROM settings WHERE settings_id = '1'";
+$settings_result = mysqli_query($conn, $settings_query);
+$settings_row = mysqli_fetch_assoc($settings_result);
+$reservePerDay = $settings_row['reservePerDay'];
+
+$_SESSION["reservation_count"] = $reservation_count;
+
+// Check if the reservation count has reached the limit
+if ($reservation_count >= $reservePerDay) {
+  echo "<script>
+                Swal.fire({
+                  icon: 'warning',
+                  title: 'Reservation Limit Reached',
+                  text: 'You have reached the maximum reservation limit for today.',
+                  confirmButtonText: 'OK',
+                  onClose: function() {
+                    window.location.href = '../index.php';
+                  }
+                });
+            </script>";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +77,7 @@ require 'php/session.php';
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <link rel="stylesheet" href="styles/reserve.css">
+  <!-- <link rel="stylesheet" href="styles/reserve.css"> -->
   <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
   <script src="https://cdn.jsdelivr.net/npm/timepicker@1.14.1/jquery.timepicker.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/timepicker@1.14.1/jquery.timepicker.min.css">
@@ -27,22 +88,7 @@ require 'php/session.php';
 
 </head>
 <body>
-  <!-- <header class="header-outer">
-    <div class="header-inner responsive-wrapper">
-      <div class="header-logo">
-        <img src="assets/img/elib logo.png" class="icon">
-      </div>
-      <nav class="header-navigation">
-        <a class="active" href="home.php">HOME</a>
-        <a href="home.php#aboutus">ABOUT US</a>
-        <a href="reserve.php">RESERVE SEAT</a>
-        <a id="hidden" href="occupy.php">OCCUPY SEAT</a>
-        <a id="hidden" href="profile.php">ACCOUNT</a>
-        <a id="hidden" href="toLogout.php">LOGOUT</a>
-       
-      </nav>
-    </div>
-  </header> -->
+  <?php /* require_once 'php/header.php' */ ?>
   
   <div>
     <canvas class="webgl2"></canvas>
@@ -61,8 +107,8 @@ require 'php/session.php';
     <div class="section-nav">
       <div class="dateTimeSelected">
         <h6> Available Seats on 
-          <b id="chosen_date"> Nov. 6, 2023, </b> 
-          <b id="chosen_time">10:00 AM to 11:00 AM</b>
+          <b id="chosen_date"></b> 
+          <b id="chosen_time"></b>
         </h6>
       </div>
    
@@ -155,10 +201,13 @@ $(document).ready(function () {
   $('#start_time').timepicker({
     'timeFormat': 'h:i A',
     'forceRoundTime': true,
+    'minTime': '<?php echo date('H:i A', strtotime($start_hour))?>', // the min time of the start time is come from the databae column called  start_hour
+    'maxTime': '<?php echo date('H:i A', strtotime($end_hour))?>', // the maxTime of start time is came from the database column called end_hour
+    'step': 15,
   });
 
   $('#end_time').timepicker({
-    'maxTime': '11:30pm',
+    'maxTime': '<?php echo date('H:i A', strtotime($end_hour))?>', //the maxTime of end time is came from the database column called end_hour
     'step': 15,
     'showDuration': true,
     'timeFormat': 'h:i A',
@@ -178,9 +227,12 @@ $(document).ready(function () {
 
 
  // Function to validate and disable the button if necessary
-function validateTimeSelection() {
+ function validateTimeSelection() {
   const startTime = $('#start_time').val();
   const endTime = $('#end_time').val();
+
+  // Regular expression to match time in HH:MM AM/PM format
+  const timeFormatPattern = /^(0?[1-9]|1[0-2]):[0-5][0-9] (AM|PM)$/i;
 
   // Check if the start time and end time are empty
   if (startTime === '' || endTime === '') {
@@ -188,16 +240,22 @@ function validateTimeSelection() {
     return;
   }
 
-  // Parse the time values to compare them
-  const startTime24Hour = convertTimeTo24HourFormat(startTime);
-  const endTime24Hour = convertTimeTo24HourFormat(endTime);
+  // Check if both start time and end time match the time format
+  if (timeFormatPattern.test(startTime) && timeFormatPattern.test(endTime)) {
+    // Parse the time values to compare them
+    const startTime24Hour = convertTimeTo24HourFormat(startTime);
+    const endTime24Hour = convertTimeTo24HourFormat(endTime);
 
-  if (startTime24Hour < endTime24Hour) {
-    $('#viewSeatsButton').prop('disabled', false);
+    if (startTime24Hour < endTime24Hour) {
+      $('#viewSeatsButton').prop('disabled', false);
+    } else {
+      $('#viewSeatsButton').prop('disabled', true);
+    }
   } else {
     $('#viewSeatsButton').prop('disabled', true);
   }
 }
+
 
 
 
