@@ -701,37 +701,31 @@ function hideReserveDiv() {
   //     case '1_CompChair_1':
   //       console.log('Clicked on the 1_CompChair_1 object');
   //       showTooltip(event, 'Click to reserve seat', 'SEAT B1');
-  //       showtip()
   //       break;
       
   //     case '1_CompChair_2':
   //       console.log('Clicked on the 1_CompChair_2 object');
   //       showTooltip(event, 'Click to reserve seat', 'SEAT B2');
-  //       showtip()
   //       break;
       
   //     case '1_CompChair_3':
   //       console.log('Clicked on the 1_CompChair_3 object');
   //       showTooltip(event, 'Click to reserve seat', 'SEAT B3');
-  //       showtip()
   //       break;
 
   //     case '1_CompChair_4':
   //       console.log('Clicked on the 1_CompChair_4 object');
   //       showTooltip(event, 'Click to reserve seat', 'SEAT B4');
-  //       showtip()
   //       break;
 
   //       case '1_CompChair_5':
   //       console.log('Clicked on the 1_CompChair_5 object');
   //       showTooltip(event, 'Click to reserve seat', 'SEAT B5'); 
-  //       showtip()
   //       break;
 
   //       case '2_CompChair_1':
   //       console.log('Clicked on the 2_CompChair_1 object');
   //       showTooltip(event, 'Click to reserve seat', 'SEAT B1');
-  //       showtip()
   //       break;
 
   //       case '2_CompChair_2':
