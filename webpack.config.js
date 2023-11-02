@@ -428,6 +428,24 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             inject: true,
+            filename: 'php/toArchiveHistory.php',
+            template: 'src/php/toArchiveHistory.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/toRestoreHistory.php',
+            template: 'src/php/toRestoreHistory.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/toDeleteHistory.php',
+            template: 'src/php/toDeleteHistory.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
             filename: 'php/adminProfile.php',
             template: 'src/php/adminProfile.php',
             chunks: ['adminProfile']
