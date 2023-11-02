@@ -48,20 +48,6 @@ $reservePerDay = $settings_row['reservePerDay'];
 
 $_SESSION["reservation_count"] = $reservation_count;
 
-// Check if the reservation count has reached the limit
-if ($reservation_count >= $reservePerDay) {
-  echo "<script>
-                Swal.fire({
-                  icon: 'warning',
-                  title: 'Reservation Limit Reached',
-                  text: 'You have reached the maximum reservation limit for today.',
-                  confirmButtonText: 'OK',
-                  onClose: function() {
-                    window.location.href = '../index.php';
-                  }
-                });
-            </script>";
-}
 
 ?>
 
@@ -74,7 +60,7 @@ if ($reservation_count >= $reservePerDay) {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.1/dist/sweetalert2.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <!-- <link rel="stylesheet" href="styles/reserve.css"> -->
@@ -88,7 +74,27 @@ if ($reservation_count >= $reservePerDay) {
 
 </head>
 <body>
-  <?php /* require_once 'php/header.php' */ ?>
+  <?php 
+  
+  /* require_once 'php/header.php' */
+  // Check if the reservation count has reached the limit
+// if ($reservation_count >= $reservePerDay) {
+//   echo "<script>
+//                 Swal.fire({
+//                   icon: 'warning',
+//                   title: 'Reservation Limit Reached',
+//                   text: 'You have reached the maximum reservation limit for today.',
+//                   confirmButtonText: 'OK',
+//                   onClose: function() {
+//                     window.location.href = '../index.php';
+//                   }
+//                 });
+//             </script>";
+// }
+
+  
+  ?>
+  
   
   <div>
     <canvas class="webgl2"></canvas>

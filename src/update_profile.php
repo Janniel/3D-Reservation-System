@@ -147,7 +147,7 @@ require 'php/session.php';
 								  	<input type="text" class="form-control" id="age-input" placeholder="Enter age" value="<?php echo $row["age"]; ?>">
 								</div>
 							</div>
-							<div class="col-md-6">
+							<!-- <div class="col-md-6">
 								<div class="form-group">
 								  	<label>College</label>
 									<?php
@@ -169,19 +169,19 @@ require 'php/session.php';
                         			}
                         			?>
 								  
-							<select class="form-control" id="floatingSelect" name="college_code" aria-label="Floating label select example" disabled>
-								<?php
-                                // Fetch colleges from the database using the function
-                                $colleges = getColleges($conn);
+									<select class="form-control" id="floatingSelect" name="college_code" aria-label="Floating label select example" disabled>
+										<?php
+										// // Fetch colleges from the database using the function
+										// $colleges = getColleges($conn);
 
-                                // Loop through the colleges and generate options
-                                foreach ($colleges as $college_code => $college_name) {
-                                    echo '<option value="' . $college_code . '">' . $college_name . '</option>';
-                                }
-                                ?>
-                            </select>
+										// // Loop through the colleges and generate options
+										// foreach ($colleges as $college_code => $college_name) {
+										//     echo '<option value="' . $college_code . '">' . $college_name . '</option>';
+										// }
+										?>
+									</select>
 								</div>
-							</div>
+							</div> -->
 							<!-- <div class="col-md-6">
 								<div class="form-group">
 								  	<label>Type</label>
