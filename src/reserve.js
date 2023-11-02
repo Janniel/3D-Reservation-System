@@ -6,10 +6,11 @@ import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls'
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
 
-var date;
-var startTime;
-var endTime;
+let date;
+let startTime;
+let endTime;
 
+let seatsViewed = false;
 
 //Scene
 const scene = new THREE.Scene()
@@ -34,11 +35,12 @@ loader.load("./models/interior final.glb", function(gltf) {
   });
  
 
-  window.addEventListener('mouseup', function() {
-    console.log(('Camera Position: '), camera.position)
-    console.log(('Controls Target: '), controls.target)
+  // PRINTS THE EXACT CAMERA POSITION AND CONTROLS TARGET
+  // window.addEventListener('mouseup', function() {
+  //   console.log(('Camera Position: '), camera.position)
+  //   console.log(('Controls Target: '), controls.target)
 
-  })
+  // })
 
 // TIMELINE
 const tl = gsap.timeline({defaults: {duration: 1}})
@@ -117,7 +119,6 @@ const reserveDivClose = document.getElementById('reserveDivClose');
 const reserveBtn= document.getElementById('reserveBtn');
 
 
-
 let selectedSeat = null;
 
 const tooltip = document.querySelector(".tooltip")
@@ -153,10 +154,11 @@ filterBtn.addEventListener("click", ()=>{
 
 var availableSeats = [];
 explore2.addEventListener('click', () => {
+  seatsViewed = true;
   // Hide the date and time form
   dateTimeDiv.style.display = "none";
   dateTimeDiv.style.pointerEvents = "none";
-  showsection();
+
   moveTarget(-0.07, -0.18, 0.22)
   moveCamera(-1.06, 0.58,-0.65)
   controls.minPolarAngle = Math.PI / 10;
@@ -176,6 +178,7 @@ explore2.addEventListener('click', () => {
   .then((availableSeats) => {
     // Log the available seats to the console for debugging
     console.log("Reserved seats:", availableSeats);
+    showsection();
 
     // Get all the object names of the seats in your 3D scene
     const seatObjectNames = Object.keys(seatMaterials);
@@ -402,6 +405,7 @@ function showDateTime() {
   dateTimeDiv.style.pointerEvents = "auto";
   const tl4 = gsap.timeline({defaults: {duration: 1} })
   tl4.fromTo(dateTimeDiv, {x: "-100%"}, {x:"0%"})
+  seatsViewed = false;
 
   
 }
@@ -780,113 +784,118 @@ function hideReserveDiv() {
 
   // when user clicks the seat
   window.addEventListener('mousedown', (event) => {
-    const mouse = new THREE.Vector2();
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    if (!seatsViewed) {
+      console.log("select date and time first before clicking this seat haha");
+      return;
+    }
+    else {
+      const mouse = new THREE.Vector2();
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
-    const raycaster = new THREE.Raycaster();
-    raycaster.setFromCamera(mouse, camera);
-  
-    const intersects = raycaster.intersectObject(gltfmodel, true);
+      const raycaster = new THREE.Raycaster();
+      raycaster.setFromCamera(mouse, camera);
+    
+      const intersects = raycaster.intersectObject(gltfmodel, true);
 
-    if (intersects.length > 0) {
-      const selectedObject = intersects[0].object;
-      const objectName = selectedObject.name;
-      // Assuming you have retrieved date, startTime, and endTime from your form inputs
-     date = document.getElementById('date').value;
-     startTime = document.getElementById('start_time').value;
-     endTime = document.getElementById('end_time').value;
+      if (intersects.length > 0) {
+        const selectedObject = intersects[0].object;
+        const objectName = selectedObject.name;
+        // Assuming you have retrieved date, startTime, and endTime from your form inputs
+      date = document.getElementById('date').value;
+      startTime = document.getElementById('start_time').value;
+      endTime = document.getElementById('end_time').value;
 
 
-      switch(objectName) {
+        switch(objectName) {
 
-      case '1_CompChair_1':
-        console.log('Clicked on the 1_CompChair_1 object');
-        showSeatInfo(objectName, date, startTime, endTime);
-        break;
-      
-      case '1_CompChair_2':
-        console.log('Clicked on the 1_CompChair_2 object');
-        showSeatInfo(objectName, date, startTime, endTime);
-        break;
-      
-      case '1_CompChair_3':
-        console.log('Clicked on the 1_CompChair_3 object');
-        showSeatInfo(objectName, date, startTime, endTime);
-        break;
+        case '1_CompChair_1':
+          console.log('Clicked on the 1_CompChair_1 object');
+          showSeatInfo(objectName, date, startTime, endTime);
+          break;
+        
+        case '1_CompChair_2':
+          console.log('Clicked on the 1_CompChair_2 object');
+          showSeatInfo(objectName, date, startTime, endTime);
+          break;
+        
+        case '1_CompChair_3':
+          console.log('Clicked on the 1_CompChair_3 object');
+          showSeatInfo(objectName, date, startTime, endTime);
+          break;
 
-      case '1_CompChair_4':
-        console.log('Clicked on the 1_CompChair_4 object');
-        showSeatInfo(objectName, date, startTime, endTime);
-        break;
+        case '1_CompChair_4':
+          console.log('Clicked on the 1_CompChair_4 object');
+          showSeatInfo(objectName, date, startTime, endTime);
+          break;
 
-        case '1_CompChair_5':
-        console.log('Clicked on the 1_CompChair_5 object');
-        moveTarget(-0.44, -0.44, 0.40);
-        moveCamera(-1.32, 0.33,-0.024);
-        controls.minPolarAngle = Math.PI / 10;
-        controls.maxPolarAngle = (2 * Math.PI) / 3.8;
-        showSeatInfo(objectName, date, startTime, endTime);
-        break;
+          case '1_CompChair_5':
+          console.log('Clicked on the 1_CompChair_5 object');
+          moveTarget(-0.44, -0.44, 0.40);
+          moveCamera(-1.32, 0.33,-0.024);
+          controls.minPolarAngle = Math.PI / 10;
+          controls.maxPolarAngle = (2 * Math.PI) / 3.8;
+          showSeatInfo(objectName, date, startTime, endTime);
+          break;
 
-        case '2_CompChair_1':
-        console.log('Clicked on the 2_CompChair_1 object');
-        showSeatInfo(objectName, date, startTime, endTime);
-        break;
+          case '2_CompChair_1':
+          console.log('Clicked on the 2_CompChair_1 object');
+          showSeatInfo(objectName, date, startTime, endTime);
+          break;
 
-        case '2_CompChair_2':
-        console.log('Clicked on the 2_CompChair_2 object');
-        showSeatInfo(objectName, date, startTime, endTime);
-        break;
+          case '2_CompChair_2':
+          console.log('Clicked on the 2_CompChair_2 object');
+          showSeatInfo(objectName, date, startTime, endTime);
+          break;
 
-        case '2_CompChair_3':
-        console.log('Clicked on the 2_CompChair_3 object');
-        showSeatInfo(objectName, date, startTime, endTime);
-        break;
+          case '2_CompChair_3':
+          console.log('Clicked on the 2_CompChair_3 object');
+          showSeatInfo(objectName, date, startTime, endTime);
+          break;
 
-        case '2_CompChair_4':
-        console.log('Clicked on the 2_CompChair_4 object');
-        showSeatInfo(objectName, date, startTime, endTime);
-        break;
+          case '2_CompChair_4':
+          console.log('Clicked on the 2_CompChair_4 object');
+          showSeatInfo(objectName, date, startTime, endTime);
+          break;
 
-        case '2_CompChair_5':
-        console.log('Clicked on the 2_CompChair_5 object');
-        console.log(gltfmodel.getObjectByName('2_CompChair_5'));
-        showSeatInfo(objectName, date, startTime, endTime);
-        gltfmodel.getObjectByName('2_CompChair_5').material.emissiveIntensity = 1.0;
-        break;
+          case '2_CompChair_5':
+          console.log('Clicked on the 2_CompChair_5 object');
+          console.log(gltfmodel.getObjectByName('2_CompChair_5'));
+          showSeatInfo(objectName, date, startTime, endTime);
+          gltfmodel.getObjectByName('2_CompChair_5').material.emissiveIntensity = 1.0;
+          break;
 
-        case '3_CompChair_1':
-        console.log('Clicked on the 3_CompChair_1 object');
-        showSeatInfo(objectName, date, startTime, endTime);
-        break;
+          case '3_CompChair_1':
+          console.log('Clicked on the 3_CompChair_1 object');
+          showSeatInfo(objectName, date, startTime, endTime);
+          break;
 
-        case '3_CompChair_2':
-        console.log('Clicked on the 3_CompChair_2 object');
-        showSeatInfo(objectName, date, startTime, endTime);
-        break;
+          case '3_CompChair_2':
+          console.log('Clicked on the 3_CompChair_2 object');
+          showSeatInfo(objectName, date, startTime, endTime);
+          break;
 
-        case '3_CompChair_3':
-        console.log('Clicked on the 3_CompChair_3 object');
-        showSeatInfo(objectName, date, startTime, endTime);
-        break;
+          case '3_CompChair_3':
+          console.log('Clicked on the 3_CompChair_3 object');
+          showSeatInfo(objectName, date, startTime, endTime);
+          break;
 
-        case '3_CompChair_4':
-        console.log('Clicked on the 3_CompChair_4 object');
-        showSeatInfo(objectName, date, startTime, endTime);
-        break;
+          case '3_CompChair_4':
+          console.log('Clicked on the 3_CompChair_4 object');
+          showSeatInfo(objectName, date, startTime, endTime);
+          break;
 
-        case '3_CompChair_5':
-        console.log('Clicked on the 3_CompChair_5 object');
-        showSeatInfo(objectName, date, startTime, endTime);
-        break;
+          case '3_CompChair_5':
+          console.log('Clicked on the 3_CompChair_5 object');
+          showSeatInfo(objectName, date, startTime, endTime);
+          break;
 
-      default:
-        hideTooltip()
-        break;
+        default:
+          hideTooltip()
+          break;
+        }
       }
     }
-  
   });
 
 

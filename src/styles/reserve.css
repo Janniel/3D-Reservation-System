@@ -324,15 +324,32 @@ padding: 1.2rem;
   font-family:"Poppins", sans-serif ;
   font-weight: 700;
   font-size: 1rem; */
-  background-color: #fff;
+  background-color: #a81c1c;
   text-transform: capitalize;
-  color: #111;
+  color: #fff;
   font-weight: 700;
   padding-left: 2rem;
   padding-right: 2rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
+
+.explore:hover, .explore2:hover{
+  background-color: #841616;
+  transition-duration: 250ms;
+}
+
+.explore:focus, .explore2:focus{
+  background-color: #540e0e;
+  transition-duration: 250ms;
+}
+
+.explore:active, .explore2:active{
+  background-color: #540e0e;
+  transition-duration: 250ms;
+}
+
+
 
 .tooltip {
   color: whitesmoke;
@@ -392,8 +409,10 @@ padding: 1.2rem;
 
 .ui-timepicker-wrapper {
   background-color: rgb(3 3 3 / 75%) !important;
-  padding: 1rem;
   border-radius: 1rem;
+  padding: .5rem;
+  line-height: 2.5rem;
+  max-width: fit-content;
 }
 
 .ui-timepicker-list li {
@@ -401,7 +420,36 @@ padding: 1.2rem;
 }
 
 li.ui-timepicker-selected, .ui-timepicker-list li:hover, .ui-timepicker-list .ui-timepicker-selected:hover {
+  background-color: transparent !important;
+  scale: 1.05;
+  animation-duration: 300ms;
+  transition-duration: 200ms;
 
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 1rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: lightgray; 
+  border-radius:2px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: white; 
+}
+
+input::placeholder {
+  color: lightgray !important;
 }
 
 
@@ -474,7 +522,7 @@ nav ul {
   }
 
   .section-nav {
-      padding: 50px 20px;
+      padding: 1rem;
       /* margin-top: -5rem; */
   }
 }
