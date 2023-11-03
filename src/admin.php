@@ -101,7 +101,7 @@ $result = $conn->query($sql);
         <div class="sidebar">
             <div class="sidebar-brand">
                 <img src="img/bulsu logo.png" alt="bulsu logo" class="logo">
-                <h2> <span>SOAR Admin</span></h2>
+                <h2> <span>SOAR</span></h2>
             </div>
 
             <div class="sidebar-menu" id="tabButton">

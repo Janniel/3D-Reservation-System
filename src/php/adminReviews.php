@@ -156,13 +156,13 @@ require 'session.php';
                     <h2>Reviews Summary</h2>
                     <?php
                     for ($rating = 5; $rating >= 1; $rating--) {
-                        $percentage = isset($percentageRatings[$rating]) ? $percentageRatings[$rating] : 0;
+                        $count = isset($ratings[$rating]) ? $ratings[$rating] : 0;
                         echo '<div class="review">';
                         echo '<span class="icon-container">' . $rating . ' <i class="fas fa-star"></i></span>';
                         echo '<div class="progress">';
-                        echo '<div class="progress-done" data-done="' . $percentage . '"></div>';
+                        echo '<div class="progress-done" data-done="' . $count . '"></div>';
                         echo '</div>';
-                        echo '<span class="percent">' . number_format($percentage, 2) . '%</span>';
+                        echo '<span class="percent">' . $count . '</span>';
                         echo '</div>';
                     }
                     ?>
