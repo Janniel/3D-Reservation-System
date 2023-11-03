@@ -193,13 +193,13 @@ module.exports = {
             inject: true,
             filename: 'php/header_notLogged.php',
             template: 'src/php/header_notLogged.php',
-            chunks: ['']
+            chunks: ['clock']
         }),
         new HtmlWebpackPlugin({
             inject: true,
             filename: 'php/header.php',
             template: 'src/php/header.php',
-            chunks: ['']
+            chunks: ['clock']
         }),
         new HtmlWebpackPlugin({
             inject: true,
@@ -258,7 +258,12 @@ module.exports = {
 
 
 
-
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'toRegister.php',
+            template: 'src/toRegister.php',
+            chunks: ['']
+        }),
         new HtmlWebpackPlugin({
             inject: true,
             filename: 'update_profile.php',
