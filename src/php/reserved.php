@@ -3,6 +3,8 @@ session_start();
 require 'connect.php';
 require 'session.php';
 
+
+
 $sql = "SELECT r.reservation_id, r.user_id, r.date, r.start_time, r.end_time, a.username, u.user_id, r.seat_id, u.first_name, u.last_name, u.rfid_no, u.contact_number, u.course_code, u.age, a.email, a.picture, a.account_type, u.course_code, c.college_code
         FROM reservation AS r
         INNER JOIN account AS a ON r.user_id = a.username
@@ -30,8 +32,7 @@ $result = $conn->query($sql);
     <link rel="stylesheet" type="text/css" href="css/reserved.css" />
     <link rel="stylesheet" type="text/css" href="css/user-list.css" />
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" />
-
-    <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="path-to-bootstrap/bootstrap.min.css">
 
     <!-- Datepicker -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -74,13 +75,13 @@ $result = $conn->query($sql);
                 <li class="tabs"> <a href="seats-info.php"><span class="las la-check"></span>
                         <span>Seats Information</span></a>
                 </li>
-                <li class="tabs"> <a href="reserved.php" class="active"><span class="las la-clock"></span>
+                <li class="tabs"> <a href="reserved.php"><span class="las la-clock"></span>
                         <span>Reserved</span></a>
                 </li>
                 <li class="tabs"> <a href="user-list.php"><span class="las la-user-friends"></span>
                         <span>User List</span></a>
                 </li>
-                <li class="tabs"> <a href="history.php"><span class="las la-history"></span>
+                <li class="tabs"> <a href="history.php" class="active"><span class="las la-history"></span>
                         <span>History</span></a>
                 </li>
                 <li class="tabs"> <a href="adminReviews.php"><span class="las la-star"></span>
@@ -121,22 +122,20 @@ $result = $conn->query($sql);
                 <button class="dropdown-toggle" class="btn btn-secondary dropdown-toggle" type="button"
                     id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     <div class="user-wrapper">
-                        <img src="<?php if ($_SESSION['gender'] == "Male") {
-                            echo "https://cdn-icons-png.flaticon.com/512/2552/2552801.png";
-                        } elseif ($_SESSION['gender'] == "Female") {
-                            echo "https://cdn-icons-png.flaticon.com/512/206/206864.png";
-                        } ?>" alt="Admin" class="rounded-circle p-1 bg-secondary" width="45">
+                    
+                        
                         <div id="user_admin">
                             <h4>
-                                <?php echo $_SESSION["username"]; ?>
+                                Hello, <?php echo $_SESSION["first_name"]; ?>
                             </h4>
                         </div>
+                    
                     </div>
                 </button>
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <li><a class="dropdown-item" href="adminProfile.php">Profile</a></li>
-                    <li><a class="dropdown-item" href="../toLogout.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="toLogout.php">Logout</a></li>
                 </div>
             </div>
         </header>
@@ -184,8 +183,6 @@ $result = $conn->query($sql);
                                             </div>
 
                                             <div class="export__file">
-                                                
-
                                                 <label for="export-file" class="export__file-btn" title="Export File">
                                                     <img src="../img/export1.png" alt="Export" class="export_ic">
                                                 </label>
@@ -308,8 +305,8 @@ $result = $conn->query($sql);
                                                                     data-toggle="modal" data-target="#staticBackdrop"
                                                                     data-userid="<?php echo $row['user_id']; ?>"
                                                                     data-date="<?php echo $row['date']; ?>"
-                                                                    data-starttime="<?php echo date("h:i A", strtotime($row['start_time'])); ?>"
-                                                                    data-endtime="<?php echo date("h:i A", strtotime($row['end_time'])); ?>"
+                                                                    data-starttime="<?php echo $row['start_time']; ?>"
+                                                                    data-endtime="<?php echo $row['end_time']; ?>"
                                                                     data-firstname="<?php echo $row['first_name']; ?>"
                                                                     data-lastname="<?php echo $row['last_name']; ?>"
                                                                     data-picture="<?php echo $row['picture']; ?>"
@@ -362,25 +359,25 @@ $result = $conn->query($sql);
                                             <div class="input-group">
                                                 <input type="search" placeholder="Search Data...">
                                                 <div class="search-icon">
-                                                    <img src="../img/search.png" alt="Search">
+                                                    <img src="assets/img/search.png" alt="Search">
                                                 </div>
                                             </div>
 
                                             <div class="export__file">
                                                 <label for="export-file-archive" class="export__file-btn" title="Export File">
-                                                    <img src="../img/export1.png" alt="Export" class="export_ic">
+                                                    <img src="assets/img/export1.png" alt="Export" class="export_ic">
                                                 </label>
                                                 <input type="checkbox" id="export-file-archive">
                                                 <div class="export__file-options">
                                                     <label>Export As &nbsp; &#10140;</label>
                                                     <label for="export-file-archive" id="toPDFArchive">PDF <img
-                                                            src="../img/pdf.png" alt=""></label>
+                                                            src="assets/img/pdf.png" alt=""></label>
                                                     <label for="export-file-archive" id="toJSONArchive">JSON <img
-                                                            src="../img/json.png" alt=""></label>
+                                                            src="assets/img/json.png" alt=""></label>
                                                     <label for="export-file-archive" id="toCSVArchive">CSV <img
-                                                            src="../img/csv.png" alt=""></label>
-                                                    <label for="export-file-archive" id="toEXCELArchive">EXCEL <img
-                                                            src="../img/excel.png" alt=""></label>
+                                                            src="assets/img/csv.png" alt=""></label>
+                                                    <label for "export-file-archive" id="toEXCELArchive">EXCEL <img
+                                                            src="assets/img/excel.png" alt=""></label>
                                                 </div>
                                             </div>
                                         </section>
@@ -929,17 +926,7 @@ $("#filterArchive").click(function () {
     });
 </script>
 
-
-
-
-
-
-
-
-<script>
-   //SCRIPT EXPORT (NONE)
-</script>
-
+<script src="reserved.js"></script>
 
 
 

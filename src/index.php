@@ -33,6 +33,8 @@ require 'php/connect.php';
     <!-- animation on scroll -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
 </head>
 
 <body>
@@ -72,9 +74,9 @@ require 'php/connect.php';
             <img class="banner" src="img/lib building_bg.jpg" id="lib-front">
 
             <div class="title">
-                <h1 id="parallax-home-text-lib" data-aos="fade-right">Library</h1>
-                <h1 id="parallax-home-text-school" data-aos="fade-up">BULACAN STATE UNIVERSITY</h1>
-                <h1 id="parallax-home-text-disc" data-aos="fade-left">Discover and Learn</h1>
+            <h1 id="parallax-home-text-lib" data-aos="fade-up" data-aos="fade-up" data-aos-duration="500">Library</h1>
+                <h1 id="parallax-home-text-school" data-aos="fade-up" data-aos-duration="800">BULACAN STATE UNIVERSITY</h1>
+                <h1 id="parallax-home-text-disc" data-aos="fade-up" data-aos-duration="1100">Discover and Learn</h1>
             </div>
         </div>
         <!------------------------ END OF COVER ------------------------>

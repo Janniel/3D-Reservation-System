@@ -35,7 +35,7 @@ const light = new THREE.AmbientLight(0x404040, 10, 100)
 scene.add(light)
 
 //Camera
-const camera = new THREE.PerspectiveCamera(45, sizes.width/sizes.height, 0.1, 100)
+const camera = new THREE.PerspectiveCamera(50, sizes.width/sizes.height, 0.1, 100)
 camera.position.z = 30
 scene.add(camera)
 
@@ -46,7 +46,7 @@ const backgroundColor = new THREE.Color(0xffffff);
 renderer.setClearColor(backgroundColor);
 renderer.setSize(sizes.width, sizes.height)
 renderer.render(scene, camera)
-renderer.setPixelRatio(2)
+renderer.setPixelRatio(1)
 
 //Controls
 const controls = new OrbitControls(camera, canvas)

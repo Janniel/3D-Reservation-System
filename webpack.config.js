@@ -6,6 +6,7 @@ module.exports = {
     mode: 'development',
     entry: {
         reserve: path.resolve(__dirname, 'src/reserve.js'),
+        // seatsInfo: path.resolve(__dirname, 'src/seats-info3D.js'),
         home: path.resolve(__dirname, 'src/home.js'),
         clock: path.resolve(__dirname, 'src/clock.js'),
         login: path.resolve(__dirname, 'src/login.js'),
@@ -122,6 +123,12 @@ module.exports = {
             template: 'src/reserve.php',
             chunks: ['reserve']
         }),
+        // new HtmlWebpackPlugin({
+        //     inject: true,
+        //     filename: 'seats-info3D.php',
+        //     template: 'src/seats-info3D.php',
+        //     chunks: ['seatsInfo']
+        // }),
         new HtmlWebpackPlugin({
             inject: true,
             filename: 'index.php',
@@ -148,8 +155,8 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             inject: true,
-            filename: 'php/receipt.php',
-            template: 'src/php/receipt.php',
+            filename: 'receipt.php',
+            template: 'src/receipt.php',
             chunks: ['profile']
         }),
         new HtmlWebpackPlugin({
@@ -288,6 +295,72 @@ module.exports = {
             template: 'src/php/toAddHistory.php',
             chunks: ['']
         }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'get_seat_status.php',
+            template: 'src/get_seat_status.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'toReserve.php',
+            template: 'src/php/toReserve.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'viewSeats.php',
+            template: 'src/php/viewSeats.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'fetchSeatInfo.php',
+            template: 'src/php/fetchSeatInfo.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'fetchSeatId.php',
+            template: 'src/php/fetchSeatId.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'fetchSeatStatus.php',
+            template: 'src/php/fetchSeatStatus.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'get_disabled_dates.php',
+            template: 'src/get_disabled_dates.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/validateReservation.php',
+            template: 'src/php/validateReservation.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/maintenance.php',
+            template: 'src/php/maintenance.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'survey.php',
+            template: 'src/survey.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'surveyProcess.php',
+            template: 'src/surveyProcess.php',
+            chunks: ['']
+        }),
 
 
 
@@ -361,6 +434,12 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             inject: true,
+            filename: 'php/get_monthly_data.php',
+            template: 'src/php/get_monthly_data.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
             filename: 'php/toRestore.php',
             template: 'src/php/toRestore.php',
             chunks: ['']
@@ -376,6 +455,24 @@ module.exports = {
             filename: 'php/history.php',
             template: 'src/php/history.php',
             chunks: ['users','export','history']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/toArchiveHistory.php',
+            template: 'src/php/toArchiveHistory.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/toRestoreHistory.php',
+            template: 'src/php/toRestoreHistory.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/toDeleteHistory.php',
+            template: 'src/php/toDeleteHistory.php',
+            chunks: ['']
         }),
         new HtmlWebpackPlugin({
             inject: true,
@@ -419,5 +516,6 @@ module.exports = {
             template: 'src/php/settings.php',
             chunks: ['analytics']
         }),
+  
     ]
 }

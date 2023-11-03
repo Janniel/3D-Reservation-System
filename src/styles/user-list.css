@@ -213,7 +213,9 @@ header label span {
 }
 
 .user-wrapper h4 {
-  margin-bottom: -7px !important;
+  
+  padding: 10px;
+  
 }
 
 .dropdown-toggle {
@@ -779,4 +781,7 @@ tbody td.active {
   cursor: pointer;
   padding: 10px;
 }
+
+
+
 
