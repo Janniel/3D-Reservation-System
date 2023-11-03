@@ -27,6 +27,30 @@ require 'php/session.php';
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 </head>
 <body>
+<script>
+          
+          // Function to trigger the PHP script
+          function triggerValidation() {
+              var xhr = new XMLHttpRequest();
+              xhr.open('GET', 'php/validateReservation.php', true);
+              xhr.onreadystatechange = function () {
+                  if (xhr.readyState === 4) {
+                      if (xhr.status === 200) {
+                          console.log('Checked expired validation');
+                      } else {
+                          console.log('Error in checking expired validation');
+                      }
+                  }
+              };
+              xhr.send();
+          }
+      
+          // Call the function immediately
+          triggerValidation();
+      
+          // Set up a recurring timer to call the function every 5 seconds (5000 milliseconds)
+          setInterval(triggerValidation, 5000);
+      </script>
 <!------------------------ HEADER --------------------->
 
 <?php include 'php/header.php'; ?>

@@ -57,30 +57,7 @@ if (mysqli_num_rows($result123) == 1) {
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-        <script>
-          
-    // Function to trigger the PHP script
-    function triggerValidation() {
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'php/validateReservation.php', true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    console.log('Checked expired validation');
-                } else {
-                    console.log('Error in checking expired validation');
-                }
-            }
-        };
-        xhr.send();
-    }
-
-    // Call the function immediately
-    triggerValidation();
-
-    // Set up a recurring timer to call the function every 5 seconds (5000 milliseconds)
-    setInterval(triggerValidation, 5000);
-</script>
+      
 
 
 </head>
@@ -102,6 +79,30 @@ if (mysqli_num_rows($result123) == 1) {
 <script>
       AOS.init();
 </script>
+<script>
+          
+          // Function to trigger the PHP script
+          function triggerValidation() {
+              var xhr = new XMLHttpRequest();
+              xhr.open('GET', 'php/validateReservation.php', true);
+              xhr.onreadystatechange = function () {
+                  if (xhr.readyState === 4) {
+                      if (xhr.status === 200) {
+                          console.log('Checked expired validation');
+                      } else {
+                          console.log('Error in checking expired validation');
+                      }
+                  }
+              };
+              xhr.send();
+          }
+      
+          // Call the function immediately
+          triggerValidation();
+      
+          // Set up a recurring timer to call the function every 5 seconds (5000 milliseconds)
+          setInterval(triggerValidation, 5000);
+      </script>
   
 
        
@@ -458,7 +459,7 @@ if (mysqli_num_rows($result123) == 1) {
                              <div class="tab-pane fade "id="history" role="tabpanel" aria-labelledby="history-tab">
                             <div class="">
                                 <?php
-                                $query = "SELECT * FROM history WHERE user_id = '{$_SESSION['user_id']}'";
+                                $query = "SELECT * FROM history WHERE user_id = '{$_SESSION['user_id']}'  ORDER BY history_id DESC;";
                                 $result = mysqli_query($conn, $query);
 
                                 if (mysqli_num_rows($result) > 0) {

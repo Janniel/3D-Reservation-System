@@ -88,6 +88,30 @@ $_SESSION["reservation_count"] = $reservation_count;
 
 </head>
 <body>
+<script>
+          
+          // Function to trigger the PHP script
+          function triggerValidation() {
+              var xhr = new XMLHttpRequest();
+              xhr.open('GET', 'php/validateReservation.php', true);
+              xhr.onreadystatechange = function () {
+                  if (xhr.readyState === 4) {
+                      if (xhr.status === 200) {
+                          console.log('Checked expired validation');
+                      } else {
+                          console.log('Error in checking expired validation');
+                      }
+                  }
+              };
+              xhr.send();
+          }
+      
+          // Call the function immediately
+          triggerValidation();
+      
+          // Set up a recurring timer to call the function every 5 seconds (5000 milliseconds)
+          setInterval(triggerValidation, 5000);
+      </script>
   <?php /* require_once 'php/header.php' */ ?>
   
   <div>

@@ -14,19 +14,58 @@ require 'session.php';
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
     <title>Reserve3D</title>
     <!------------------------ Bootstrap 5.3.0 ------------------------>
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <!------------------------ CSS Link ------------------------>
-    <link rel="stylesheet" type="text/css" href="css/timer.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="../styles/timer.css" /> -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
 </head>
 
 <body>
 
+<script>
+     // mark as done function will be trigger if the reservation time is over
+     function markReservationAsDone(reservationId) {
+        Swal.fire({
+            title: 'Occupying Done?',
+            text: 'This button will serve as act of removing RFID card on the reader will automatically submit this form',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: 'green',
+            cancelButtonColor: '#d3d3d3',
+            confirmButtonText: 'Mark available'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Send AJAX request to update seat status and move reservation to history
+                // mark as done button
+                $.ajax({
+                    url: `toAddHistory.php?reservation_id=${reservationId}`,  
+                    type: 'GET',
+                    success: function (response) {
+                        window.location.href = `survey.php`;
+                        
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'An error occurred while marking the reservation as done.',
+                            icon: 'error',
+                            confirmButtonColor: '#d33',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                });
+            }
+        });
+    }
+</script>
+
     <div class="wrapper">
 
         <!-- Sticky header -->
-        <?php include 'php/header.php'; ?>
+        <?php 
+        // include 'header.php'; 
+        ?>
         <!-- Sticky header -->
 
         <!------------------------ TIMER START ------------------------>
@@ -72,7 +111,7 @@ if (mysqli_num_rows($ongoing_result) > 0) {
     echo "<span>6th Floor</span>";
     echo "<h5>{$start_time} - {$end_time}</h5>";
     echo "<i>Please don't forget your ID when done</i><br>";
-    echo "<a href='#' class='btn btn-outline-danger btn-sm' onclick='markReservationAsDone({$row['reservation_id']}); return false;'>Mark as Done</a>";
+    echo "<a href='#' class='btn btn-outline-danger btn-sm' onclick='markReservationAsDone({$row['reservation_id']});'>Mark as Done</a>";
     echo "<div id='extendtimeDiv' style='display:none'><button onclick='extendReservationTime(event)' class='btn btn-danger'>extend 30 mins</button><br>";
     echo "</div>";
     
@@ -117,40 +156,7 @@ mysqli_free_result($ongoing_result);
 
     <script>
 
-    // mark as done function will be trigger if the reservation time is over
-    function markReservationAsDone(reservationId) {
-        Swal.fire({
-            title: 'Occupying Done?',
-            text: 'This button will serve as act of removing RFID card on the reader will automatically submit this form',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: 'green',
-            cancelButtonColor: '#d3d3d3',
-            confirmButtonText: 'Mark available'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // Send AJAX request to update seat status and move reservation to history
-                // mark as done button
-                $.ajax({
-                    url: `toAddHistory.php?reservation_id=${reservationId}`,  
-                    type: 'GET',
-                    success: function (response) {
-                        window.location.href = `survey.php`;
-                        
-                    },
-                    error: function (xhr, textStatus, errorThrown) {
-                        Swal.fire({
-                            title: 'Error',
-                            text: 'An error occurred while marking the reservation as done.',
-                            icon: 'error',
-                            confirmButtonColor: '#d33',
-                            confirmButtonText: 'OK'
-                        });
-                    }
-                });
-            }
-        });
-    }
+   
 
 
 

@@ -236,6 +236,7 @@
   position: absolute;
   top: 15rem;
   left: 2rem;
+  max-width: 350px;
   /* right: 0; */
   /* bottom: 0rem; */
   color: white;
@@ -353,27 +354,28 @@ padding: 1.2rem;
   text-align: center;
   cursor: pointer;
   opacity: 0;
-  transition-duration: 0.5s;
+  transition: opacity 0.5s ease 1s; /* Add a 1s delay to the opacity transition */
+  animation: fade-in 1s 1s ease; /* Add a 1s delay to the fade-in animation */
+  animation-duration: 1s;
   color: white;
   border: 1px solid gray;
   padding: 3rem;
-  border-radius: .5rem;
+  border-radius: 0.5rem; /* Corrected the value here (changed . to 0) */
   top: 50%;
   left: 50%;
   z-index: 99;
   width: 350px;
-  background: rgb(3 3 3 / 50%);
+  background: rgba(3, 3, 3, 0.5); /* Corrected the rgba syntax here */
   transform: translate(-50%, -50%);
   display: none;
   height: fit-content;
   position: absolute;
-  justify-items: center;
-  justify-content: center;
-  align-content: center;
+  justify-content: center; /* Corrected from justify-items to justify-content */
+  align-items: center;
   flex-direction: column;
   flex-wrap: nowrap;
-  align-items: center;
 }
+
 
 .tooltip {
   color: whitesmoke;
