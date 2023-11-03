@@ -12,6 +12,9 @@ let endTime;
 
 let seatsViewed = false;
 
+let reservedSeatsList = [];
+let maintenanceSeatsList = [];
+
 //Scene
 const scene = new THREE.Scene()
 
@@ -33,6 +36,7 @@ loader.load("./models/interior final.glb", function(gltf) {
       seatMaterials[object.name] = object.material.clone();
     }
   });
+  
  
 
   // PRINTS THE EXACT CAMERA POSITION AND CONTROLS TARGET
@@ -152,7 +156,8 @@ filterBtn.addEventListener("click", ()=>{
 });
 
 
-var availableSeats = [];
+
+
 explore2.addEventListener('click', () => {
   seatsViewed = true;
   // Hide the date and time form
@@ -160,71 +165,77 @@ explore2.addEventListener('click', () => {
   dateTimeDiv.style.pointerEvents = "none";
 
   moveTarget(-0.07, -0.18, 0.22)
-  moveCamera(-1.06, 0.58,-0.65)
+  moveCamera(-1.06, 0.58, -0.65)
   controls.minPolarAngle = Math.PI / 10;
   controls.maxPolarAngle = (2 * Math.PI) / 3.8;
 
-    // Add this to log the available seats
-    console.log('Reserved are :', availableSeats);
-
-
-
   // Read date, start_time, and end_time from your form inputs
-   date = document.getElementById('date').value;
-   startTime = document.getElementById('start_time').value;
-   endTime = document.getElementById('end_time').value;
+  date = document.getElementById('date').value;
+  startTime = document.getElementById('start_time').value;
+  endTime = document.getElementById('end_time').value;
 
-  fetchAvailableSeats(date, start_time, end_time)
-  .then((availableSeats) => {
-    // Log the available seats to the console for debugging
-    console.log("Reserved seats:", availableSeats);
-    showsection();
+  fetchReservedSeats(date, start_time, end_time)
+    .then((reservedSeats) => {
 
-    // Get all the object names of the seats in your 3D scene
-    const seatObjectNames = Object.keys(seatMaterials);
+      reservedSeatsList = reservedSeats;
+      // Log the reserved seats to the console for debugging
+      console.log("Reserved seats:", reservedSeats);
+      console.log("reservedSeatsList value is ", reservedSeatsList);
 
-    // Iterate through the seat objects and adjust transparency
-    // seatObjectNames.forEach((objectName) => {
-    //   if (availableSeats.includes(objectName)) {
-    //     // Object name matches an available seat, make it transparent
-    //     const seatObject = gltfmodel.getObjectByName(objectName, true); // Use recursive search
-    //     if (seatObject) {
-    //       seatObject.material.transparent = true; // Enable transparency
-    //       seatObject.material.opacity = 0; // Adjust opacity (0.0 to 1.0, where 0 is fully transparent)
-    //     } else {
-    //       console.log("Seat object not found for name:", objectName);
-    //     }
-    //   }
-    // });
-    seatObjectNames.forEach((objectName) => {
-      const seatObject = gltfmodel.getObjectByName(objectName, true); // Use recursive search
-      if (seatObject) {
-        if (availableSeats.includes(objectName)) {
-          // Seat is available, make it transparent
-          seatObject.material.transparent = true;
-          seatObject.material.opacity = 0.1; // Adjust as needed
-          
-        } else {
-          // Seat is available, opacity is now fully opaque
-          seatObject.material.transparent = false;
-          seatObject.material.opacity = 1.0; // Set it back to fully opaque
-        }
-      } else {
-        console.log("Seat object not found for name:", objectName);
-      }
+      // Fetch maintenance seats after fetching reserved seats
+      fetchMaintenanceSeats()
+        .then((maintenanceSeats) => {
+          maintenanceSeatsList = maintenanceSeats;
+          // Log the maintenance seats to the console for debugging
+          console.log("Maintenance seats:", maintenanceSeats);
+          console.log("maintenanceSeatsList", maintenanceSeatsList);
+
+          showsection();
+
+          // Get all the object names of the seats in your 3D scene
+          const seatObjectNames = Object.keys(seatMaterials);
+          seatObjectNames.forEach((objectName) => {
+            const seatObject = gltfmodel.getObjectByName(objectName, true); // Use recursive search
+            if (seatObject) {
+              if (reservedSeats.includes(objectName)) {
+                seatObject.material.transparent = true;
+                seatObject.material.opacity = 0.1;
+                console.log(objectName, 'is set to 0.1 opacity because it is reserved by someone');
+                seatObject.addEventListener('click', function (event) {
+                  event.stopPropagation();
+                  event.preventDefault();
+                });
+              }
+              if (maintenanceSeats.includes(objectName)) {
+                seatObject.material.transparent = true;
+                seatObject.material.opacity = 0;
+                console.log(objectName, 'is invisible beacuse is it maintenance seat');
+                seatObject.addEventListener('click', function (event) {
+                  event.stopPropagation();
+                  event.preventDefault();
+                });
+              }
+            
+            } else {
+              console.log("Seat object not found for name:", objectName);
+            }
+          });
+        })
+        .catch((error) => {
+          console.error("Error fetching maintenance seats:", error);
+        });
+    })
+    .catch((error) => {
+      console.error("Error fetching reserved seats:", error);
     });
-    
-  })
-  .catch((error) => {
-    console.error("Error fetching seat numbers:", error);
-  });
 });
 
 
 
 
 
-function fetchAvailableSeats(date, start_time, end_time) {
+
+function fetchReservedSeats(date, start_time, end_time) {
   const formData = new FormData();
   formData.append('date', date);
   formData.append('start_time', start_time.value);
@@ -248,6 +259,24 @@ function fetchAvailableSeats(date, start_time, end_time) {
     .catch((error) => {
       console.error('Error fetching available seats data:', error);
       return [];
+    });
+}
+
+function fetchMaintenanceSeats() {
+  // Replace 'your-maintenance-seats-api-url' with the actual URL to fetch maintenance seats from
+  const maintenanceSeatsUrl = 'fetchSeatStatus.php';
+
+  return fetch(maintenanceSeatsUrl)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Failed to fetch maintenance seats. Status: ${response.status}`);
+      }
+
+      return response.json();
+    })
+    .then((maintenanceSeatsData) => {
+      // Assuming the API response contains the list of maintenance seat names
+      return maintenanceSeatsData.maintenanceSeats; // Adjust this based on your API response structure
     });
 }
 
@@ -811,7 +840,11 @@ function hideReserveDiv() {
       date = document.getElementById('date').value;
       startTime = document.getElementById('start_time').value;
       endTime = document.getElementById('end_time').value;
-
+  // Check if the clicked seat is in reservedSeats or maintenanceSeats
+  if (reservedSeatsList.includes(objectName) || maintenanceSeatsList.includes(objectName)) {
+    console.log('This seat is reserved or for maintenance and cannot be selected.');
+    return; // Make the seat unclickable
+  }
 
         switch(objectName) {
 
@@ -910,7 +943,3 @@ function hideReserveDiv() {
     }
   });
 
-
-
-
-  

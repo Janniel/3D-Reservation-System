@@ -327,6 +327,12 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             inject: true,
+            filename: 'fetchSeatStatus.php',
+            template: 'src/php/fetchSeatStatus.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
             filename: 'get_disabled_dates.php',
             template: 'src/get_disabled_dates.php',
             chunks: ['']
