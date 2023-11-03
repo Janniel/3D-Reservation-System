@@ -727,83 +727,92 @@ function hideReserveDiv() {
     if (intersects.length > 0) {
       const selectedObject = intersects[0].object;
       const objectName = selectedObject.name;
+
+       // Check if the seat is reserved or for maintenance
+       let seatStatus = "Available";
+       if (reservedSeatsList.includes(objectName)) {
+         seatStatus = "Reserved";
+       }
+       if (maintenanceSeatsList.includes(objectName)) {
+         seatStatus = "Maintenance";
+       }
       
       switch(objectName) {
 
       case '1_CompChair_1':
         console.log('hovered on the 1_CompChair_1 object');
-        showTooltip(event, 'Click to reserve seat', 'SEAT B1');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B1');
         
         break;
       
       case '1_CompChair_2':
         console.log('hovered on the 1_CompChair_2 object');
-        showTooltip(event, 'Click to reserve seat', 'SEAT B2');
+        showTooltip(event, `${seatStatus}` + ' seat',  'SEAT B2');
         break;
       
       case '1_CompChair_3':
         console.log('hovered on the 1_CompChair_3 object');
-        showTooltip(event, 'Click to reserve seat', 'SEAT B3');
+        showTooltip(event,`${seatStatus}` + ' seat',  'SEAT B3');
         break;
 
       case '1_CompChair_4':
         console.log('hovered on the 1_CompChair_4 object');
-        showTooltip(event, 'Click to reserve seat', 'SEAT B4');
+        showTooltip(event, `${seatStatus}` + ' seat',  'SEAT B4');
         break;
 
         case '1_CompChair_5':
         console.log('hovered on the 1_CompChair_5 object');
-        showTooltip(event, 'Click to reserve seat', 'SEAT B5'); 
+        showTooltip(event,`${seatStatus}` + ' seat',  'SEAT B5'); 
         break;
 
         case '2_CompChair_1':
         console.log('hovered on the 2_CompChair_1 object');
-        showTooltip(event, 'Click to reserve seat', 'SEAT B6');
+        showTooltip(event,`${seatStatus}` + ' seat', 'SEAT B6');
         break;
 
         case '2_CompChair_2':
         console.log('hovered on the 2_CompChair_2 object');
-        showTooltip(event, 'Click to reserve seat', 'SEAT B7');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B7');
         break;
 
         case '2_CompChair_3':
         console.log('hovered on the 2_CompChair_3 object');
-        showTooltip(event, 'Click to reserve seat', 'SEAT B8');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B8');
         break;
 
         case '2_CompChair_4':
         console.log('hovered on the 2_CompChair_4 object');
-        showTooltip(event, 'Click to reserve seat', 'SEAT B9');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B9');
         break;
 
         case '2_CompChair_5':
         console.log('hovered on the 2_CompChair_5 object');
-        showTooltip(event, 'Click to reserve seat', 'SEAT B10');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B10');
         break;
 
         case '3_CompChair_1':
         console.log('hovered on the 3_CompChair_1 object');
-        showTooltip(event, 'Click to reserve seat', 'SEAT B11');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B11');
         break;
 
         case '3_CompChair_2':
         console.log('hovered on the 3_CompChair_2 object');
-        showTooltip(event, 'Click to reserve seat', 'SEAT B12');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B12');
         break;
 
         case '3_CompChair_3':
         console.log('hovered on the 3_CompChair_3 object');
-        showTooltip(event, 'Click to reserve seat', 'SEAT B13');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B13');
         break;
 
         case '3_CompChair_4':
         console.log('hovered on the 3_CompChair_4 object');
-        showTooltip(event, 'Click to reserve seat', 'SEAT B14');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B14');
         break;
 
         case '3_CompChair_5':
         console.log('hovered on the 3_CompChair_5 object');
-        showTooltip(event, 'Click to reserve seat', 'SEAT B150');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B150');
         break;
 
       default:
