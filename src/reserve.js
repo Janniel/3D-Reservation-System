@@ -68,7 +68,7 @@ const light2 = new THREE.HemisphereLight(0xD1D1D1, 0xFFB92E, 2)
 scene.add(light2)
 
 //Camera
-const fov = 60;
+const fov = 50;
 const camera = new THREE.PerspectiveCamera(fov, sizes.width/sizes.height, 0.1, 100)
 camera.position.x = -0.34
 camera.position.z = 1.315
@@ -84,7 +84,7 @@ const canvas = document.querySelector('.webgl2')
 const renderer = new THREE.WebGLRenderer({canvas})
 renderer.setSize(sizes.width, sizes.height)
 renderer.render(scene, camera)
-renderer.setPixelRatio(1)
+renderer.setPixelRatio(0.75)
 
 //Controls
 const controls = new OrbitControls(camera, canvas)
@@ -203,8 +203,9 @@ explore2.addEventListener('click', () => {
           // Seat is available, make it transparent
           seatObject.material.transparent = true;
           seatObject.material.opacity = 0.1; // Adjust as needed
+          
         } else {
-          // Seat is not available, reset opacity
+          // Seat is available, opacity is now fully opaque
           seatObject.material.transparent = false;
           seatObject.material.opacity = 1.0; // Set it back to fully opaque
         }
@@ -551,7 +552,7 @@ function reserveSeat(seat_id) {
             console.log('Reservation inserted into the database');
             // Show success alert
             Swal.fire({
-              title: 'Reserved Successfully!!',
+              title: 'Reserved Successful',
               text: 'Seat ' + seat_id + ' has been reserved.',
               icon: 'success',
               confirmButtonText: 'Okay',
@@ -568,10 +569,7 @@ function reserveSeat(seat_id) {
               text: 'The selected seat is already reserved for the selected date and time range. Please choose another seat or time.',
               icon: 'error',
               confirmButtonColor: '#a81c1c',
-            }).then(() => {
-              getEndTime();
-              submitForm();
-            });
+            })
           } else {
             console.log('An error occurred during the reservation process');
             // Show error alert
@@ -580,10 +578,7 @@ function reserveSeat(seat_id) {
               text: 'An error occurred during the reservation process.',
               icon: 'error',
               confirmButtonColor: '#a81c1c',
-            }).then(() => {
-              getEndTime();
-              submitForm();
-            });
+            })
           }
         },
       });
@@ -669,6 +664,8 @@ function hideReserveDiv() {
     tooltipParagraph.textContent = paragraphText;
     tooltip.style.opacity = '1'
     tooltip.style.transform = 'translateY(0px)'
+    tooltip.style.display = "block" 
+
   }
 
   function hideTooltip() {
@@ -682,104 +679,112 @@ function hideReserveDiv() {
   
 
   // when user hover the seats
-  // window.addEventListener('mousemove', (event) => {
-  //   const mouse = new THREE.Vector2();
-  //   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-  //   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+  window.addEventListener('mousemove', (event) => {
+    if (!seatsViewed) {
+      console.log("select date and time first before hovering");
+      return;
+    }
+    else {
 
-  //   const raycaster = new THREE.Raycaster();
-  //   raycaster.setFromCamera(mouse, camera);
+    const mouse = new THREE.Vector2();
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+    const raycaster = new THREE.Raycaster();
+    raycaster.setFromCamera(mouse, camera);
   
-  //   const intersects = raycaster.intersectObject(gltfmodel, true);
+    const intersects = raycaster.intersectObject(gltfmodel, true);
 
-  //   if (intersects.length > 0) {
-  //     const selectedObject = intersects[0].object;
-  //     const objectName = selectedObject.name;
+    if (intersects.length > 0) {
+      const selectedObject = intersects[0].object;
+      const objectName = selectedObject.name;
       
-  //     switch(objectName) {
+      switch(objectName) {
 
-  //     case '1_CompChair_1':
-  //       console.log('Clicked on the 1_CompChair_1 object');
-  //       showTooltip(event, 'Click to reserve seat', 'SEAT B1');
-  //       break;
+      case '1_CompChair_1':
+        console.log('hovered on the 1_CompChair_1 object');
+        showTooltip(event, 'Click to reserve seat', 'SEAT B1');
+        
+        break;
       
-  //     case '1_CompChair_2':
-  //       console.log('Clicked on the 1_CompChair_2 object');
-  //       showTooltip(event, 'Click to reserve seat', 'SEAT B2');
-  //       break;
+      case '1_CompChair_2':
+        console.log('hovered on the 1_CompChair_2 object');
+        showTooltip(event, 'Click to reserve seat', 'SEAT B2');
+        break;
       
-  //     case '1_CompChair_3':
-  //       console.log('Clicked on the 1_CompChair_3 object');
-  //       showTooltip(event, 'Click to reserve seat', 'SEAT B3');
-  //       break;
+      case '1_CompChair_3':
+        console.log('hovered on the 1_CompChair_3 object');
+        showTooltip(event, 'Click to reserve seat', 'SEAT B3');
+        break;
 
-  //     case '1_CompChair_4':
-  //       console.log('Clicked on the 1_CompChair_4 object');
-  //       showTooltip(event, 'Click to reserve seat', 'SEAT B4');
-  //       break;
+      case '1_CompChair_4':
+        console.log('hovered on the 1_CompChair_4 object');
+        showTooltip(event, 'Click to reserve seat', 'SEAT B4');
+        break;
 
-  //       case '1_CompChair_5':
-  //       console.log('Clicked on the 1_CompChair_5 object');
-  //       showTooltip(event, 'Click to reserve seat', 'SEAT B5'); 
-  //       break;
+        case '1_CompChair_5':
+        console.log('hovered on the 1_CompChair_5 object');
+        showTooltip(event, 'Click to reserve seat', 'SEAT B5'); 
+        break;
 
-  //       case '2_CompChair_1':
-  //       console.log('Clicked on the 2_CompChair_1 object');
-  //       showTooltip(event, 'Click to reserve seat', 'SEAT B1');
-  //       break;
+        case '2_CompChair_1':
+        console.log('hovered on the 2_CompChair_1 object');
+        showTooltip(event, 'Click to reserve seat', 'SEAT B6');
+        break;
 
-  //       case '2_CompChair_2':
-  //       console.log('Clicked on the 2_CompChair_2 object');
-  //       showTooltip(event, 'Click to reserve seat', 'SEAT B2');
-  //       break;
+        case '2_CompChair_2':
+        console.log('hovered on the 2_CompChair_2 object');
+        showTooltip(event, 'Click to reserve seat', 'SEAT B7');
+        break;
 
-  //       case '2_CompChair_3':
-  //       console.log('Clicked on the 2_CompChair_3 object');
-  //       showTooltip(event, 'Click to reserve seat', 'SEAT B3');
-  //       break;
+        case '2_CompChair_3':
+        console.log('hovered on the 2_CompChair_3 object');
+        showTooltip(event, 'Click to reserve seat', 'SEAT B8');
+        break;
 
-  //       case '2_CompChair_4':
-  //       console.log('Clicked on the 2_CompChair_4 object');
-  //       showTooltip(event, 'Click to reserve seat', 'SEAT B4');
-  //       break;
+        case '2_CompChair_4':
+        console.log('hovered on the 2_CompChair_4 object');
+        showTooltip(event, 'Click to reserve seat', 'SEAT B9');
+        break;
 
-  //       case '2_CompChair_5':
-  //       console.log('Clicked on the 2_CompChair_5 object');
-  //       showTooltip(event, 'Click to reserve seat', 'SEAT B5');
-  //       break;
+        case '2_CompChair_5':
+        console.log('hovered on the 2_CompChair_5 object');
+        showTooltip(event, 'Click to reserve seat', 'SEAT B10');
+        break;
 
-  //       case '3_CompChair_1':
-  //       console.log('Clicked on the 3_CompChair_1 object');
-  //       showTooltip(event, 'Click to reserve seat', 'SEAT B6');
-  //       break;
+        case '3_CompChair_1':
+        console.log('hovered on the 3_CompChair_1 object');
+        showTooltip(event, 'Click to reserve seat', 'SEAT B11');
+        break;
 
-  //       case '3_CompChair_2':
-  //       console.log('Clicked on the 3_CompChair_2 object');
-  //       showTooltip(event, 'Click to reserve seat', 'SEAT B7');
-  //       break;
+        case '3_CompChair_2':
+        console.log('hovered on the 3_CompChair_2 object');
+        showTooltip(event, 'Click to reserve seat', 'SEAT B12');
+        break;
 
-  //       case '3_CompChair_3':
-  //       console.log('Clicked on the 3_CompChair_3 object');
-  //       showTooltip(event, 'Click to reserve seat', 'SEAT B8');
-  //       break;
+        case '3_CompChair_3':
+        console.log('hovered on the 3_CompChair_3 object');
+        showTooltip(event, 'Click to reserve seat', 'SEAT B13');
+        break;
 
-  //       case '3_CompChair_4':
-  //       console.log('Clicked on the 3_CompChair_4 object');
-  //       showTooltip(event, 'Click to reserve seat', 'SEAT B9');
-  //       break;
+        case '3_CompChair_4':
+        console.log('hovered on the 3_CompChair_4 object');
+        showTooltip(event, 'Click to reserve seat', 'SEAT B14');
+        break;
 
-  //       case '3_CompChair_5':
-  //       console.log('Clicked on the 3_CompChair_5 object');
-  //       showTooltip(event, 'Click to reserve seat', 'SEAT B10');
-  //       break;
+        case '3_CompChair_5':
+        console.log('hovered on the 3_CompChair_5 object');
+        showTooltip(event, 'Click to reserve seat', 'SEAT B150');
+        break;
 
-  //     default:
-  //       hideTooltip()
-  //       break;
-  //     }
-  //   }
+      default:
+        hideTooltip()
+        break;
+      }
+    }
+  }
   
-  // });
+  });
 
 
   // when user clicks the seat
@@ -789,6 +794,7 @@ function hideReserveDiv() {
       return;
     }
     else {
+     
       const mouse = new THREE.Vector2();
       mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
       mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -812,30 +818,36 @@ function hideReserveDiv() {
         case '1_CompChair_1':
           console.log('Clicked on the 1_CompChair_1 object');
           showSeatInfo(objectName, date, startTime, endTime);
+          hideTooltip()
           break;
         
         case '1_CompChair_2':
           console.log('Clicked on the 1_CompChair_2 object');
           showSeatInfo(objectName, date, startTime, endTime);
+          hideTooltip()
           break;
         
         case '1_CompChair_3':
           console.log('Clicked on the 1_CompChair_3 object');
           showSeatInfo(objectName, date, startTime, endTime);
+          hideTooltip()
           break;
 
         case '1_CompChair_4':
           console.log('Clicked on the 1_CompChair_4 object');
           showSeatInfo(objectName, date, startTime, endTime);
+          hideTooltip()
           break;
 
           case '1_CompChair_5':
           console.log('Clicked on the 1_CompChair_5 object');
+          hideTooltip()
           moveTarget(-0.44, -0.44, 0.40);
           moveCamera(-1.32, 0.33,-0.024);
           controls.minPolarAngle = Math.PI / 10;
           controls.maxPolarAngle = (2 * Math.PI) / 3.8;
           showSeatInfo(objectName, date, startTime, endTime);
+          
           break;
 
           case '2_CompChair_1':

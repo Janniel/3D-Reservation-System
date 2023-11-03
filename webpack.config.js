@@ -343,6 +343,18 @@ module.exports = {
             template: 'src/php/maintenance.php',
             chunks: ['']
         }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'survey.php',
+            template: 'src/survey.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'surveyProcess.php',
+            template: 'src/surveyProcess.php',
+            chunks: ['']
+        }),
 
 
 

@@ -111,7 +111,7 @@ if (mysqli_num_rows($result123) == 1) {
   <header class="header-outer">
     <div class="header-inner responsive-wrapper">
       <div class="header-logo">
-        <img src="assets/img/elib logo.png" class="icon">
+        <img src="../src/img/elib logo.png" class="icon">
       </div>
       <nav class="header-navigation">
         <a href="index.php">HOME</a>
@@ -312,7 +312,7 @@ if (mysqli_num_rows($result123) == 1) {
                                   echo "Error: " . $conn->error;
                               }
                             // Add View Details button
-                            echo "<div class='col-lg-4    bg-white shadow p-1 text-center'>";
+                            echo "<div class='col-lg-4    bg-white p-1 text-center'>";
                             echo "<small>Ends in: </small><h3 class='fw-bold text-muted text-center' id='remainingTimeDisplay'>Loading</h3>";
                             echo "<a href='timer.php' class='btn btn-warning btn w-100 text-center text-white '>View Timer</a></div>";
 

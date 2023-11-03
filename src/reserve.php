@@ -96,7 +96,7 @@ $_SESSION["reservation_count"] = $reservation_count;
       <div class="title-container">
         <div class="title">
           <p class="text-white big-title">Find your <b>ideal seat</b> in <b>3D</b></p>
-          <p class="text-white">Welcome to the E-Library's 6th Floor. Select date and time now!</p>
+          <p class="text-white">Welcome to the E-Library's 6th Floor. Please select  date and time <br> to view available seats in order to reserve.</p>
           <button class="explore btn">Reserve Seat</button>
         </div>
       </div>
@@ -225,6 +225,15 @@ $(document).ready(function () {
 
   $('#viewSeatsButton').prop('disabled', true);
 
+   // Function to hide the first option in the ui-timepicker-list class
+   function hideFirstOption() {
+    const $timepickerList = $('.ui-timepicker-list');
+    $timepickerList.find('li:first').hide();
+  }
+
+  $('#end_time').on('showTimepicker', hideFirstOption);
+
+
 
  // Function to validate and disable the button if necessary
  function validateTimeSelection() {
@@ -255,10 +264,6 @@ $(document).ready(function () {
     $('#viewSeatsButton').prop('disabled', true);
   }
 }
-
-
-
-
 });
 
 
