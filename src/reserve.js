@@ -9,7 +9,7 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
 let date;
 let startTime;
 let endTime;
-
+let helperViewed = false;
 let seatsViewed = false;
 
 let reservedSeatsList = [];
@@ -117,6 +117,7 @@ const explore2 = document.querySelector(".explore2");
 const titlediv = document.querySelector(".container");
 const dateTimeDiv = document.querySelector(".container2");
 const dateTimeSelected = document.getElementById('dateTimeSelected');
+const helper = document.getElementById('helper');
 
 const reserveDiv = document.getElementById('reserveDiv');
 const reserveDivClose = document.getElementById('reserveDivClose');
@@ -160,6 +161,10 @@ filterBtn.addEventListener("click", ()=>{
 
 explore2.addEventListener('click', () => {
   seatsViewed = true;
+
+  if (helperViewed == false ) {
+    showHelper();
+  }
   // Hide the date and time form
   dateTimeDiv.style.display = "none";
   dateTimeDiv.style.pointerEvents = "none";
@@ -191,6 +196,7 @@ explore2.addEventListener('click', () => {
           console.log("maintenanceSeatsList", maintenanceSeatsList);
 
           showsection();
+          
 
           // Get all the object names of the seats in your 3D scene
           const seatObjectNames = Object.keys(seatMaterials);
@@ -423,6 +429,18 @@ function formatTimeToAMPM(timeStr) {
   return formattedTime;
 }
 
+function showHelper() {
+  helper.style.opacity = "1"
+  helper.style.display = "flex"
+  helper.style.pointerEvents = "auto";
+  helperViewed = true;
+
+}
+
+function hideHelper() {
+  helper.style.opacity = "0" 
+  helper.style.pointerEvents = "none";
+}
 
 function showtip () {
   tooltip.style.display = "block" 

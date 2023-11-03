@@ -225,6 +225,10 @@ $(document).ready(function () {
 
   $('#viewSeatsButton').prop('disabled', true);
 
+  $('#helper').on('click', function () {
+    $(this).hide();
+  });
+
    // Function to hide the first option in the ui-timepicker-list class
    function hideFirstOption() {
     const $timepickerList = $('.ui-timepicker-list');
@@ -275,6 +279,12 @@ $(document).ready(function () {
     <div class="tooltip">
       <p></p>
       <h2></h2>
+    </div>
+
+    <div id="helper"class="helper">
+      <img src="img/drag.png" height="75px"></img>
+      <p><b>Drag across the screen to view available seats.</b></p>
+      <small>Dismiss</small>
     </div>
 
     <div id="reserveDiv" class="reserveDiv" style="display: none;">

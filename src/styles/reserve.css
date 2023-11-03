@@ -349,7 +349,31 @@ padding: 1.2rem;
   transition-duration: 250ms;
 }
 
-
+.helper {
+  text-align: center;
+  cursor: pointer;
+  opacity: 0;
+  transition-duration: 0.5s;
+  color: white;
+  border: 1px solid gray;
+  padding: 3rem;
+  border-radius: .5rem;
+  top: 50%;
+  left: 50%;
+  z-index: 99;
+  width: 350px;
+  background: rgb(3 3 3 / 50%);
+  transform: translate(-50%, -50%);
+  display: none;
+  height: fit-content;
+  position: absolute;
+  justify-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}
 
 .tooltip {
   color: whitesmoke;
