@@ -12,7 +12,7 @@ if (mysqli_num_rows($result) > 0) {
         $current_timestamp = time();
         
         if ($current_timestamp >= $end_timestamp) {
-            echo "
+            echo "<body>
                 <script>
                     // After 3 seconds, trigger the PHP script using AJAX
                     $.ajax({
@@ -37,6 +37,7 @@ if (mysqli_num_rows($result) > 0) {
                         }
                     });
                 </script>
+                </body>
             ";
         }
         

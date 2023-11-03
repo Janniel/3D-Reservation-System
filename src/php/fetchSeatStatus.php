@@ -17,9 +17,12 @@ if ($result->num_rows > 0) {
     header("Content-Type: application/json");
     echo json_encode(['maintenanceSeats' => $maintenanceSeats]);
 } else {
-    // Handle no results or errors
-    header("HTTP/1.1 500 Internal Server Error");
-    echo json_encode(['error' => 'Internal Server Error']);
+
+        // Return JSON response with an empty array
+        header("Content-Type: application/json");
+        echo json_encode(['maintenanceSeats' => []]);
+     
+     
 }
 
 // Close the MySQLi connection

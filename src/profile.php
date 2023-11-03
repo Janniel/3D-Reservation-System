@@ -338,23 +338,7 @@ if (mysqli_num_rows($result123) == 1) {
                             // Update the <p> element with the remaining time
                             $('#remainingTimeDisplay').text(remainingTimeString);
 
-                            // if (remainingTime <= 0) {
-                            //     clearInterval(timerInterval); // Stop the timer when time is up
-
-                            //     // Handle the time-up action as needed
-                            //     $.ajax({
-                            //         url: 'php/toAddHistory.php?reservation_id=<?php echo $reservation_id; ?>',
-                            //         type: 'GET',
-                            //         success: function(response) {
-                            //             console.log('completed');
-                            //             // Additional actions when the time is up
-                            //         },
-                            //         error: function(xhr, textStatus, errorThrown) {
-                            //             console.log('error adding to history');
-                            //             // Handle errors if needed
-                            //         }
-                            //     });
-                            // }
+                         
                         }
 
                         // Set the timer interval
