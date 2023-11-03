@@ -83,35 +83,26 @@ require 'php/connect.php';
 
 
         <!------------------------ SEAT INFO ------------------------>
+        <div class="webgl-container">
         <canvas class="webgl"></canvas>
 
         <div class="seats" data-aos="fade-right">
             <div class="no-of-seats">
-                <h1 id="no">206</h1>
+                <h1 id="no">332</h1>
                 <h1 id="avail">Available Seats</h1>
+            </div>
+
             </div>
             <a href="reserve.php" class="reserve-btn btn">
                 Reserve seat
             </a>
         </div>
 
-        <div class="col" id="clock">
-            <div class="clock">
-                <div class="hour">
-                    <div class="hr" id="hr"></div>
-                </div>
-                <div class="min">
-                    <div class="mn" id="mn"></div>
-                </div>
-                <div class="sec">
-                    <div class="sc" id="sc"></div>
-                </div>
-            </div>
-        </div>
+    
 
         <!------------------------ END OF SEAT INFO ------------------------>
 
-        <div class="col-2" id="aboutus">
+        <div id="aboutus">
             <h2>ABOUT US</h2>
             <p>
                 The Bulacan State University Library, through its resources, facility, and staff, is dedicated to

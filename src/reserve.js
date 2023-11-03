@@ -665,21 +665,21 @@ function hideReserveDiv() {
         moveTarget(-2.37, 0.12, -0.899)
         moveCamera(-2.05, 0.14, -0.249)
         controls.minPolarAngle = Math.PI / 10;
-  controls.maxPolarAngle = (2 * Math.PI) / 3.8;
+        controls.maxPolarAngle = (2 * Math.PI) / 3.8;
       }
       if (objectName === 'Cube012'){
         console.log('Clicked on the BE_EightSeater object');
         moveTarget(2.11, 0.036, 0.02)
         moveCamera(2.445, 0.13, 0.494)
         controls.minPolarAngle = Math.PI / 10;
-  controls.maxPolarAngle = (2 * Math.PI) / 3.8;
+        controls.maxPolarAngle = (2 * Math.PI) / 3.8;
       }
       if (objectName === 'Cylinder025_2') {
         console.log('Clicked on the 2_FiveSeater object');
         moveTarget(0.12, 0.03, 0.168)
         moveCamera(0.60, 0.157, -0.979)
         controls.minPolarAngle = Math.PI / 10;
-  controls.maxPolarAngle = (2 * Math.PI) / 3.8;
+        controls.maxPolarAngle = (2 * Math.PI) / 3.8;
       }
     }
   }
