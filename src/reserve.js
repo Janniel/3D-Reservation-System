@@ -163,7 +163,9 @@ explore2.addEventListener('click', () => {
   seatsViewed = true;
 
   if (helperViewed == false ) {
+    hideTooltip();
     showHelper();
+
   }
   // Hide the date and time form
   dateTimeDiv.style.display = "none";
@@ -430,10 +432,13 @@ function formatTimeToAMPM(timeStr) {
 }
 
 function showHelper() {
-  helper.style.opacity = "1"
-  helper.style.display = "flex"
-  helper.style.pointerEvents = "auto";
   helperViewed = true;
+  hideTooltip();
+  helper.style.opacity = "1";
+  helper.style.display = "flex";
+  helper.style.pointerEvents = "auto";
+
+
 
 }
 
@@ -727,8 +732,12 @@ function hideReserveDiv() {
 
   // when user hover the seats
   window.addEventListener('mousemove', (event) => {
-    if (!seatsViewed) {
+    if (!seatsViewed && !helperViewed) {
       console.log("select date and time first before hovering");
+      return;
+    }
+    else if (!helperViewed) {
+      console.log("please dismiss the helper before hovering");
       return;
     }
     else {
@@ -830,7 +839,7 @@ function hideReserveDiv() {
 
         case '3_CompChair_5':
         console.log('hovered on the 3_CompChair_5 object');
-        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B150');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B15');
         break;
 
       default:

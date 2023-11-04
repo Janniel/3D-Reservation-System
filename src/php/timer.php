@@ -11,19 +11,81 @@ require 'session.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
-    <title>Reserve3D</title>
+    <!-- <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script> -->
+    <title>Timer</title>
     <!------------------------ Bootstrap 5.3.0 ------------------------>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <!------------------------ CSS Link ------------------------>
     <!-- <link rel="stylesheet" type="text/css" href="../styles/timer.css" /> -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
 </head>
 
-<body>
-
 <script>
+    
+// function that extend the time
+function extendReservationTime(event) {
+    event.preventDefault();
+    const reservationId = <?php echo $reservation_id ?>; // Get the reservation ID from PHP
+    const seatId = <?php echo $seat_number ?>;
+  
+    const endTime = <?php echo strtotime($row['end_time']) ?>;
+    const startTime = <?php echo strtotime($row['start_time']) ?>;
+
+    Swal.fire({
+        title: 'Extend Time?',
+        text: 'Add more 30 minutes?',
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#a81c1c',
+        cancelButtonColor: '#d3d3d3',
+        confirmButtonText: 'Extend',
+        
+    }).then((confirmResult) => {
+        if (confirmResult.isConfirmed) {
+            $.ajax({
+                url: 'extendProcess.php',
+                type: 'POST',
+                data: { 
+                    reservation_id: reservationId,
+                    seat_id: seatId,
+                    start_time_raw: startTime,
+                    end_time_raw: endTime
+                },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success) {
+                        Swal.fire({
+                            title: 'Reservation Time Extended',
+                            text: response.message,
+                            icon: 'success',
+                            confirmButtonColor: '#a81c1c'
+                        }).then(() => {
+                            location.reload();
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Failed to extend time',
+                            text: response.message,
+                            icon: 'error',
+                            confirmButtonColor: '#a81c1c',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                },
+                error: function(xhr, textStatus, errorThrown) {
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'An error occurred while extending the reservation time.',
+                        icon: 'error',
+                        confirmButtonColor: '#d33',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            });
+        }
+    });
+}
      // mark as done function will be trigger if the reservation time is over
      function markReservationAsDone(reservationId) {
         Swal.fire({
@@ -60,11 +122,15 @@ require 'session.php';
     }
 </script>
 
+<body>
+
+
+
     <div class="wrapper">
 
         <!-- Sticky header -->
         <?php 
-        // include 'header.php'; 
+        include 'header.php'; 
         ?>
         <!-- Sticky header -->
 
@@ -86,7 +152,7 @@ $ongoing_result = mysqli_query($conn, $ongoing_query);
 
 if (mysqli_num_rows($ongoing_result) > 0) {
     $row = mysqli_fetch_assoc($ongoing_result);
-    $seat_number = $row['seat_number'];
+    $seat_number = $row['seat_id'];
     $start_time = date('h:i A', strtotime($row['start_time'])); // Convert start time to AM/PM format
     $end_time = date('h:i A', strtotime($row['end_time'])); // Convert end time to AM/PM format
     $reservation_id = $row['reservation_id'];
@@ -154,80 +220,7 @@ mysqli_free_result($ongoing_result);
     </div>
     <!-------JAVASCRIPT-------->
 
-    <script>
 
-   
-
-
-
-// function that extend the time
-function extendReservationTime(event) {
-    event.preventDefault();
-    const reservationId = <?php echo $reservation_id ?>; // Get the reservation ID from PHP
-    const seatId = <?php echo $seat_number ?>;
-  
-    const endTime = <?php echo strtotime($row['end_time']) ?>;
-    const startTime = <?php echo strtotime($row['start_time']) ?>;
-
-    Swal.fire({
-        title: 'Extend Time?',
-        text: 'Add more 30 minutes?',
-        icon: 'info',
-        showCancelButton: true,
-        confirmButtonColor: '#a81c1c',
-        cancelButtonColor: '#d3d3d3',
-        confirmButtonText: 'Extend',
-        
-    }).then((confirmResult) => {
-        if (confirmResult.isConfirmed) {
-            $.ajax({
-                url: 'extendProcess.php',
-                type: 'POST',
-                data: { 
-                    reservation_id: reservationId,
-                    seat_id: seatId,
-                    start_time_raw: startTime,
-                    end_time_raw: endTime
-                },
-                dataType: 'json',
-                success: function(response) {
-                    if (response.success) {
-                        Swal.fire({
-                            title: 'Reservation Time Extended',
-                            text: response.message,
-                            icon: 'success',
-                            confirmButtonColor: '#a81c1c'
-                        }).then(() => {
-                            location.reload();
-                        });
-                    } else {
-                        Swal.fire({
-                            title: 'Failed to extend time',
-                            text: response.message,
-                            icon: 'error',
-                            confirmButtonColor: '#a81c1c',
-                            confirmButtonText: 'OK'
-                        });
-                    }
-                },
-                error: function(xhr, textStatus, errorThrown) {
-                    Swal.fire({
-                        title: 'Error',
-                        text: 'An error occurred while extending the reservation time.',
-                        icon: 'error',
-                        confirmButtonColor: '#d33',
-                        confirmButtonText: 'OK'
-                    });
-                }
-            });
-        }
-    });
-}
-
-
-
-
-    </script>
 
 
 

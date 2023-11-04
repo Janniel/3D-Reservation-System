@@ -315,7 +315,7 @@ if (mysqli_num_rows($result123) == 1) {
                             // Add View Details button
                             echo "<div class='col-lg-4    bg-white p-1 text-center'>";
                             echo "<small>Ends in: </small><h3 class='fw-bold text-muted text-center' id='remainingTimeDisplay'>Loading</h3>";
-                            echo "<a href='timer.php' class='btn btn-warning btn w-100 text-center text-white '>View Timer</a></div>";
+                            echo "<a href='php/timer.php' class='btn btn-warning btn w-100 text-center text-white '>View Timer</a></div>";
 
                           
                              
