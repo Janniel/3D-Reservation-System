@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'php/connect.php'; // Include your database connection script
+require 'connect.php'; // Include your database connection script
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $reservation_id = $_POST['reservation_id'];

@@ -366,6 +366,12 @@ module.exports = {
             template: 'src/surveyProcess.php',
             chunks: ['']
         }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/extendProcess.php',
+            template: 'src/php/extendProcess.php',
+            chunks: ['']
+        }),
 
 
 
