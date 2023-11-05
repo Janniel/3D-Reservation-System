@@ -193,13 +193,13 @@ module.exports = {
             inject: true,
             filename: 'php/header_notLogged.php',
             template: 'src/php/header_notLogged.php',
-            chunks: ['']
+            chunks: ['clock']
         }),
         new HtmlWebpackPlugin({
             inject: true,
             filename: 'php/header.php',
             template: 'src/php/header.php',
-            chunks: ['']
+            chunks: ['clock']
         }),
         new HtmlWebpackPlugin({
             inject: true,
@@ -258,7 +258,12 @@ module.exports = {
 
 
 
-
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'toRegister.php',
+            template: 'src/toRegister.php',
+            chunks: ['']
+        }),
         new HtmlWebpackPlugin({
             inject: true,
             filename: 'update_profile.php',
@@ -327,6 +332,12 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             inject: true,
+            filename: 'fetchSeatStatus.php',
+            template: 'src/php/fetchSeatStatus.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
             filename: 'get_disabled_dates.php',
             template: 'src/get_disabled_dates.php',
             chunks: ['']
@@ -353,6 +364,12 @@ module.exports = {
             inject: true,
             filename: 'surveyProcess.php',
             template: 'src/surveyProcess.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/extendProcess.php',
+            template: 'src/php/extendProcess.php',
             chunks: ['']
         }),
 

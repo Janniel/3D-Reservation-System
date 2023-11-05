@@ -17,8 +17,7 @@ require 'php/session.php';
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
 
-    <!------------------------ CSS Link ------------------------>
-    <link rel="stylesheet" type="text/css" href="css/edit_profile.css" />
+
 
 
 

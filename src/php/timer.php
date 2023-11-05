@@ -16,8 +16,29 @@ require 'session.php';
     <!------------------------ Bootstrap 5.3.0 ------------------------>
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
     <!------------------------ CSS Link ------------------------>
-    <link rel="stylesheet" type="text/css" href="css/timer.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="assets/css/timer.css" /> -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+       <!------------------------ Bootstrap 5 ------------------------>
+       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+    <!------------------------ CSS Link ------------------------>
+    
+
+    <!------------------------ For NAV-BAR ------------------------>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <!------------------------ Google Fonts Used ------------------------>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Playfair+Display:ital@1&display=swap"
+        rel="stylesheet">
+
+    <!-- animation on scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
 </head>
 
@@ -26,7 +47,9 @@ require 'session.php';
     <div class="wrapper">
 
         <!-- Sticky header -->
-        <?php include 'php/header.php'; ?>
+        <?php 
+    //    require 'header.php';
+        ?>
         <!-- Sticky header -->
 
         <!------------------------ TIMER START ------------------------>
@@ -47,7 +70,7 @@ $ongoing_result = mysqli_query($conn, $ongoing_query);
 
 if (mysqli_num_rows($ongoing_result) > 0) {
     $row = mysqli_fetch_assoc($ongoing_result);
-    $seat_number = $row['seat_number'];
+    $seat_number = $row['seat_id'];
     $start_time = date('h:i A', strtotime($row['start_time'])); // Convert start time to AM/PM format
     $end_time = date('h:i A', strtotime($row['end_time'])); // Convert end time to AM/PM format
     $reservation_id = $row['reservation_id'];
@@ -72,8 +95,8 @@ if (mysqli_num_rows($ongoing_result) > 0) {
     echo "<span>6th Floor</span>";
     echo "<h5>{$start_time} - {$end_time}</h5>";
     echo "<i>Please don't forget your ID when done</i><br>";
-    echo "<a href='#' class='btn btn-outline-danger btn-sm' onclick='markReservationAsDone({$row['reservation_id']}); return false;'>Mark as Done</a>";
-    echo "<div id='extendtimeDiv' style='display:none'><button onclick='extendReservationTime(event)' class='btn btn-danger'>extend 30 mins</button><br>";
+    echo "<a href='#' class='btn btn-outline-danger btn' onclick='markReservationAsDone({$row['reservation_id']}); return false;'>Mark as Done</a>";
+    echo "<div id='extendtimeDiv' style='display:none'><button onclick='extendReservationTimes(event)' class='btn btn-danger'>extend 30 mins</button><br>";
     echo "</div>";
     
 } else {
@@ -155,7 +178,7 @@ mysqli_free_result($ongoing_result);
 
 
 // function that extend the time
-function extendReservationTime(event) {
+function extendReservationTimes(event) {
     event.preventDefault();
     const reservationId = <?php echo $reservation_id ?>; // Get the reservation ID from PHP
     const seatId = <?php echo $seat_number ?>;
@@ -287,7 +310,7 @@ function extendReservationTime(event) {
             setRemainingPathColor(timeLeft);
 
              // Check if timeLeft is 5 minutes
-            if (timeLeft <= 300 && !extendButtonShown) {  // 5 minutes = 300 seconds
+            if (timeLeft <= 1500 && !extendButtonShown) {  // 5 minutes = 300 seconds
                 // less than 5 minutes
                 extendButtonShown = true;
                 document.getElementById("extendtimeDiv").style = 'block';

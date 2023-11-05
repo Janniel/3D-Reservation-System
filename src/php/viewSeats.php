@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $end_time = $_POST['end_time'];
 
         // Query to fetch seat_id based on the specified conditions
-        $sql = "SELECT seat_id FROM reservation WHERE `date` = '$date' AND `start_time` <= '$start_time' AND `end_time` >= '$start_time' AND `isDone` = 0";
+        $sql = "SELECT seat_id FROM reservation WHERE `date` = '$date' AND `start_time` <= '$start_time' AND `end_time` >= '$start_time' AND `isDone` = 0 ";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $seat_id = $row['seat_id'];
 
                 // Query to fetch seat number from the seat table
-                $seatQuery = "SELECT seat_number FROM seat WHERE seat_id = $seat_id";
+                $seatQuery = "SELECT seat_number FROM seat WHERE seat_id = $seat_id AND `status` != '404'";
                 $seatResult = $conn->query($seatQuery);
 
                 if ($seatResult->num_rows > 0) {

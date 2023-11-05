@@ -236,6 +236,7 @@
   position: absolute;
   top: 15rem;
   left: 2rem;
+  max-width: 350px;
   /* right: 0; */
   /* bottom: 0rem; */
   color: white;
@@ -349,36 +350,59 @@ padding: 1.2rem;
   transition-duration: 250ms;
 }
 
+.helper {
+  text-align: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.5s ease 1s; /* Add a 1s delay to the opacity transition */
+  animation: fade-in 1s 1s ease; /* Add a 1s delay to the fade-in animation */
+  animation-duration: 1s;
+  color: white;
+  border: 1px solid gray;
+  padding: 3rem;
+  border-radius: 0.5rem; /* Corrected the value here (changed . to 0) */
+  top: 50%;
+  left: 50%;
+  z-index: 99;
+  width: 350px;
+  background: rgba(3, 3, 3, 0.5); /* Corrected the rgba syntax here */
+  transform: translate(-50%, -50%);
+  display: none;
+  height: fit-content;
+  position: absolute;
+  justify-content: center; /* Corrected from justify-items to justify-content */
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
 
 
 .tooltip {
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
   color: whitesmoke;
   margin-top: 0.5rem;
   background: rgba(0, 0, 0, 0.5);
-  border-radius: 1rem;
-  padding-top: 30px;
-  padding-bottom: 20px;
-  width: 450px;
-  text-align: center;
   position: absolute;
-  transform: translate(-50%, -50%);
-  top: 1rem;
-  left: 37.5%;
+  top: 1%;
+  left: 1%;
   opacity: 0;
   transition-duration: 0.3s;
   transition-property: opacity, transform;
   z-index: 1;
 }
 
+
 .tooltip h2 {
   font-family: "Tilt Neon", sans-serif;
   font-weight: 600;
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 .tooltip p {
   font-family: "Quicksand", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1rem;
 }
 
 .section-nav {
