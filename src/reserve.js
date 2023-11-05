@@ -598,8 +598,9 @@ function reserveSeat(seat_id) {
       $.ajax({
         url: 'toReserve.php',
         method: 'GET',
-        data: reservationData,
+        data: reservationData, 
         success: function (response) {
+          console.log(response);
           if (response === 'success') {
             console.log('Reservation inserted into the database');
             // Show success alert

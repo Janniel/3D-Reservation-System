@@ -221,13 +221,23 @@ $_SESSION["reservation_count"] = $reservation_count;
   return `${formattedHours}:${formattedMinutes}`;
 }
 
+
+
 $(document).ready(function () {
+    // Get the current time
+  var currentTime = new Date();
+  var currentHour = currentTime.getHours();
+  var currentMinute = currentTime.getMinutes();
+
+  // Format the current time as a string in HH:mm format
+  var currentTimeString = currentHour.toString().padStart(2, '0') + ':' + currentMinute.toString().padStart(2, '0');
   $('#start_time').timepicker({
     'timeFormat': 'h:i A',
-    'forceRoundTime': true,
-    'minTime': '<?php echo date('H:i A', strtotime($start_hour))?>', // the min time of the start time is come from the databae column called  start_hour
+    
+    'minTime': currentTimeString, // the min time of the start time is come from the databae column called  start_hour
     'maxTime': '<?php echo date('H:i A', strtotime($end_hour))?>', // the maxTime of start time is came from the database column called end_hour
     'step': 15,
+    'forceRoundTime': true,
   });
 
   $('#end_time').timepicker({
@@ -235,11 +245,22 @@ $(document).ready(function () {
     'step': 15,
     'showDuration': true,
     'timeFormat': 'h:i A',
+    'forceRoundTime': true,
   });
 
   $('#start_time').on('change', function () {
     var startTimeValue = $(this).val();
-    $('#end_time').timepicker('option', 'minTime', startTimeValue);
+    
+    // Check if start_time has a value and enable/disable end_time accordingly
+    if (startTimeValue !== '') {
+      $('#end_time').timepicker('option', 'minTime', startTimeValue);
+      $('#end_time').prop('disabled', false);
+    } else {
+      // Clear end_time and disable it
+      $('#end_time').val('');
+      $('#end_time').prop('disabled', true);
+    }
+    
     validateTimeSelection();
   });
 
@@ -265,33 +286,33 @@ $(document).ready(function () {
 
  // Function to validate and disable the button if necessary
  function validateTimeSelection() {
-  const startTime = $('#start_time').val();
-  const endTime = $('#end_time').val();
+    const startTime = $('#start_time').val();
+    const endTime = $('#end_time').val();
 
-  // Regular expression to match time in HH:MM AM/PM format
-  const timeFormatPattern = /^(0?[1-9]|1[0-2]):[0-5][0-9] (AM|PM)$/i;
+    // Regular expression to match time in HH:MM AM/PM format
+    const timeFormatPattern = /^(0?[1-9]|1[0-2]):[0-5][0-9] (AM|PM)$/i;
 
-  // Check if the start time and end time are empty
-  if (startTime === '' || endTime === '') {
-    $('#viewSeatsButton').prop('disabled', true);
-    return;
-  }
+    // Check if both start time and end time are empty
+    if (startTime === '' || endTime === '') {
+      $('#viewSeatsButton').prop('disabled', true);
+      return;
+    }
 
-  // Check if both start time and end time match the time format
-  if (timeFormatPattern.test(startTime) && timeFormatPattern.test(endTime)) {
-    // Parse the time values to compare them
-    const startTime24Hour = convertTimeTo24HourFormat(startTime);
-    const endTime24Hour = convertTimeTo24HourFormat(endTime);
+    // Check if both start time and end time match the time format
+    if (timeFormatPattern.test(startTime) && timeFormatPattern.test(endTime)) {
+      // Parse the time values to compare them
+      const startTime24Hour = convertTimeTo24HourFormat(startTime);
+      const endTime24Hour = convertTimeTo24HourFormat(endTime);
 
-    if (startTime24Hour < endTime24Hour) {
-      $('#viewSeatsButton').prop('disabled', false);
+      if (startTime24Hour < endTime24Hour) {
+        $('#viewSeatsButton').prop('disabled', false);
+      } else {
+        $('#viewSeatsButton').prop('disabled', true);
+      }
     } else {
       $('#viewSeatsButton').prop('disabled', true);
     }
-  } else {
-    $('#viewSeatsButton').prop('disabled', true);
   }
-}
 });
 
 
