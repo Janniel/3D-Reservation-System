@@ -1,3 +1,8 @@
+:root {
+  --header-outer-height: 120px;
+  --header-inner-height: 70px;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -12,10 +17,10 @@
   background: var(--bg);
 }
 
-body,html{
-  overflow-x: hidden;
-  /* overflow-y: hidden;
-  font-family: "Poppins", sans-serif; */
+.webgl {
+  position: relative;
+  top: auto;
+  z-index: 1;
 }
 
 /* Navigation Bar */
@@ -39,14 +44,31 @@ body,html{
 .header-logo img {
   height: 70px;
   width: 70px;
-  margin-left: 50px;
+  margin-left: 20px;
 }
 
 .header-text {
   font-weight: bold;
-  font-size: 60px; /* Adjust the font size as needed */
+  font-size: 60px; /* Default font size */
   font-family: "Archivo Black", "Times New Roman", Times, serif;
-  margin-right: auto; 
+  margin-right: auto;
+  padding-right: 20px; /* Add padding to create space around the text */
+}
+
+/* Media query for screens smaller than 768px */
+@media screen and (max-width: 768px) {
+  .header-text {
+    font-size: 40px; /* Adjust the font size for smaller screens */
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+}
+
+/* Media query for screens smaller than 480px */
+@media screen and (max-width: 480px) {
+  .header-text {
+    font-size: 30px; /* Adjust the font size for even smaller screens */
+    padding: 5px; /* Adjust padding for even smaller screens */
+  }
 }
 
 .icon {
@@ -60,30 +82,70 @@ body,html{
   font-weight: bold;
   margin-right: auto;
   color: #a81c1c;
+  white-space: nowrap; /* Prevent text from wrapping */
 }
 
 #date {
   display: flex;
   font-size: 22px;
   margin-right: auto;
-  align-items: center; /* Center vertically */
+  align-items: center;
+  white-space: nowrap; /* Prevent text from wrapping */
 }
 
 #phtime {
   display: flex; /* Display the content in a horizontal line */
   align-items: center; /* Center vertically */
   font-size: 22px; /* Adjust the font size as needed */
+  white-space: nowrap; /* Prevent text from wrapping */
 }
 
 .phdate {
-  margin: 0; 
-  margin-right: 20px; 
+  margin: 0;
+  margin-right: 20px;
+}
+
+/* Media query for screens smaller than 768px */
+@media screen and (max-width: 768px) {
+  #clock {
+    font-size: 25px;
+  }
+
+  #date {
+    font-size: 18px;
+  }
+
+  #phtime {
+    font-size: 18px;
+  }
+}
+
+/* Media query for screens smaller than 480px */
+@media screen and (max-width: 480px) {
+  #clock {
+    font-size: 20px;
+  }
+
+  #date {
+    font-size: 14px;
+  }
+
+  #phtime {
+    display: none; /* Hide #phtime on smaller screens */
+  }
+
+  .phdate {
+    display: none; /* Hide .phdate on smaller screens */
+  }
+
+  #date {
+    white-space: nowrap; /* Prevent "Thursday" from wrapping */
+  }
 }
 
 #header-time {
-margin-right: auto;
+  margin-right: auto;
 }
-
 
 .header-outer {
   border-bottom: 2px solid #f0f0f0;
@@ -152,12 +214,6 @@ margin-right: auto;
   text-decoration: none;
 }
 
-.header-navigation a.active {
-  transform: scalex(1);
-  color: rgb(151, 55, 55);
-  content: "";
-}
-
 .header-navigation a:after,
 .header-navigation button:after {
   transition: 0.25s ease;
@@ -179,16 +235,14 @@ margin-right: auto;
 @media (min-width: 800px) {
   .header-navigation a {
     display: inline-block;
-  }
 
-  .header-navigation button {
-    display: none;
+    .header-navigation button {
+      display: none;
+    }
   }
 }
+
 /* END OF HEADER */
-
-/* Clock */
-
 
 /* Banner/Cover */
 .parallax-home {
@@ -226,6 +280,25 @@ margin-right: auto;
   z-index: 1;
 }
 
+/* Responsive styles for .parallax-home */
+@media (max-width: 576px) {
+  .parallax-home {
+    height: 100vh; /* Adjust height for screens with a width of 576px or less */
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .parallax-home {
+    height: 80vh; /* Adjust height for screens with a width between 577px and 768px */
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .parallax-home {
+    height: 70vh; /* Adjust height for screens with a width between 769px and 992px */
+  }
+}
+
 .title {
   position: absolute;
   z-index: 1;
@@ -259,19 +332,6 @@ margin-right: auto;
   font-family: "Archivo Black", "Times New Roman", Times, serif;
 }
 
-/*
-#parallax-home-text-disc {
-  position: absolute;
-  color: #ffffff;
-  text-align: center;
-  margin-top: 28%;
-  left: 70%;
-  font-size: 1.9vw;
-  font-family: "Playfair Display", "Times New Roman", Times, serif;
-  opacity: 60%;
-}
-*/
-
 #parallax-home-text-disc {
   position: absolute;
   color: #ffffff;
@@ -283,14 +343,12 @@ margin-right: auto;
   font-family: "Playfair Display", "Times New Roman", Times, serif;
 }
 
-
 @media only screen and (max-width: 952px) {
   .parallax-home {
     height: 20vh;
   }
 }
 /* END of Banner/Cover */
-
 
 /* Discover */
 
@@ -301,30 +359,36 @@ margin-right: auto;
   display: flex;
 }
 
-canvas {
-  margin-top: 10px;
-}
-
-.webgl {
-  position: absolute;
-  top: auto;
-  z-index: 1;
-  animation: up-down 2s ease-in-out infinite alternate-reverse both;
-}
-
-.webgl-container {
-  position: relative;
-}
-
 /* Seat Info */
 .seats {
-  position: relative;
-  float: left;
-  padding-top: 15vh;
   z-index: 1;
-  height: auto;
-  width: 35%;
+  padding-top: 20px;
+  position: relative;
+  height: 46vh;
+  width: 45%;
+  float: left;
   text-align: center;
+  margin-top: 50px;
+}
+
+.no-of-seats {
+  text-align: left;
+}
+
+.average-rating {
+  text-align: right;
+}
+
+.rating {
+  font-size: 24px;
+  color: #f39c12;
+  display: inline-block;
+}
+
+.fas {
+  color: #f39c12;
+  font-size: 20px;
+  vertical-align: middle;
 }
 
 #no {
@@ -354,7 +418,6 @@ canvas {
 .no-of-seats {
   text-align: center;
   font-family: "Archivo Black", "Times New Roman", Times, serif;
-  animation: up-down 2s ease-in-out infinite alternate-reverse both;
 }
 
 .no-of-seats #no {
@@ -367,31 +430,54 @@ canvas {
   font-size: 6vh;
 }
 
-.reserve-btn {
+.dashboard #ave-text {
+  font-size: 6vh;
+  font-family: "Archivo Black", "Times New Roman", Times, serif;
+}
+
+.rating {
+  font-size: 15vh;
+  font-family: "Archivo Black", "Times New Roman", Times, serif;
+}
+
+.fa-star {
+  font-size: 10vh;
+  margin-bottom: 80px;
+}
+
+.dashboard {
   z-index: 1;
-  position: absolute;
+  padding-top: 20px;
+  position: relative;
+  height: 46vh;
+  width: 45%;
+  float: right;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.seats .reserve-btn {
+  margin-top: 30px;
   display: inline-block;
-  margin-top: 85vh;
-  margin-left: 20vh;
   outline: none;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1;
   border-radius: 500px;
   transition-property: background-color, border-color, color, box-shadow, filter;
   transition-duration: 0.3s;
   border: 1px solid transparent;
   letter-spacing: 2px;
-  min-width: 200px;
+  min-width: 160px;
   text-transform: uppercase;
   white-space: normal;
   font-weight: 800;
   text-align: center;
-  padding: 15px 16px 20px;
+  padding: 16px 14px 18px;
   color: black;
   box-shadow: inset 0 0 0 2px #dd5656;
   background-color: #fff;
-  height: 50px;
+  height: 48px;
   text-decoration: none;
 }
 
@@ -403,35 +489,167 @@ canvas {
 }
 /* END of Seat Info */
 
-
-/* About Us */
-#aboutus {
-  position: relative;
-  padding-top: 100vh;
-  margin: 0 auto;
-  text-align: center;
-  display: block;
-  justify-content: space-between;
-  width: 50%;
+/* News Slider */
+.c-item {
+  max-width: 100%;
+  height: 46vh;
 }
 
-#aboutus h2 {
+.c-img {
+  object-fit: cover;
+  filter: brightness(60%);
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.carousel {
+  z-index: 1;
+  margin-top: 50px;
+  margin-right: 50px;
+  width: 45%;
+  position: relative;
+  height: 46vh;
+  float: right;
+}
+
+.carousel-caption {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 65px;
+  padding-bottom: 5vh;
+  text-align: left;
+  width: 100%;
+}
+
+.btn-primary {
+  background: #dd5656;
+  border: #dd5656;
+  height: 34px;
+  width: 0px;
+  font-size: 11px;
+}
+
+.carousel-inner .btn-primary {
+  background: #dd5656;
+  border: #dd5656;
+  height: 34px;
+  width: 150px;
+  font-size: 11px;
+  padding: 1%;
+}
+
+.carousel .btn:hover {
+  background: #fbd370;
+  border: #fbd370;
+  color: #222025;
+}
+
+@media (max-width: 1628px) {
+  .seats {
+    margin-bottom: 0;
+    width: 100%;
+  }
+
+  .carousel {
+    margin-top: 0px;
+    width: 100%;
+    height: 46vh;
+    margin-right: 0px;
+  }
+
+  .c-item {
+    height: 46vh;
+  }
+}
+
+@media (max-width: 766px) {
+  .c-item {
+    max-height: 42vh;
+  }
+  .carousel {
+    width: 100%;
+    height: 42vh;
+    margin-right: 0px;
+    margin-top: 0;
+    margin-bottom: 0px;
+  }
+
+  .carousel-caption {
+    width: 10vh;
+    width: 80%;
+    font-size: small;
+  }
+
+  .col-2 {
+    width: 50%;
+    position: relative;
+    padding-top: 0px;
+  }
+}
+/* END of News Slider */
+
+/* About Us */
+.abtus {
+  margin-top: 620px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.col-1 {
+  width: 30%;
+  height: 750px;
+  position: relative;
+  align-items: center;
+  margin-left: 130px;
+  padding: 1em;
+}
+
+.col-1 img {
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 12px 0px;
+}
+
+.col-2 {
+  width: 50%;
+  position: relative;
+  margin: 0 auto; /* Center horizontally */
+  padding-top: 27em;
+  text-align: center;
+}
+
+.col-2 h2 {
   color: #a81c1c;
-  margin: 0 auto;
+  margin: 0 auto; /* Center horizontally */
   font-size: 3.5vw;
   font-family: "Archivo Black", "Times New Roman", Times, serif;
   padding-bottom: 10px;
 }
 
-#aboutus p {
-  margin: 0 auto;
+.col-2 h6 {
+  margin: 0 auto; /* Center horizontally */
+  color: #dd5656;
+  margin-top: 0%;
+  left: 7%;
+  font-size: 1.5vw;
+  font-family: "Archivo Black", "Times New Roman", Times, serif;
+}
+
+.col-2 p {
+  margin: 0 auto; /* Center horizontally */
   font-family: "Helvetica";
   font-size: 2.4vh;
   width: 90%;
 }
 
 @media (max-width: 954px) {
-  #aboutus {
+  .col-2 {
     width: 50%;
     position: relative;
     padding-top: 30px;
@@ -450,7 +668,7 @@ canvas {
     padding-bottom: 0;
     border-radius: 15px;
   }
-  #aboutus {
+  .col-2 {
     width: 100%;
     position: relative;
     padding: 10%;
@@ -462,20 +680,20 @@ canvas {
   .c-img {
     height: 100%;
   }
-  #aboutus {
+  .col-2 {
     padding-left: 13%;
     width: 100%;
   }
 
-  #aboutus h6 {
+  .col-2 h6 {
     font-size: 15px;
   }
 
-  #aboutus h1 {
+  .col-2 h1 {
     font-size: 30px;
   }
 
-  #aboutus p {
+  .col-2 p {
     font-size: 15px;
   }
 }
@@ -802,7 +1020,6 @@ footer hr {
 }
 
 /* END of Footer */
-
 
 hr {
   border: none;
