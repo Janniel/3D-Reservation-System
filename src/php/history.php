@@ -200,7 +200,7 @@ $result = $conn->query($sql);
 
                                         
                                         <div class="row">
-                                            <div class="col-md-5">
+                                            <div class="col-md-4">
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text bg-info text-white"
@@ -210,7 +210,7 @@ $result = $conn->query($sql);
                                                         placeholder="Start Date" readonly>
                                                 </div>
                                             </div>
-                                            <div class="col-md-5">
+                                            <div class="col-md-4">
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text bg-info text-white"
@@ -220,20 +220,12 @@ $result = $conn->query($sql);
                                                         placeholder="End Date" readonly>
                                                 </div>
                                             </div>
-                                            <div class="ml-2">
+                                            <div class="ml-4">
                                                 <button id="filterAll" class="btn btn-outline-info btn-sm">Filter Date</button>
                                                 <button id="reset"
                                                     class="btn btn-outline-warning btn-sm ">Reset</button>
                                             </div>
                                         </div>
-                                        
-
-
-
-
-                                        
-
-
                                         
 
                                         <section class="table__body">
@@ -394,7 +386,7 @@ $result = $conn->query($sql);
 
                                         <div class="row">
                                             
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text bg-info text-white"
@@ -404,7 +396,7 @@ $result = $conn->query($sql);
                                                         placeholder="Start Date" readonly>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text bg-info text-white"
@@ -414,7 +406,7 @@ $result = $conn->query($sql);
                                                         placeholder="End Date" readonly>
                                                 </div>
                                             </div>
-                                            <div class="ml-5">
+                                            <div class="ml-4">
                                                 <button id="filterArchive" class="btn btn-outline-info btn-sm">Filter
                                                     Date</button>
                                                 <button id="resetArchive"
@@ -1053,7 +1045,7 @@ const archived_customers_table = document.querySelector('#archivedHistory_table'
 
 const toPDF = function (table) {
     const html_code = `
-    <link rel="stylesheet" href="css/users.css" />
+    <link rel="stylesheet" href="css/history.css" />
     
     <table id="customers_table">${table.innerHTML}</table>
     `;
