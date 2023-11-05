@@ -372,6 +372,22 @@ canvas {
   text-align: center;
 }
 
+.average-rating {
+  text-align: right;
+}
+
+.rating {
+  font-size: 24px;
+  color: #f39c12;
+  display: inline-block;
+}
+
+.fas {
+  color: #f39c12;
+  font-size: 20px;
+  vertical-align: middle;
+}
+
 #no {
   animation: up-down 2s ease-in-out infinite alternate-reverse both;
 }
