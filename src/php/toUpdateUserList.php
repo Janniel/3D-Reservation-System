@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'assets/php/connect.php';
+require 'connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Get other data from the POST request
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Handle file upload
     $picture = null;
     if (isset($_FILES['profile_picture'])) {
-        $uploadFolder = 'assets/img/profile/'; // Specify the folder where you want to store the images
+        $uploadFolder = '../img/profile/'; // Specify the folder where you want to store the images
         $picture = $uploadFolder . $_FILES['profile_picture']['name'];
 
         // Upload the file to the designated folder

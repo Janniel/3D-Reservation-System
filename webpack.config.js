@@ -457,6 +457,12 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             inject: true,
+            filename: 'php/toRestoreUser.php',
+            template: 'src/php/toRestoreUser.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
             filename: 'php/user-list.php',
             template: 'src/php/user-list.php',
             chunks: ['users','export','history']
@@ -475,6 +481,12 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             inject: true,
+            filename: 'php/toArchiveUser.php',
+            template: 'src/php/toArchiveUser.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
             filename: 'php/toRestoreHistory.php',
             template: 'src/php/toRestoreHistory.php',
             chunks: ['']
@@ -483,6 +495,12 @@ module.exports = {
             inject: true,
             filename: 'php/toDeleteHistory.php',
             template: 'src/php/toDeleteHistory.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/toDeleteUser.php',
+            template: 'src/php/toDeleteUser.php',
             chunks: ['']
         }),
         new HtmlWebpackPlugin({

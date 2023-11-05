@@ -1,7 +1,7 @@
 <?php
 session_start();
-require 'assets/php/connect.php';
-require 'assets/php/session.php';
+require 'connect.php';
+require 'session.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['userId'])) {
     $userId = $_POST['userId'];
@@ -27,5 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['userId'])) {
     header('HTTP/1.1 400 Bad Request');
     echo "Invalid request";
 }
+
 
 ?>

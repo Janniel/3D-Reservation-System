@@ -320,10 +320,6 @@ foreach ($weeks as $week) {
     var monthLabels = <?php echo json_encode($monthLabels); ?>;
     var finalData = <?php echo json_encode($finalData); ?>;
 
-
-
-
-
 </script>
 
 

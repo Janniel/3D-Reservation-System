@@ -75,13 +75,13 @@ $result = $conn->query($sql);
                 <li class="tabs"> <a href="seats-info.php"><span class="las la-check"></span>
                         <span>Seats Information</span></a>
                 </li>
-                <li class="tabs"> <a href="reserved.php"><span class="las la-clock"></span>
+                <li class="tabs"> <a href="reserved.php" class="active"><span class="las la-clock"></span>
                         <span>Reserved</span></a>
                 </li>
                 <li class="tabs"> <a href="user-list.php"><span class="las la-user-friends"></span>
                         <span>User List</span></a>
                 </li>
-                <li class="tabs"> <a href="history.php" class="active"><span class="las la-history"></span>
+                <li class="tabs"> <a href="history.php" ><span class="las la-history"></span>
                         <span>History</span></a>
                 </li>
                 <li class="tabs"> <a href="adminReviews.php"><span class="las la-star"></span>

@@ -1,5 +1,7 @@
 <?php
-require 'assets/php/connect.php';
+require 'connect.php';
+require 'session.php';
+
 
 
 if ($_SERVER["REQUEST_METHOD"] == "DELETE") {
@@ -25,7 +27,6 @@ if ($_SERVER["REQUEST_METHOD"] == "DELETE") {
     header('Content-Type: application/json');
     echo json_encode($response);
 }
-
 
 
 ?>

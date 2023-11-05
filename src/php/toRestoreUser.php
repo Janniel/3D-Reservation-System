@@ -1,5 +1,5 @@
 <?php
-require 'assets/php/connect.php';
+require 'connect.php';
 
 session_start();
 
