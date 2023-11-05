@@ -201,7 +201,7 @@ $result = $conn->query($sql);
                                             </div>
                                         </section>
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text bg-info text-white"
@@ -211,7 +211,7 @@ $result = $conn->query($sql);
                                                         placeholder="Start Date" readonly>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text bg-info text-white"
@@ -221,7 +221,7 @@ $result = $conn->query($sql);
                                                         placeholder="End Date" readonly>
                                                 </div>
                                             </div>
-                                            <div class="ml-5">
+                                            <div class="ml-4">
                                                 <button id="filterAll" class="btn btn-outline-info btn-sm">Filter
                                                     Date</button>
                                                 <button id="reset"
@@ -376,7 +376,7 @@ $result = $conn->query($sql);
                                                             src="assets/img/json.png" alt=""></label>
                                                     <label for="export-file-archive" id="toCSVArchive">CSV <img
                                                             src="assets/img/csv.png" alt=""></label>
-                                                    <label for "export-file-archive" id="toEXCELArchive">EXCEL <img
+                                                    <label for="export-file-archive" id="toEXCELArchive">EXCEL <img
                                                             src="assets/img/excel.png" alt=""></label>
                                                 </div>
                                             </div>
@@ -384,7 +384,7 @@ $result = $conn->query($sql);
 
                                         <div class="row">
                                             
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text bg-info text-white"
@@ -394,7 +394,7 @@ $result = $conn->query($sql);
                                                         placeholder="Start Date" readonly>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text bg-info text-white"
@@ -404,7 +404,7 @@ $result = $conn->query($sql);
                                                         placeholder="End Date" readonly>
                                                 </div>
                                             </div>
-                                            <div class="ml-5">
+                                            <div class="ml-4">
                                                 <button id="filterArchive" class="btn btn-outline-info btn-sm">Filter
                                                     Date</button>
                                                 <button id="resetArchive"

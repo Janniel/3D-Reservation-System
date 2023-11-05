@@ -162,17 +162,15 @@ $result = $conn->query($sql);
                     <button class="dropdown-toggle" class="btn btn-secondary dropdown-toggle" type="button"
                         id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         <div class="user-wrapper">
-                            <img src="<?php if ($_SESSION['gender'] == "Male") {
-                                echo "https://cdn-icons-png.flaticon.com/512/2552/2552801.png";
-                            } elseif ($_SESSION['gender'] == "Female") {
-                                echo "https://cdn-icons-png.flaticon.com/512/206/206864.png";
-                            } ?>" alt="Admin" class="rounded-circle p-1 bg-secondary" width="45">
-                            <div id="user_admin">
-                                <h4>
-                                    <?php echo $_SESSION["username"]; ?>
-                                </h4>
-                            </div>
+                    
+                        
+                        <div id="user_admin">
+                            <h4>
+                                Hello, <?php echo $_SESSION["first_name"]; ?>
+                            </h4>
                         </div>
+                    
+                    </div>
                     </button>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
