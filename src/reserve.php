@@ -113,6 +113,13 @@ $_SESSION["reservation_count"] = $reservation_count;
           setInterval(triggerValidation, 5000);
       </script>
   <?php /* require_once 'php/header.php' */ ?>
+
+  <nav class="nav">
+    <a href="index.php">Home </a>
+  </nav>
+  
+ 
+  
   
   <div>
     <canvas class="webgl2"></canvas>
@@ -152,7 +159,7 @@ $_SESSION["reservation_count"] = $reservation_count;
                     <div class="col">
                         <div class="form-group">
                             <label for="date">Select date and time</label>
-                            <input type="text" class="form-control text-white bg-transparent" name="date" id="date">                            
+                            <input type="text" class="form-control text-white bg-transparent d-none" name="date" id="date">                            
                         </div>
                     </div>
                 </div>
@@ -175,7 +182,7 @@ $_SESSION["reservation_count"] = $reservation_count;
 
                 <div class="row">
                     <div class="col">
-                    <button type="button" id="viewSeatsButton" class="explore2 mt-3 w-100 btn">Find Seats</button>
+                    <button type="button" id="viewSeatsButton" class="btn btn-primary explore2 mt-3 w-100">Find Seats</button>
                     </div>
                 </div>
             </div>
@@ -194,7 +201,7 @@ $_SESSION["reservation_count"] = $reservation_count;
 
           flatpickr("#date", {
             theme: "dark",
-            inline: false,
+            inline: true,
             dateFormat: "Y-m-d",
             minDate: "today",
             defaultDate: "today",
@@ -224,25 +231,37 @@ $_SESSION["reservation_count"] = $reservation_count;
 
 
 $(document).ready(function () {
-    // Get the current time
-  var currentTime = new Date();
-  var currentHour = currentTime.getHours();
-  var currentMinute = currentTime.getMinutes();
 
-  // Format the current time as a string in HH:mm format
-  var currentTimeString = currentHour.toString().padStart(2, '0') + ':' + currentMinute.toString().padStart(2, '0');
-  $('#start_time').timepicker({
+
+// Get the current time
+var currentTime = new Date();
+var currentHour = currentTime.getHours();
+var currentMinute = currentTime.getMinutes();
+
+// Round the current time to the nearest 15-minute interval
+var roundedMinute = Math.round(currentMinute / 15) * 15;
+if (roundedMinute === 60) {
+    currentHour += 1;
+    roundedMinute = 0;
+}
+
+// Format the rounded current time as a string in HH:mm format
+var currentTimeString = currentHour.toString().padStart(2, '0') + ':' + roundedMinute.toString().padStart(2, '0');
+
+$('#start_time').timepicker({
     'timeFormat': 'h:i A',
-    
-    'minTime': currentTimeString, // the min time of the start time is come from the databae column called  start_hour
-    'maxTime': '<?php echo date('H:i A', strtotime($end_hour))?>', // the maxTime of start time is came from the database column called end_hour
+    'minTime': currentTimeString,
+    'maxTime': '<?php echo date('H:i A', strtotime($end_hour))?>',
     'step': 15,
     'forceRoundTime': true,
-  });
+});
+
+
+
 
   $('#end_time').timepicker({
-    'maxTime': '<?php echo date('H:i A', strtotime($end_hour))?>', //the maxTime of end time is came from the database column called end_hour
-    'step': 15,
+   
+    // 'maxTime':
     'showDuration': true,
     'timeFormat': 'h:i A',
     'forceRoundTime': true,
@@ -310,6 +329,8 @@ $(document).ready(function () {
         $('#viewSeatsButton').prop('disabled', true);
       }
     } else {
+      $('#end_time').val('');
+      $('#start_time').val('');
       $('#viewSeatsButton').prop('disabled', true);
     }
   }
@@ -338,8 +359,11 @@ $(document).ready(function () {
       <h1><b></b></h1>
       <p></p>
       <p></p>
-      <button id="reserveBtn" class="btn explore">Reserve Seat</button>
-      <button class="btn text-white" id="reserveDivClose">Cancel</button>
+      <div class="col">
+        <button id="reserveBtn" class="btn explore">Reserve Seat</button>
+        <button class="btn text-white" id="reserveDivClose">Cancel</button>
+      </div>
+     
     </div>
 
 

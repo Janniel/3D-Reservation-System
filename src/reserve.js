@@ -204,6 +204,8 @@ explore2.addEventListener('click', () => {
           const seatObjectNames = Object.keys(seatMaterials);
           seatObjectNames.forEach((objectName) => {
             const seatObject = gltfmodel.getObjectByName(objectName, true); // Use recursive search
+            seatObject.material.transparent = false;
+            seatObject.material.opacity = 1;
             if (seatObject) {
               if (reservedSeats.includes(objectName)) {
                 seatObject.material.transparent = true;
@@ -454,10 +456,10 @@ function showtip () {
 }
 function showDateTime() {
   console.log("shows date and time form");
-  dateTimeDiv.style.display = "block";
+  dateTimeDiv.style.display = "flex";
   dateTimeDiv.style.pointerEvents = "auto";
-  const tl4 = gsap.timeline({defaults: {duration: 1} })
-  tl4.fromTo(dateTimeDiv, {x: "-100%"}, {x:"0%"})
+  // const tl4 = gsap.timeline({defaults: {duration: 1} })
+  // tl4.fromTo(dateTimeDiv, {y: "100%"}, {y:"0%"})
   seatsViewed = false;
 
   
@@ -491,7 +493,7 @@ function showSeatInfo(selectedSeatNumber, date, startTime, endTime) {
       // Display the seat_name instead of selectedSeatNumber
       seatNumberHeading.textContent = `SEAT ${seatName}`;
       dateParagraph.textContent = `on ${formattedDate}`;
-      timeParagraph.textContent = `${startTime} to ${endTime}`;
+      timeParagraph.textContent = `${startTime} - ${endTime}`;
 
       seatInfoDiv.style.display = "block";
 
