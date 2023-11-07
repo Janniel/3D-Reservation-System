@@ -180,17 +180,17 @@ require 'php/session.php';
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>Birthdate</label>
+									<label for="bday-input">Birthdate</label>
 									<input type="date" id="bday-input" name="bday" class="form-control"
-										id="dateReleased" name="dateReleased" value="<?php echo $row["bday"]; ?>"
-										required="required" placeholder="Date Released">
+										value="<?php echo $row["bday"]; ?>" required="required"
+										placeholder="Date Released" oninput="calculateAge()">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>Age</label>
-									<input type="text" class="form-control" id="age-input" placeholder="Enter age"
-										value="<?php echo $row["age"]; ?>">
+									<label for="age-input">Age</label>
+									<input type="text" class="form-control" id="age-input" name="age"
+										placeholder="Enter age" value="<?php echo $row["age"]; ?>" readonly>
 								</div>
 							</div>
 							<!-- <div class="col-md-6">
@@ -380,8 +380,22 @@ require 'php/session.php';
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
 <script>
+	// function to calculate age base on user bday input
+	function calculateAge() {
+		var bdayInput = document.getElementById("bday-input");
+		var ageInput = document.getElementById("age-input");
 
+		var dob = new Date(bdayInput.value);
+		var today = new Date();
+		var age = today.getFullYear() - dob.getFullYear();
+		var monthDiff = today.getMonth() - dob.getMonth();
 
+		if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+			age--;
+		}
+
+		ageInput.value = age;
+	}
 	// Function to show Swal alerts based on response status
 	document.getElementById('updateInfo').addEventListener('click', function () {
 		// Disable the button to prevent multiple clicks
