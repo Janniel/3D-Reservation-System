@@ -563,23 +563,27 @@ nav ul {
   padding: 1rem;
 } */
 
-/* Media query for larger screens */
+/* Media query for larger screens */ /* Media query for larger screens */ /* Media query for larger screens */
+/* Media query for larger screens */ /* Media query for larger screens */ /* Media query for larger screens */
+/* Media query for larger screens */ /* Media query for larger screens */ /* Media query for larger screens */
+/* Media query for larger screens */ /* Media query for larger screens */ /* Media query for larger screens */
+/* Media query for larger screens */ /* Media query for larger screens */ /* Media query for larger screens */
 @media (min-width: 768px) {
   body {
       font-size: 18px;
   }
 
-
   .nav {
     color: white;
     z-index: 2;
-    position: relative;
+    position: absolute;
     padding: 2rem 8rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 1rem;
     opacity: 0;
+    right: 0;
   }
 
   .nav-ul {
@@ -599,8 +603,6 @@ nav ul {
   .title {
       padding: 4rem;
   }
-
-
 
   .tooltip {
       max-width: 450px;
