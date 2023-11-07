@@ -69,7 +69,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sign in & Sign up Form</title>
   <!------------------------ CSS Link ------------------------>
-  <link rel="stylesheet" href="css/login.css" />
+  <!-- <link rel="stylesheet" href="css/login.css" /> -->
+  <!-- <link rel="preload" href="./styles/login.css" as="style"> -->
+
   <!------------------------ Bootstrap 5.3.0 ------------------------>
   <!-- <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css" /> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -101,6 +103,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   grid-row: 1 / 2;
   transition: opacity 0.02s 0.4s;
 }
+
+
 
   </style>
 
@@ -375,18 +379,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         var firstName = $(this).val();
 
         if (lettersOnlyPattern.test(firstName)) {
-          registerButton.prop('disabled', false);
+          $('#register-btn').prop('disabled', false);
         } else {
-          registerButton.prop('disabled', true);
+          $('#register-btn').prop('disabled', true);
         }
     });
     $('#lastName').on('input', function() {
         var lastName = $(this).val();
 
         if (lettersOnlyPattern.test(lastName)) {
-          registerButton.prop('disabled', false);
+          $('#register-btn').prop('disabled', false);
         } else {
-          registerButton.prop('disabled', true);
+          $('#register-btn').prop('disabled', true);
         }
     });
 

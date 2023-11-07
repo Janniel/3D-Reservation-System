@@ -1,8 +1,10 @@
+
 const inputs = document.querySelectorAll(".input-field");
 const toggle_btn = document.querySelectorAll(".toggle");
 const main = document.querySelector("main");
 const bullets = document.querySelectorAll(".bullets span");
 const images = document.querySelectorAll(".image");
+
 import "./styles/login.css"
 
 inputs.forEach((inp) => {
@@ -71,10 +73,10 @@ function checkUserIdAvailability() {
 		success: function(response) {
 			if (response == 'exists') {
 				$('#user_id').addClass('is-invalid');
-				console.log(user_id + ' exists');
+				$('#register-btn').prop('disabled', true);
 			} else {
 				$('#user_id').removeClass('is-invalid');
-				console.log(user_id + ' is valid');
+				$('#register-btn').prop('disabled', false);
 			}
 		}
 	});
