@@ -115,7 +115,10 @@ $_SESSION["reservation_count"] = $reservation_count;
   <?php /* require_once 'php/header.php' */ ?>
 
   <nav class="nav">
-    <a href="index.php">Home </a>
+    <ul class="nav-ul">
+      <li><a href="index.php">Home</a></li>
+      <li><a href="profile.php">Account</a></li>
+    </ul>
   </nav>
   
  
@@ -143,11 +146,11 @@ $_SESSION["reservation_count"] = $reservation_count;
         </h6>
       </div>
    
-      <button class="filterBtn" >Filter &nbsp; <i class="fas fa-sliders-h" style="color: #ffffff;"></i></button>
-      <button class="section1">Section A</button>
-      <button class="section2">Section B</button>
-      <button class="section3">Section C</button>
-      <button class="section4">Section D</button>
+      <button class="sections" id="filterBtn" >Filter &nbsp; <i class="fas fa-sliders-h" style="color: #ffffff;"></i></button>
+      <button class="sections" id="section1">Section A</button>
+      <button class="sections" id="section2">Section B</button>
+      <button class="sections" id="section3">Section C</button>
+      <button class="sections" id="section4">Section D</button>
      
     </div>
     
@@ -349,8 +352,8 @@ $('#start_time').timepicker({
 
     <div id="helper"class="helper">
       <img src="img/drag.png" height="75px"></img>
-      <p><b>Drag across the screen to view available seats.</b></p>
-      <small>Dismiss</small>
+      <p><b><br>Drag across the screen to view available seats.</b></p>
+      <small><br><u>Click here to dismiss</u></small>
     </div>
 
     <div id="reserveDiv" class="reserveDiv" style="display: none;">

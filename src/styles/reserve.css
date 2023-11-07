@@ -67,7 +67,7 @@
   margin-right: auto;
 }
 
-.nav {
+/* .nav {
   color: white;
 background-color: transparent;
   position: absolute;
@@ -87,7 +87,7 @@ background-color: transparent;
   text-decoration: none;
   padding: 1rem;
   right: 0;
-}
+} */
 
 .dateTimeDiv ul {
   list-style: none;
@@ -317,6 +317,10 @@ background-color: transparent;
   font-size: 2.25rem;
 }
 
+.big-title b {
+  font-weight: 800;
+}
+
 .title {
   color: whitesmoke;
 padding: 1.2rem;
@@ -344,6 +348,7 @@ padding: 1.2rem;
   background-color: #a81c1c !important;
   outline: 1px solid #a81c1c !important;
   border: 1px solid #a81c1c !important;
+  border-radius: 0.5rem;
   text-transform: capitalize;
   color: #fff;
   font-weight: 700;
@@ -378,12 +383,12 @@ padding: 1.2rem;
   color: white;
   border: 1px solid gray;
   padding: 3rem;
-  border-radius: 0.5rem; /* Corrected the value here (changed . to 0) */
+  border-radius: 1.5rem; /* Corrected the value here (changed . to 0) */
   top: 50%;
   left: 50%;
   z-index: 99;
   width: 350px;
-  background: rgba(3, 3, 3, 0.5); /* Corrected the rgba syntax here */
+  background: rgba(3, 3, 3, 0.7); /* Corrected the rgba syntax here */
   transform: translate(-50%, -50%);
   display: none;
   height: fit-content;
@@ -394,6 +399,18 @@ padding: 1.2rem;
   flex-wrap: nowrap;
 }
 
+.helper img {
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateX(-30px);
+  }
+  100% {
+    transform: translateX(30px);
+  }
+}
 
 .tooltip {
   padding: 2rem;
@@ -441,7 +458,7 @@ padding: 1.2rem;
   }
 }
 
-.section1, .section2, .section3, .section4, .filterBtn{
+.sections{
   display: block;
   cursor: pointer;
   margin: 15px 0;
@@ -457,6 +474,11 @@ padding: 1.2rem;
   background-color: rgba(130, 0, 13, 0.7);
   text-transform: capitalize;
   color: whitesmoke;
+  pointer-events: all;
+}
+
+.sections:hover{
+  background-color: rgba(90, 0, 9, 0.7);
 }
 
 .ui-timepicker-wrapper {
@@ -549,12 +571,29 @@ nav ul {
 
 
   .nav {
-      padding: 2rem 8rem;
-      flex-direction: row;
+    color: white;
+    z-index: 2;
+    position: relative;
+    padding: 2rem 8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    opacity: 0;
   }
 
-  .nav ul {
-      flex-direction: row;
+  .nav-ul {
+    list-style: none;
+    display: flex;
+    gap: 4rem;
+    margin: 0;
+    margin-left: auto;
+  }
+
+  .nav-ul li a {
+    text-decoration: none;
+    color:white;
+    font-weight: bold;
   }
 
   .title {

@@ -49,6 +49,7 @@ loader.load("./models/interior final.glb", function(gltf) {
 // TIMELINE
 const tl = gsap.timeline({defaults: {duration: 1}})
 tl.fromTo(gltfmodel.scale, {z:0, x:0, y:0}, {z: 0.20, x: 0.20, y: 0.20})
+showNav()
 showtitle()
 })
 
@@ -72,15 +73,12 @@ const light2 = new THREE.HemisphereLight(0xD1D1D1, 0xFFB92E, 2)
 scene.add(light2)
 
 //Camera
-const fov = 50;
+const fov = 45;
 const camera = new THREE.PerspectiveCamera(fov, sizes.width/sizes.height, 0.1, 100)
 camera.position.x = -0.34
 camera.position.z = 1.315
 camera.position.y = -0.059
 scene.add(camera)
-
-
-
 
 
 //Renderer
@@ -133,12 +131,14 @@ const tooltipHeading = tooltip.querySelector('h2');
 const tooltipParagraph = tooltip.querySelector('p');
 tooltip.style.display = 'none'
 
+const headerNav = document.querySelector('.nav')
+
 const sectionNav = document.querySelector(".section-nav")
-const section1 = sectionNav.querySelector(".section1")
-const section2 = sectionNav.querySelector(".section2")
-const section3 = sectionNav.querySelector(".section3")
-const section4 = sectionNav.querySelector(".section4")
-const filterBtn = sectionNav.querySelector(".filterBtn")
+const section1 = sectionNav.querySelector("#section1")
+const section2 = sectionNav.querySelector("#section2")
+const section3 = sectionNav.querySelector("#section3")
+const section4 = sectionNav.querySelector("#section4")
+const filterBtn = sectionNav.querySelector("#filterBtn")
 
 // Define an array to hold selected seats
 const selectedSeats = [];
@@ -248,7 +248,11 @@ explore2.addEventListener('click', () => {
 });
 
 
-
+function showNav() {
+  const tlNav = gsap.timeline({defaults: {duration: 1}})
+  tlNav.fromTo(headerNav, {y: '-100%'}, {y: '0%'})
+  headerNav.style.opacity = '1'
+}
 
 
 
@@ -393,9 +397,9 @@ function showtitle () {
 }
 
 function showsection() {
-  sectionNav.style.display = "block";
+  sectionNav.style.display = "inline";
   sectionNav.style.opacity = "1";
-  sectionNav.style.pointerEvents = "auto";
+  sectionNav.style.pointerEvents = "none";
   const tl3 = gsap.timeline({ defaults: { duration: 1 } });
   tl3.fromTo(sectionNav, { x: "-100%" }, { x: "0%" });
 
