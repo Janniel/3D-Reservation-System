@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&family=Tilt+Neon&display=swap');
+/* fonts */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600|Roboto:300,400");
 
 :root {
   --main-color: #a81c1c;
@@ -23,8 +27,7 @@ body {
 }
 
 main {
-  margin-top: 85px;
-  padding: 2rem 1.5rem;
+  margin-top: 80px;
   background: #f1f5f9;
   height: auto;
 }
@@ -37,7 +40,7 @@ main {
   top: 0;
   height: 100%;
   background: var(--main-color);
-  z-index: 100;
+  z-index: 50;
   transition: width 300ms;
 }
 
@@ -158,7 +161,7 @@ header {
   left: 345px;
   width: calc(100% - 345px);
   top: 0%;
-  z-index: 100;
+  z-index: 50;
   background-color: #fff;
   transition: left 300ms;
 }
@@ -254,3 +257,67 @@ header label span {
 }
 
 /* --------- END OF HEADER --------- */
+
+
+.webgl3 {
+  position: absolute;
+  top: 0;
+  left:0;
+  z-index: 1;
+}
+
+.info-container {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  text-align: center;
+  color: whitesmoke;
+  margin-bottom: 2rem;
+  margin-right: 2rem;
+  background: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  transition-duration: 0.3s;
+  transition-property: opacity, transform;
+  z-index: 1;
+}
+
+.info-container h3 {
+  font-family: "Tilt Neon", sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.info-container p {
+  font-family: "Quicksand", sans-serif;
+  font-size: 1rem;
+}
+
+.info-container button {
+  cursor: pointer;
+  background-color: #a81c1c;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.maintenance-btn:hover {
+  background-color: #841616;
+  transition-duration: 250ms;
+}
+
+.maintenance-btn:focus {
+  background-color: #540e0e;
+  transition-duration: 250ms;
+}
+
+.maintenance-btn:active {
+  background-color: #540e0e;
+  transition-duration: 250ms;
+}

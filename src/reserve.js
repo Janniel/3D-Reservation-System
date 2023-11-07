@@ -85,7 +85,9 @@ scene.add(camera)
 
 //Renderer
 const canvas = document.querySelector('.webgl2')
-const renderer = new THREE.WebGLRenderer({canvas})
+const renderer = new THREE.WebGLRenderer({canvas, antialias: true})
+const backgroundColor = new THREE.Color(0x000000);
+renderer.setClearColor(backgroundColor);
 renderer.setSize(sizes.width, sizes.height)
 renderer.render(scene, camera)
 renderer.setPixelRatio(0.75)
@@ -93,8 +95,8 @@ renderer.setPixelRatio(0.75)
 //Controls
 const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
-controls.enablePan = true
-controls.enableZoom = true
+controls.enablePan = false
+controls.enableZoom = false
 
 //Resize
 window.addEventListener("resize", () => {
@@ -181,6 +183,7 @@ explore2.addEventListener('click', () => {
   startTime = document.getElementById('start_time').value;
   endTime = document.getElementById('end_time').value;
 
+  
   fetchReservedSeats(date, start_time, end_time)
     .then((reservedSeats) => {
 
@@ -203,7 +206,11 @@ explore2.addEventListener('click', () => {
           // Get all the object names of the seats in your 3D scene
           const seatObjectNames = Object.keys(seatMaterials);
           seatObjectNames.forEach((objectName) => {
+
             const seatObject = gltfmodel.getObjectByName(objectName, true); // Use recursive search
+            seatObject.material.transparent = false;
+            seatObject.material.opacity = 1;
+
             if (seatObject) {
               if (reservedSeats.includes(objectName)) {
                 seatObject.material.transparent = true;
@@ -225,6 +232,8 @@ explore2.addEventListener('click', () => {
               }
             
             } else {
+              seatObject.material.transparent = false;
+              seatObject.material.opacity = 1;
               console.log("Seat object not found for name:", objectName);
             }
           });
@@ -454,10 +463,10 @@ function showtip () {
 }
 function showDateTime() {
   console.log("shows date and time form");
-  dateTimeDiv.style.display = "block";
+  dateTimeDiv.style.display = "flex";
   dateTimeDiv.style.pointerEvents = "auto";
-  const tl4 = gsap.timeline({defaults: {duration: 1} })
-  tl4.fromTo(dateTimeDiv, {x: "-100%"}, {x:"0%"})
+  // const tl4 = gsap.timeline({defaults: {duration: 1} })
+  // tl4.fromTo(dateTimeDiv, {y: "100%"}, {y:"0%"})
   seatsViewed = false;
 
   
@@ -491,7 +500,7 @@ function showSeatInfo(selectedSeatNumber, date, startTime, endTime) {
       // Display the seat_name instead of selectedSeatNumber
       seatNumberHeading.textContent = `SEAT ${seatName}`;
       dateParagraph.textContent = `on ${formattedDate}`;
-      timeParagraph.textContent = `${startTime} to ${endTime}`;
+      timeParagraph.textContent = `${startTime} - ${endTime}`;
 
       seatInfoDiv.style.display = "block";
 
