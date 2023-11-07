@@ -63,7 +63,7 @@ $result = mysqli_query($conn, $sql);
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
     <!------------------------ CSS Link ------------------------>
-    <link rel="stylesheet" type="text/css" href="assets/css/analytics.css" />
+    <link rel="stylesheet" type="text/css" href="css/analytics.css" />
 
     <!------------------------ ICONS ------------------------>
     <link rel="stylesheet"
@@ -160,14 +160,9 @@ $result = mysqli_query($conn, $sql);
                 <button class="dropdown-toggle" class="btn btn-secondary dropdown-toggle" type="button"
                     id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     <div class="user-wrapper">
-                        <img src="<?php if ($_SESSION['gender'] == "Male") {
-                            echo "https://cdn-icons-png.flaticon.com/512/2552/2552801.png";
-                        } elseif ($_SESSION['gender'] == "Female") {
-                            echo "https://cdn-icons-png.flaticon.com/512/206/206864.png";
-                        } ?>" alt="Admin" class="rounded-circle p-1 bg-secondary" width="45">
                         <div id="user_admin">
                             <h4>
-                                <?php echo $_SESSION["username"]; ?>
+                                Hello, <?php echo $_SESSION["first_name"]; ?>
                             </h4>
                         </div>
                     </div>
