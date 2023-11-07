@@ -246,10 +246,10 @@ require 'php/connect.php';
                                 <h4>More Info</h4>
                             </div>
                             <ul>
-                                <li><a href="survey.php">Rate our service</a></li>
-                                <li><a href="https://www.bulsu.edu.ph/">Official Website</a></li>
-                                <li><a href="https://myportal.bulsu.edu.ph/">BulSU Portal</a></li>
-                                <li><a href="https://www.bulsu.edu.ph/library/">Library Service</a></li>
+                                <li><a href="survey.php" target="_blank">Rate our service</a></li>
+                                <li><a href="https://www.bulsu.edu.ph/" target="_blank">Official Website</a></li>
+                                <li><a href="https://myportal.bulsu.edu.ph/" target="_blank">BulSU Portal</a></li>
+                                <li><a href="https://www.bulsu.edu.ph/library/" target="_blank">Library Service</a></li>
                             </ul>
                         </div>
                         <div class="col-md-6 col-lg-4 open-hours">
@@ -258,8 +258,8 @@ require 'php/connect.php';
                                 <ul class="footer-social">
                                     <li><a href="https://www.facebook.com/BulSUaklatan" target="_blank"><i
                                                 class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a href="" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li><a href="https://www.instagram.com/bulsuaklatan/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="https://www.linkedin.com/school/bulacan-state-university/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
 
                                 </ul>
                             </div>
