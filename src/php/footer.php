@@ -24,7 +24,7 @@
             </div>
             <ul>
               <li><a href="home.php" target="_blank">Home</a></li>
-              <li><a href="home.php#aboutus" target="_blank">About Us</a></li>
+              <li><a href="home.php#aboutSOAR" target="_blank">About Us</a></li>
               <li><a href="reserve.php" target="_blank">Reserve seat</a></li>
               <li><a href="profile.php" target="_blank">Your Account</a></li>
             </ul>

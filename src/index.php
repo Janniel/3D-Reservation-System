@@ -19,7 +19,7 @@ require 'php/connect.php';
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
     <!------------------------ CSS Link ------------------------>
-    
+
 
     <!------------------------ For NAV-BAR ------------------------>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -39,47 +39,49 @@ require 'php/connect.php';
 
 <body>
 
-   
-<script>
-          
-          // Function to trigger the PHP script
-          function triggerValidation() {
-              var xhr = new XMLHttpRequest();
-              xhr.open('GET', 'php/validateReservation.php', true);
-              xhr.onreadystatechange = function () {
-                  if (xhr.readyState === 4) {
-                      if (xhr.status === 200) {
-                          console.log('Checked expired validation');
-                      } else {
-                          console.log('Error in checking expired validation');
-                      }
-                  }
-              };
-              xhr.send();
-          }
-      
-          // Call the function immediately
-          triggerValidation();
-      
-          // Set up a recurring timer to call the function every 5 seconds (5000 milliseconds)
-          setInterval(triggerValidation, 5000);
-      </script>
+
+    <script>
+
+        // Function to trigger the PHP script
+        function triggerValidation() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'php/validateReservation.php', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        console.log('Checked expired validation');
+                    } else {
+                        console.log('Error in checking expired validation');
+                    }
+                }
+            };
+            xhr.send();
+        }
+
+        // Call the function immediately
+        triggerValidation();
+
+        // Set up a recurring timer to call the function every 5 seconds (5000 milliseconds)
+        setInterval(triggerValidation, 5000);
+    </script>
 
     <script>
         AOS.init();
-        
+
     </script>
 
     <div class="wrapper">
 
         <!------------------------ HEADER --------------------->
 
-        <?php 
+        <?php
         // if the user was not logged in
-        if (!isset($_SESSION["user_id"]) && !isset($_SESSION["password"]) && !isset($_SESSION["first_name"]) 
-        && !isset($_SESSION["last_name"]) &&!isset($_SESSION["reservation_count"])) {
+        if (
+            !isset($_SESSION["user_id"]) && !isset($_SESSION["password"]) && !isset($_SESSION["first_name"])
+            && !isset($_SESSION["last_name"]) && !isset($_SESSION["reservation_count"])
+        ) {
             require 'php/header_notLogged.php';
-            
+
 
         } else {
             require 'php/header.php';
@@ -88,18 +90,16 @@ require 'php/connect.php';
 
         ?>
 
-
-
-  
-
         <!------------------------ END HEADER --------------------->
         <!------------------------ COVER ------------------------>
         <div id="home" class="parallax-home">
             <img class="banner" src="img/lib building_bg.jpg" id="lib-front">
 
             <div class="title">
-            <h1 id="parallax-home-text-lib" data-aos="fade-up" data-aos="fade-up" data-aos-duration="500">Library</h1>
-                <h1 id="parallax-home-text-school" data-aos="fade-up" data-aos-duration="800">BULACAN STATE UNIVERSITY</h1>
+                <h1 id="parallax-home-text-lib" data-aos="fade-up" data-aos="fade-up" data-aos-duration="500">Library
+                </h1>
+                <h1 id="parallax-home-text-school" data-aos="fade-up" data-aos-duration="800">BULACAN STATE UNIVERSITY
+                </h1>
                 <h1 id="parallax-home-text-disc" data-aos="fade-up" data-aos-duration="1100">Discover and Learn</h1>
             </div>
         </div>
@@ -108,24 +108,25 @@ require 'php/connect.php';
 
         <!------------------------ SEAT INFO ------------------------>
         <div class="webgl-container">
-        <canvas class="webgl"></canvas>
+            <canvas class="webgl"></canvas>
 
-        <div class="seats" data-aos="fade-right">
-            <div class="no-of-seats">
-                <h1 id="no">332</h1>
-                <h1 id="avail">Available Seats</h1>
-            </div>
+            <div class="seats" data-aos="fade-right">
+                <div class="no-of-seats">
+                    <h1 id="no">332</h1>
+                    <h1 id="avail">Available Seats</h1>
+                </div>
 
             </div>
             <a href="reserve.php" class="reserve-btn btn">
                 Reserve seat
             </a>
         </div>
-
-    
-
         <!------------------------ END OF SEAT INFO ------------------------>
 
+
+        <!------------------------ ABOUT US ------------------------>
+        <span class="abtus" id="aboutSOAR"></span>
+        <div class="section"></div>
         <div id="aboutus">
             <h2>ABOUT US</h2>
             <p>
@@ -235,7 +236,7 @@ require 'php/connect.php';
                             </div>
                             <ul>
                                 <li><a href="#home">Home</a></li>
-                                <li><a href="#aboutus">About Us</a></li>
+                                <li><a href="#aboutSOAR">About Us</a></li>
                                 <li><a href="reserve.php">Reserve seat</a></li>
                                 <li><a href="profile.php">Your Account</a></li>
                             </ul>
@@ -258,8 +259,10 @@ require 'php/connect.php';
                                 <ul class="footer-social">
                                     <li><a href="https://www.facebook.com/BulSUaklatan" target="_blank"><i
                                                 class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="https://www.instagram.com/bulsuaklatan/" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a href="https://www.linkedin.com/school/bulacan-state-university/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li><a href="https://www.instagram.com/bulsuaklatan/" target="_blank"><i
+                                                class="fab fa-instagram"></i></a></li>
+                                    <li><a href="https://www.linkedin.com/school/bulacan-state-university/"
+                                            target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
 
                                 </ul>
                             </div>
@@ -310,9 +313,6 @@ require 'php/connect.php';
             </div>
         </footer>
         <!------------------------ FOOTER ------------------------>
-
-
-
     </div>
 
 

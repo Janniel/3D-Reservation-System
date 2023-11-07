@@ -27,7 +27,7 @@
     </div>
     <nav class="header-navigation">
       <a class="active" href="index.php">HOME</a>
-      <a href="index.php#aboutus">ABOUT US</a>
+      <a href="index.php#aboutSOAR">ABOUT US</a>
       <a href="reserve.php">RESERVE SEAT</a>
       <a id="hidden" href="occupy.php">OCCUPY SEAT</a>
       <a id="hidden" href="profile.php">ACCOUNT</a>

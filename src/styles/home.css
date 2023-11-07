@@ -466,10 +466,17 @@ canvas {
 
 
 /* About Us */
+.abtus{
+  display: block;
+  height: 300px; /*same height as header*/
+  margin-top: 72vh; /*same height as header*/
+  visibility: hidden;
+}
+
 #aboutus {
   position: relative;
-  padding-top: 100vh;
   margin: 0 auto;
+  margin-top: 0;
   text-align: center;
   display: block;
   justify-content: space-between;
