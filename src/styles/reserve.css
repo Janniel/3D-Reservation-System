@@ -483,11 +483,6 @@ li.ui-timepicker-selected, .ui-timepicker-list li:hover, .ui-timepicker-list .ui
 ::-webkit-scrollbar {
   width: 1rem;
 }
-
-/* Track */
-::-webkit-scrollbar-track {
-
-}
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
