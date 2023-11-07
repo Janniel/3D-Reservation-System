@@ -164,18 +164,17 @@ if (mysqli_num_rows($result123) == 1) {
                             if ($row['picture'] === NULL) {
                                 echo '<img src="https://pic.onlinewebfonts.com/thumbnails/icons_24787.svg" alt="Default Image">';
                             } else {
-                                echo '<img src="<?php echo $row["picture"]; ?>" alt="Profile Image">';
+                                echo '<img src="' . $row['picture'] . '" alt="Profile Image">';
                             }
                             ?>
-                            
                         </div>
                         <div>
                             <?php
                             // Retrieve the username from the session
                             $username = $_SESSION["username"];
 
-                                // Retrieve the user details from the database
-                                $sql = "SELECT *
+                            // Retrieve the user details from the database
+                            $sql = "SELECT *
                                 FROM ACCOUNT
                                 INNER JOIN USERS ON ACCOUNT.account_id = USERS.account_id
                                 WHERE ACCOUNT.username = '$username';
@@ -188,16 +187,16 @@ if (mysqli_num_rows($result123) == 1) {
                                 $row = $result->fetch_assoc();
                                 // $email = $row["email"];
                                 // $year = $row["year_level"];
-                                
+                            
                                 // Populate the HTML template with the fetched data
                                 echo '
                                 <h4 class="text-center fw-bold">' . $row["first_name"] . ' ' . $row["last_name"] . '</h4>
                                 <p class="text-center text-sm">' . $row["user_id"] . '</p>
                                 <div class="text-start ">
                                     <h6><i class="fas fa-id-card p-2"  style="color: gray"></i>' . $row["rfid_no"] . '</h6>
-                                    <h6><i class="fas fa-user p-2" style="color: gray"></i> ' . $row["username"]. '</h6>
-                                    <h6><i class="fas fa-envelope p-2" style="color: gray"></i> ' .$row["email"]. '</h6>
-                                    <h6><i class="fas fa-birthday-cake p-2" style="color: gray"></i> ' . $row["age"] .  '</h6>
+                                    <h6><i class="fas fa-user p-2" style="color: gray"></i> ' . $row["username"] . '</h6>
+                                    <h6><i class="fas fa-envelope p-2" style="color: gray"></i> ' . $row["email"] . '</h6>
+                                    <h6><i class="fas fa-birthday-cake p-2" style="color: gray"></i> ' . $row["age"] . '</h6>
                                     <h6><i class="fas fa-venus-mars p-2" style="color: gray"></i>' . $row["gender"] . '</h6>
                                 </div>
                                 <div class="edit-info">
@@ -205,65 +204,6 @@ if (mysqli_num_rows($result123) == 1) {
                                 </div>
                                 </div>';
 
-                                }
-                                ?>
-                            </div>		
-                        
-                    
-                    </div>
-               
-                <div class="col-lg-8 rounded-3 d-block p-2 m-2 ">
-              
-                   <h5>
-                  
-                        <?php
-                        $count_query = "SELECT COUNT(*) AS reservation_count FROM reservation WHERE user_id = '{$_SESSION['user_id']}' AND date >= CURDATE()";
-                        $count_result = mysqli_query($conn, $count_query);
-                        $count_row = mysqli_fetch_assoc($count_result);
-                        $reservation_count = $count_row['reservation_count'];
-
-                        // Retrieve the maximum reservation per day from the settings table
-                        $settings_query = "SELECT reservePerDay FROM settings WHERE settings_id = '1'";
-                        $settings_result = mysqli_query($conn, $settings_query);
-                        $settings_row = mysqli_fetch_assoc($settings_result);
-                        $reservePerDay = $settings_row['reservePerDay'];
-
-                        $_SESSION["reservation_count"] = $reservation_count;
-
-                        // echo "<span>{$reservation_count} out of {$reservePerDay}</span>";
-                        ?>
-                    </h5>
-
-                    <!-- <h5 class="pt-3 text-black-50">In Progress</h5> -->
-                    <div class="container">
-                      
-                        <?php
-                        $query = "SELECT * FROM occupy WHERE user_id = '{$_SESSION['user_id']}' AND isDone = 0";
-                        $result = mysqli_query($conn, $query);
-                    
-
-                        if (mysqli_num_rows($result) > 0) {
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $seat_id = $row['seat_id'];
-                                $reservation_id = $row['reservation_id'];
-                                $date = date('F j, Y', strtotime($row['date'])); // Convert date to desired format
-                                $start_time = date('h:i A', strtotime($row['start_time'])); // Convert start time to AM/PM format
-                               
-
-                                // Retrieve additional information related to the reservation, such as seat details
-                                $seat_query = "SELECT * FROM seat WHERE seat_id = '$seat_id'";
-                                $seat_result = mysqli_query($conn, $seat_query);
-                                $seat_row = mysqli_fetch_assoc($seat_result);
-                                $seat_number = $seat_row['seat_name'];
-                                
-                                $query1 = "SELECT * FROM reservation WHERE reservation_id = $reservation_id";
-                                $result1 = mysqli_query($conn, $query1);
-
-                                if (mysqli_num_rows($result) > 0) {
-                                    while ($row1 = mysqli_fetch_assoc($result1)) {
-                                        $end_time = date('h:i A', strtotime($row1['end_time'])); // Convert end time to AM/PM format
-                                    }
-                                }
                             }
                             ?>
                         </div>
