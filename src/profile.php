@@ -160,11 +160,14 @@ if (mysqli_num_rows($result123) == 1) {
                 <div class="col-lg-3 bg-white rounded-4 d-block p-2 m-2 shadow">
                     <div class="p-4">
                         <div class="img-circle text-center">
-                            <?php if (isset($_SESSION['picture'])) {
-                           echo '<img src="<?php echo $row["picture"]; ?>" alt="Profile Image">';
-                        } else {
-                            echo '<img src="https://pic.onlinewebfonts.com/thumbnails/icons_24787.svg" alt="Profile Image">';
-                        } ?>
+                            <?php
+                            if ($row['picture'] === NULL) {
+                                echo '<img src="https://pic.onlinewebfonts.com/thumbnails/icons_24787.svg" alt="Default Image">';
+                            } else {
+                                echo '<img src="<?php echo $row["picture"]; ?>" alt="Profile Image">';
+                            }
+                            ?>
+                            
                         </div>
                         <div>
                             <?php
