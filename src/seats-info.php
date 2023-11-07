@@ -196,8 +196,8 @@ require 'php/session.php';
                     </button>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="adminProfile.php">Profile</a></li>
-                        <li><a class="dropdown-item" href="../toLogout.php">Logout</a></li>
+                        <li><a class="dropdown-item" href="php/adminProfile.php">Profile</a></li>
+                        <li><a class="dropdown-item" href="toLogout.php">Logout</a></li>
                     </div>
                 </div>
             </header>

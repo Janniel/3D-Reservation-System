@@ -110,7 +110,7 @@ $result = mysqli_query($conn, $sql);
                             class="las la-th-large"></span>
                         <span>Dashboard</span></a>
                 </li>
-                <li class="tabs"> <a href="seats-info.php"><span class="las la-check"></span>
+                <li class="tabs"> <a href="../seats-info.php"><span class="las la-check"></span>
                         <span>Seats Information</span></a>
                 </li>
                 <li class="tabs"> <a href="reserved.php"><span class="las la-clock"></span>
