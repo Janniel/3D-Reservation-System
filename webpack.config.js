@@ -314,12 +314,6 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             inject: true,
-            filename: 'viewSeats.php',
-            template: 'src/php/viewSeats.php',
-            chunks: ['']
-        }),
-        new HtmlWebpackPlugin({
-            inject: true,
             filename: 'fetchSeatInfo.php',
             template: 'src/php/fetchSeatInfo.php',
             chunks: ['']
@@ -397,8 +391,8 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             inject: true,
-            filename: 'php/seats-info.php',
-            template: 'src/php/seats-info.php',
+            filename: 'seats-info.php',
+            template: 'src/seats-info.php',
             chunks: ['seats_info']
         }),
         new HtmlWebpackPlugin({
@@ -406,18 +400,6 @@ module.exports = {
             filename: 'php/libraries_admin.php',
             template: 'src/php/libraries_admin.php',
             chunks: ['flatpickr']
-        }),
-        new HtmlWebpackPlugin({
-            inject: true,
-            filename: 'php/view-2d_Admin.php',
-            template: 'src/php/view-2d_Admin.php',
-            chunks: ['']
-        }),
-        new HtmlWebpackPlugin({
-            inject: true,
-            filename: 'php/view-3d_Admin.php',
-            template: 'src/php/view-3d_Admin.php',
-            chunks: ['']
         }),
         new HtmlWebpackPlugin({
             inject: true,
