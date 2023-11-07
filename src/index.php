@@ -296,20 +296,17 @@ require 'php/connect.php';
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="footerBottom">
+                                <div class="row">
+                                    <div>
+                                        <p>© 2017 Bulacan State University</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <hr>
-                <div class="footer-bottom">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <a href="">Privacy policy</a>
-                        </div>
-                        <div class="col-sm-8">
-                            <p>© 2017 Bulacan State University</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </footer>
         <!------------------------ FOOTER ------------------------>
