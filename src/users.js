@@ -97,7 +97,7 @@ const archived_users_table = document.querySelector('#archivedUsers_table');
 
 const toPDF = function (table) {
     const html_code = `
-    <link rel="stylesheet" href="./styles/user-list.css" />
+    <link rel="stylesheet" href="css/user-list.css" />
     
     <table id="users_table">${table.innerHTML}</table>
     `;
@@ -162,13 +162,13 @@ const toJSON = function (table) {
 
 // Event listener for the "All" tab JSON export button
 json_btn.onclick = () => {
-    const json = toJSON(customers_table);
+    const json = toJSON(users_table);
     downloadFile(json, 'json');
 }
 
 // Event listener for the "Archived" tab JSON export button
 json_btn_archive.onclick = () => {
-    const json = toJSON(archived_customers_table);
+    const json = toJSON(archived_users_table);
     downloadFile(json, 'json_archive');
 }
 
@@ -230,22 +230,22 @@ const toExcel = function (table) {
 };
 
 csv_btn.onclick = () => {
- const csv = toCSV(customers_table);
+ const csv = toCSV(users_table);
  downloadFile(csv, 'csv', 'users_table.csv');
 };
 
 excel_btn.onclick = () => {
- const excel = toExcel(customers_table);
+ const excel = toExcel(users_table);
  downloadFile(excel, 'excel', 'users_table.xlsx');
 };
 
 csv_btn_archive.onclick = () => {
-    const csv = toCSV(archived_customers_table);
+    const csv = toCSV(archived_users_table);
     downloadFile(csv, 'csv', 'archived_users_table.csv');
 };
 
 excel_btn_archive.onclick = () => {
-    const excel = toExcel(archived_customers_table);
+    const excel = toExcel(archived_users_table);
     downloadFile(excel, 'excel', 'archived_users_table.xlsx');
 };
 
