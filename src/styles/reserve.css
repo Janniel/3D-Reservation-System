@@ -425,7 +425,7 @@ padding: 1.2rem;
   opacity: 0;
   transition-duration: 0.3s;
   transition-property: opacity, transform;
-  z-index: 1;
+  z-index: 2;
 }
 
 
@@ -605,9 +605,37 @@ nav ul {
   }
 
   .tooltip {
-      max-width: 450px;
-      left: 37.5%;
+    color: whitesmoke;
+    margin-top: 2.5rem;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    padding: 2rem;
+    width: 450px;
+    height: 220px;
+    text-align: center;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 5%;
+    left: 37.5%;
+    opacity: 0;
+    transition-duration: 0.8s;
+    transition-property: opacity, transform;
+    z-index: 2;
   }
+
+  .tooltip h2 {
+    font-family: "Tilt Neon", sans-serif;
+    font-weight: 600;
+    font-size: 5rem;
+  }
+  
+  .tooltip p {
+    font-family: "Quicksand", sans-serif;
+    font-size: 1.5rem;
+  }
+
+
+
 
   .section-nav {
       padding: 1rem;
