@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $fileName = $_FILES['profile_picture']['name'];
 
         // Handle file processing and update the profile picture in the database
-        $uploadDir = 'img/profile';
+        $uploadDir = '../img/profile';
         $uploadedFilePath = $uploadDir . $fileName;
         move_uploaded_file($fileTmpPath, $uploadedFilePath);
 

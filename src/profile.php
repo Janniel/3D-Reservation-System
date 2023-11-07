@@ -166,20 +166,19 @@ if (mysqli_num_rows($result123) == 1) {
                                 $username = $_SESSION["username"];
 
                                 // Retrieve the user details from the database
-                                $sql = "SELECT * FROM ACCOUNT 
-                                        INNER JOIN USERS ON ACCOUNT.account_id = USERS.account_id
-                                        INNER JOIN COURSE ON USERS.course_code = COURSE.course_code
-                                        INNER JOIN YEARSEC ON USERS.yearsec_id = YEARSEC.yearsec_id
-                                        INNER JOIN COLLEGE ON COURSE.college_code = COLLEGE.college_code
-                                        WHERE ACCOUNT.username = '$username'";
+                                $sql = "SELECT *
+                                FROM ACCOUNT
+                                INNER JOIN USERS ON ACCOUNT.account_id = USERS.account_id
+                                WHERE ACCOUNT.username = '$username';
+                                ";
 
                                 $result = $conn->query($sql);
 
                                 // Check if a matching record is found
                                 if ($result->num_rows == 1) {
                                 $row = $result->fetch_assoc();
-                                $email = $row["email"];
-                                $year = $row["year_level"];
+                                // $email = $row["email"];
+                                // $year = $row["year_level"];
                                 
                                 // Populate the HTML template with the fetched data
                                 echo '
@@ -188,7 +187,7 @@ if (mysqli_num_rows($result123) == 1) {
                                 <div class="text-start ">
                                     <h6><i class="fas fa-id-card p-2"  style="color: gray"></i>' . $row["rfid_no"] . '</h6>
                                     <h6><i class="fas fa-user p-2" style="color: gray"></i> ' . $row["username"]. '</h6>
-                                    <h6><i class="fas fa-envelope p-2" style="color: gray"></i> ' . $email . '</h6>
+                                    <h6><i class="fas fa-envelope p-2" style="color: gray"></i> ' .$row["email"]. '</h6>
                                     <h6><i class="fas fa-birthday-cake p-2" style="color: gray"></i> ' . $row["age"] .  '</h6>
                                     <h6><i class="fas fa-venus-mars p-2" style="color: gray"></i>' . $row["gender"] . '</h6>
                                 </div>
@@ -197,9 +196,6 @@ if (mysqli_num_rows($result123) == 1) {
                                 </div>
                                 </div>';
 
-                                } else {
-                                // Handle the case when no matching record is found
-                                echo "You are not regular student. Either alumni or faculty";
                                 }
                                 ?>
                             </div>		

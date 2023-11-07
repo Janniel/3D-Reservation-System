@@ -196,13 +196,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="row mb-3">
     <div class="col">
       <div class="form-floating">
-        <input type="text" name="firstName" minlength="4" class="form-control" id="firstName" autocomplete="off" required>
+        <input type="text" name="firstName" minlength="1" class="form-control" id="firstName" autocomplete="off" required>
         <label for="firstName">First Name</label>
       </div>
     </div>
     <div class="col">
       <div class="form-floating">
-        <input type="text" name="lastName" class="form-control" id="lastName" autocomplete="off" required>
+        <input type="text" name="lastName"  minlength="1" class="form-control" id="lastName" autocomplete="off" required>
         <label for="lastName">Last Name</label>
       </div>
     </div>
@@ -223,7 +223,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
       <div class="col">
         <div class="form-floating">
-          <input type="number" name="user_id" class="form-control" id="user_id" autocomplete="off" required>
+          <input type="number" name="user_id" class="form-control" id="user_id"  onchange="checkUserId()" autocomplete="off" required>
           <label for="user_id">ID Number</label>
           <div class="invalid-feedback">
         Sorry, it's already used.
@@ -367,6 +367,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <script>
   $(document).ready(function() {
+      // Define a regular expression pattern to match only letters
+      var lettersOnlyPattern = /^[A-Za-z]+$/;
+
+    // Attach an onchange event handler to the firstName input
+    $('#firstName').on('input', function() {
+        var firstName = $(this).val();
+
+        if (lettersOnlyPattern.test(firstName)) {
+          registerButton.prop('disabled', false);
+        } else {
+          registerButton.prop('disabled', true);
+        }
+    });
+    $('#lastName').on('input', function() {
+        var lastName = $(this).val();
+
+        if (lettersOnlyPattern.test(lastName)) {
+          registerButton.prop('disabled', false);
+        } else {
+          registerButton.prop('disabled', true);
+        }
+    });
+
+
+    
     const registerForm = $('#register-form');
     const registerButton = $('#register-btn');
 
@@ -398,16 +423,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $('#new_password').addClass('is-invalid');
         $('#confirm_password').addClass('is-invalid');
       }
-
-        // Check if user_id is already used (you need to implement this logic)
-        const userIdInput = $('#user_id');
-      const userIdValue = userIdInput.val();
-      if (userIdValue === 'used') {
-        userIdInput.addClass('is-invalid');
-        formValid = false;
-      } else {
-        userIdInput.removeClass('is-invalid');
-      }
+      
+      const userIdInput = document.getElementById('user_id');
+  const userIdValue = userIdInput.value;
+  if (userIdValue === 'used') {
+    userIdInput.classList.add('is-invalid');
+    // You may need to define formValid and update it as needed.
+    // Assuming formValid is defined outside of this function.
+    formValid = false;
+  } else {
+    userIdInput.classList.remove('is-invalid');
+    // Update formValid as needed.
+  }
 
       if (formValid) {
         // If all required fields are valid and passwords match, proceed with the AJAX request
