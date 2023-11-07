@@ -162,7 +162,7 @@ if (mysqli_num_rows($result123) == 1) {
                         <div class="img-circle text-center">
                             <?php
                             if ($row['picture'] === NULL) {
-                                echo '<img src="https://pic.onlinewebfonts.com/thumbnails/icons_24787.svg" alt="Default Image">';
+                                echo '<img src="https://cdn.icon-icons.com/icons2/2550/PNG/512/user_circle_icon_152504.png" alt="Default Image">';
                             } else {
                                 echo '<img src="' . $row['picture'] . '" alt="Profile Image">';
                             }
