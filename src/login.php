@@ -371,6 +371,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <script>
   $(document).ready(function() {
+
+    $('#courseCode');
+
+    
       // Define a regular expression pattern to match only letters
       var lettersOnlyPattern = /^[A-Za-z]+$/;
 
@@ -539,6 +543,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         yearLevelField.prop('disabled', true);
         sectionField.prop('disabled', true);
         sectionGroupField.prop('disabled', true);
+        courseField.val('');
+        yearLevelField.val('');
+        sectionField.val('');
+        sectionGroupField.val('');
       } else {
         courseField.prop('disabled', false);
         yearLevelField.prop('disabled', false);
