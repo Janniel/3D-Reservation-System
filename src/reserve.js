@@ -1,10 +1,13 @@
 import * as THREE from 'three'
 import "./styles/reserve.css"
-import interior from "./models/interior final.glb"
+import interior from "./models/interior.glb"
 import gsap from "gsap"
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls'
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
+import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
 
 let date;
 let startTime;
@@ -23,7 +26,7 @@ let seatMaterials = {};
 //GLTF Loader
 const loader = new GLTFLoader()
 let gltfmodel;
-loader.load("./models/interior final.glb", function(gltf) {
+loader.load("./models/interior.glb", function(gltf) {
   console.log(gltf)
   gltfmodel = gltf.scene
   gltfmodel.scale.set(1,1,1)
@@ -66,11 +69,11 @@ const sizes = {
   }
   
 //Light
-// const light = new THREE.AmbientLight(0x404040, 10, 100)
-// scene.add(light)
+const light = new THREE.AmbientLight(0x404040, 10, 100)
+scene.add(light)
 
-const light2 = new THREE.HemisphereLight(0xD1D1D1, 0xFFB92E, 2)
-scene.add(light2)
+// const light2 = new THREE.HemisphereLight(0xD1D1D1, 0xFFB92E, 2)
+// scene.add(light2)
 
 //Camera
 const fov = 45;
@@ -83,18 +86,30 @@ scene.add(camera)
 
 //Renderer
 const canvas = document.querySelector('.webgl2')
-const renderer = new THREE.WebGLRenderer({canvas, antialias: true})
+const renderer = new THREE.WebGLRenderer({canvas})
 const backgroundColor = new THREE.Color(0x000000);
 renderer.setClearColor(backgroundColor);
 renderer.setSize(sizes.width, sizes.height)
 renderer.render(scene, camera)
-renderer.setPixelRatio(0.75)
+renderer.setPixelRatio(1)
+
+//Bloom Experiment
+const composer = new EffectComposer(renderer)
+const renderPass = new RenderPass(scene, camera)
+composer.addPass(renderPass)
+const renderTarget = new THREE.WebGLRenderTarget(sizes.width, sizes.height)
+const bloomPass = new UnrealBloomPass(new THREE.Vector2(sizes.width, sizes.height), 1.5, 0.4, 0.85)
+composer.addPass(bloomPass)
+
+bloomPass.strength = 10; // Adjust the strength of the bloom effect
+bloomPass.radius = 0.4; // Adjust the radius of the bloom effect
+bloomPass.threshold = 0.85; // Adjust the brightness threshold for the bloom effect
 
 //Controls
 const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
-controls.enablePan = false
-controls.enableZoom = false
+controls.enablePan = true
+controls.enableZoom = true
 
 //Resize
 window.addEventListener("resize", () => {
@@ -173,8 +188,8 @@ explore2.addEventListener('click', () => {
   dateTimeDiv.style.display = "none";
   dateTimeDiv.style.pointerEvents = "none";
 
-  moveTarget(-0.07, -0.18, 0.22)
-  moveCamera(-1.06, 0.58, -0.65)
+  // moveTarget(-0.07, -0.18, 0.22)
+  moveCamera(-1.46, 0.44, -0.17)
   controls.minPolarAngle = Math.PI / 10;
   controls.maxPolarAngle = (2 * Math.PI) / 3.8;
 
@@ -364,7 +379,7 @@ function moveCamera(x,y,z) {
     x,
     y,
     z,
-    duration: 2,
+    duration: 2.5,
     ease: 'power3.inOut'
   })
 }
@@ -374,7 +389,7 @@ function moveTarget(x,y,z) {
     x,
     y,
     z,
-    duration: 2,
+    duration: 2.5,
     ease: 'power3.inOut'
   })
 }
@@ -672,11 +687,14 @@ function hideReserveDiv() {
   reserveDiv.style.pointerEvents = 'none';
 }
 
+
   //Animate
   const loop = () => {
     controls.update()
     renderer.render(scene, camera)
     window.requestAnimationFrame(loop)
+    renderer.setRenderTarget(renderTarget)
+    composer.render()
   }
   loop()
 
@@ -992,4 +1010,3 @@ function hideReserveDiv() {
       }
     }
   });
-
