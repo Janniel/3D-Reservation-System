@@ -19,6 +19,12 @@ require 'php/connect.php';
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
     <!------------------------ CSS Link ------------------------>
+    <!-- Add this link for Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Add this link for Bootstrap JavaScript (jQuery is a dependency) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
     <!------------------------ For NAV-BAR ------------------------>
@@ -35,6 +41,30 @@ require 'php/connect.php';
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+    <style>
+    /* Small devices (tablets, 768px and up) */
+    /* Default styles for the model-viewer */
+    
+    .model-viewer {
+    width: 100%; /* Initially, it takes the full width of its container */
+    height: 100%; /* Initially, it takes the full height of its container */
+    max-width: 100%; /* Ensure it doesn't exceed the container's width */
+    max-height: 100%; /* Ensure it doesn't exceed the container's height */
+    }
+
+    /* Media query for larger screens */
+    
+        /* Large devices (large desktops, 1200px and up) */
+        @media (min-width: 1200px) {
+        model-viewer {
+            width: 100%;
+            height: 600px;
+            margin: 0, auto;
+        }
+        }
+  </style>
 </head>
 
 <body>
@@ -107,20 +137,45 @@ require 'php/connect.php';
 
 
         <!------------------------ SEAT INFO ------------------------>
-        <div class="webgl-container">
-            <canvas class="webgl"></canvas>
+        <!--<div class="webgl-container">
+            <<canvas class="webgl"></canvas> 
+            
+            
 
-            <div class="seats" data-aos="fade-right">
-                <div class="no-of-seats">
-                    <h1 id="no">332</h1>
-                    <h1 id="avail">Available Seats</h1>
-                </div>
 
-            </div>
+            
             <a href="reserve.php" class="reserve-btn btn">
                 Reserve seat
             </a>
-        </div>
+        </div> -->
+        
+            <section class="webgl-container">
+                <model-viewer
+                    src="models/exterior.glb"
+                    ar
+                    ar-modes="webxr scene-viewer quick-look"
+                    camera-controls="no-zoom"
+                    poster="poster.webp"
+                    shadow-intensity="1"
+                    auto-rotate
+                    min-camera-orbit="auto 63deg auto"
+                    max-camera-orbit="auto 99deg auto"
+                    camera-orbit="-178.4deg 76.97deg 186.6m"
+                    field-of-view="30deg"
+                    width="1200"
+                    heigt="600"
+                    
+                    >
+                    <div class="progress-bar hide" slot="progress-bar">
+                        <div class="update-bar"></div>
+                    </div>
+                </model-viewer>
+                <a href="reserve.php" class="reserve-btn btn">
+                    Reserve seat
+                </a>
+            </section>
+        
+
         <!------------------------ END OF SEAT INFO ------------------------>
 
 
@@ -140,6 +195,64 @@ require 'php/connect.php';
         </div>
 
         <!------------------------ END OF ABOUT US ------------------------>
+        <section class="carousel-section">
+        <input type="radio" id="s-1" name="slider-control" checked="checked">
+            <input type="radio" id="s-2" name="slider-control">
+            <input type="radio" id="s-3" name="slider-control">
+            <div class="js-slider">
+            <figure class="js-slider_item img-1">
+                <div class="js-slider_img">
+                <img class="c-img-w-full" src="img/reserve.png" alt="">
+                </div>
+                <figcaption class="wo-caption">
+                <h3 class="wo-h3">
+                    <div class="c-label">How to Reserve a seat?</div>
+                    <br class="view-sm mb-s">1. Filter Date</h3>
+                <ul class="wo-credit">
+                    <li>Go to <a href="reserve.php">Reserve Seat</a> tab</li>
+                    <li>Choose and filter your desired date and time of reservation</li>
+                    <li>
+                    <span class="c-txt-s"></span></li>
+                </ul>
+                </figcaption>
+            </figure>
+            <figure class="js-slider_item img-2">
+                <div class="js-slider_img">
+                <img class="c-img-h-full" src="img/seat.png" alt=""></div>
+                <figcaption class="wo-caption">
+                <h3 class="wo-h3">2. Naviagate and choose available seat</h3>
+                <ul class="wo-credit">
+                    <li>Click the preferred available seat and confirm your reservation</li>
+                    <li>Unavailable seats are hidden from view</li>
+                    <li>Once reserved, you can keep track of your reservation details in the <a href="account.php">Account </a>tab. You may also cancel your reservation here.</ul>
+                </figcaption>
+            </figure>
+            <figure class="js-slider_item img-3">
+                <div class="js-slider_img">
+                <img class="c-img-h-full" src="img/rfid.png" alt=""></div>
+                <figcaption class="wo-caption">
+                <h3 class="wo-h3">3. Scan your RFID</h3>
+                <ul class="wo-credit">
+                    <li>Upon your scheduled reservation, insert your RFID in the scanner. Don't remove it to keep the seat occupied.</li>
+                    <li>If you are unable to scan your RFID within the first 10 minutes of your shceduled time, the reservation will automatically becancelled.</li>
+                    <li>Once done with the reservation, remove your RFID in the scanner and give us a feedback!</li></ul>
+                </figcaption>
+            </figure>
+            <div class="js-slider_nav">
+                <label class="js-slider_nav_item s-nav-1 prev" for="s-3"></label>
+                <label class="js-slider_nav_item s-nav-1 next" for="s-2"></label>
+                <label class="js-slider_nav_item s-nav-2 prev" for="s-1"></label>
+                <label class="js-slider_nav_item s-nav-2 next" for="s-3"></label>
+                <label class="js-slider_nav_item s-nav-3 prev" for="s-2"></label>
+                <label class="js-slider_nav_item s-nav-3 next" for="s-1"></label>
+            </div>
+            <div class="js-slider_indicator">
+                <div class="js-slider-indi indi-1"></div>
+                <div class="js-slider-indi indi-2"></div>
+                <div class="js-slider-indi indi-3"></div>
+            </div>
+            </div>
+        </section>
 
 
         <!------------------------ VMGO ------------------------>
@@ -208,6 +321,9 @@ require 'php/connect.php';
 
 
         <!------------------------ END OF VMGO ------------------------>
+        
+
+ 
 
         <!------------------------ FOOTER ------------------------>
         <footer>
