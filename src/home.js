@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import "./styles/home.css"
 import gsap from "gsap"
-import exterior from "./models/exterior.gltf"
+import exterior from "./models/exterior.glb"
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls'
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader'
 
@@ -10,7 +10,7 @@ const scene = new THREE.Scene()
 
 //load model
 const loader = new GLTFLoader()
-loader.load("./models/exterior.gltf", function(gltf) {
+loader.load("./models/exterior.glb", function(gltf) {
   console.log(gltf)
   const root = gltf.scene
   root.scale.set(0.2,0.2,0.2)
@@ -53,6 +53,8 @@ const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
 controls.enablePan = false
 controls.enableZoom = false
+controls.autoRotate = true
+controls.autoRotateSpeed = 0.5
 
 controls.minPolarAngle = Math.PI / 2.5;
 controls.maxPolarAngle = (2 * Math.PI) / 3.8;

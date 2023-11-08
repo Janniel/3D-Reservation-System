@@ -45,7 +45,6 @@
   transition: 400ms;
 }
 
-
 .sidebar-brand {
   height: 90px;
   padding: 1rem 0rem 1rem 0.7rem;
@@ -123,7 +122,7 @@
   padding: 5%;
   text-decoration: none;
 }
-  
+
 .logout a {
   text-decoration: none;
 }
@@ -214,7 +213,9 @@ header label span {
 }
 
 .user-wrapper h4 {
-  margin-bottom: -7px !important;
+  
+  padding: 10px;
+  
 }
 
 .dropdown-toggle {
@@ -241,7 +242,6 @@ header label span {
 }
 
 /* --------- END OF HEADER --------- */
-
 main {
   margin-top: 85px;
   padding: 2rem 1.5rem;

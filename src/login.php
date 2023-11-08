@@ -156,7 +156,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <div class="actual-form">
             <div class="form-floating mb-3">
               <input type="text" name="username" class="form-control" id="username" autocomplete="on" required>
-              <label for="username">Username</label>
+              <label for="username">ID Number</label>
             </div>
 
             <div class="form-floating mb-3">

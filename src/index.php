@@ -296,20 +296,17 @@ require 'php/connect.php';
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="footerBottom">
+                                <div class="row">
+                                    <div>
+                                        <p>© 2017 Bulacan State University</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <hr>
-                <div class="footer-bottom">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <a href="">Privacy policy</a>
-                        </div>
-                        <div class="col-sm-8">
-                            <p>© 2017 Bulacan State University</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </footer>
         <!------------------------ FOOTER ------------------------>
@@ -318,18 +315,6 @@ require 'php/connect.php';
 
 </body>
 
-<!------------------------ For Sliding News ------------------------>
-<script type="text/javascript">
-    AOS.init();
-    var counter = 1;
-    setInterval(function () {
-        document.getElementById('radio' + counter).checked = true;
-        counter++;
-        if (counter > 2) {
-            counter = 1;
-        }
-    }, 5000);
-</script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
     integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous">
     </script>
