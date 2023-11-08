@@ -41,11 +41,11 @@
 <nav>
         <ul class="sidebar">
             <li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 -960 960 960" width="26"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Product</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Forum</a></li>
-            <li><a href="#">Login</a></li>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="index.php#aboutSOAR">About Us</a></li>
+            <li><a href="reserve.php">Reserve Seat</a></li>
+            <li><a href="profile.php">Account</a></li>
+            <li><a href="toLogout.php">Logout</a></li>
         </ul>
         
         <ul>
@@ -76,11 +76,11 @@
                 </div>
               </div>
             </div>
-            <li class="hideOnMobile"><a href="#">Blog</a></li>
-            <li class="hideOnMobile"><a href="#">Product</a></li>
-            <li class="hideOnMobile"><a href="#">About</a></li>
-            <li class="hideOnMobile"><a href="#">Forum</a></li>
-            <li class="hideOnMobile"><a href="#">Login</a></li>
+            <li class="hideOnMobile"><a href="index.php">Home</a></li>
+            <li class="hideOnMobile"><a href="index.php#aboutSOAR">About Us</a></li>
+            <li class="hideOnMobile"><a href="reserve.php">Reserve Seat</a></li>
+            <li class="hideOnMobile"><a href="profile.php">Account</a></li>
+            <li class="hideOnMobile"><a href="toLogout.php">Logout</a></li>
             <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 -960 960 960" width="26"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
         </ul>
     </nav>

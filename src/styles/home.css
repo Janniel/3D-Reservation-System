@@ -47,6 +47,7 @@ nav a:hover {
 
 nav li:first-child {
   margin-right: auto;
+  font-size: 30px;
 }
 
 .sidebar {
@@ -86,6 +87,10 @@ nav li:first-child {
   .menu-button {
       display: block;
   }
+
+  nav li:first-child {
+    font-size: 20px;
+  }
 }
 
 @media(max-width: 400px) {
@@ -99,8 +104,7 @@ nav li:first-child {
   height: 70px;
   width: 70px;
   font-size: large;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  padding: 7px;
 }
 
 .header-text {
@@ -188,11 +192,11 @@ nav li:first-child {
 /* Media query for screens smaller than 480px */
 @media screen and (max-width: 480px) {
   #clock {
-    font-size: 10px;
+    font-size: 7px;
   }
 
   #date {
-    font-size: 7px;
+    font-size: 4px;
   }
 
   #phtime {
