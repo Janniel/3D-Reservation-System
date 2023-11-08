@@ -20,6 +20,10 @@ let maintenanceSeatsList = [];
 
 //Scene
 const scene = new THREE.Scene()
+// const near = 1;
+// const far = 30;
+// const fogColor = new THREE.Color(0xAAAAAA);
+// scene.fog = new THREE.Fog(fogColor, near, far);
 
 
 let seatMaterials = {};
@@ -77,7 +81,7 @@ scene.add(light)
 
 //Camera
 const fov = 45;
-const camera = new THREE.PerspectiveCamera(fov, sizes.width/sizes.height, 0.1, 100)
+const camera = new THREE.PerspectiveCamera(fov, sizes.width/sizes.height, 0.1, 10000)
 camera.position.x = -0.34
 camera.position.z = 1.315
 camera.position.y = -0.059
@@ -87,7 +91,7 @@ scene.add(camera)
 //Renderer
 const canvas = document.querySelector('.webgl2')
 const renderer = new THREE.WebGLRenderer({canvas})
-const backgroundColor = new THREE.Color(0x000000);
+const backgroundColor = new THREE.Color(0x666666);
 renderer.setClearColor(backgroundColor);
 renderer.setSize(sizes.width, sizes.height)
 renderer.render(scene, camera)
@@ -98,12 +102,30 @@ const composer = new EffectComposer(renderer)
 const renderPass = new RenderPass(scene, camera)
 composer.addPass(renderPass)
 const renderTarget = new THREE.WebGLRenderTarget(sizes.width, sizes.height)
-const bloomPass = new UnrealBloomPass(new THREE.Vector2(sizes.width, sizes.height), 1.5, 0.4, 0.85)
+const bloomPass = new UnrealBloomPass(new THREE.Vector2(sizes.width, sizes.height))
 composer.addPass(bloomPass)
 
-bloomPass.strength = 10; // Adjust the strength of the bloom effect
-bloomPass.radius = 0.4; // Adjust the radius of the bloom effect
-bloomPass.threshold = 0.85; // Adjust the brightness threshold for the bloom effect
+bloomPass.strength = 0.8; // Adjust the strength of the bloom effect
+bloomPass.radius = 0.9; // Adjust the radius of the bloom effect
+bloomPass.threshold = 0.01; // Adjust the brightness threshold for the bloom effect
+
+//Cube Texture
+// const cubeLoader = new THREE.CubeTextureLoader()
+// const cubeTexture = cubeLoader.load([
+//   'img/skybox-front.jpg',
+//   'img/skybox-back.jpg',
+//   'img/skybox-left.jpg',
+//   'img/skybox-right.jpg',
+//   'img/skybox-top.jpg',
+//   'img/skybox-bottom.jpg'
+// ])
+
+// const cubeMaterial = new THREE.MeshBasicMaterial({envMap: cubeTexture, side: THREE.BackSide})
+// const cubeGeometry = new THREE.BoxGeometry(100, 100, 100)
+// const skybox = new THREE.Mesh(cubeGeometry, cubeMaterial)
+// skybox.position.set(0, 0, 0);
+// scene.add(skybox)
+
 
 //Controls
 const controls = new OrbitControls(camera, canvas)
@@ -690,8 +712,8 @@ function hideReserveDiv() {
 
   //Animate
   const loop = () => {
-    controls.update()
     renderer.render(scene, camera)
+    controls.update()
     window.requestAnimationFrame(loop)
     renderer.setRenderTarget(renderTarget)
     composer.render()
