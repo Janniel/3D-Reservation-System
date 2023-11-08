@@ -353,7 +353,7 @@ $result = $conn->query($sql);
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="see-details">
-                                                                                                    <a href="history-details.php?history_id=<?php echo $row['history_id']; ?>">See details</a>
+                                                                                                    <a href="php/history.php">See details</a>
                                                                                                 </div>
                                                                                             </div>
 
