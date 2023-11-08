@@ -106,14 +106,6 @@ module.exports = {
                     from: 'src/bootstrap',
                     to: 'bootstrap',
                 },
-                {
-                    from: 'src/models/6thFloorV2.glb',
-                    to: 'models',
-                },
-                {
-                    from: 'src/models/spruit_sunrise_1k_HDR.hdr',
-                    to: 'models',
-                },
               ],
               
         }),
@@ -463,7 +455,7 @@ module.exports = {
             inject: true,
             filename: 'php/user-list.php',
             template: 'src/php/user-list.php',
-            chunks: ['users','export','history']
+            chunks: ['users']
         }),
         new HtmlWebpackPlugin({
             inject: true,

@@ -98,7 +98,7 @@ const archived_customers_table = document.querySelector('#archivedReservation_ta
 
 const toPDF = function (table) {
     const html_code = `
-    <link rel="stylesheet" href="assets/css/users.css" />
+    <link rel="stylesheet" href="css/reserved.css" />
     
     <table id="customers_table">${table.innerHTML}</table>
     `;

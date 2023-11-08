@@ -28,43 +28,6 @@ $result = $conn->query($sql);
 <html>
 
 
-<!-- Popup for superadmin permission -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Super Admin Permission</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-body" style="padding:40px 50px;">
-                    <form role="form">
-                        <div class="form-group">
-                            <label for="usrname"><span class="glyphicon glyphicon-user"></span>
-                                Super Admin Username</label>
-                            <input type="text" class="form-control" id="usrname">
-                        </div>
-                        <div class="form-group">
-                            <label for="psw"><span class="glyphicon glyphicon-eye-open"></span>
-                                Super Admin Key</label>
-                            <input type="text" class="form-control" id="psw">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <a href="php/manageAdmin.php" class="btn btn-danger">Proceed</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 <head>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin</title>
@@ -101,7 +64,7 @@ $result = $conn->query($sql);
         <div class="sidebar">
             <div class="sidebar-brand">
                 <img src="img/bulsu logo.png" alt="bulsu logo" class="logo">
-                <h2> <span>SOAR</span></h2>
+                <h2> <span>SOAR Admin</span></h2>
             </div>
 
             <div class="sidebar-menu" id="tabButton">
@@ -162,16 +125,10 @@ $result = $conn->query($sql);
                     <button class="dropdown-toggle" class="btn btn-secondary dropdown-toggle" type="button"
                         id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         <div class="user-wrapper">
-                            <img src="<?php if ($_SESSION['gender'] == "Male") {
-                                echo "https://cdn-icons-png.flaticon.com/512/2552/2552801.png";
-                            } elseif ($_SESSION['gender'] == "Female") {
-                                echo "https://cdn-icons-png.flaticon.com/512/206/206864.png";
-                            } ?>" alt="Admin" class="rounded-circle p-1 bg-secondary" width="45">
-                            <div id="user_admin">
-                                <h4>
-                                    <?php echo $_SESSION["username"]; ?>
-                                </h4>
-                            </div>
+                            <h4>
+                                Hello, <?php echo $_SESSION["first_name"]; ?>
+                            </h4>
+                            
                         </div>
                     </button>
 

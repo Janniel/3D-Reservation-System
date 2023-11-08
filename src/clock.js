@@ -51,8 +51,7 @@ function updateClock() {
 
     const timeString = currentDate.toLocaleTimeString();
 
-    // Display the time
-    timeElement.textContent = timeString;
+
 }
 
 // Update the clock every second

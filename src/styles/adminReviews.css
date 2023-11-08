@@ -15,13 +15,6 @@
   font-family: "Poppins", sans-serif;
 }
 
-html,
-body {
-  margin: 0;
-  height: 100%;
-  overflow: hidden;
-}
-
 /* --------- SIDEBAR --------- */
 .sidebar {
   width: 345px;
@@ -139,6 +132,121 @@ body {
 .main-content {
   transition: margin-left 300ms;
   margin-left: 345px;
+}
+
+/* --------- HEADER --------- */
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  left: 345px;
+  width: calc(100% - 345px);
+  top: 0%;
+  z-index: 100;
+  background-color: #fff;
+  transition: left 300ms;
+}
+
+header h2 {
+  color: #222;
+}
+
+header label span {
+  font-size: 1.7rem;
+  padding-right: 1rem;
+}
+
+.toggle {
+  cursor: pointer;
+}
+
+#nav-toggle {
+  display: none;
+  cursor: pointer;
+}
+
+#nav-toggle:checked + .sidebar {
+  width: 70px;
+}
+
+#nav-toggle:checked + .sidebar .sidebar-brand h2 span:last-child,
+#nav-toggle:checked + .sidebar li a span:last-child {
+  display: none;
+}
+
+#nav-toggle:checked + .sidebar .sidebar-brand,
+#nav-toggle:checked + .sidebar li {
+  text-align: center;
+}
+
+#nav-toggle:checked ~ .main-content {
+  margin-left: 70px;
+}
+
+#nav-toggle:checked ~ .header header {
+  width: calc(100% - 70px);
+  left: 70px;
+}
+
+.user-wrapper:hover {
+  text-decoration-color: rgb(145, 13, 13);
+}
+
+.user-wrapper {
+  display: flex;
+  align-items: center;
+  text-decoration: underline 0.15em rgba(0, 0, 0, 0);
+  transition: text-decoration-color 300ms;
+  text-underline-offset: 0.4em;
+}
+
+.user-wrapper img {
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.user-wrapper small {
+  display: inline-block;
+  color: var(--text-gray);
+}
+
+.user-wrapper h4 {
+  
+  padding: 10px;
+  
+}
+
+.dropdown-toggle {
+  background-color: transparent;
+  border-color: #fff;
+  border-style: solid;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  content: none;
+}
+
+.dropdown-toggle::after {
+  content: none;
+}
+
+.dropdown-menu {
+  background-color: hsl(0, 0%, 100%);
+  margin-left: 60px;
+}
+
+.dropdown-menu > li > a {
+  color: #a12a2a;
+}
+
+/* --------- END OF HEADER --------- */
+main {
+  margin-top: 85px;
+  padding: 2rem 1.5rem;
+  background: #f1f5f9;
+  min-height: calc(100vh - 90px);
 }
 
 /* --------- HEADER --------- */
