@@ -170,18 +170,18 @@ require 'session.php';
 
                             <div class="filters">
 
-                                <div class="year" class="form-control">
-                                    <label for="cars">Filter Year:</label>
-                                    <select class="form-control">
-                                        <option>2022</option>
-                                        <option>2023</option>
-                                    </select>
-                                </div>
+                            <div class="year" class="form-control">
+                                <label for="yearFilter">Filter Year:</label>
+                                <select class="form-control" id="yearFilter">
+                                    <option>2023</option>
+                                    <option>2024</option>
+                                </select>
+                            </div>
 
                                 <div class="college">
-                                    <label for="months">Filter by Month:</label>
-                                    <select class="form-control" id="months">
-                                        <option style="display:none">Select here</option>
+                                    <label for="monthFilter">Filter by Month:</label>
+                                    <select class="form-control" id="monthFilter">
+                                        <option value="all">All</option>
                                         <option>January</option>
                                         <option>February</option>
                                         <option>March</option>
@@ -198,9 +198,9 @@ require 'session.php';
                                 </div>
 
                                 <div class="year-level" class="form-control">
-                                    <label for="yearlevel">Filter by Stars:</label>
-                                    <select class="form-control">
-                                        <option style="display:none">Select here</option>
+                                    <label for="starsFilter">Filter by Stars:</label>
+                                    <select class="form-control" id="starsFilter">
+                                        <option value="all">All</option>
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
@@ -282,18 +282,10 @@ require 'session.php';
                                 </div>
                             </div>
                         </div>
-
-                        <div class="print-report">
-                            <a href="sample-doc.pdf" class="buttons">Print Feedback</a>
-                        </div>
-
-
-
         </main>
 
     </div>
     </div>
-
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -305,4 +297,32 @@ require 'session.php';
 <script src="js\sidebar.js"></script>
 
 
+
+<script>
+    // Add an event listener to the filter controls
+    document.getElementById('yearFilter').addEventListener('change', applyFilters);
+    document.getElementById('monthFilter').addEventListener('change', applyFilters);
+    document.getElementById('starsFilter').addEventListener('change', applyFilters);
+
+    function applyFilters() {
+        const selectedYear = document.getElementById('yearFilter').value;
+        const selectedMonth = document.getElementById('monthFilter').value;
+        const selectedStars = document.getElementById('starsFilter').value;
+
+        // Make an AJAX request to your PHP script to fetch filtered reviews
+        $.ajax({
+            url: 'filterReviews.php',
+            type: 'POST',
+            data: {
+                selectedYear: selectedYear,
+                selectedMonth: selectedMonth,
+                selectedStars: selectedStars
+            },
+            success: function(response) {
+                // Update the review list with the new reviews received from the server
+                document.querySelector('.review-list').innerHTML = response;
+            }
+        });
+    }
+</script>
 </html>

@@ -507,6 +507,12 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             inject: true,
+            filename: 'php/filterReviews.php',
+            template: 'src/php/filterReviews.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
             filename: 'php/toUpdateAdmin.php',
             template: 'src/php/toUpdateAdmin.php',
             chunks: ['']
