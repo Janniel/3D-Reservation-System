@@ -199,6 +199,8 @@ background-color: transparent;
   transform: scalex(1);
   color: rgb(151, 55, 55);
 }
+
+
 @media (min-width: 800px) {
   .header-navigation a {
     display: inline-block;

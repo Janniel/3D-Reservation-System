@@ -4,6 +4,7 @@
   text-decoration: none;
   list-style: none;
   box-sizing: border-box;
+  
 }
 
 .wrapper {
@@ -14,9 +15,24 @@
 
 
 /* Navigation Bar */
+nav ul li:nth-child(2) a {
+  color: #dd5656;
+}
+nav ul li.hideOnMobile:nth-child(2) a {
+  color: #dd5656;
+}
+nav + * {
+  padding-top: 70px; /* Adjust the value based on your navbar's height */
+}
 nav {
-  background-color: white;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  
+    position: fixed; /* Set the position to fixed */
+    top: 0; /* Stick it to the top of the viewport */
+    background-color: white;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Make it full-width */
+    z-index: 999; /* Ensure it appears above other content */
+
 }
 
 nav ul {
@@ -41,8 +57,10 @@ nav a{
   color: black;
 }
 
+
 nav a:hover {
-  background-color: #f0f0f0;
+  color: #dd5656;
+  text-decoration: none;
 }
 
 nav li:first-child {
@@ -147,7 +165,7 @@ nav li:first-child {
 /* Clock */
 #clock {
   display: flex;
-  font-size: 35px;
+  font-size: 30px;
   font-weight: bold;
   margin-right: auto;
   color: #a81c1c;
@@ -156,7 +174,7 @@ nav li:first-child {
 
 #date {
   display: flex;
-  font-size: 22px;
+  font-size: 19px;
   margin-right: auto;
   align-items: center;
   white-space: nowrap; /* Prevent text from wrapping */
@@ -165,13 +183,13 @@ nav li:first-child {
 #phtime {
   display: flex; /* Display the content in a horizontal line */
   align-items: center; /* Center vertically */
-  font-size: 22px; /* Adjust the font size as needed */
+  font-size: 19px; /* Adjust the font size as needed */
   white-space: nowrap; /* Prevent text from wrapping */
 }
 
 .phdate {
   margin: 0;
-  margin-right: 20px;
+  margin-right: 18px;
 }
 
 /* Media query for screens smaller than 768px */
@@ -189,14 +207,44 @@ nav li:first-child {
   }
 }
 
+@media screen and (max-width: 770px) {
+  .icon {
+    height: 50px;
+    width: 50px;
+    padding: 7px;
+  }
+
+}
+
 /* Media query for screens smaller than 480px */
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 500px) {
   #clock {
-    font-size: 7px;
+    font-size: 15px;
   }
 
   #date {
-    font-size: 4px;
+    font-size: 10px;
+  }
+  nav li:first-child {
+    
+    font-size: 20px;
+  }
+  .icon {
+    height: 50px;
+    width: 50px;
+    padding: 7px;
+    margin: 5px;
+  }
+
+}
+
+@media screen and (max-width: 450px) {
+  #clock {
+    font-size: 5px;
+  }
+
+  #date {
+    font-size: 5px;
   }
 
   #phtime {
@@ -211,6 +259,7 @@ nav li:first-child {
     white-space: nowrap; /* Prevent "Thursday" from wrapping */
   }
 }
+
 
 #header-time {
   margin-right: auto;
@@ -337,6 +386,9 @@ canvas {
   margin-top: 10px;
 }
 
+model-viewer{
+  margin: 0 auto;
+}
 .webgl {
   position: absolute;
   top: auto;
@@ -344,9 +396,16 @@ canvas {
   animation: up-down 2s ease-in-out infinite alternate-reverse both;
 }
 
+
 .webgl-container {
   position: relative;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 1400px; /* Set a maximum width to avoid the model viewer becoming too wide on larger screens */
+  margin: 0 auto; /* Center the model viewer horizontally */
 }
+
 
 /* Seat Info */
 .seats {
@@ -417,10 +476,7 @@ canvas {
 
 .reserve-btn {
   z-index: 1;
-  position: absolute;
   display: inline-block;
-  margin-top: 85vh;
-  margin-left: 20vh;
   outline: none;
   cursor: pointer;
   font-size: 20px;
@@ -441,7 +497,18 @@ canvas {
   background-color: #fff;
   height: 50px;
   text-decoration: none;
+
+  /* Center the button horizontally */
+  margin: 0 auto; /* Center the button horizontally using margin */
 }
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .reserve-btn {
+    margin-left: 0; /* Reset the left margin for smaller screens */
+  }
+}
+
 
 .reserve-btn:hover {
   color: #dd5656;
@@ -454,20 +521,21 @@ canvas {
 
 /* About Us */
 .abtus{
-  display: block;
-  height: 300px; /*same height as header*/
-  margin-top: 72vh; /*same height as header*/
+  
+  height: 200px; /*same height as header*/
+  
   visibility: hidden;
 }
 
 #aboutus {
   position: relative;
   margin: 0 auto;
-  margin-top: 0;
+  margin-top: 20px;
   text-align: center;
   display: block;
   justify-content: space-between;
   width: 50%;
+  margin-bottom: 20px;
 }
 
 #aboutus h2 {
@@ -477,6 +545,7 @@ canvas {
   font-family: "Archivo Black", "Times New Roman", Times, serif;
   padding-bottom: 10px;
 }
+
 
 #aboutus p {
   margin: 0 auto;
@@ -876,4 +945,197 @@ hr {
   height: 150px; /* Adjust the height as needed */
   margin-left: 100px; /* Adjust the margin to control the gap between lines */
   position: absolute;
+}
+
+
+/*CAROUSEL */
+
+li {
+  list-style: none;
+}
+input[type="radio"] {
+  display: none;
+}
+.js-slider {
+  position: relative;
+  width: 80%;
+  height: 100vh;
+  margin: 0 auto;
+}
+.js-slider_item {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: 1rem 3rem;
+  opacity: 0;
+  visibility: hidden;
+  transform-origin: right center;
+  transform: translate3d(0%, 0%, 0) rotateY(30deg) scaleX(0.95);
+  transition: all 1s ease,transform 1s cubic-bezier(0.43, 0.28, 0.51, 1);
+}
+#s-1:checked ~ .js-slider .js-slider_item.img-1,
+#s-2:checked ~ .js-slider .js-slider_item.img-2,
+#s-3:checked ~ .js-slider .js-slider_item.img-3 {
+  opacity: 1;
+  visibility: visible;
+  transform-origin: left center;
+  transform: translate3d(0, 0, 0) rotateY(0deg) scaleX(1);
+}
+.js-slider_img {
+  width: 100%;
+  height: 60%;
+  position: relative;
+  overflow: hidden;
+}
+.c-img-w-full {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: auto;
+  transform: translate3d(-50%, -50%, 0);
+}
+.c-img-h-full {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  height: 100%;
+  transform: translate3d(-50%, -50%, 0);
+}
+figcaption {
+  display: block;
+}
+.wo-h3 {
+  margin-top: 6rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e60012;
+}
+.c-label {
+  display: inline-block;
+  color: #eee;
+  background-color: rgba(139,0,10,0.9);
+  line-height: 1;
+  padding: 0.5em 0.9em;
+  margin-right: 0.5em;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+.view-sm {
+  display: none;
+}
+.js-slider_nav {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  transform: translate3d(0, -50%, 0);
+}
+.js-slider_nav_item.prev {
+  left: 0;
+}
+.js-slider_nav_item.next {
+  right: 0;
+  transform: rotateY(180deg);
+}
+.js-slider_nav_item {
+  position: absolute;
+  display: none;
+  width: 4rem;
+  height: 4rem;
+  border: 1px solid #e60012;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.js-slider_nav_item:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 1rem;
+  top: 55%;
+  width: 1rem;
+  height: 1px;
+  background-color: #e60012;
+  transform-origin: left bottom;
+  transform: translate3d(0, -50%, 0) rotate(-45deg);
+  transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.js-slider_nav_item:hover {
+   transform: translate3d(-30%, 0, 0);
+}
+.js-slider_nav_item.next:hover {
+   transform: rotateY(180deg) translate3d(-30%, 0, 0);
+}
+.js-slider_nav_item:hover:before {
+  transform: translate3d(0, -50%, 0) rotate(-30deg);
+}
+.js-slider_nav_item:after {
+  content: "";
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  width: 2rem;
+  height: 1px;
+  background-color: #e60012;
+  transform: translate3d(-50%, -50%, 0);
+}
+#s-1:checked ~ .js-slider .js-slider_nav .s-nav-1,
+#s-2:checked ~ .js-slider .js-slider_nav .s-nav-2,
+#s-3:checked ~ .js-slider .js-slider_nav .s-nav-3 {
+  display: block;
+}
+.js-slider_indicator {
+  position: absolute;
+  left: 0;
+  top: 63%;
+  width: 100%;
+  text-align: center;
+}
+.js-slider-indi {
+  position: relative;
+  display: inline-block;
+  padding: 2rem;
+  cursor: pointer;
+}
+.js-slider-indi:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 1rem;
+  background: #e60012;
+  transform: translate3d(-50%, -50%, 0);
+}
+.js-slider-indi:hover:after {
+  transform: translate3d(-50%, -50%, 0) scale(1.5);
+  transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+#s-1:checked ~ .js-slider .js-slider_indicator .indi-1:after,
+#s-2:checked ~ .js-slider .js-slider_indicator .indi-2:after,
+#s-3:checked ~ .js-slider .js-slider_indicator .indi-3:after {
+  transform: translate3d(-50%, -50%, 0) scale(2.5);
+}
+
+ul.wo-credit {
+  list-style-type: none; /* Hide the default bullets */
+  padding-left: 0; /* Remove default left padding */
+}
+
+ul.wo-credit li::before {
+  content: "•"; /* Use a bullet character as content */
+  color: red; /* Set the bullet color to red */
+  display: inline-block;
+  width: 1em; /* Adjust the width to control spacing between bullet and text */
+  margin-right: 0.5em; /* Add spacing between bullet and text */
+}
+
+ul.wo-credit li {
+  font-size: 18px; /* Adjust the font size to your preference */
+  
 }
