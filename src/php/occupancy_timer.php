@@ -41,7 +41,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                     <div class="col">
                         <b>Your time will end soon!</b>
                         <p id="remainingTime">Time left:</p>
-                        <a href="timer.php" class="btn btn-warning btn-sm" style="margin-left: auto;">View   </a>
+                        <a href="./php/timer.php" class="btn btn-warning btn-sm text-white" style="margin-left: auto;">View   </a>
                     </div>
                     <div class="col-2">
                         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>

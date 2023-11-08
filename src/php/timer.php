@@ -95,8 +95,8 @@ if (mysqli_num_rows($ongoing_result) > 0) {
     echo "<span>6th Floor</span>";
     echo "<h5>{$start_time} - {$end_time}</h5>";
     echo "<i>Please don't forget your ID when done</i><br>";
-    echo "<a href='#' class='btn btn-outline-danger btn' onclick='markReservationAsDone({$row['reservation_id']}); return false;'>Mark as Done</a>";
-    echo "<div id='extendtimeDiv' style='display:none'><button onclick='extendReservationTimes(event)' class='btn btn-danger'>extend 30 mins</button><br>";
+    echo "<a href='#' class='btn btn-outline-danger d-none btn' onclick='markReservationAsDone({$row['reservation_id']}); return false;'>Mark as Done</a>";
+    echo "<div id='extendtimeDiv' style='display:none'><button onclick='extendReservationTimes(event)' class='btn btn-danger d-none'>extend 30 mins</button><br>";
     echo "</div>";
     
 } else {
