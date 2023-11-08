@@ -366,8 +366,24 @@ module.exports = {
             template: 'src/php/extendProcess.php',
             chunks: ['']
         }),
-
-
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'fetchSeatInfo2.php',
+            template: 'src/php/fetchSeatInfo2.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/toDestroy.php',
+            template: 'src/php/toDestroy.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/toFix.php',
+            template: 'src/php/toFix.php',
+            chunks: ['']
+        }),
 
 
 

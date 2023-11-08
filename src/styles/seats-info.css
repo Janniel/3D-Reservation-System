@@ -4,6 +4,65 @@
 /* fonts */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600|Roboto:300,400");
 
+.dateTimeDiv {
+  transform: translateY(100%);
+  animation: slideIn 1s forwards;
+}
+
+@keyframes slideIn {
+  to {
+    transform: translateY(0);
+  }
+}
+
+.dateTimeDiv { 
+  padding-bottom: 25px;
+  background: rgb(3 3 3 / 50%);
+  border-radius: 1.5rem;
+  position: absolute;
+  top: 15rem;
+  left: 25rem;
+  max-width: 400px;
+  right: 0;
+  /* bottom: 0rem; */
+  color: white;
+  padding: 2rem;
+  /* padding-bottom: 4rem; */
+  /* z-index: 99; */
+  outline: 1px solid #656565;
+  -webkit-backdrop-filter: blur(3px);
+  -moz-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+.reserveDiv  { 
+  background: rgb(3 3 3 / 50%);
+  border-radius: 1rem;
+  position: absolute;
+  /* left: 0; */
+  right: 2rem;
+  bottom: 2em;
+  color: white;
+  padding: 2rem;
+  z-index: 99;
+  outline: 1px solid #656565;
+  -webkit-backdrop-filter: blur(3px);
+  -moz-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+
+}
+.reserveDiv h1 {
+  font-size: xx-large;
+  font-weight: bolder;
+}
+
+.dateTimeSelected {
+  background: rgba(3, 3, 3, 0.257);
+  border-radius: .5rem;
+  color: whitesmoke;
+  padding: 1rem;
+}
+
 :root {
   --main-color: #a81c1c;
   --color-dark: #1d2231;

@@ -18,8 +18,11 @@ require 'php/session.php';
     <!------------------------ ICONS ------------------------>
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <!-- <?php include 'php/libraries_admin.php' ?> -->
+     <?php 
+    // include 'php/libraries_admin.php'
+     ?>
 
     <style>
         #btn-check {
@@ -204,19 +207,255 @@ require 'php/session.php';
         </div>
         <!------------------------ END OF HEADER ------------------------>
 
+        <div>
+    <canvas class="webgl2"></canvas>
+    <div class="container">
+      <div class="title-container">
+        <div class="title">
+          <p class="text-white big-title">Find your <b>ideal seat</b> in <b>3D</b></p>
+          <p class="text-white">Welcome to the E-Library's 6th Floor. Please select  date and time <br> to view available seats in order to reserve.</p>
+          <button class="explore btn">Reserve Seat</button>
+        </div>
+      </div>
+    </div>
 
-        <div class="main-content">
-            <main>
-                <div class="wrapper">
-                    <canvas class="webgl3"></canvas>
-                    <div class="info-container">
-                       <h3>Reservation List</h3>
-                       <p></p>
-                       <button class="maintenance-btn">Mark as Under Maintenance</button>
+
+    
+    <div class="section-nav d-none">
+      <div class="dateTimeSelected d-none">
+        <h6> Available Seats on 
+          <b id="chosen_date"></b> 
+          <b id="chosen_time"></b>
+        </h6>
+      </div>
+   
+      <button class="filterBtn" >Filter &nbsp; <i class="fas fa-sliders-h" style="color: #ffffff;"></i></button>
+      <button class="section1">Section A</button>
+      <button class="section2">Section B</button>
+      <button class="section3">Section C</button>
+      <button class="section4">Section D</button>
+     
+    </div>
+    
+    
+    <form method="post" id="reservationForm">
+        <div class="container2">
+            <div class="dateTimeDiv">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <h1 for="date">View Seats Information</h1>
+                            <input type="text" class="form-control text-white bg-transparent d-none" name="date" id="date">                            
+                        </div>
                     </div>
                 </div>
-            </main>
+
+                <div class="row d-none">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="start_time"></label>
+                            <input type="text" class="form-control  text-white bg-transparent d-none" name="start_time" id="start_time" placeholder="Starts from" >
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="end_time"></label>
+                            <input type="text" class="form-control text-white bg-transparent d-none" name="end_time" id="end_time" placeholder="Ends at ">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                    <button type="button" id="viewSeatsButton" class="btn btn-danger explore2 mt-3 w-100">Manage Seats</button>
+                    </div>
+                </div>
+            </div>
         </div>
+    </form>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+      let disabledDates;
+
+      // Fetch disabled dates from PHP
+      fetch('get_disabled_dates.php')
+        .then((response) => response.json())
+        .then((data) => {
+          disabledDates = data;
+
+          flatpickr("#date", {
+            theme: "dark",
+            inline: true,
+            dateFormat: "Y-m-d",
+            minDate: "today",
+            defaultDate: "today",
+            disable: disabledDates, // Use the fetched disabled dates
+          });
+        })
+        .catch((error) => console.error('Error fetching disabled dates.'));
+
+        function convertTimeTo24HourFormat(time) {
+  const [timeStr, ampm] = time.split(' ');
+  const [hours, minutes] = timeStr.split(':').map(Number);
+
+  let convertedHours = hours;
+
+  if (ampm === 'PM' && hours !== 12) {
+    convertedHours += 12;
+  } else if (ampm === 'AM' && hours === 12) {
+    convertedHours = 0;
+  }
+
+  const formattedHours = convertedHours.toString().padStart(2, '0');
+  const formattedMinutes = minutes.toString().padStart(2, '0');
+
+  return `${formattedHours}:${formattedMinutes}`;
+}
+
+
+
+$(document).ready(function () {
+
+
+// Get the current time
+var currentTime = new Date();
+var currentHour = currentTime.getHours();
+var currentMinute = currentTime.getMinutes();
+
+// Round the current time to the nearest 15-minute interval
+var roundedMinute = Math.round(currentMinute / 15) * 15;
+if (roundedMinute === 60) {
+    currentHour += 1;
+    roundedMinute = 0;
+}
+
+// Format the rounded current time as a string in HH:mm format
+var currentTimeString = currentHour.toString().padStart(2, '0') + ':' + roundedMinute.toString().padStart(2, '0');
+
+$('#start_time').timepicker({
+    'timeFormat': 'h:i A',
+    'minTime': currentTimeString,
+    'maxTime': '<?php echo date('H:i A', strtotime($end_hour))?>',
+    'step': 15,
+    'forceRoundTime': true,
+});
+
+
+
+
+  $('#end_time').timepicker({
+   
+    // 'maxTime':
+    'showDuration': true,
+    'timeFormat': 'h:i A',
+    'forceRoundTime': true,
+  });
+
+  $('#start_time').on('change', function () {
+    var startTimeValue = $(this).val();
+    
+    // Check if start_time has a value and enable/disable end_time accordingly
+    if (startTimeValue !== '') {
+      $('#end_time').timepicker('option', 'minTime', startTimeValue);
+      $('#end_time').prop('disabled', false);
+    } else {
+      // Clear end_time and disable it
+      $('#end_time').val('');
+      $('#end_time').prop('disabled', true);
+    }
+    
+    validateTimeSelection();
+  });
+
+  $('#end_time').on('change', function () {
+    validateTimeSelection();
+  });
+
+  $('#viewSeatsButton').prop('disabled', true);
+
+  $('#helper').on('click', function () {
+    $(this).hide();
+  });
+
+   // Function to hide the first option in the ui-timepicker-list class
+   function hideFirstOption() {
+    const $timepickerList = $('.ui-timepicker-list');
+    $timepickerList.find('li:first').hide();
+  }
+
+  $('#end_time').on('showTimepicker', hideFirstOption);
+
+
+
+ // Function to validate and disable the button if necessary
+ function validateTimeSelection() {
+    const startTime = $('#start_time').val();
+    const endTime = $('#end_time').val();
+
+    // Regular expression to match time in HH:MM AM/PM format
+    const timeFormatPattern = /^(0?[1-9]|1[0-2]):[0-5][0-9] (AM|PM)$/i;
+
+    // Check if both start time and end time are empty
+    if (startTime === '' || endTime === '') {
+      $('#viewSeatsButton').prop('disabled', true);
+      return;
+    }
+
+    // Check if both start time and end time match the time format
+    if (timeFormatPattern.test(startTime) && timeFormatPattern.test(endTime)) {
+      // Parse the time values to compare them
+      const startTime24Hour = convertTimeTo24HourFormat(startTime);
+      const endTime24Hour = convertTimeTo24HourFormat(endTime);
+
+      if (startTime24Hour < endTime24Hour) {
+        $('#viewSeatsButton').prop('disabled', false);
+      } else {
+        $('#viewSeatsButton').prop('disabled', true);
+      }
+    } else {
+      $('#end_time').val('');
+      $('#start_time').val('');
+      $('#viewSeatsButton').prop('disabled', true);
+    }
+  }
+});
+
+
+
+   
+    });
+    </script>
+    
+    <div class="tooltip">
+      <p></p>
+      <h2></h2>
+    </div>
+
+    <div id="helper"class="helper">
+      <img src="img/drag.png" height="75px"></img>
+      <p><b>Drag across the screen to view available seats.</b></p>
+      <small>Dismiss</small>
+    </div>
+
+    <div id="reserveDiv" class="reserveDiv" style="display: none;">
+      <small>You Selected</small>
+      <!-- <small class="btn btn-sm  text-white float-end" id="reserveDivClose">close</small> -->
+      <h1><b></b></h1>
+      <p></p>
+      <p></p>
+      <div class="col">
+      <button id="reserveBtn" class="btn btn-danger explore" >Select Seat</button>
+<button id="fixBtn" class="btn btn-success explore">Select Seat</button>
+
+        <button class="btn text-white" id="reserveDivClose">Cancel</button>
+      </div>
+     
+    </div>
+
+
+  </div>
 
 
     </body>
