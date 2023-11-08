@@ -447,7 +447,7 @@ module.exports = {
             inject: true,
             filename: 'php/user-list.php',
             template: 'src/php/user-list.php',
-            chunks: ['users','export','history']
+            chunks: ['users']
         }),
         new HtmlWebpackPlugin({
             inject: true,
