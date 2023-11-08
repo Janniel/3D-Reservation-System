@@ -535,6 +535,12 @@ module.exports = {
             template: 'src/php/settings.php',
             chunks: ['analytics']
         }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'viewSeats.php',
+            template: 'src/viewSeats.php',
+            chunks: ['']
+        }),
   
     ]
 }
