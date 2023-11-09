@@ -28,6 +28,9 @@ require 'php/session.php';
 	<link rel="stylesheet"
 		href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 </head>
+<style>
+	
+</style>
 
 <body>
 	<script>
@@ -56,7 +59,62 @@ require 'php/session.php';
 	</script>
 	<!------------------------ HEADER --------------------->
 
-	<?php include 'php/header.php'; ?>
+	<header class="header-outer">
+    <nav>
+            <ul class="sidebar">
+                <li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 -960 960 960" width="26"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+                <li><a href="index.php">HOME</a></li>
+                <li><a href="index.php#aboutSOAR">ABOUT US</a></li>
+                <li><a href="reserve.php">RESERVE SEAT</a></li>
+                <li><a href="profile.php">ACCOUNT</a></li>
+                <li><a href="toLogout.php">LOGOUT</a></li>
+            </ul>
+            
+            <ul>
+                <li>
+                <a>
+                <img src="img/elib logo.png" class="icon"> 
+                <strong>SOAR</strong>
+                
+                </a>
+                
+                </li>
+                
+                <li class="hideOnMobile"><a href="index.php">HOME</a></li>
+                <li class="hideOnMobile"><a href="index.php#aboutSOAR">ABOUT US</a></li>
+                <li class="hideOnMobile"><a href="reserve.php">RESERVE SEAT</a></li>
+                <li class="hideOnMobile"><a href="profile.php">ACCOUNT</a></li>
+                <li class="hideOnMobile"><a href="toLogout.php">LOGOUT</a></li>
+                <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 -960 960 960" width="26"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+            </ul>
+        </nav>
+
+        
+    </header>
+    <script>
+            function showSidebar() {
+                const sidebar = document.querySelector('.sidebar')
+                sidebar.style.display = 'flex'
+            }
+            function hideSidebar() {
+                const sidebar = document.querySelector('.sidebar')
+                sidebar.style.display = 'none'
+            }
+    </script>
+
+    
+    <script>
+            function showSidebar() {
+                const sidebar = document.querySelector('.sidebar')
+                sidebar.style.display = 'flex'
+            }
+            function hideSidebar() {
+                const sidebar = document.querySelector('.sidebar')
+                sidebar.style.display = 'none'
+            }
+    </script>
+
+
 
 	<!------------------------ END HEADER --------------------->
 
