@@ -148,13 +148,15 @@ require 'php/connect.php';
                 Reserve seat
             </a>
         </div> -->
+
+    
         
             <section class="webgl-container">
-                <model-viewer
+                <model-viewer 
+                    id="myModelViewer"
                     src="models/exterior.glb"
                     ar
                     ar-modes="webxr scene-viewer quick-look"
-                    camera-controls="no-zoom"
                     poster="poster.webp"
                     shadow-intensity="1"
                     auto-rotate
@@ -163,7 +165,7 @@ require 'php/connect.php';
                     camera-orbit="-178.4deg 76.97deg 186.6m"
                     field-of-view="30deg"
                     width="1200"
-                    heigt="600"
+                    height="600"
                     
                     >
                     <div class="progress-bar hide" slot="progress-bar">
@@ -174,7 +176,19 @@ require 'php/connect.php';
                     Reserve seat
                 </a>
             </section>
-        
+
+            <script>
+    const modelViewer = document.getElementById('#myModelViewer');
+    
+    modelViewer.addEventListener('wheel', (event) => {
+        event.preventDefault(); // Prevent zooming via mouse wheel
+    });
+
+    modelViewer.addEventListener('touchmove', (event) => {
+        event.preventDefault(); // Prevent panning via touch gestures
+    });
+
+</script>
 
         <!------------------------ END OF SEAT INFO ------------------------>
 
