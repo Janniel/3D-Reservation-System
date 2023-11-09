@@ -399,6 +399,12 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             inject: true,
+            filename: 'php/viewAdmin.php',
+            template: 'src/php/viewAdmin.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
             filename: 'seats-info.php',
             template: 'src/seats-info.php',
             chunks: ['seats_info']

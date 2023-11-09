@@ -49,10 +49,10 @@
 }
 
 /* Navigation Bar */
-nav ul li:nth-child(6) a {
+nav ul li:nth-child(5) a {
   color: #dd5656;
 }
-nav ul li.hideOnMobile:nth-child(6) a {
+nav ul li.hideOnMobile:nth-child(5) a {
   color: #dd5656;
 }
 div.container:first-of-type {

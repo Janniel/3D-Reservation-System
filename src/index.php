@@ -211,8 +211,7 @@ require 'php/connect.php';
                 <ul class="wo-credit">
                     <li>Go to <a href="reserve.php">Reserve Seat</a> tab</li>
                     <li>Choose and filter your desired date and time of reservation</li>
-                    <li>
-                    <span class="c-txt-s"></span></li>
+                    
                 </ul>
                 </figcaption>
             </figure>

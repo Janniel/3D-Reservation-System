@@ -170,7 +170,7 @@ require 'session.php';
                                 </div>
                             </div>
                             <hr>
-                            <div class="form-group" style="position:relative;">
+                            <!--<div class="form-group" style="position:relative;">
                                 <label for="email">Department</label>
                                 <select class="form-control" id="department-input">
                                     <option hidden disabled selected value> -- select an option -- </option>
@@ -208,7 +208,7 @@ require 'session.php';
                                         COLLEGE OF SOCIAL SCIENCES AND PHILOSOPHY (CSSP)
                                     </option>
                                 </select>
-                            </div>
+                            </div> -->
                             <div class="form-group" style="position:relative;">
                                 <label for="email">Employment Status</label>
                                 <select class="form-control" id="employmentSTS-input">
@@ -306,7 +306,7 @@ require 'session.php';
                                 </select>
                             </div>
                             <div class="searchBar">
-                                <input type="search" placeholder="Search" name="search">
+                                <input type="search" placeholder="Search" name="search" id="searchInput">
                             </div>
 
                             <?php
@@ -592,6 +592,27 @@ require 'session.php';
         });
     });
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const searchInput = document.getElementById("searchInput");
+        const tableRows = document.querySelectorAll(".fill tbody tr");
+
+        searchInput.addEventListener("input", function () {
+            const searchTerm = searchInput.value.toLowerCase();
+
+            tableRows.forEach((row) => {
+                const rowData = row.textContent.toLowerCase();
+
+                if (rowData.includes(searchTerm)) {
+                    row.style.display = "table-row";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        });
+    });
+</script>
+
 
 
 </html>

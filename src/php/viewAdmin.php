@@ -38,6 +38,529 @@ $result = mysqli_query($conn, $query);
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --main-color: #a81c1c;
+  --color-dark: #1d2231;
+  --text-gray: #8390a2;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* --------- SIDEBAR --------- */
+.sidebar {
+  width: 345px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: var(--main-color);
+  z-index: 100;
+  transition: width 300ms;
+}
+
+/* .sidebar a {
+  text-decoration: underline 0.15em rgba(0, 0, 0, 0);
+  transition: text-decoration-color 300ms;
+  text-underline-offset: 0.4em;
+} */
+
+/* .sidebar a:hover {
+  text-decoration-color: rgb(247, 247, 247);
+} */
+
+#tabButton .tabs a:hover {
+  background: #fff8f8d3;
+  color: var(--main-color);
+  border-radius: 20px 0px 0px 20px;
+  text-decoration: none;
+  transition: 400ms;
+}
+
+.sidebar-brand {
+  height: 90px;
+  padding: 1rem 0rem 1rem 0.7rem;
+  display: flex;
+  color: #fff;
+  padding-top: 1rem;
+}
+
+.sidebar-brand span {
+  display: inline-block;
+  padding-top: 0.3rem;
+  margin-left: 1rem;
+}
+
+.sidebar-menu {
+  margin-top: 1rem;
+}
+
+.sidebar-menu li {
+  width: 100%;
+  margin-bottom: 1.7rem;
+  padding-left: 1rem;
+  cursor: pointer;
+}
+
+.sidebar-menu a {
+  padding-left: 1rem;
+  display: block;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+#tabButton {
+  color: #fff;
+}
+
+.sidebar-menu a span:first-child {
+  font-size: 1.5rem;
+  padding-right: 1rem;
+}
+
+#tabButton a.active {
+  background: #fff;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: var(--main-color);
+  border-radius: 20px 0px 0px 20px;
+}
+
+#tabContainer .tab {
+  display: none; /* hide all tab */
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+#tabContainer .active {
+  display: block;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+}
+
+.manage {
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.logout {
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  background: #701313;
+  padding: 5%;
+  text-decoration: none;
+}
+
+.logout a {
+  text-decoration: none;
+}
+
+/* --------- END OF SIDEBAR --------- */
+
+.main-content {
+  transition: margin-left 300ms;
+  margin-left: 345px;
+}
+
+/* --------- HEADER --------- */
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  left: 345px;
+  width: calc(100% - 345px);
+  top: 0%;
+  z-index: 100;
+  background-color: #fff;
+  transition: left 300ms;
+}
+
+header h2 {
+  color: #222;
+}
+
+header label span {
+  font-size: 1.7rem;
+  padding-right: 1rem;
+}
+
+.toggle {
+  cursor: pointer;
+}
+
+#nav-toggle {
+  display: none;
+  cursor: pointer;
+}
+
+#nav-toggle:checked + .sidebar {
+  width: 70px;
+}
+
+#nav-toggle:checked + .sidebar .sidebar-brand h2 span:last-child,
+#nav-toggle:checked + .sidebar li a span:last-child {
+  display: none;
+}
+
+#nav-toggle:checked + .sidebar .sidebar-brand,
+#nav-toggle:checked + .sidebar li {
+  text-align: center;
+}
+
+#nav-toggle:checked ~ .main-content {
+  margin-left: 70px;
+}
+
+#nav-toggle:checked ~ .header header {
+  width: calc(100% - 70px);
+  left: 70px;
+}
+
+.user-wrapper:hover {
+  text-decoration-color: rgb(145, 13, 13);
+}
+
+.user-wrapper {
+  display: flex;
+  align-items: center;
+  text-decoration: underline 0.15em rgba(0, 0, 0, 0);
+  transition: text-decoration-color 300ms;
+  text-underline-offset: 0.4em;
+}
+
+.user-wrapper img {
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.user-wrapper small {
+  display: inline-block;
+  color: var(--text-gray);
+}
+
+.user-wrapper h4 {
+  margin-bottom: -7px !important;
+}
+
+.dropdown-toggle {
+  background-color: transparent;
+  border-color: #fff;
+  border-style: solid;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  content: none;
+}
+
+.dropdown-toggle::after {
+  content: none;
+}
+
+.dropdown-menu {
+  background-color: hsl(0, 0%, 100%);
+  margin-left: 60px;
+}
+
+.dropdown-menu > li > a {
+  color: #a12a2a;
+}
+
+/* --------- END OF HEADER --------- */
+
+main {
+  margin-top: 35px;
+  padding: 2rem 1.5rem;
+  background: #f1f5f9;
+  height: 100vh;
+  top: 0;
+}
+
+main #note {
+  font-weight: bold;
+  color: #a81c1c;
+}
+
+@media only screen and (max-width: 960px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .recent-grid {
+    grid-template-columns: 60% 40%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .recent-grid {
+    grid-template-columns: 100%;
+  }
+
+  .search-wrapper {
+    display: none;
+  }
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0 solid transparent;
+  border-radius: 0.25rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 6px 0 rgb(218 218 253 / 65%),
+    0 2px 6px 0 rgb(206 206 238 / 54%);
+}
+.me-2 {
+  margin-right: 0.5rem !important;
+}
+
+.adminButton {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  right: 0;
+}
+
+/* Create two equal columns that floats next to each other */
+.adminButtons {
+  width: 100%;
+  padding: 20px;
+  padding-bottom: 0;
+  height: 150px; /* Should be removed. Only for demonstration */
+  margin-top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Clear floats after the columns */
+.adminButton:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+.note1 {
+  padding-left: 5%;
+  font-size: small;
+}
+
+.note2 {
+  font-size: small;
+  display: none;
+}
+
+.suspendAcc {
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: 100%;
+}
+
+.suspendAcc:hover,
+.button-6:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(196, 34, 34, 0.65);
+}
+
+.suspendAcc:hover {
+  transform: translateY(-1px);
+}
+
+.suspendAcc:active {
+  background-color: #f0f0f1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(196, 34, 34, 0.65);
+  transform: translateY(0);
+}
+
+.deleteAcc {
+  align-items: center;
+  background-color: #cf4f4f;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(252, 252, 252, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: 100%;
+}
+
+.deleteAcc:hover,
+.deleteAcc:focus {
+  background-color: #740101;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgb(255, 255, 255);
+}
+
+.deleteAcc:hover {
+  transform: translateY(-1px);
+}
+
+.deleteAcc:active {
+  background-color: #f0f0f1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
+
+.adminInfo {
+  border: 2px solid black;
+  margin-top: 10px;
+}
+
+/* CSS */
+.saveBTN {
+  background-color: #cf4f4f;
+  border: 1px solid rgb(209, 213, 219);
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  color: #ffffff;
+  font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 0.775rem;
+  font-weight: 600;
+  line-height: 0.8rem;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  text-decoration: none #d1d5db solid;
+  text-decoration-thickness: auto;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.saveBTN:hover {
+  background-color: #740101;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgb(255, 255, 255);
+  transform: translateY(-1px);
+}
+
+.saveBTN:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.saveBTN:focus-visible {
+  box-shadow: none;
+}
+
+.fieldTxt {
+  padding-top: 11px;
+}
+
+#deleteModal img {
+  margin-bottom: 50px;
+  margin-left: 100px;
+  font-size: x-large;
+}
+
+.manage {
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.field-icon {
+  float: right;
+  margin-left: -25px;
+  margin-top: -25px;
+  position: relative;
+  z-index: 2;
+}
+
+.container {
+  padding-top: 50px;
+  margin: auto;
+}
+
+    </style>
 
 </head>
 
@@ -56,7 +579,7 @@ $result = mysqli_query($conn, $query);
     <!------------------------ SIDEBAR ------------------------>
     <div class="sidebar">
         <div class="sidebar-brand">
-            <img src="assets/img/bulsu logo.png" alt="bulsu logo" class="logo">
+            <img src="../img/bulsu logo.png" alt="bulsu logo" class="logo">
             <h2> <span>SOAR Admin</span></h2>
         </div>
 
@@ -116,7 +639,7 @@ $result = mysqli_query($conn, $query);
                 <button class="dropdown-toggle" class="btn btn-secondary dropdown-toggle" type="button"
                     id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     <div class="user-wrapper">
-                        <div id="user_admin">
+                    <div id="user_admin">
                             <h4>
                                 Hello, <?php echo $_SESSION["first_name"]; ?>
                             </h4>
@@ -132,7 +655,6 @@ $result = mysqli_query($conn, $query);
         </header>
     </div>
     <!------------------------ END OF HEADER ------------------------>
-
     <div class="main-content">
 
         <!-- Popup for changing username -->
@@ -321,7 +843,7 @@ $result = mysqli_query($conn, $query);
                                     <ul class="list-group list-group-flush">
                                         <li
                                             class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                            <h6 class="mb-0">Username <img src="assets/img/edit.png" width="20" height="20"
+                                            <h6 class="mb-0">Username <img src="../img/edit.png" width="20" height="20"
                                                     style="cursor:pointer;" data-toggle="modal"
                                                     data-target="#change_username"></h6>
                                             <span class="text-secondary">
@@ -330,7 +852,7 @@ $result = mysqli_query($conn, $query);
                                         </li>
                                         <li
                                             class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                            <h6 class="mb-0">Password &nbsp;<img src="assets/img/edit.png" width="20"
+                                            <h6 class="mb-0">Password &nbsp;<img src="../img/edit.png" width="20"
                                                     height="20" style="cursor:pointer;" data-toggle="modal"
                                                     data-target="#change_password"></h6>
 
