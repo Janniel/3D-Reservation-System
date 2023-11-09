@@ -47,11 +47,11 @@ loader.load("./models/interior.glb", function(gltf) {
  
 
   // PRINTS THE EXACT CAMERA POSITION AND CONTROLS TARGET
-  // window.addEventListener('mouseup', function() {
-  //   console.log(('Camera Position: '), camera.position)
-  //   console.log(('Controls Target: '), controls.target)
+  window.addEventListener('mouseup', function() {
+    console.log(('Camera Position: '), camera.position)
+    console.log(('Controls Target: '), controls.target)
 
-  // })
+  })
 
 // TIMELINE
 const tl = gsap.timeline({defaults: {duration: 1}})
@@ -91,11 +91,11 @@ scene.add(camera)
 //Renderer
 const canvas = document.querySelector('.webgl2')
 const renderer = new THREE.WebGLRenderer({canvas})
-const backgroundColor = new THREE.Color(0x666666);
+const backgroundColor = new THREE.Color(0x555555);
 renderer.setClearColor(backgroundColor);
 renderer.setSize(sizes.width, sizes.height)
 renderer.render(scene, camera)
-renderer.setPixelRatio(1)
+renderer.setPixelRatio(0.75)
 
 //Bloom Experiment
 const composer = new EffectComposer(renderer)
@@ -130,8 +130,8 @@ bloomPass.threshold = 0.01; // Adjust the brightness threshold for the bloom eff
 //Controls
 const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
-controls.enablePan = true
-controls.enableZoom = true
+controls.enablePan = false
+controls.enableZoom = false
 
 //Resize
 window.addEventListener("resize", () => {
@@ -822,78 +822,154 @@ function hideReserveDiv() {
 
       case '1_CompChair_1':
         console.log('hovered on the 1_CompChair_1 object');
-        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B1');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B46');
         
         break;
       
       case '1_CompChair_2':
         console.log('hovered on the 1_CompChair_2 object');
-        showTooltip(event, `${seatStatus}` + ' seat',  'SEAT B2');
+        showTooltip(event, `${seatStatus}` + ' seat',  'SEAT B47');
         break;
       
       case '1_CompChair_3':
         console.log('hovered on the 1_CompChair_3 object');
-        showTooltip(event,`${seatStatus}` + ' seat',  'SEAT B3');
+        showTooltip(event,`${seatStatus}` + ' seat',  'SEAT B48');
         break;
 
       case '1_CompChair_4':
         console.log('hovered on the 1_CompChair_4 object');
-        showTooltip(event, `${seatStatus}` + ' seat',  'SEAT B4');
+        showTooltip(event, `${seatStatus}` + ' seat',  'SEAT B49');
         break;
 
         case '1_CompChair_5':
         console.log('hovered on the 1_CompChair_5 object');
-        showTooltip(event,`${seatStatus}` + ' seat',  'SEAT B5'); 
+        showTooltip(event,`${seatStatus}` + ' seat',  'SEAT B50'); 
         break;
 
         case '2_CompChair_1':
         console.log('hovered on the 2_CompChair_1 object');
-        showTooltip(event,`${seatStatus}` + ' seat', 'SEAT B6');
+        showTooltip(event,`${seatStatus}` + ' seat', 'SEAT B51');
         break;
 
         case '2_CompChair_2':
         console.log('hovered on the 2_CompChair_2 object');
-        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B7');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B52');
         break;
 
         case '2_CompChair_3':
         console.log('hovered on the 2_CompChair_3 object');
-        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B8');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B53');
         break;
 
         case '2_CompChair_4':
         console.log('hovered on the 2_CompChair_4 object');
-        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B9');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B54');
         break;
 
         case '2_CompChair_5':
         console.log('hovered on the 2_CompChair_5 object');
-        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B10');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B55');
         break;
 
         case '3_CompChair_1':
         console.log('hovered on the 3_CompChair_1 object');
-        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B11');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B56');
         break;
 
         case '3_CompChair_2':
         console.log('hovered on the 3_CompChair_2 object');
-        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B12');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B57');
         break;
 
         case '3_CompChair_3':
         console.log('hovered on the 3_CompChair_3 object');
-        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B13');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B58');
         break;
 
         case '3_CompChair_4':
         console.log('hovered on the 3_CompChair_4 object');
-        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B14');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B59');
         break;
 
         case '3_CompChair_5':
         console.log('hovered on the 3_CompChair_5 object');
-        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B15');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B60');
+        break;
+
+        case '4_CompChair_1':
+        console.log('hovered on the 4_CompChair_1 object');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT 41');
+        
+        break;
+      
+      case '4_CompChair_2':
+        console.log('hovered on the 4_CompChair_2 object');
+        showTooltip(event, `${seatStatus}` + ' seat',  'SEAT B42');
+        break;
+      
+      case '4_CompChair_3':
+        console.log('hovered on the 4_CompChair_3 object');
+        showTooltip(event,`${seatStatus}` + ' seat',  'SEAT B43');
+        break;
+
+      case '4_CompChair_4':
+        console.log('hovered on the 4_CompChair_4 object');
+        showTooltip(event, `${seatStatus}` + ' seat',  'SEAT B44');
+        break;
+
+        case '4_CompChair_5':
+        console.log('hovered on the 4_CompChair_5 object');
+        showTooltip(event,`${seatStatus}` + ' seat',  'SEAT B45'); 
+        break;
+
+        case '7_CompChair_1':
+        console.log('hovered on the 7_CompChair_1 object');
+        showTooltip(event,`${seatStatus}` + ' seat', 'SEAT B36');
+        break;
+
+        case '7_CompChair_2':
+        console.log('hovered on the 7_CompChair_2 object');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT 37');
+        break;
+
+        case '7_CompChair_3':
+        console.log('hovered on the 7_CompChair_3 object');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B38');
+        break;
+
+        case '7_CompChair_4':
+        console.log('hovered on the 7_CompChair_4 object');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B39');
+        break;
+
+        case '7_CompChair_5':
+        console.log('hovered on the 7_CompChair_5 object');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B40');
+        break;
+
+        case '8_CompChair_1':
+        console.log('hovered on the 8_CompChair_1 object');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B31');
+        break;
+
+        case '8_CompChair_2':
+        console.log('hovered on the 8_CompChair_2 object');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B32');
+        break;
+
+        case '8_CompChair_3':
+        console.log('hovered on the 8_CompChair_3 object');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B33');
+        break;
+
+        case '8_CompChair_4':
+        console.log('hovered on the 8_CompChair_4 object');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B34');
+        break;
+
+        case '8_CompChair_5':
+        console.log('hovered on the 8_CompChair_5 object');
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B35');
         break;
 
       default:

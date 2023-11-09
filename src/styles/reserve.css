@@ -609,7 +609,7 @@ nav ul {
   .tooltip {
     color: whitesmoke;
     margin-top: 2.5rem;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 20px;
     padding: 2rem;
     width: 450px;
