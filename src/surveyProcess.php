@@ -16,7 +16,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     VALUES ('$rating', '$opinion', NOW(), '$userId')";
 
     if (mysqli_query($conn, $insertQuery)) {
-        echo "Record inserted successfully!";
+        $message = "submitted $rating star ratings and review. $opinion ";
+
+                        $sql2 = "INSERT INTO notification (user_id, message, date) 
+                                VALUES ('$userId', '$message', NOW())";
+    
+                        if (mysqli_query($conn, $sql2)) {
+                            // Notification inserted into the database successfully
+                            echo "Record inserted successfully!";
+                        } else {
+                            // Error occurred during the notification insertion
+                            echo "error";
+                        }
+     
     } else {
         echo "Error: " . $insertQuery . "<br>" . mysqli_error($conn);
     }

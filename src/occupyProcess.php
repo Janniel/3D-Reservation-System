@@ -57,19 +57,36 @@ if (isset($_POST['seat_id'])) {
                 $update_seat_query_result = mysqli_query($conn, $update_seat_query);
 
                 if ($update_seat_query_result) {
-                    // Send a response indicating success
-                    $response['success'] = true;
-                    echo "Seat $seat_id occupied successfully. You are $user_id. Occupied on $current_date from $current_time until $end_time";
+                   
 
-                    // Start a JavaScript timer to update the time spent every second
-                    echo "<script>
-                            var timeSpent = 0;
-                            setInterval(function() {
-                                timeSpent++;
-                                document.getElementById('timeSpent').innerHTML = 'Time Spent: ' + timeSpent + ' seconds';
-                            }, 1000);
-                          </script>";
-                    echo "<div id='timeSpent'></div>"; // Display the time spent here
+                    $message = "occupied seat $seat_id successfully.";
+
+                    $sql2 = "INSERT INTO notification (user_id, message, date) 
+                            VALUES ('$user_id', '$message', NOW())";
+
+                    if (mysqli_query($conn, $sql2)) {
+                        // Notification inserted into the database successfully
+                        // echo "success";
+                         // Send a response indicating success
+                    
+                        $response['success'] = true;
+                        echo "Seat $seat_id occupied successfully. You are $user_id. Occupied on $current_date from $current_time until $end_time";
+
+                        // Start a JavaScript timer to update the time spent every second
+                        echo "<script>
+                                var timeSpent = 0;
+                                setInterval(function() {
+                                    timeSpent++;
+                                    document.getElementById('timeSpent').innerHTML = 'Time Spent: ' + timeSpent + ' seconds';
+                                }, 1000);
+                            </script>";
+                        echo "<div id='timeSpent'></div>"; // Display the time spent here
+                        } else {
+                            // Error occurred during the notification insertion
+                             // Send an error response
+                              $response['success'] = false;
+                              $response['error'] = "Error updating seat status: " . mysqli_error($conn);
+                        }
                 } else {
                     // Send an error response
                     $response['success'] = false;

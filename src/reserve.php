@@ -48,20 +48,20 @@ $reservePerDay = $settings_row['reservePerDay'];
 
 $_SESSION["reservation_count"] = $reservation_count;
 
-// // Check if the reservation count has reached the limit
-// if ($reservation_count >= $reservePerDay) {
-//   echo "<script>
-//                 Swal.fire({
-//                   icon: 'warning',
-//                   title: 'Reservation Limit Reached',
-//                   text: 'You have reached the maximum reservation limit for today.',
-//                   confirmButtonText: 'OK',
-//                   onClose: function() {
-//                     window.location.href = '../index.php';
-//                   }
-//                 });
-//             </script>";
-// }
+// Check if the reservation count has reached the limit
+if ($reservation_count >= $reservePerDay) {
+  echo "<script>
+                Swal.fire({
+                  icon: 'warning',
+                  title: 'Reservation Limit Reached',
+                  text: 'You have reached the maximum reservation limit for today.',
+                  confirmButtonText: 'OK',
+                  onClose: function() {
+                    window.location.href = '../index.php';
+                  }
+                });
+            </script>";
+}
 
 ?>
 
@@ -88,6 +88,10 @@ $_SESSION["reservation_count"] = $reservation_count;
 
 </head>
 <body>
+
+<?php
+
+?>
 <script>
           
           // Function to trigger the PHP script

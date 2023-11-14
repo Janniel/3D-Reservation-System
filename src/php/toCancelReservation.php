@@ -9,9 +9,14 @@ if (!isset($_SESSION['user_id'])) {
     exit(); // Ensure that the script stops execution after redirection
 }
 
+$user_id = $_SESSION['user_id'];
+
+
 // Check if the reservation_id is provided in the URL
-if (isset($_GET['reservation_id'])) {
+if (isset($_GET['reservation_id']) && isset($_GET['reason'])) {
     $reservation_id = $_GET['reservation_id'];
+    $cancel_reason =  mysqli_real_escape_string($conn, $_GET['reason']);
+   
 
      // Retrieve start_time and end_time from the occupy table
      $get_occupy_times_query = "SELECT start_time, end_time FROM reservation WHERE reservation_id = '$reservation_id'";
@@ -42,7 +47,29 @@ if (isset($_GET['reservation_id'])) {
                  // Update the isDone column in the reservation table to 1
                  $update_reservation_query = "UPDATE reservation SET isDone = 1 WHERE reservation_id = '$reservation_id'";
                  if (mysqli_query($conn, $update_reservation_query)) {
-                     echo "Success";
+                    
+                    $message = "cancelled a reservation with reservation ID: $reservation_id ";
+
+                    $sql2 = "INSERT INTO notification (user_id, message, date) 
+                            VALUES ('$user_id', '$message', NOW())";
+
+                    if (mysqli_query($conn, $sql2)) {
+
+                        // Now, delete the corresponding entry from the occupy table
+                        $update_history_query = "UPDATE history SET cancel_reason =  '$cancel_reason'  WHERE reservation_id = '$reservation_id'";
+                        if (mysqli_query($conn, $update_history_query)) {
+                             // Notification inserted into the database successfully
+                            echo "Success";
+                        }
+                        else {
+                            // Error occurred during the notification insertion
+                            echo "error";
+                        }
+                       
+                    } else {
+                        // Error occurred during the notification insertion
+                        echo "error";
+                    }
                  } else {
                      echo "Error updating isDone column in reservation table: " . mysqli_error($conn);
                  }

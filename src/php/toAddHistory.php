@@ -1,6 +1,9 @@
 <?php
 session_start();
 require 'connect.php';
+require 'session.php';
+
+$user_id = $_SESSION['user_id'];
 
 // Set the server's time zone to Asia/Manila
 date_default_timezone_set('Asia/Manila');
@@ -44,7 +47,18 @@ if (isset($_GET['reservation_id'])) {
                     // Update the isDone column in the reservation table to 1
                     $update_reservation_query = "UPDATE reservation SET isDone = 1 WHERE reservation_id = '$reservation_id'";
                     if (mysqli_query($conn, $update_reservation_query)) {
-                        echo "Success";
+                        $message = "was done occupying a seat.";
+
+                        $sql2 = "INSERT INTO notification (user_id, message, date) 
+                                VALUES ('$user_id', '$message', NOW())";
+    
+                        if (mysqli_query($conn, $sql2)) {
+                            // Notification inserted into the database successfully
+                            echo "Success";
+                        } else {
+                            // Error occurred during the notification insertion
+                            echo "error";
+                        }
                     } else {
                         echo "Error updating isDone column in reservation table: " . mysqli_error($conn);
                     }

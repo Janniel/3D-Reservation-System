@@ -74,6 +74,15 @@ if (mysqli_num_rows($result123) == 1) {
 
         background-color: #a81c1c;
     }
+    .swal2-radio {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+    .swal2-radio label {
+        padding: .5rem !important;
+    }
 </style>
 
 
@@ -671,21 +680,44 @@ if (mysqli_num_rows($result123) == 1) {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-        function confirmDelete(reservationId) {
+       function confirmDelete(reservationId) {
+    const reasons = ['No longer needed', 'Changed plans', 'Other'];
+    
+    Swal.fire({
+        title: 'Cancel reservation?',
+        text: 'You will not be able to recover this reservation!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: "#a81c1c",
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+        cancelButtonColor: '#d3d3d3',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // If confirmed, prompt user to choose a reason
             Swal.fire({
-                title: 'Cancel reservation?',
-                text: 'You will not be able to recover this reservation!',
-                icon: 'warning',
+                title: 'Reason for cancellation',
+                input: 'radio',
+                inputOptions: reasons.reduce((options, reason, index) => {
+                    options[index] = reason;
+                    return options;
+                }, {}),
+                inputValidator: (value) => {
+                    if (!value) {
+                        return 'You must choose a reason';
+                    }
+                },
                 showCancelButton: true,
                 confirmButtonColor: "#a81c1c",
-                confirmButtonText: 'Yes',
-                cancelButtonText: 'No',
-                cancelButtonColor: '#d3d3d3',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // If confirmed, proceed with the deletion via AJAX
+                confirmButtonText: 'Submit',
+                cancelButtonText: 'Cancel',
+            }).then((reasonResult) => {
+                if (reasonResult.isConfirmed) {
+                    const selectedReason = reasons[reasonResult.value];
+                    // Encode the selected reason and proceed with the deletion via AJAX
+                    const encodedReason = encodeURIComponent(selectedReason);
                     $.ajax({
-                        url: `php/toCancelReservation.php?reservation_id=${reservationId}`,
+                        url: `php/toCancelReservation.php?reservation_id=${reservationId}&reason=${encodedReason}`,
                         type: 'GET',
                         success: function (response) {
                             if (response === "Success") {
@@ -698,7 +730,6 @@ if (mysqli_num_rows($result123) == 1) {
                                     confirmButtonText: 'OK'
                                 }).then((result) => {
                                     if (result.isConfirmed) {
-
                                         // Redirect to profile.php or perform other actions
                                         window.location.href = 'profile.php';
                                     }
@@ -737,6 +768,9 @@ if (mysqli_num_rows($result123) == 1) {
                 }
             });
         }
+    });
+}
+
     </script>
 
 

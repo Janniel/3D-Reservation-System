@@ -21,6 +21,15 @@ $sql = "SELECT r.reservation_id, r.user_id, r.date, r.start_time, r.end_time, a.
 
 $result = $conn->query($sql);
 
+$notif_sql = "SELECT n.notif_id, n.user_id, n.date, n.is_archived, n.message, u.first_name, u.last_name, a.picture
+FROM notification AS n
+INNER JOIN account AS a ON n.user_id = a.username
+INNER JOIN users AS u ON n.user_id = u.user_id
+ORDER BY n.notif_id DESC";
+
+
+$notif_sql_result = $conn->query($notif_sql);
+
 ?>
 
 
@@ -309,7 +318,8 @@ $result = $conn->query($sql);
                                                                                                 <?php
                                                 }
                                             } else {
-                                                echo "<tr><td colspan='7'>No history found.</td></tr>";
+                                                echo "<tr><td colspan='7' class='text-center '><i class='bi bi-exclamation-triangle-fill'></i> No pending reservation found.</td></tr>";
+
                                             }
                                             ?>
                                         </table>
@@ -320,14 +330,147 @@ $result = $conn->query($sql);
                         
                         <!------------------------ END OF PENDING RESERVATION ------------------------>
 
+                       
+
+                        <div class="pending">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Notification</h3>
+                                    <a href="php/reserved.php" class="button" id="tabButtons">See all <span
+                                            class="las la-arrow-right"></span></a>
+                                </div>
+                                <div class="card-body  overflow-auto">
+                                <?php
+                                    if ($notif_sql_result->num_rows > 0) {
+                                        while ($row = $notif_sql_result->fetch_assoc()) {
+                                    ?>
+                                            <div class="customer">
+                                                <div class="info">
+                                                    <img src="<?php echo $row['picture']; ?>" width="40px" height="40px" alt="">
+                                                    <div>
+                                                        <p><b><?php echo $row['first_name'] . ' ' . $row['last_name'] . ' ';?></b><?php echo $row['message']; ?>
+                                                        <?php
+                                                            $date = new DateTime($row['date']);
+                                                            $currentDate = new DateTime();
+                                                            $timeAgo = $currentDate->diff($date);
+
+                                                            $units = ['y' => 'year', 'm' => 'month', 'd' => ' day', 'h' => ' hour', 'i' => ' minute', 's' => ' second'];
+
+                                                            foreach ($units as $unit => $label) {
+                                                                if ($timeAgo->$unit > 0) {
+                                                                    $time = $timeAgo->$unit . " $label" . ($timeAgo->$unit > 1 ? "s" : "") . " ago";
+                                                                    break;
+                                                                }
+                                                            }
+
+                                                            $time = $time ?? "Just now";
+                                                        ?>
+
+                                                        <br><small><?php echo $time; ?></small></p>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    <?php
+                                        }
+                                    } else {
+                                        echo "<div class='customer'><div class='info'><p>No notification yet.</p></div></div>";
+                                    }
+                                ?>
+
+                                </div>
+                            </div>
+                        </div>
+
                         <!------------------------ RECENT HISTORY ------------------------>
-                        <div class="recent-history">
+                        <div class="cancelled">
+                        <div class="card">
+                                <div class="card-header">
+                                    <h3>Cancelled Reservations</h3>
+                                    <a href="php/history.php" class="button">See all <span class="las la-arrow-right"></span></a>
+                                </div>
+                                <div class="card-body overflow-auto">
+
+                                <?php
+                                    $historySql = "SELECT h.history_id, h.reservation_id, h.user_id, h.start_time, h.end_time, h.cancel_reason, a.username, u.user_id, h.seat_id, u.first_name, n.date, u.last_name, u.rfid_no, u.contact_number, u.course_code, a.email, a.picture
+                                    FROM history AS h
+                                    INNER JOIN account AS a ON h.user_id = a.username
+                                    INNER JOIN users AS u ON h.user_id = u.user_id
+                                    INNER JOIN notification AS n ON h.user_id = n.user_id
+                                    WHERE h.cancel_reason IS NOT NULL AND h.cancel_reason != ''
+                                    ORDER BY h.date DESC
+                                    LIMIT 5";
+
+                                    $historyResult = $conn->query($historySql);
+
+                                    if ($historyResult->num_rows > 0) {
+                                    ?>
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">User</th>
+                                                    <th scope="col">Cancel Reason</th>
+                                                    <th scope="col">Cancelled on</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php while ($row = $historyResult->fetch_assoc()) { ?>
+                                                    <tr>
+                                                        <td>
+                                                            <img src="<?php echo $row['picture']; ?>" style="border-radius: 50%" width="40px" height="40px" alt="User Image">
+                                                            <strong><?php echo $row['first_name'] . ' ' . $row['last_name']; ?></strong><br>
+                                                            <!-- <small><?php echo $row['course_code']; ?></small> -->
+                                                        </td>
+                                                        <td>
+                                                            <p><?php echo $row['cancel_reason']; ?></p>
+                                                        </td>
+                                                        <td>
+                                                        <?php
+                                                            $date = new DateTime($row['date']);
+                                                            $currentDate = new DateTime();
+                                                            $timeAgo = $currentDate->diff($date);
+
+                                                            $units = ['y' => 'year', 'm' => 'month', 'd' => ' day', 'h' => ' hour', 'i' => ' minute', 's' => ' second'];
+
+                                                            foreach ($units as $unit => $label) {
+                                                                if ($timeAgo->$unit > 0) {
+                                                                    $time = $timeAgo->$unit . " $label" . ($timeAgo->$unit > 1 ? "s" : "") . " ago";
+                                                                    break;
+                                                                }
+                                                            }
+
+                                                            $time = $time ?? "Just now";
+                                                        ?>
+
+                                                        <br><small><?php echo $time; ?></small></p>
+                                                        </td>
+                                                     
+                                                    </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    <?php
+                                    } else {
+                                        echo "No historical data found.";
+                                    }
+                                    ?>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <!------------------------ END OF RECENT HISTORY ------------------------>
+
+                           <!------------------------ RECENT HISTORY ------------------------>
+                           <div class="pending">
                             <div class="card">
                                 <div class="card-header">
                                     <h3>Recent History</h3>
                                     <a href="php/history.php" class="button">See all <span class="las la-arrow-right"></span></a>
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body overflow-auto">
 
                                     <?php
                                     $historySql = "SELECT h.history_id, h.reservation_id, h.user_id, h.date, h.start_time, h.end_time, a.username, u.user_id, h.seat_id, u.first_name, u.last_name, u.rfid_no, u.contact_number, u.course_code, a.email, a.picture
@@ -371,6 +514,8 @@ $result = $conn->query($sql);
                             </div>
                         </div>
                         <!------------------------ END OF RECENT HISTORY ------------------------>
+
+                        
 
 
 

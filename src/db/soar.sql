@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2023 at 04:59 PM
+-- Generation Time: Nov 14, 2023 at 03:05 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -47,17 +47,19 @@ INSERT INTO `account` (`account_id`, `username`, `password`, `email`, `picture`,
 (1, 'ricardojeyms', '$2y$10$21Nsa5xTf5CQ.DfiUWM0xuxp7MsINW7DyQWhOfI2TiNq5L3wm2cye', 'richard@soar.com', NULL, 'admin', 0, 0, 0),
 (8, '2020104797', '$2y$10$3Dq.7xWhJ2vtM1UVR9nmSeR2DchdRmQLyfK/nO9wjjY.QOdEAs//e', 'mj23@gmail.com', NULL, 'admin', 0, 0, 0),
 (9, '2020104798', '$2y$10$xJ3QMeO6eDXwBtvLHrsyrel.BAmbmuukB3vZB/5SdRFDrSsEd55KK', 'robert.manalili.o@bulsu.edu.ph', NULL, 'admin', 0, 0, 0),
-(19, '2020103030', '$2y$10$1A2qthrmbJ5LKWka1xuuruACm8AGqPu8sILhdnoxZ9hbMzoG5606y', 'sydney.bernardo.c@bulsu.edu.ph', 'assets/img/profiledownload.jpg', 'student', 0, 1, 0),
-(21, '2020107777', '$2y$10$e.xI/C4JTp9aShfpMxeIu.4q/iAmMzH0JJuWfcrq0CSH8VWAC/6mW', 'cloud.hipolito.c@bulsu.edu.ph', 'assets/img/profileed2105546b534db4e4ebd2635a9184b3e244912e.webp', 'student', 0, 0, 0),
+(19, '2020103030', '$2y$10$1A2qthrmbJ5LKWka1xuuruACm8AGqPu8sILhdnoxZ9hbMzoG5606y', 'sydney.bernardo.c@bulsu.edu.ph', '/img/profiledownload.jpg', 'student', 0, 1, 0),
+(21, '2020107777', '$2y$10$e.xI/C4JTp9aShfpMxeIu.4q/iAmMzH0JJuWfcrq0CSH8VWAC/6mW', 'cloud.hipolito.c@bulsu.edu.ph', '/img/profileed2105546b534db4e4ebd2635a9184b3e244912e.webp', 'student', 0, 0, 0),
 (23, '2020104040', '$2y$10$oXs00rYeFlj9qBmyKd2aO.KAsS1.VvC8k4lLAfZhlcw/0ovBX164e', 'mina.viniegas.o@bulsu.edu.ph', NULL, 'faculty', 0, 0, 0),
 (26, '2020104796', '$2y$10$tSWF9Rnkh5.X2c/UYDFSNenSZy5ZEIdpiN3pEW3LCEZrWMHO7Rf4y', 'lara.zambrano.q@bulsu.edu.ph', NULL, 'admin', 0, 0, 0),
-(27, '2020103475', '$2y$10$vUyeyqc..iM8OoPztMo43es.BOUXyY7WsMvSYMVpuryfjcIHh9zGS', 'jeaysmie.digo.m@bulsu.edu.ph', 'assets/img/profile95225876.jpg', 'student', 0, 1, 0),
-(31, '2020', '$2y$10$9a6rV23YjULBDvqagS8e3ui.BGoEpEH.ArkDmNS3YI3ozq160HwBu', 'zack@gmail.com', NULL, 'student', 0, 1, 0),
-(32, '2020', '$2y$10$rmX64yPbnW2HnLbkApvmu.sPaam4BHzopqY939QkhlVf3NwfaZHLe', 'zack@gmail.com', NULL, 'student', 0, 1, 0),
+(27, '2020103475', '$2y$10$vUyeyqc..iM8OoPztMo43es.BOUXyY7WsMvSYMVpuryfjcIHh9zGS', 'jeaysmie.digo.m@bulsu.edu.ph', './img/profilejeays.jpg', 'student', 0, 0, 0),
+(31, '2020', '$2y$10$9a6rV23YjULBDvqagS8e3ui.BGoEpEH.ArkDmNS3YI3ozq160HwBu', 'zack@gmail.com', NULL, 'student', 0, 0, 0),
+(32, '2020', '$2y$10$rmX64yPbnW2HnLbkApvmu.sPaam4BHzopqY939QkhlVf3NwfaZHLe', 'zack@gmail.com', NULL, 'student', 0, 0, 0),
 (33, '0404', '$2y$10$glpGEUgA5bILzdM1rG8s/OSRgJjcCl/JKvQEmTYmdE4leZMH6dn8O', 'maryqueen.casaclang.o@bulsu.edu.ph', 'assets/img/profile/108616687.jpg', 'student', 0, 0, 0),
-(34, '7070', '$2y$10$n/t5A/KhwBXmw1rijT5ySOJjQG.8xvxNLviyS/KXO/x.k5/sreZMa', 'rinoa@gmail.com', NULL, 'student', 0, 1, 0),
+(34, '7070', '$2y$10$n/t5A/KhwBXmw1rijT5ySOJjQG.8xvxNLviyS/KXO/x.k5/sreZMa', 'rinoa@gmail.com', NULL, 'student', 0, 0, 0),
 (35, '1111', '$2y$10$MGbSdUHQ4WzK8pzaKGMHEelvZUL6/3XGIYJB/QzZPzeA/iQrZAYAm', 'sandra.velasco.c@bulsu.edu.ph', 'assets/img/woman.jpg', 'faculty', 0, 0, 0),
-(36, '2020107070', '$2y$10$SKAz5dTxnospRn.29.wvXOYZq35liflnnZoRea98QzRIRcZG5Hyta', 'gelo.rivera.o@bulsu.edu.ph', 'assets/img/gelo.jpg', 'alumni', 0, 0, 0);
+(36, '2020107070', '$2y$10$SKAz5dTxnospRn.29.wvXOYZq35liflnnZoRea98QzRIRcZG5Hyta', 'gelo.rivera.o@bulsu.edu.ph', './img/profile/gelo.jpg', 'alumni', 0, 0, 0),
+(37, '123', '$2y$10$oj4zdmQjsZI1rOhJ9qGv.uIB94rkPli7aDn.yQQNQNrOa32a03R4a', 'juan@soar.com', './img/profile/gelo.jpg', 'faculty', 0, 0, 0),
+(38, '2581406', '$2y$10$hxhT64eAXC/fXd6BRGeo3./Z5WVUcM..mZNhs0DkkSeO1MGSpbiu.', 'asd@gmail.com', NULL, 'faculty', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -186,6 +188,7 @@ CREATE TABLE `history` (
   `user_id` int(11) DEFAULT NULL,
   `seat_id` int(11) DEFAULT NULL,
   `time_spent` time DEFAULT NULL,
+  `cancel_reason` varchar(255) NOT NULL,
   `is_archived` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -193,10 +196,37 @@ CREATE TABLE `history` (
 -- Dumping data for table `history`
 --
 
-INSERT INTO `history` (`history_id`, `reservation_id`, `date`, `start_time`, `end_time`, `user_id`, `seat_id`, `time_spent`, `is_archived`) VALUES
-(60, 119, '2023-11-02', '00:00:00', '22:29:38', 2020103475, 5, '00:00:00', 0),
-(61, 120, '2023-11-02', '00:00:00', '22:30:19', 2020103475, 5, '00:00:00', 0),
-(62, 121, '2023-11-02', '00:00:00', '22:31:40', 2020103475, 5, '00:00:00', 0);
+INSERT INTO `history` (`history_id`, `reservation_id`, `date`, `start_time`, `end_time`, `user_id`, `seat_id`, `time_spent`, `cancel_reason`, `is_archived`) VALUES
+(65, 129, '2023-11-09', '02:55:19', '03:01:18', 2020103475, 5, '00:05:59', '', 0),
+(66, 131, '2023-11-09', '00:00:00', '03:16:56', 2020103475, 6, '00:00:00', '', 0),
+(67, 130, '2023-11-09', '03:01:49', '03:30:00', 2020103475, 4, '00:28:11', '', 0),
+(68, 133, '2023-11-09', '00:00:00', '06:16:11', 2020103475, 4, '00:00:00', '', 0),
+(69, 132, '2023-11-09', '00:00:00', '06:16:11', 2020103475, 5, '00:00:00', '', 0),
+(70, 133, '2023-11-09', '00:00:00', '06:16:11', 2020103475, 4, '00:00:00', '', 0),
+(71, 134, '2023-11-09', '00:00:00', '11:05:43', 123, 4, '00:00:00', '', 0),
+(72, 137, '2023-11-09', '00:00:00', '11:06:56', 123, 5, '00:00:00', '', 0),
+(73, 135, '2023-11-10', '00:00:00', '16:18:37', 123, 10, '00:00:00', '', 0),
+(74, 136, '2023-11-10', '00:00:00', '16:18:37', 123, 5, '00:00:00', '', 0),
+(75, 138, '2023-11-10', '00:00:00', '16:18:37', 123, 5, '00:00:00', '', 0),
+(76, 139, '2023-11-10', '00:00:00', '16:18:37', 123, 5, '00:00:00', '', 0),
+(77, 140, '2023-11-09', '00:00:00', '16:18:37', 2020103475, 5, '00:00:00', '', 0),
+(78, 141, '2023-11-09', '00:00:00', '16:18:37', 2020103475, 4, '00:00:00', '', 0),
+(79, 142, '2023-11-14', '00:00:00', '17:11:36', 2020103475, 4, '00:00:00', '', 0),
+(80, 142, '2023-11-14', '00:00:00', '17:11:36', 2020103475, 4, '00:00:00', '', 0),
+(81, 143, '2023-11-14', '00:00:00', '00:00:00', 2020103475, 4, '00:00:00', '', 0),
+(82, 144, '2023-11-14', '00:00:00', '00:00:00', 2020103475, 2, '00:00:00', '', 0),
+(83, 144, '2023-11-14', '00:00:00', '00:00:00', 2020103475, 2, '00:00:00', '', 0),
+(84, 145, '2023-11-14', '17:29:37', '17:41:34', 2020103475, 4, '00:11:57', '', 0),
+(85, 146, '2023-11-14', '17:44:15', '17:44:37', 2020103475, 3, '00:00:22', '', 0),
+(86, 148, '2023-11-14', '00:00:00', '00:00:00', 123, 4, '00:00:00', '', 0),
+(87, 149, '2023-11-14', '00:00:00', '20:43:24', 123, 5, '00:00:00', '', 0),
+(88, 150, '2023-12-08', '00:00:00', '00:00:00', 123, 4, '00:00:00', '', 0),
+(89, 151, '2023-11-14', '00:00:00', '00:00:00', 123, 4, '00:00:00', 'Changed plans', 0),
+(90, 151, '2023-11-14', '00:00:00', '00:00:00', 123, 4, '00:00:00', 'Changed plans', 0),
+(91, 151, '2023-11-14', '00:00:00', '00:00:00', 123, 4, '00:00:00', 'Changed plans', 0),
+(92, 151, '2023-11-14', '00:00:00', '00:00:00', 123, 4, '00:00:00', 'Changed plans', 0),
+(93, 152, '2023-11-14', '00:00:00', '00:00:00', 123, 5, '00:00:00', 'Changed plans', 0),
+(94, 153, '2023-11-14', '00:00:00', '00:00:00', 2020103475, 5, '00:00:00', 'No longer needed', 0);
 
 -- --------------------------------------------------------
 
@@ -210,6 +240,50 @@ CREATE TABLE `news` (
   `content` text DEFAULT NULL,
   `date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notification`
+--
+
+CREATE TABLE `notification` (
+  `notif_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `is_archived` varchar(255) NOT NULL,
+  `message` varchar(255) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `notification`
+--
+
+INSERT INTO `notification` (`notif_id`, `user_id`, `is_archived`, `message`, `date`) VALUES
+(3, 2020103475, '', 'reserved seat 2 on 12:00 AM from 05:30 PM to 06:30 PM', '2023-11-14 09:12:07'),
+(6, 2020103475, '', 'cancelled a reservation with reservation ID: 144', '2023-11-14 09:22:50'),
+(7, 2020103475, '', 'reserved seat 4 on November 14, 2023 from 05:30 PM to 06:00 PM', '2023-11-14 09:23:37'),
+(8, 2020103475, '', 'occupied seat 4 successfully.', '2023-11-14 09:29:37'),
+(10, 2020103475, '', 'reserved seat 3 on November 14, 2023 from 05:45 PM to 06:15 PM', '2023-11-14 09:43:08'),
+(11, 2020103475, '', 'occupied seat 3 successfully.', '2023-11-14 09:44:15'),
+(12, 2020103475, '', 'was done occupying a seat.', '2023-11-14 09:44:37'),
+(13, 2020103475, '', 'submitted 5 start ratings and review. Nice experience! ', '2023-11-14 09:59:01'),
+(14, 2020103475, '', 'reserved seat 5 on December 5, 2023 from 08:15 PM to 08:45 PM', '2023-11-14 12:05:18'),
+(15, 123, '', 'reserved seat 4 on November 14, 2023 from 08:30 PM to 09:30 PM', '2023-11-14 12:26:37'),
+(16, 123, '', 'cancelled a reservation with reservation ID: 148', '2023-11-14 12:27:03'),
+(17, 123, '', 'reserved seat 5 on November 14, 2023 from 08:30 PM to 09:30 PM', '2023-11-14 12:27:30'),
+(18, 123, '', 'was done occupying a seat.', '2023-11-14 12:43:24'),
+(19, 123, '', 'reserved seat 4 on December 8, 2023 from 09:00 PM to 10:00 PM', '2023-11-14 12:47:49'),
+(20, 123, '', 'cancelled a reservation with reservation ID: 150', '2023-11-14 12:58:37'),
+(21, 123, '', 'reserved seat 4 on November 14, 2023 from 09:15 PM to 10:45 PM', '2023-11-14 13:00:32'),
+(22, 123, '', 'cancelled a reservation with reservation ID: 151', '2023-11-14 13:00:41'),
+(23, 123, '', 'cancelled a reservation with reservation ID: 151', '2023-11-14 13:02:06'),
+(24, 123, '', 'cancelled a reservation with reservation ID: 151', '2023-11-14 13:02:27'),
+(25, 123, '', 'cancelled a reservation with reservation ID: 151', '2023-11-14 13:03:51'),
+(26, 123, '', 'reserved seat 5 on November 14, 2023 from 09:00 PM to 09:30 PM', '2023-11-14 13:04:08'),
+(27, 123, '', 'cancelled a reservation with reservation ID: 152', '2023-11-14 13:04:27'),
+(28, 2020103475, '', 'reserved seat 5 on November 14, 2023 from 09:15 PM to 10:15 PM', '2023-11-14 13:08:18'),
+(29, 2020103475, '', 'cancelled a reservation with reservation ID: 153', '2023-11-14 13:08:31');
 
 -- --------------------------------------------------------
 
@@ -228,6 +302,16 @@ CREATE TABLE `occupy` (
   `time_spent` time DEFAULT NULL,
   `isDone` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `occupy`
+--
+
+INSERT INTO `occupy` (`occupy_id`, `reservation_id`, `date`, `start_time`, `end_time`, `user_id`, `seat_id`, `time_spent`, `isDone`) VALUES
+(169, 129, '2023-11-09', '02:55:19', '03:01:18', 2020103475, 5, '00:05:59', 1),
+(170, 130, '2023-11-09', '03:01:49', '03:30:00', 2020103475, 4, '00:28:11', 1),
+(171, 145, '2023-11-14', '17:29:37', '17:41:34', 2020103475, 4, '00:11:57', 1),
+(172, 146, '2023-11-14', '17:44:15', '17:44:37', 2020103475, 3, '00:00:22', 1);
 
 -- --------------------------------------------------------
 
@@ -250,7 +334,8 @@ CREATE TABLE `rating` (
 INSERT INTO `rating` (`rating_id`, `rating`, `review`, `date`, `user_id`) VALUES
 (7, 5, 'The seat reservation with the 3D is very convenient to use', '2023-10-23', 2020103475),
 (8, 4, 'I suggest to make a notification once my reservation schedule is near', '2023-10-23', 2020103475),
-(9, 5, 'I like it that you can have choices in reserving seats.', '2023-10-27', 3030);
+(9, 5, 'I like it that you can have choices in reserving seats.', '2023-10-27', 3030),
+(10, 5, 'Nice experience!', '2023-11-14', 2020103475);
 
 -- --------------------------------------------------------
 
@@ -265,7 +350,8 @@ CREATE TABLE `reservation` (
   `end_time` time DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `seat_id` int(11) DEFAULT NULL,
-  `isDone` tinyint(4) NOT NULL,
+  `rfid_no` bigint(30) NOT NULL DEFAULT 0,
+  `isDone` tinyint(4) NOT NULL DEFAULT 0,
   `is_archived` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -273,14 +359,32 @@ CREATE TABLE `reservation` (
 -- Dumping data for table `reservation`
 --
 
-INSERT INTO `reservation` (`reservation_id`, `date`, `start_time`, `end_time`, `user_id`, `seat_id`, `isDone`, `is_archived`) VALUES
-(118, '2023-11-06', '12:00:00', '13:00:00', 2020103475, 5, 0, 0),
-(119, '2023-11-02', '11:30:00', '11:45:00', 2020103475, 5, 1, 0),
-(120, '2023-11-02', '10:00:00', '10:15:00', 2020103475, 5, 1, 0),
-(121, '2023-11-02', '12:15:00', '17:00:00', 2020103475, 5, 1, 0),
-(122, '2023-11-03', '10:15:00', '16:00:00', 2020103475, 4, 0, 0),
-(123, '2023-11-03', '12:00:00', '17:00:00', 2020103475, 6, 0, 0),
-(124, '2023-11-03', '10:30:00', '11:00:00', 2020103475, 1, 0, 0);
+INSERT INTO `reservation` (`reservation_id`, `date`, `start_time`, `end_time`, `user_id`, `seat_id`, `rfid_no`, `isDone`, `is_archived`) VALUES
+(129, '2023-11-09', '02:30:00', '03:00:00', 2020103475, 5, 0, 1, 0),
+(130, '2023-11-09', '03:00:00', '03:30:00', 2020103475, 4, 0, 1, 0),
+(131, '2023-11-09', '03:00:00', '04:00:00', 2020103475, 6, 0, 1, 0),
+(132, '2023-11-09', '06:00:00', '07:00:00', 2020103475, 5, 0, 1, 0),
+(133, '2023-11-09', '05:45:00', '06:15:00', 2020103475, 4, 0, 1, 0),
+(134, '2023-11-09', '24:30:00', '01:00:00', 123, 4, 0, 1, 0),
+(135, '2023-11-10', '24:30:00', '01:00:00', 123, 10, 0, 1, 0),
+(136, '2023-11-10', '24:30:00', '01:00:00', 123, 5, 0, 1, 0),
+(137, '2023-11-09', '24:30:00', '01:30:00', 123, 5, 0, 1, 0),
+(138, '2023-11-10', '24:30:00', '01:00:00', 123, 5, 0, 1, 0),
+(139, '2023-11-10', '24:30:00', '01:00:00', 123, 5, 0, 1, 0),
+(140, '2023-11-09', '12:00:00', '12:30:00', 2020103475, 5, 0, 1, 0),
+(141, '2023-11-09', '12:00:00', '13:00:00', 2020103475, 4, 0, 1, 0),
+(142, '2023-11-14', '16:30:00', '17:00:00', 2020103475, 4, 0, 1, 0),
+(143, '2023-11-14', '17:15:00', '17:45:00', 2020103475, 4, 0, 1, 0),
+(144, '2023-11-14', '17:30:00', '18:30:00', 2020103475, 2, 0, 1, 0),
+(145, '2023-11-14', '17:29:00', '18:00:00', 2020103475, 4, 0, 1, 0),
+(146, '2023-11-14', '17:43:00', '18:15:00', 2020103475, 3, 0, 1, 0),
+(147, '2023-12-05', '20:15:00', '20:45:00', 2020103475, 5, 0, 0, 0),
+(148, '2023-11-14', '20:30:00', '21:30:00', 123, 4, 0, 1, 0),
+(149, '2023-11-14', '20:30:00', '21:30:00', 123, 5, 0, 1, 0),
+(150, '2023-12-08', '21:00:00', '22:00:00', 123, 4, 0, 1, 0),
+(151, '2023-11-14', '21:15:00', '22:45:00', 123, 4, 0, 1, 0),
+(152, '2023-11-14', '21:00:00', '21:30:00', 123, 5, 0, 1, 0),
+(153, '2023-11-14', '21:15:00', '22:15:00', 2020103475, 5, 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -290,27 +394,30 @@ INSERT INTO `reservation` (`reservation_id`, `date`, `start_time`, `end_time`, `
 
 CREATE TABLE `seat` (
   `seat_id` int(11) NOT NULL,
-  `seat_number` varchar(50) DEFAULT NULL,
+  `seat_number` varchar(50) NOT NULL,
   `seat_name` varchar(50) NOT NULL,
-  `status` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `status` varchar(50) NOT NULL,
+  `message` text NOT NULL,
+  `timer` varchar(50) NOT NULL,
+  `reservation_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `seat`
 --
 
-INSERT INTO `seat` (`seat_id`, `seat_number`, `seat_name`, `status`) VALUES
-(1, '1_CompChair_1', 'B1', '0'),
-(2, '1_CompChair_2', 'B2', '0'),
-(3, '1_CompChair_3', 'B3', '1'),
-(4, '1_CompChair_4', 'B4', '0'),
-(5, '1_CompChair_5', 'B5', '0'),
-(6, '2_CompChair_1', 'B6', '0'),
-(7, '2_CompChair_2', 'B7', '0'),
-(8, '2_CompChair_3', 'B8', '0'),
-(9, '2_CompChair_4', 'B9', '0'),
-(10, '2_CompChair_5', 'B10', '0'),
-(11, '3_CompChair_1', 'B11', '0');
+INSERT INTO `seat` (`seat_id`, `seat_number`, `seat_name`, `status`, `message`, `timer`, `reservation_id`) VALUES
+(1, '1_CompChair_1', 'B1', '404', 'ok', '0', 0),
+(2, '1_CompChair_2', 'B2', '0', 'ok', '0', 0),
+(3, '1_CompChair_3', 'B3', '0', 'ok', '0', 0),
+(4, '1_CompChair_4', 'B4', '0', 'ok', '0', 0),
+(5, '1_CompChair_5', 'B5', '0', 'ok', '0', 0),
+(6, '2_CompChair_1', 'B6', '0', 'ok', '0', 0),
+(7, '2_CompChair_2', 'B7', '404', 'ok', '0', 0),
+(8, '2_CompChair_3', 'B8', '404', 'ok', '0', 0),
+(9, '2_CompChair_4', 'B9', '0', 'ok', '0', 0),
+(10, '2_CompChair_5', 'B10', '0', 'ok', '0', 0),
+(11, '3_CompChair_1', 'B11', '0', 'ok', '0', 0);
 
 -- --------------------------------------------------------
 
@@ -334,7 +441,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`settings_id`, `reservation`, `minDuration`, `maxDuration`, `reservePerDay`, `start_hour`, `end_hour`, `disabled_dates`) VALUES
-(1, 0, 1, 4, 4, '10:00:00', '17:00:00', '[\"2023-10-01\",\"2023-10-08\",\"2023-10-15\",\"2023-10-22\",\"2023-10-29\",\"2023-10-07\",\"2023-10-14\",\"2023-10-28\",\"2023-10-21\",\"2023-09-02\",\"2023-09-09\",\"2023-09-16\",\"2023-09-23\",\"2023-09-30\",\"2023-11-05\",\"2023-11-12\",\"2023-11-19\",\"2023-11-26\",\"2023-12-03\",\"2023-12-10\",\"2023-12-17\",\"2023-12-24\",\"2023-12-31\",\"2023-12-02\",\"2023-12-09\",\"2023-12-16\",\"2023-12-30\",\"2023-12-23\",\"2023-12-25\",\"2023-11-25\",\"2023-11-18\",\"2023-11-11\",\"2023-11-04\",\"2024-01-07\",\"2024-01-14\",\"2024-01-21\",\"2024-01-28\",\"2024-01-06\",\"2024-01-13\",\"2024-01-20\",\"2024-01-27\",\"2024-02-03\",\"2024-02-10\",\"2024-02-17\",\"2023-09-24\",\"2023-09-17\",\"2023-09-10\",\"2023-09-03\",\"2023-08-27\"]');
+(1, 0, 1, 4, 2, '10:00:00', '17:00:00', '[\"2023-10-01\",\"2023-10-08\",\"2023-10-15\",\"2023-10-22\",\"2023-10-29\",\"2023-10-07\",\"2023-10-14\",\"2023-10-28\",\"2023-10-21\",\"2023-09-02\",\"2023-09-09\",\"2023-09-16\",\"2023-09-23\",\"2023-09-30\",\"2023-11-05\",\"2023-11-12\",\"2023-11-19\",\"2023-11-26\",\"2023-12-03\",\"2023-12-10\",\"2023-12-17\",\"2023-12-24\",\"2023-12-31\",\"2023-12-02\",\"2023-12-09\",\"2023-12-16\",\"2023-12-30\",\"2023-12-23\",\"2023-12-25\",\"2023-11-25\",\"2023-11-18\",\"2023-11-11\",\"2023-11-04\",\"2024-01-07\",\"2024-01-14\",\"2024-01-21\",\"2024-01-28\",\"2024-01-06\",\"2024-01-13\",\"2024-01-20\",\"2024-01-27\",\"2024-02-03\",\"2024-02-10\",\"2024-02-17\",\"2023-09-24\",\"2023-09-17\",\"2023-09-10\",\"2023-09-03\",\"2023-08-27\"]');
 
 -- --------------------------------------------------------
 
@@ -355,21 +462,23 @@ CREATE TABLE `users` (
   `bday` date DEFAULT NULL,
   `gender` varchar(20) DEFAULT NULL,
   `is_archived` tinyint(1) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`user_id`, `rfid_no`, `first_name`, `last_name`, `account_id`, `course_code`, `yearsec_id`, `age`, `contact_number`, `bday`, `gender`, `is_archived`) VALUES
+(123, NULL, 'juan', 'soar', 37, 'FACULTY', 261, NULL, NULL, NULL, NULL, 0),
 (404, '203hd5h', 'Mary Queeny', 'Casaclang', 33, 'BSN', 2, NULL, NULL, NULL, NULL, 0),
 (1111, 'djr5jse', 'Sandra', 'Velasco', 35, 'FACULTY', 261, NULL, NULL, NULL, NULL, 0),
-(2020, NULL, 'Zack', 'Fair', 32, 'BLIS', 1, NULL, NULL, NULL, NULL, 1),
-(3030, '56uy78j', 'Sydney', 'Bernardo', 19, 'BSIT', 261, 21, '09453661518', NULL, NULL, 1),
-(7070, NULL, 'Rinoa', 'Heartily', 34, 'BSA', 56, NULL, NULL, NULL, NULL, 1),
+(2020, NULL, 'Zack', 'Fair', 32, 'BLIS', 1, NULL, NULL, NULL, NULL, 0),
+(3030, '56uy78j', 'Sydney', 'Bernardo', 19, 'BSIT', 261, 21, '09453661518', NULL, NULL, 0),
+(7070, NULL, 'Rinoa', 'Heartily', 34, 'BSA', 56, NULL, NULL, NULL, NULL, 0),
 (7777, '5hfcn4e', 'Cloud', 'Hipolito', 21, 'BSN', 113, 23, '09453661517', NULL, NULL, 0),
-(2020103475, '3def45t', 'Jeays', 'Digo', 27, 'BSIT', 165, 21, '09166750154', '2023-11-02', 'Male', 1),
-(2020107070, '12sd80k', 'Gelo', 'Rivera', 36, 'ALUMNI', 261, NULL, NULL, NULL, NULL, 0);
+(2581406, NULL, 'jeaysmie', 'difo', 38, 'FACULTY', 261, NULL, NULL, NULL, NULL, 0),
+(2020103475, '119180184137242', 'Jeays', 'Digo', 27, 'BSIT', 165, 21, '09166750154', '2023-11-02', 'Male', 0),
+(2020107070, '20165143155', 'Gelo', 'Rivera', 36, 'ALUMNI', 261, NULL, NULL, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -697,6 +806,13 @@ ALTER TABLE `news`
   ADD PRIMARY KEY (`news_id`);
 
 --
+-- Indexes for table `notification`
+--
+ALTER TABLE `notification`
+  ADD PRIMARY KEY (`notif_id`),
+  ADD KEY `user_id_notif_fk` (`user_id`);
+
+--
 -- Indexes for table `occupy`
 --
 ALTER TABLE `occupy`
@@ -736,10 +852,7 @@ ALTER TABLE `settings`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`),
-  ADD KEY `account_id` (`account_id`),
-  ADD KEY `course_code` (`course_code`),
-  ADD KEY `yearsec_id` (`yearsec_id`);
+  ADD PRIMARY KEY (`user_id`);
 
 --
 -- Indexes for table `yearsec`
@@ -755,43 +868,47 @@ ALTER TABLE `yearsec`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `history_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `history_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+
+--
+-- AUTO_INCREMENT for table `notification`
+--
+ALTER TABLE `notification`
+  MODIFY `notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `occupy`
 --
 ALTER TABLE `occupy`
-  MODIFY `occupy_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `occupy_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
 
 --
 -- AUTO_INCREMENT for table `rating`
 --
 ALTER TABLE `rating`
-  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `history`
+-- Constraints for table `notification`
 --
-ALTER TABLE `history`
-  ADD CONSTRAINT `history_ibfk_1` FOREIGN KEY (`reservation_id`) REFERENCES `reservation` (`reservation_id`),
-  ADD CONSTRAINT `history_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
-  ADD CONSTRAINT `history_ibfk_3` FOREIGN KEY (`seat_id`) REFERENCES `seat` (`seat_id`);
+ALTER TABLE `notification`
+  ADD CONSTRAINT `user_id_notif_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
 
 --
 -- Constraints for table `occupy`
@@ -813,14 +930,6 @@ ALTER TABLE `rating`
 ALTER TABLE `reservation`
   ADD CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
   ADD CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`seat_id`) REFERENCES `seat` (`seat_id`);
-
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`),
-  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`course_code`) REFERENCES `course` (`course_code`),
-  ADD CONSTRAINT `users_ibfk_3` FOREIGN KEY (`yearsec_id`) REFERENCES `yearsec` (`yearsec_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
