@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2023 at 03:05 PM
+-- Generation Time: Nov 15, 2023 at 12:19 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -352,8 +352,6 @@ CREATE TABLE `reservation` (
   `seat_id` int(11) DEFAULT NULL,
   `rfid_no` bigint(30) NOT NULL DEFAULT 0,
   `isDone` tinyint(4) NOT NULL DEFAULT 0,
-  `rfid_no` bigint(30) NOT NULL DEFAULT 0,
-  `isDone` tinyint(4) NOT NULL DEFAULT 0,
   `is_archived` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -397,13 +395,7 @@ INSERT INTO `reservation` (`reservation_id`, `date`, `start_time`, `end_time`, `
 CREATE TABLE `seat` (
   `seat_id` int(11) NOT NULL,
   `seat_number` varchar(50) NOT NULL,
-  `seat_number` varchar(50) NOT NULL,
   `seat_name` varchar(50) NOT NULL,
-  `status` varchar(50) NOT NULL,
-  `message` text NOT NULL,
-  `timer` varchar(50) NOT NULL,
-  `reservation_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
   `status` varchar(50) NOT NULL,
   `message` text NOT NULL,
   `timer` varchar(50) NOT NULL,
@@ -450,7 +442,6 @@ CREATE TABLE `settings` (
 
 INSERT INTO `settings` (`settings_id`, `reservation`, `minDuration`, `maxDuration`, `reservePerDay`, `start_hour`, `end_hour`, `disabled_dates`) VALUES
 (1, 0, 1, 4, 2, '10:00:00', '17:00:00', '[\"2023-10-01\",\"2023-10-08\",\"2023-10-15\",\"2023-10-22\",\"2023-10-29\",\"2023-10-07\",\"2023-10-14\",\"2023-10-28\",\"2023-10-21\",\"2023-09-02\",\"2023-09-09\",\"2023-09-16\",\"2023-09-23\",\"2023-09-30\",\"2023-11-05\",\"2023-11-12\",\"2023-11-19\",\"2023-11-26\",\"2023-12-03\",\"2023-12-10\",\"2023-12-17\",\"2023-12-24\",\"2023-12-31\",\"2023-12-02\",\"2023-12-09\",\"2023-12-16\",\"2023-12-30\",\"2023-12-23\",\"2023-12-25\",\"2023-11-25\",\"2023-11-18\",\"2023-11-11\",\"2023-11-04\",\"2024-01-07\",\"2024-01-14\",\"2024-01-21\",\"2024-01-28\",\"2024-01-06\",\"2024-01-13\",\"2024-01-20\",\"2024-01-27\",\"2024-02-03\",\"2024-02-10\",\"2024-02-17\",\"2023-09-24\",\"2023-09-17\",\"2023-09-10\",\"2023-09-03\",\"2023-08-27\"]');
-(1, 0, 1, 4, 2, '10:00:00', '17:00:00', '[\"2023-10-01\",\"2023-10-08\",\"2023-10-15\",\"2023-10-22\",\"2023-10-29\",\"2023-10-07\",\"2023-10-14\",\"2023-10-28\",\"2023-10-21\",\"2023-09-02\",\"2023-09-09\",\"2023-09-16\",\"2023-09-23\",\"2023-09-30\",\"2023-11-05\",\"2023-11-12\",\"2023-11-19\",\"2023-11-26\",\"2023-12-03\",\"2023-12-10\",\"2023-12-17\",\"2023-12-24\",\"2023-12-31\",\"2023-12-02\",\"2023-12-09\",\"2023-12-16\",\"2023-12-30\",\"2023-12-23\",\"2023-12-25\",\"2023-11-25\",\"2023-11-18\",\"2023-11-11\",\"2023-11-04\",\"2024-01-07\",\"2024-01-14\",\"2024-01-21\",\"2024-01-28\",\"2024-01-06\",\"2024-01-13\",\"2024-01-20\",\"2024-01-27\",\"2024-02-03\",\"2024-02-10\",\"2024-02-17\",\"2023-09-24\",\"2023-09-17\",\"2023-09-10\",\"2023-09-03\",\"2023-08-27\"]');
 
 -- --------------------------------------------------------
 
@@ -472,14 +463,12 @@ CREATE TABLE `users` (
   `gender` varchar(20) DEFAULT NULL,
   `is_archived` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`user_id`, `rfid_no`, `first_name`, `last_name`, `account_id`, `course_code`, `yearsec_id`, `age`, `contact_number`, `bday`, `gender`, `is_archived`) VALUES
-(123, NULL, 'juan', 'soar', 37, 'FACULTY', 261, NULL, NULL, NULL, NULL, 0),
 (123, NULL, 'juan', 'soar', 37, 'FACULTY', 261, NULL, NULL, NULL, NULL, 0),
 (404, '203hd5h', 'Mary Queeny', 'Casaclang', 33, 'BSN', 2, NULL, NULL, NULL, NULL, 0),
 (1111, 'djr5jse', 'Sandra', 'Velasco', 35, 'FACULTY', 261, NULL, NULL, NULL, NULL, 0),
@@ -863,7 +852,6 @@ ALTER TABLE `settings`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
   ADD PRIMARY KEY (`user_id`);
 
 --
