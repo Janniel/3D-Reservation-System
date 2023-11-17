@@ -80,7 +80,9 @@ $errors = array();
     }
     
    //if login now button click
-    if(isset($_POST['login-now'])){
-        header('Location: http://localhost/3D-Reservation-System/dist/login.php');
+   if(isset($_POST['login-now'])){
+    echo "Before redirection"; // Check if this gets printed
+    header('Location:../login.php');
+    exit(); // Make sure to exit after the header to ensure proper redirection
     }
 ?>
