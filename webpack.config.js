@@ -405,6 +405,37 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             inject: true,
+            filename: 'php/forgot-password.php',
+            template: 'src/php/forgot-password.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/controllerUserData.php',
+            template: 'src/php/controllerUserData.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/reset-code.php',
+            template: 'src/php/reset-code.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/new-password.php',
+            template: 'src/php/new-password.php',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'php/password-changed.php',
+            template: 'src/php/password-changed.php',
+            chunks: ['']
+        }),
+        
+        new HtmlWebpackPlugin({
+            inject: true,
             filename: 'seats-info.php',
             template: 'src/seats-info.php',
             chunks: ['seats_info']

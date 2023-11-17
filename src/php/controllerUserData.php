@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require 'assets/php/connect.php';
+require 'connect.php';
 $email = "";
 $name = "";
 $errors = array();
@@ -81,6 +81,6 @@ $errors = array();
     
    //if login now button click
     if(isset($_POST['login-now'])){
-        header('Location: login.php');
+        header('Location: http://localhost/3D-Reservation-System/dist/login.php');
     }
 ?>

@@ -135,208 +135,208 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           // Set up a recurring timer to call the function every 5 seconds (5000 milliseconds)
           setInterval(triggerValidation, 5000);
       </script>
-<main>
-  <div class="box">
-    <div class="inner-box">
-      <div class="forms-wrap">
+  <main>
+    <div class="box">
+      <div class="inner-box">
+        <div class="forms-wrap">
 
-        <!-- LOGIN FORM -->
-        <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>" autocomplete="on" class="sign-in-form needs-validation" novalidate>
-          <div class="logo">
-            <img src="img/elib logo.png" alt="easyclass" />
-            <h4>SOAR</h4>
-          </div>
-
-          <div class="heading">
-            <h2>Welcome Back</h2>
-            <h6>Not registered yet?</h6>
-            <a href="#" class="toggle">Sign up</a>
-          </div>
-
-          <div class="actual-form">
-            <div class="form-floating mb-3">
-              <input type="text" name="username" class="form-control" id="username" autocomplete="on" required>
-              <label for="username">ID Number</label>
-            </div>
-
-            <div class="form-floating mb-3">
-              <input type="password" name="login_password" class="form-control" id="login_password"  autocomplete="off" required>
-              <label for="login_password">Password</label>
-            </div>
-
-            <?php if (isset($error_message)) { ?>
-              <p style="color:red">
-                <?php echo $error_message; ?>
-              </p>
-            <?php } ?>
-            <p class="text">
-              <a href="#">Forgot Password?</a>
-            </p>
-            <button type="submit" style="background-color: #a81c1c;"class="btn sign-btn text-white">Login</button>
-            <div class="invalid-feedback">
-              Invalid username or password.
-            </div>
-            
-          </div>
-        </form>
-        <!-- END OF LOGIN FORM -->
-
-
-        <!-- REGISTER FORM -->
-        
-        
-        <form id="register-form" autocomplete="off" class="sign-up-form needs-validation">
+          <!-- LOGIN FORM -->
+          <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>" autocomplete="on" class="sign-in-form needs-validation" novalidate>
             <div class="logo">
-      <img src="img/elib logo.png" alt="easyclass" />
-      <h4>SOAR</h4>
-    </div>
+              <img src="img/elib logo.png" alt="easyclass" />
+              <h4>SOAR</h4>
+            </div>
 
-    <div class="heading">
-      <h6>Already have an account?</h6>
-      <a href="#" class="toggle">Sign in</a>
-    </div>
+            <div class="heading">
+              <h2>Welcome Back</h2>
+              <h6>Not registered yet?</h6>
+              <a href="#" class="toggle">Sign up</a>
+            </div>
 
-    <div class="actual-form">
-    <div class="row mb-3">
-    <div class="col">
-      <div class="form-floating">
-        <input type="text" name="firstName" minlength="1" class="form-control" id="firstName" autocomplete="off" required>
-        <label for="firstName">First Name</label>
+            <div class="actual-form">
+              <div class="form-floating mb-3">
+                <input type="text" name="username" class="form-control" id="username" autocomplete="on" required>
+                <label for="username">ID Number</label>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input type="password" name="login_password" class="form-control" id="login_password"  autocomplete="off" required>
+                <label for="login_password">Password</label>
+              </div>
+
+              <?php if (isset($error_message)) { ?>
+                <p style="color:red">
+                  <?php echo $error_message; ?>
+                </p>
+              <?php } ?>
+              <p class="text">
+                <a href="php/forgot-password.php">Forgot Password?</a>
+              </p>
+              <button type="submit" style="background-color: #a81c1c;"class="btn sign-btn text-white">Login</button>
+              <div class="invalid-feedback">
+                Invalid username or password.
+              </div>
+              
+            </div>
+          </form>
+          <!-- END OF LOGIN FORM -->
+
+
+          <!-- REGISTER FORM -->
+          
+          
+          <form id="register-form" autocomplete="off" class="sign-up-form needs-validation">
+              <div class="logo">
+        <img src="img/elib logo.png" alt="easyclass" />
+        <h4>SOAR</h4>
       </div>
-    </div>
-    <div class="col">
-      <div class="form-floating">
-        <input type="text" name="lastName"  minlength="1" class="form-control" id="lastName" autocomplete="off" required>
-        <label for="lastName">Last Name</label>
-      </div>
-    </div>
-  </div>
 
-
-  <div class="row mb-3">
-      <div class="col">
-        <div class="form-floating">
-        <select name="account_type" class="form-select" id="account_type" autocomplete="off" required>
-        <option selected disabled></option>
-          <option value="student">Regular Student</option>
-          <option value="alumni">Old Student</option>
-          <option value="faculty">Faculty</option>
-        </select>
-        <label for="account_type">Type</label>
-        </div>
+      <div class="heading">
+        <h6>Already have an account?</h6>
+        <a href="#" class="toggle">Sign in</a>
       </div>
-      <div class="col">
-        <div class="form-floating">
-          <input type="number" name="user_id" class="form-control" id="user_id" autocomplete="off" required>
-          <label for="user_id">ID Number</label>
-          <div class="invalid-feedback">
-        Sorry, it's already used.
-      </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="row mb-3">
-    <div class="col">
-      <div class="form-floating">
-        <select name="courseCode" class="form-select" id="courseCode" autocomplete="off">
-        <option selected disabled></option>
-          <option value="BSIT">BSIT</option>
-          <option value="BLIS">BLIS</option>
-        </select>
-        <label for="courseCode">Course</label>
-      </div>
-    </div>
-  </div>
-
-
+      <div class="actual-form">
       <div class="row mb-3">
-        <div class="col">
-          <div class="form-floating">
-            <select name="year_level" class="form-select" id="year_level">
-            <option selected disabled></option>
-              <option value="1">1st Year</option>
-              <option value="2">2nd Year</option>
-              <option value="3">3rd Year</option>
-              <option value="4">4th Year</option>
-              <option value="5">5th Year</option>
-            </select>
-            <label for="year_level">Year</label>
-          </div>
+      <div class="col">
+        <div class="form-floating">
+          <input type="text" name="firstName" minlength="1" class="form-control" id="firstName" autocomplete="off" required>
+          <label for="firstName">First Name</label>
         </div>
+      </div>
+      <div class="col">
+        <div class="form-floating">
+          <input type="text" name="lastName"  minlength="1" class="form-control" id="lastName" autocomplete="off" required>
+          <label for="lastName">Last Name</label>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row mb-3">
         <div class="col">
           <div class="form-floating">
-          <select name="section" class="form-select" id="section">
+          <select name="account_type" class="form-select" id="account_type" autocomplete="off" required>
           <option selected disabled></option>
-            <?php
-
-              for ($i = 65; $i <= 90; $i++) {
-                $optionValue = chr($i); // Convert ASCII value to character (A-Z)
-                echo "<option value='$optionValue'>$optionValue</option>";
-              }
-            ?>
+            <option value="student">Regular Student</option>
+            <option value="alumni">Old Student</option>
+            <option value="faculty">Faculty</option>
           </select>
-
-            <label for="section">Section</label>
+          <label for="account_type">Type</label>
           </div>
         </div>
         <div class="col">
           <div class="form-floating">
-            <select name="section_group" class="form-select" id="section_group">
-            <option selected disabled></option>
-              <option value="1">G1</option>
-              <option value="2">G2</option>
-              <!-- Add more section groups if needed -->
-            </select>
-            <label for="section_group">Group</label>
+            <input type="number" name="user_id" class="form-control" id="user_id" autocomplete="off" required>
+            <label for="user_id">ID Number</label>
+            <div class="invalid-feedback">
+          Sorry, it's already used.
+        </div>
           </div>
         </div>
       </div>
-  <!--   -->
-  <div class="row mb-3">
-      <div class="col">
-        <div class="form-floating">
-          <input type="email" name="email" class="form-control" id="email" autocomplete="off" required>
-          <label for="email">Email</label>
-        </div>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col">
-        <div class="form-floating">
-          <input type="password" name="new_password" class="form-control" id="new_password" autocomplete="off" required>
-          <label for="new_password">Password</label>
-        </div>
-      </div>
-    </div>
-
-    <div class="row mb-3">
-      <div class="col">
-        <div class="form-floating">
-          <!-- Update name to match the backend -->
-          <input type="password" name="confirm_password" class="form-control" id="confirm_password" autocomplete="off" required>
-          <label for="confirm_password">Confirm Password</label>
-        </div>
-        <div class="invalid-feedback">
-          Passwords do not match.
-        </div>
-      </div>
-    </div>
-  <p class="text">
-        By signing up, I agree to the
-        <a href="#" data-bs-toggle="modal" data-bs-target="#terms"><b>Terms of Services</b></a> and
-        <a href="#" data-bs-toggle="modal" data-bs-target="#privacy"><b>Privacy Policy</b></a>
-      </p>
 
       <div class="row mb-3">
       <div class="col">
-        <button type="submit" style="background-color: #a81c1c;" class="btn text-white sign-btn" id="register-btn">Sign Up</button>
+        <div class="form-floating">
+          <select name="courseCode" class="form-select" id="courseCode" autocomplete="off">
+          <option selected disabled></option>
+            <option value="BSIT">BSIT</option>
+            <option value="BLIS">BLIS</option>
+          </select>
+          <label for="courseCode">Course</label>
+        </div>
       </div>
     </div>
 
-    
-    </div>
-</form>
+
+        <div class="row mb-3">
+          <div class="col">
+            <div class="form-floating">
+              <select name="year_level" class="form-select" id="year_level">
+              <option selected disabled></option>
+                <option value="1">1st Year</option>
+                <option value="2">2nd Year</option>
+                <option value="3">3rd Year</option>
+                <option value="4">4th Year</option>
+                <option value="5">5th Year</option>
+              </select>
+              <label for="year_level">Year</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-floating">
+            <select name="section" class="form-select" id="section">
+            <option selected disabled></option>
+              <?php
+
+                for ($i = 65; $i <= 90; $i++) {
+                  $optionValue = chr($i); // Convert ASCII value to character (A-Z)
+                  echo "<option value='$optionValue'>$optionValue</option>";
+                }
+              ?>
+            </select>
+
+              <label for="section">Section</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-floating">
+              <select name="section_group" class="form-select" id="section_group">
+              <option selected disabled></option>
+                <option value="1">G1</option>
+                <option value="2">G2</option>
+                <!-- Add more section groups if needed -->
+              </select>
+              <label for="section_group">Group</label>
+            </div>
+          </div>
+        </div>
+    <!--   -->
+    <div class="row mb-3">
+        <div class="col">
+          <div class="form-floating">
+            <input type="email" name="email" class="form-control" id="email" autocomplete="off" required>
+            <label for="email">Email</label>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <div class="form-floating">
+            <input type="password" name="new_password" class="form-control" id="new_password" autocomplete="off" required>
+            <label for="new_password">Password</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col">
+          <div class="form-floating">
+            <!-- Update name to match the backend -->
+            <input type="password" name="confirm_password" class="form-control" id="confirm_password" autocomplete="off" required>
+            <label for="confirm_password">Confirm Password</label>
+          </div>
+          <div class="invalid-feedback">
+            Passwords do not match.
+          </div>
+        </div>
+      </div>
+    <p class="text">
+          By signing up, I agree to the
+          <a href="#" data-bs-toggle="modal" data-bs-target="#terms"><b>Terms of Services</b></a> and
+          <a href="#" data-bs-toggle="modal" data-bs-target="#privacy"><b>Privacy Policy</b></a>
+        </p>
+
+        <div class="row mb-3">
+        <div class="col">
+          <button type="submit" style="background-color: #a81c1c;" class="btn text-white sign-btn" id="register-btn">Sign Up</button>
+        </div>
+      </div>
+
+      
+      </div>
+  </form>
 
       </div>
 
