@@ -274,33 +274,12 @@ require 'session.php';
                     <form action="manageAdmin.php" method="GET">
 
                         <div class="row">
-                            <div class="department">
-                                <label for="cars">Department</label>
-                                <select class="form-control" type="submit" name="department">
-                                    <option style="display:none">Select here</option>
-                                    <option value="CAFA">College of Architecture and Fine Arts (CAFA)</option>
-                                    <option value="CAL">College of Arts and Letters (CAL)</option>
-                                    <option value="CBA">College of Business Administration (CBA)</option>
-                                    <option value="CCJE">College of Criminal Justice Education (CCJE)</option>
-                                    <option value="CHTM">College of Hospitaity and Tourism Management (CHTM)</option>
-                                    <option value="CICT">College of Information and Communications Technology (CICT)
-                                    </option>
-                                    <option value="CIT">College of Industrial Technology (CIT)</option>
-                                    <option value="CLAW">College of Law (CLAW)</option>
-                                    <option value="CN">College of Nursing (CN)</option>
-                                    <option value="COE">College of Engineering (COE)</option>
-                                    <option value="COED">College of Education (COED)</option>
-                                    <option value="CS">College of Science (CS)</option>
-                                    <option value="CSER">College of Exercise and Recreation (CSER)</option>
-                                    <option value="CSSP">College of Social Sciences and Philosophy (CSSP)</option>
-                                    <option value="GS">Graduate School (GS)</option>
-                                </select>
-                            </div>
+                            
 
                             <div class="type" class="form-control">
                                 <label for="cars">Type of Work</label>
-                                <select class="form-control">
-                                    <option style="display:none">Select here</option>
+                                <select class="form-control" id="workTypeFilter">
+                                    <option style="display:none">All</option>
                                     <option>Permanent</option>
                                     <option>Temporary</option>
                                 </select>
@@ -374,7 +353,7 @@ require 'session.php';
                                                     <td>Username</td>
                                                     <td>Name</td>
                                                     <td>RFID</td>
-                                                    <td>Department</td>
+                                                    
                                                     <td>Gender</td>
                                                     <td>Employment Status</td>
                                                     <td>Position</td>
@@ -409,13 +388,11 @@ require 'session.php';
                                                                     echo $row2['rfid_no'];
                                                                 } ?>
                                                             </td>
-                                                            <td>
-                                                                <?php echo $row2['department']; ?>
-                                                            </td>
+                                                           
                                                             <td>
                                                                 <?php echo $row2['gender']; ?>
                                                             </td>
-                                                            <td>
+                                                            <td data-work-type="<?php echo $row2['work_status']; ?>">
                                                                 <?php echo $row2['work_status']; ?>
                                                             </td>
                                                             <td>
@@ -593,20 +570,38 @@ require 'session.php';
     });
 </script>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const searchInput = document.getElementById("searchInput");
-        const tableRows = document.querySelectorAll(".fill tbody tr");
+    $(document).ready(function () {
+        $('#searchInput').on('input', function () {
+            var searchValue = $(this).val().toLowerCase();
 
-        searchInput.addEventListener("input", function () {
-            const searchTerm = searchInput.value.toLowerCase();
+            // Show/hide rows based on the search value
+            $('table tbody tr').each(function () {
+                var rowText = $(this).text().toLowerCase();
 
-            tableRows.forEach((row) => {
-                const rowData = row.textContent.toLowerCase();
-
-                if (rowData.includes(searchTerm)) {
-                    row.style.display = "table-row";
+                if (rowText.includes(searchValue)) {
+                    $(this).show();
                 } else {
-                    row.style.display = "none";
+                    $(this).hide();
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        // Event listener for the work type filter
+        $('#workTypeFilter').on('change', function () {
+            var selectedWorkType = $(this).val();
+
+            // Show/hide rows based on the selected work type
+            $('table tbody tr').each(function () {
+                var rowWorkType = $(this).find('td[data-work-type]').data('work-type');
+
+                if (selectedWorkType === 'All' || selectedWorkType === rowWorkType) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
                 }
             });
         });
