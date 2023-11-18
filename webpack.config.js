@@ -115,12 +115,12 @@ module.exports = {
             template: 'src/reserve.php',
             chunks: ['reserve']
         }),
-        // new HtmlWebpackPlugin({
-        //     inject: true,
-        //     filename: 'seats-info3D.php',
-        //     template: 'src/seats-info3D.php',
-        //     chunks: ['seatsInfo']
-        // }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            filename: 'reserve-topview.php',
+            template: 'src/reserve-topview.php',
+            chunks: ['']
+        }),
         new HtmlWebpackPlugin({
             inject: true,
             filename: 'index.php',

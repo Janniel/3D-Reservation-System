@@ -85,6 +85,83 @@ if ($reservation_count >= $reservePerDay) {
   <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
   
 
+  <style>
+    .body2d {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn2d {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    border: none;
+    background: url("./img/chair0.png") no-repeat center center;
+    background-size: cover;
+    cursor: pointer;
+}
+.btn2d:hover {
+  scale: 1.1;
+  transition-duration: 200ms;
+}
+
+.table2d {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem;
+}
+
+.divider2d {
+    /* height: 2px;
+    width: 100%;
+    background-color: #ccc; 
+    margin: 20px 0;  */
+}
+
+.long-table2d { /* pwedeng alisin na to */
+    height: 40px;
+    width: 100%;
+    background-color: lightgray; 
+    border-radius: 4px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+.row2d  {
+    display: flex;
+    gap: 5px;
+}
+
+/* .opposite-row2d {
+    display: flex;
+    gap: 5px;
+    transform: scaleX(-1); 
+    margin-top: 15px;
+} */
+
+.opposite { /* Flips the chair as an opposite */
+    /* transform: rotateZ(180deg); */
+    transform: rotate(180deg);
+}
+
+
+.topview {
+  display:flex;flex: auto; flex-wrap: wrap; align-items: center; align-content: center; flex-direction: column;
+  overflow-x: auto;
+    overflow-y: auto;
+    z-index: 99;
+    padding-top: 2rem;
+}
+#seatContainer {
+  padding: 1rem;
+}
+
+  </style>
+
 
 </head>
 <body>
@@ -120,8 +197,8 @@ if ($reservation_count >= $reservePerDay) {
 
   <nav class="nav">
     <ul class="nav-ul">
-      <li><a href="index.php">Home</a></li>
-      <li><a href="profile.php">Account</a></li>
+      <li><a href="index.php" id="nav_home">Home</a></li>
+      <li><a href="profile.php"  id="nav_account" >Account</a></li>
     </ul>
   </nav>
   
@@ -130,6 +207,9 @@ if ($reservation_count >= $reservePerDay) {
   
   <div>
     <canvas class="webgl2"></canvas>
+
+  
+    
     <div class="container">
       <div class="title-container">
         <div class="title">
@@ -157,6 +237,189 @@ if ($reservation_count >= $reservePerDay) {
       <button class="sections" id="section4">Section D</button>
      
     </div>
+
+    <div id="topview" class="topview">
+      <div class="topview1  text-center">
+        <h4>Section A</h4>
+        <div class="table2d">
+          <div id="seatContainer">
+            
+              <div class="row2d">
+                <button id="CI_CompChair_4" class="btn2d">A1</button>
+                  <button id="CI_CompChair_3"class="btn2d ">A2</button>
+                  <button id="CI_CompChair_2"class="btn2d ">A3</button>
+                  <button id="CI_CompChair_1"class="btn2d ">A4</button>
+              </div>
+              <div class="long-table2d"></div> 
+
+              <div class="opposite-row2d">
+              <button id="CI_CompChair_5" class="btn2d opposite">A5</button>
+                  <button id="CI_CompChair_6"class="btn2d opposite">A6</button>
+                  <button id="CI_CompChair_7"class="btn2d opposite">A7</button>
+                  <button id="CI_CompChair_8"class="btn2d opposite">A8</button>
+              </div>
+              <div class="divider2d"></div> 
+          </div>
+        <div id="seatContainer">
+              <!-- <h3>SECTION A</h3> -->
+              <div class="row2d">
+                <button id="CG_CompChair_4" class="btn2d">A9</button>
+                  <button id="CG_CompChair_3"class="btn2d ">A10</button>
+                  <button id="CG_CompChair_2"class="btn2d ">A11</button>
+                  <button id="CG_CompChair_1"class="btn2d ">A12</button>
+              </div>
+              <div class="long-table2d"></div> 
+
+              <div class="opposite-row2d">
+              <button id="CH_CompChair_5" class="btn2d opposite">A13</button>
+                  <button id="CH_CompChair_6"class="btn2d opposite">A14</button>
+                  <button id="CH_CompChair_7"class="btn2d opposite">A15</button>
+                  <button id="CH_CompChair_8"class="btn2d opposite">A16</button>
+              </div>
+              <div class="divider2d"></div> 
+          </div><div id="seatContainer">
+              <!-- <h3>SECTION A</h3> -->
+              <div class="row2d">
+                  <button id="CG_CompChair_4" class="btn2d">A17</button>
+                  <button id="CG_CompChair_3"class="btn2d ">A18</button>
+                  <button id="CG_CompChair_2"class="btn2d ">A19</button>
+                  <button id="CG_CompChair_1"class="btn2d ">A20</button>
+              </div>
+              <div class="long-table2d"></div> 
+
+              <div class="opposite-row2d">
+              <button id="CG_CompChair_5" class="btn2d opposite">A21</button>
+                  <button id="CG_CompChair_6"class="btn2d opposite">A22</button>
+                  <button id="CG_CompChair_7"class="btn2d opposite">A23</button>
+                  <button id="CG_CompChair_8"class="btn2d opposite">A24</button>
+              </div>
+              <div class="divider2d"></div> 
+          </div></div>
+        <div class="table2d">
+          <div id="seatContainer">
+              <!-- <h3>SECTION A</h3> -->
+              <div class="row2d">
+              <button id="CF_CompChair_4" class="btn2d">A25</button>
+                  <button id="CF_CompChair_3"class="btn2d ">A26</button>
+                  <button id="CF_CompChair_2"class="btn2d ">A27</button>
+                  <button id="CF_CompChair_1"class="btn2d ">A28</button>
+              </div>
+              <div class="long-table2d"></div> 
+
+              <div class="opposite-row2d">
+              <button id="CF_CompChair_5" class="btn2d opposite">A29</button>
+                  <button id="CF_CompChair_6"class="btn2d opposite">A30</button>
+                  <button id="CF_CompChair_7"class="btn2d opposite">A31</button>
+                  <button id="CF_CompChair_8"class="btn2d opposite">A32</button>
+              </div>
+              <div class="divider2d"></div> 
+          </div>
+        <div id="seatContainer">
+              <!-- <h3>SECTION A</h3> -->
+              <div class="row2d">
+                  <button id="CE_CompChair_4" class="btn2d">A33</button>
+                  <button id="CE_CompChair_3"class="btn2d ">A34</button>
+                  <button id="CE_CompChair_2"class="btn2d ">A35</button>
+                  <button id="CE_CompChair_1"class="btn2d ">A36</button>
+              </div>
+              <div class="long-table2d"></div> 
+
+              <div class="opposite-row2d">
+              <button id="CE_CompChair_5" class="btn2d opposite">A37</button>
+                  <button id="CE_CompChair_6"class="btn2d opposite">A38</button>
+                  <button id="CE_CompChair_7"class="btn2d opposite">A39</button>
+                  <button id="CE_CompChair_8"class="btn2d opposite">A40</button>
+              </div>
+              <div class="divider2d"></div> 
+          </div><div id="seatContainer">
+              <!-- <h3>SECTION A</h3> -->
+              <div class="row2d">
+                <button id="CD_CompChair_4" class="btn2d">A41</button>
+                  <button id="CD_CompChair_3"class="btn2d ">A42</button>
+                  <button id="CD_CompChair_2"class="btn2d ">A43</button>
+                  <button id="CD_CompChair_1"class="btn2d ">A44</button>
+              </div>
+              <div class="long-table2d"></div> 
+
+              <div class="opposite-row2d">
+              <button button id="CD_CompChair_5" class="btn2d opposite">A45</button>
+                  <button id="CD_CompChair_6"class="btn2d opposite">A46</button>
+                  <button id="CD_CompChair_7"class="btn2d opposite">A47</button>
+                  <button id="CD_CompChair_8"class="btn2d opposite">A48</button>
+              </div>
+              <div class="divider2d"></div> 
+          </div></div><div class="table2d">
+          <div id="seatContainer">
+              <!-- <h3>SECTION A</h3> -->
+              <div class="row2d">
+                  <button id="CC_CompChair_4" class="btn2d">A49</button>
+                  <button id="CC_CompChair_3"class="btn2d ">A50</button>
+                  <button id="CC_CompChair_2"class="btn2d ">A51</button>
+                  <button id="CC_CompChair_1"class="btn2d ">A52</button>
+              </div>
+              <div class="long-table2d"></div> 
+
+              <div class="opposite-row2d">
+                  <button id="CC_CompChair_5" class="btn2d opposite">A53</button>
+                  <button id="CC_CompChair_6"class="btn2d opposite">A54</button>
+                  <button id="CC_CompChair_7"class="btn2d opposite">A55</button>
+                  <button id="CC_CompChair_8"class="btn2d opposite">A56</button>
+              </div>
+              <div class="divider2d"></div> 
+          </div>
+        <div id="seatContainer">
+              <!-- <h3>SECTION A</h3> -->
+              <div class="row2d">
+                <button id="CB_CompChair_4" class="btn2d">A57</button>
+                  <button id="CB_CompChair_3"class="btn2d ">A58</button>
+                  <button id="CB_CompChair_2"class="btn2d ">A59</button>
+                  <button id="CB_CompChair_1"class="btn2d ">A60</button>
+              </div>
+              <div class="long-table2d"></div> 
+
+              <div class="opposite-row2d">
+                  <button id="CB_CompChair_5" class="btn2d opposite">A61</button>
+                  <button id="CB_CompChair_6"class="btn2d opposite">A62</button>
+                  <button id="CB_CompChair_7"class="btn2d opposite">A63</button>
+                  <button id="CB_CompChair_8"class="btn2d opposite">A64</button>
+              </div>
+              <div class="divider2d"></div> 
+          </div>
+          <div id="seatContainer">
+              <!-- <h3>SECTION A</h3> -->
+              <div class="row2d">
+                  <button id="CA_CompChair_4" class="btn2d">A65</button>
+                  <button id="CA_CompChair_3"class="btn2d ">A66</button>
+                  <button id="CA_CompChair_2"class="btn2d ">A67</button>
+                  <button id="CA_CompChair_1"class="btn2d ">A68</button>
+              </div>
+              <div class="long-table2d"></div> 
+
+              <div class="opposite-row2d">
+                  <button id="CA_CompChair_5" class="btn2d opposite">A69</button>
+                  <button id="CA_CompChair_6"class="btn2d opposite">A70</button>
+                  <button id="CA_CompChair_7"class="btn2d opposite">A71</button>
+                  <button id="CA_CompChair_8"class="btn2d opposite">A72</button>
+              </div>
+              <div class="divider2d"></div> 
+          </div>
+        </div>
+      </div>
+
+      <div class="topview2  text-center" style="display:none">
+        <h4>Section B</h4>
+      </div>
+
+      <div class="topview3  text-center" style="display:none">
+        <h4>Section C</h4>
+      </div>
+
+      <div class="topview4  text-center" style="display:none">
+        <h4>Section D</h4>
+      </div>
+    </div>
+
+
     
     
     <form method="post" id="reservationForm">
@@ -190,6 +453,7 @@ if ($reservation_count >= $reservePerDay) {
                 <div class="row">
                     <div class="col">
                     <button type="button" id="viewSeatsButton" class="btn btn-primary explore2 mt-3 w-100">Find Seats</button>
+                    <button type="button" id="viewSeatsButton2" class="btn btn-secondary topviewBtn mt-2 w-100">Find Seats in 2D</button>
                     </div>
                 </div>
             </div>

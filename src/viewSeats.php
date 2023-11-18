@@ -12,8 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $start_time = $_POST['start_time'];
         $end_time = $_POST['end_time'];
 
+        // Convert start_time to 24-hour format
+        $start_time_24hr = date("H:i", strtotime($start_time));
+        $end_time_24hr = date("H:i", strtotime($end_time));
+
         // Query to fetch seat_id based on the specified conditions
-        $sql = "SELECT seat_id FROM reservation WHERE `date` = '$date' AND `start_time` <= '$start_time' AND `end_time` >= '$end_time' AND `isDone` = 0";
+        $sql = "SELECT seat_id FROM reservation WHERE `date` = '$date' AND `start_time` <= '$end_time_24hr'  AND `end_time` >= '$start_time_24hr' AND `isDone` = 0";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -44,6 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             echo "viewSeats said No matching reservations found.";
         }
+
+        // Add debugging statements
+        // echo "SQL Query: $sql";
+        // echo "Number of Rows: " . $result->num_rows;
+
     } else {
         // Handle cases where required parameters are missing
         echo "Required parameters (date, start_time, end_time) are missing.";
