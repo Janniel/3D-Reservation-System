@@ -681,7 +681,7 @@ if (mysqli_num_rows($result123) == 1) {
 
     <script>
        function confirmDelete(reservationId) {
-    const reasons = ['No longer needed', 'Changed plans', 'Other'];
+    const reasons = ['No longer needed', 'Change in Schedule', 'Emergency', 'Unexpected Commitment', 'Other'];
     
     Swal.fire({
         title: 'Cancel reservation?',
