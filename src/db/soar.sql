@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2023 at 02:41 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Nov 22, 2023 at 07:16 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,7 +37,7 @@ CREATE TABLE `account` (
   `reservation_count` int(11) DEFAULT 0,
   `is_archived` tinyint(1) NOT NULL DEFAULT 0,
   `code` mediumint(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `account`
@@ -83,7 +83,7 @@ CREATE TABLE `admin` (
   `work_status` varchar(20) DEFAULT NULL,
   `account_id` int(11) DEFAULT NULL,
   `picture_admin` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admin`
@@ -104,7 +104,7 @@ INSERT INTO `admin` (`admin_id`, `isSuperAdmin`, `rfid_no`, `department`, `first
 CREATE TABLE `college` (
   `college_code` varchar(50) NOT NULL,
   `college_name` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `college`
@@ -137,7 +137,7 @@ CREATE TABLE `course` (
   `course_code` varchar(50) NOT NULL,
   `course_name` varchar(255) DEFAULT NULL,
   `college_code` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `course`
@@ -190,38 +190,13 @@ CREATE TABLE `history` (
   `time_spent` time DEFAULT NULL,
   `cancel_reason` varchar(255) NOT NULL,
   `is_archived` tinyint(1) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `history`
 --
 
 INSERT INTO `history` (`history_id`, `reservation_id`, `date`, `start_time`, `end_time`, `user_id`, `seat_id`, `time_spent`, `cancel_reason`, `is_archived`) VALUES
-(65, 129, '2023-11-09', '02:55:19', '03:01:18', 2020103475, 5, '00:05:59', '', 0),
-(66, 131, '2023-11-09', '00:00:00', '03:16:56', 2020103475, 6, '00:00:00', '', 0),
-(67, 130, '2023-11-09', '03:01:49', '03:30:00', 2020103475, 4, '00:28:11', '', 0),
-(68, 133, '2023-11-09', '00:00:00', '06:16:11', 2020103475, 4, '00:00:00', '', 0),
-(69, 132, '2023-11-09', '00:00:00', '06:16:11', 2020103475, 5, '00:00:00', '', 0),
-(70, 133, '2023-11-09', '00:00:00', '06:16:11', 2020103475, 4, '00:00:00', '', 0),
-(71, 134, '2023-11-09', '00:00:00', '11:05:43', 123, 4, '00:00:00', '', 0),
-(72, 137, '2023-11-09', '00:00:00', '11:06:56', 123, 5, '00:00:00', '', 0),
-(73, 135, '2023-11-10', '00:00:00', '16:18:37', 123, 10, '00:00:00', '', 0),
-(74, 136, '2023-11-10', '00:00:00', '16:18:37', 123, 5, '00:00:00', '', 0),
-(75, 138, '2023-11-10', '00:00:00', '16:18:37', 123, 5, '00:00:00', '', 0),
-(76, 139, '2023-11-10', '00:00:00', '16:18:37', 123, 5, '00:00:00', '', 0),
-(77, 140, '2023-11-09', '00:00:00', '16:18:37', 2020103475, 5, '00:00:00', '', 0),
-(78, 141, '2023-11-09', '00:00:00', '16:18:37', 2020103475, 4, '00:00:00', '', 0),
-(79, 142, '2023-11-14', '00:00:00', '17:11:36', 2020103475, 4, '00:00:00', '', 0),
-(80, 142, '2023-11-14', '00:00:00', '17:11:36', 2020103475, 4, '00:00:00', '', 0),
-(81, 143, '2023-11-14', '00:00:00', '00:00:00', 2020103475, 4, '00:00:00', '', 0),
-(82, 144, '2023-11-14', '00:00:00', '00:00:00', 2020103475, 2, '00:00:00', '', 0),
-(83, 144, '2023-11-14', '00:00:00', '00:00:00', 2020103475, 2, '00:00:00', '', 0),
-(84, 145, '2023-11-14', '17:29:37', '17:41:34', 2020103475, 4, '00:11:57', '', 0),
-(85, 146, '2023-11-14', '17:44:15', '17:44:37', 2020103475, 3, '00:00:22', '', 0),
-(86, 148, '2023-11-14', '00:00:00', '00:00:00', 123, 4, '00:00:00', '', 0),
-(87, 149, '2023-11-14', '00:00:00', '20:43:24', 123, 5, '00:00:00', '', 0),
-(88, 150, '2023-12-08', '00:00:00', '00:00:00', 123, 4, '00:00:00', '', 0),
-(89, 151, '2023-11-14', '00:00:00', '00:00:00', 123, 4, '00:00:00', 'Changed plans', 0),
 (90, 151, '2023-11-14', '00:00:00', '00:00:00', 123, 4, '00:00:00', 'Changed plans', 0),
 (91, 151, '2023-11-14', '00:00:00', '00:00:00', 123, 4, '00:00:00', 'Changed plans', 0),
 (92, 151, '2023-11-14', '00:00:00', '00:00:00', 123, 4, '00:00:00', 'Changed plans', 0),
@@ -232,7 +207,9 @@ INSERT INTO `history` (`history_id`, `reservation_id`, `date`, `start_time`, `en
 (97, 155, '2023-11-29', '00:00:00', '22:46:49', 2020103475, 5, '00:00:00', '', 0),
 (98, 157, '2023-11-30', '00:00:00', '00:00:00', 2020103475, 5, '00:00:00', 'Changed plans', 0),
 (99, 156, '2023-11-30', '00:00:00', '00:00:00', 2020103475, 5, '00:00:00', 'No longer needed', 0),
-(100, 158, '2023-11-30', '00:00:00', '00:00:00', 2020103475, 4, '00:00:00', 'Emergency', 0);
+(100, 158, '2023-11-30', '00:00:00', '00:00:00', 2020103475, 4, '00:00:00', 'Emergency', 0),
+(101, 165, '2023-11-22', '00:00:00', '00:00:00', 2020107070, 125, '00:00:00', 'Change in Schedule', 0),
+(102, 166, '2023-11-22', '00:00:00', '12:38:45', 2020107070, 59, '00:00:00', '', 0);
 
 -- --------------------------------------------------------
 
@@ -245,7 +222,7 @@ CREATE TABLE `news` (
   `picture` varchar(255) DEFAULT NULL,
   `content` text DEFAULT NULL,
   `date` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -259,7 +236,7 @@ CREATE TABLE `notification` (
   `is_archived` varchar(255) NOT NULL,
   `message` varchar(255) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `notification`
@@ -300,7 +277,14 @@ INSERT INTO `notification` (`notif_id`, `user_id`, `is_archived`, `message`, `da
 (37, 2020103475, '', 'reserved seat 4 on November 29, 2023 from 09:45 AM to 10:15 AM', '2023-11-21 01:49:47'),
 (38, 2020103475, '', 'cancelled a reservation with reservation ID: 157 ', '2023-11-21 01:53:45'),
 (39, 2020103475, '', 'cancelled a reservation with reservation ID: 156 ', '2023-11-21 02:44:29'),
-(40, 2020103475, '', 'cancelled a reservation with reservation ID: 158 ', '2023-11-21 02:44:47');
+(40, 2020103475, '', 'cancelled a reservation with reservation ID: 158 ', '2023-11-21 02:44:47'),
+(41, 2020103475, '', 'reserved seat 128 on November 22, 2023 from 10:15 AM to 11:00 PM', '2023-11-22 02:05:35'),
+(42, 2020103475, '', 'reserved seat 129 on November 22, 2023 from 12:00 AM to 12:00 AM', '2023-11-22 02:05:50'),
+(43, 2020103475, '', 'reserved seat 126 on November 22, 2023 from 10:15 AM to 10:30 AM', '2023-11-22 02:06:17'),
+(44, 2020107070, '', 'reserved seat 5 on November 22, 2023 from 10:15 AM to 10:30 AM', '2023-11-22 02:09:24'),
+(45, 2020107070, '', 'reserved seat 125 on November 22, 2023 from 10:15 AM to 10:30 AM', '2023-11-22 02:09:37'),
+(46, 2020107070, '', 'reserved seat 59 on November 22, 2023 from 12:15 PM to 01:15 PM', '2023-11-22 04:09:27'),
+(47, 2020107070, '', 'was done occupying a seat.', '2023-11-22 04:38:45');
 
 -- --------------------------------------------------------
 
@@ -318,17 +302,7 @@ CREATE TABLE `occupy` (
   `seat_id` int(11) DEFAULT NULL,
   `time_spent` time DEFAULT NULL,
   `isDone` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `occupy`
---
-
-INSERT INTO `occupy` (`occupy_id`, `reservation_id`, `date`, `start_time`, `end_time`, `user_id`, `seat_id`, `time_spent`, `isDone`) VALUES
-(169, 129, '2023-11-09', '02:55:19', '03:01:18', 2020103475, 5, '00:05:59', 1),
-(170, 130, '2023-11-09', '03:01:49', '03:30:00', 2020103475, 4, '00:28:11', 1),
-(171, 145, '2023-11-14', '17:29:37', '17:41:34', 2020103475, 4, '00:11:57', 1),
-(172, 146, '2023-11-14', '17:44:15', '17:44:37', 2020103475, 3, '00:00:22', 1);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -342,7 +316,7 @@ CREATE TABLE `rating` (
   `review` varchar(255) DEFAULT NULL,
   `date` date DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `rating`
@@ -370,45 +344,14 @@ CREATE TABLE `reservation` (
   `rfid_no` bigint(30) NOT NULL DEFAULT 0,
   `isDone` tinyint(4) NOT NULL DEFAULT 0,
   `is_archived` tinyint(1) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `reservation`
 --
 
 INSERT INTO `reservation` (`reservation_id`, `date`, `start_time`, `end_time`, `user_id`, `seat_id`, `rfid_no`, `isDone`, `is_archived`) VALUES
-(129, '2023-11-09', '02:30:00', '03:00:00', 2020103475, 5, 0, 1, 0),
-(130, '2023-11-09', '03:00:00', '03:30:00', 2020103475, 4, 0, 1, 0),
-(131, '2023-11-09', '03:00:00', '04:00:00', 2020103475, 6, 0, 1, 0),
-(132, '2023-11-09', '06:00:00', '07:00:00', 2020103475, 5, 0, 1, 0),
-(133, '2023-11-09', '05:45:00', '06:15:00', 2020103475, 4, 0, 1, 0),
-(134, '2023-11-09', '24:30:00', '01:00:00', 123, 4, 0, 1, 0),
-(135, '2023-11-10', '24:30:00', '01:00:00', 123, 10, 0, 1, 0),
-(136, '2023-11-10', '24:30:00', '01:00:00', 123, 5, 0, 1, 0),
-(137, '2023-11-09', '24:30:00', '01:30:00', 123, 5, 0, 1, 0),
-(138, '2023-11-10', '24:30:00', '01:00:00', 123, 5, 0, 1, 0),
-(139, '2023-11-10', '24:30:00', '01:00:00', 123, 5, 0, 1, 0),
-(140, '2023-11-09', '12:00:00', '12:30:00', 2020103475, 5, 0, 1, 0),
-(141, '2023-11-09', '12:00:00', '13:00:00', 2020103475, 4, 0, 1, 0),
-(142, '2023-11-14', '16:30:00', '17:00:00', 2020103475, 4, 0, 1, 0),
-(143, '2023-11-14', '17:15:00', '17:45:00', 2020103475, 4, 0, 1, 0),
-(144, '2023-11-14', '17:30:00', '18:30:00', 2020103475, 2, 0, 1, 0),
-(145, '2023-11-14', '17:29:00', '18:00:00', 2020103475, 4, 0, 1, 0),
-(146, '2023-11-14', '17:43:00', '18:15:00', 2020103475, 3, 0, 1, 0),
-(147, '2023-12-05', '20:15:00', '20:45:00', 2020103475, 5, 0, 1, 0),
-(148, '2023-11-14', '20:30:00', '21:30:00', 123, 4, 0, 1, 0),
-(149, '2023-11-14', '20:30:00', '21:30:00', 123, 5, 0, 1, 0),
-(150, '2023-12-08', '21:00:00', '22:00:00', 123, 4, 0, 1, 0),
-(151, '2023-11-14', '21:15:00', '22:45:00', 123, 4, 0, 1, 0),
-(152, '2023-11-14', '21:00:00', '21:30:00', 123, 5, 0, 1, 0),
-(153, '2023-11-14', '21:15:00', '22:15:00', 2020103475, 5, 0, 1, 0),
-(154, '2023-11-17', '15:30:00', '16:00:00', 2020103475, 5, 0, 1, 0),
-(155, '2023-11-29', '17:00:00', '17:30:00', 2020103475, 5, 0, 1, 0),
-(156, '2023-11-30', '24:30:00', '01:00:00', 2020103475, 5, 0, 1, 0),
-(157, '2023-11-30', '09:45:00', '10:15:00', 2020103475, 5, 0, 1, 0),
-(158, '2023-11-30', '09:45:00', '10:45:00', 2020103475, 4, 0, 1, 0),
-(159, '2023-11-24', '09:45:00', '11:15:00', 2020103475, 4, 0, 0, 0),
-(160, '2023-11-29', '09:45:00', '10:15:00', 2020103475, 4, 0, 0, 0);
+(166, '2023-11-22', '12:15:00', '13:15:00', 2020107070, 59, 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -418,11 +361,11 @@ INSERT INTO `reservation` (`reservation_id`, `date`, `start_time`, `end_time`, `
 
 CREATE TABLE `seat` (
   `seat_id` int(11) NOT NULL,
-  `seat_number` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `seat_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `status` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `message` text COLLATE utf8_unicode_ci NOT NULL,
-  `timer` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `seat_number` varchar(50) NOT NULL,
+  `seat_name` varchar(50) NOT NULL,
+  `status` varchar(50) NOT NULL,
+  `message` text NOT NULL,
+  `timer` varchar(50) NOT NULL,
   `reservation_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -431,16 +374,66 @@ CREATE TABLE `seat` (
 --
 
 INSERT INTO `seat` (`seat_id`, `seat_number`, `seat_name`, `status`, `message`, `timer`, `reservation_id`) VALUES
-(1, '1_CompChair_1', 'B1', '404', 'ok', '0', 0),
-(2, '1_CompChair_2', 'B2', '0', 'ok', '0', 0),
-(3, '1_CompChair_3', 'B3', '0', 'ok', '0', 0),
-(4, '1_CompChair_4', 'B4', '0', 'ok', '0', 0),
-(5, '1_CompChair_5', 'B5', '0', 'ok', '0', 0),
-(6, '2_CompChair_1', 'B6', '0', 'ok', '0', 0),
-(7, '2_CompChair_2', 'B7', '404', 'ok', '0', 0),
-(8, '2_CompChair_3', 'B8', '404', 'ok', '0', 0),
-(9, '2_CompChair_4', 'B9', '0', 'ok', '0', 0),
-(10, '2_CompChair_5', 'B10', '0', 'ok', '0', 0),
+(1, '6_CompChair_2', 'B1', '0', 'ok', '0', 0),
+(2, '6_CompChair_1', 'B2', '404', 'ok', '0', 0),
+(3, '6_CompChair_5', 'B3', '0', 'ok', '0', 0),
+(4, '6_CompChair_4', 'B4', '0', 'ok', '0', 0),
+(5, '6_CompChair_3', 'B5', '0', 'ok', '0', 0),
+(6, '10_CompChair_5', 'B6', '0', 'ok', '0', 0),
+(7, '10_CompChair_1', 'B7', '0', 'ok', '0', 0),
+(8, '10_CompChair_2', 'B8', '0', 'ok', '0', 0),
+(9, '10_CompChair_4', 'B9', '0', 'ok', '0', 0),
+(10, '10_CompChair_3', 'B10', '0', 'ok', '0', 0),
+(11, '12_CompChair_2', 'B11', '0', 'ok', '0', 0),
+(12, '12_CompChair_1', 'B12', '0', 'ok', '0', 0),
+(13, '12_CompChair_5', 'B13', '0', 'ok', '0', 0),
+(14, '12_CompChair_4', 'B14', '0', 'ok', '0', 0),
+(15, '12_CompChair_3', 'B15', '0', 'ok', '0', 0),
+(16, '5_CompChair_2', 'B16', '0', 'ok', '0', 0),
+(17, '5_CompChair_1', 'B17', '0', 'ok', '0', 0),
+(18, '5_CompChair_5', 'B18', '0', 'ok', '0', 0),
+(19, '5_CompChair_4', 'B19', '0', 'ok', '0', 0),
+(20, '5_CompChair_3', 'B20', '0', 'ok', '0', 0),
+(21, '9_CompChair_5', 'B21', '0', 'ok', '0', 0),
+(22, '9_CompChair_1', 'B22', '0', 'ok', '0', 0),
+(23, '9_CompChair_2', 'B23', '0', 'ok', '0', 0),
+(24, '9_CompChair_4', 'B24', '0', 'ok', '0', 0),
+(25, '9_CompChair_3', 'B25', '0', 'ok', '0', 0),
+(26, '11_CompChair_2', 'B26', '0', 'ok', '0', 0),
+(27, '11_CompChair_1', 'B27', '0', 'ok', '0', 0),
+(28, '11_CompChair_5', 'B28', '0', 'ok', '0', 0),
+(29, '11_CompChair_4', 'B29', '0', 'ok', '0', 0),
+(30, '11_CompChair_3', 'B30', '0', 'ok', '0', 0),
+(31, '4_CompChair_2', 'B31', '0', 'ok', '0', 0),
+(32, '4_CompChair_1', 'B32', '0', 'ok', '0', 0),
+(33, '4_CompChair_5', 'B33', '0', 'ok', '0', 0),
+(34, '4_CompChair_4', 'B34', '0', 'ok', '0', 0),
+(35, '4_CompChair_3', 'B35', '0', 'ok', '0', 0),
+(36, '7_CompChair_5', 'B36', '0', 'ok', '0', 0),
+(37, '7_CompChair_1', 'B37', '0', 'ok', '0', 0),
+(38, '7_CompChair_2', 'B38', '0', 'ok', '0', 0),
+(39, '7_CompChair_4', 'B39', '0', 'ok', '0', 0),
+(40, '7_CompChair_3', 'B40', '0', 'ok', '0', 0),
+(41, '8_CompChair_2', 'B41', '0', 'ok', '0', 0),
+(42, '8_CompChair_1', 'B42', '0', 'ok', '0', 0),
+(43, '8_CompChair_5', 'B43', '0', 'ok', '0', 0),
+(44, '8_CompChair_4', 'B44', '0', 'ok', '0', 0),
+(45, '3_CompChair_3', 'B45', '0', 'ok', '0', 0),
+(46, '3_CompChair_2', 'B46', '0', 'ok', '0', 0),
+(47, '3_CompChair_1', 'B47', '0', 'ok', '0', 0),
+(48, '3_CompChair_5', 'B48', '0', 'ok', '0', 0),
+(49, '3_CompChair_4', 'B49', '0', 'ok', '0', 0),
+(50, '3_CompChair_3', 'B50', '0', 'ok', '0', 0),
+(51, '2_CompChair_5', 'B51', '0', 'ok', '0', 0),
+(52, '2_CompChair_1', 'B52', '0', 'ok', '0', 0),
+(53, '2_CompChair_2', 'B53', '0', 'ok', '0', 0),
+(54, '2_CompChair_4', 'B54', '0', 'ok', '0', 0),
+(55, '2_CompChair_3', 'B55', '0', 'ok', '0', 0),
+(56, '1_CompChair_2', 'B56', '0', 'ok', '0', 0),
+(57, '1_CompChair_1', 'B57', '0', 'ok', '0', 0),
+(58, '1_CompChair_5', 'B58', '0', 'ok', '0', 0),
+(59, '1_CompChair_4', 'B59', '0', 'ok', '0', 0),
+(60, '1_CompChair_3', 'B60', '0', 'ok', '0', 0),
 (61, 'CI_CompChair_4', 'A1', '0', 'ok', '0', 0),
 (62, 'CI_CompChair_3', 'A2', '0', 'ok', '0', 0),
 (63, 'CI_CompChair_2', 'A3', '0', 'ok', '0', 0),
@@ -529,7 +522,7 @@ CREATE TABLE `settings` (
   `start_hour` time NOT NULL,
   `end_hour` time NOT NULL,
   `disabled_dates` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `settings`
@@ -546,16 +539,16 @@ INSERT INTO `settings` (`settings_id`, `reservation`, `minDuration`, `maxDuratio
 
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
-  `rfid_no` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `first_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `last_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `rfid_no` varchar(50) DEFAULT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
   `account_id` int(11) DEFAULT NULL,
-  `course_code` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `course_code` varchar(50) DEFAULT NULL,
   `yearsec_id` int(11) DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
-  `contact_number` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `contact_number` varchar(20) DEFAULT NULL,
   `bday` date DEFAULT NULL,
-  `gender` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `gender` varchar(20) DEFAULT NULL,
   `is_archived` tinyint(1) DEFAULT 0,
   `last_cancel` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -574,7 +567,7 @@ INSERT INTO `users` (`user_id`, `rfid_no`, `first_name`, `last_name`, `account_i
 (7777, '5hfcn4e', 'Cloud', 'Hipolito', 21, 'BSN', 113, 23, '09453661517', NULL, NULL, 0, NULL),
 (2581406, NULL, 'jeaysmie', 'difo', 38, 'FACULTY', 261, NULL, NULL, NULL, NULL, 0, NULL),
 (2020103475, '119180184137242', 'Jeays', 'Digo', 27, 'BSIT', 165, 21, '09166750154', '2023-11-02', 'Male', 0, '2023-11-21 10:44:47'),
-(2020107070, '20165143155', 'Gelo', 'Rivera', 36, 'ALUMNI', 261, NULL, NULL, NULL, NULL, 0, NULL);
+(2020107070, '20165143155', 'Gelo', 'Rivera', 36, 'ALUMNI', 261, NULL, NULL, NULL, NULL, 0, '2023-11-22 10:09:42');
 
 -- --------------------------------------------------------
 
@@ -587,7 +580,7 @@ CREATE TABLE `yearsec` (
   `year_level` int(11) DEFAULT NULL,
   `section` varchar(10) DEFAULT NULL,
   `section_group` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `yearsec`
@@ -970,13 +963,13 @@ ALTER TABLE `account`
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `history_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `history_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `occupy`
@@ -994,7 +987,7 @@ ALTER TABLE `rating`
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 
 --
 -- Constraints for dumped tables

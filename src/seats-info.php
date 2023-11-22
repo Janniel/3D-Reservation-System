@@ -177,9 +177,76 @@ h3 {
     z-index: 99;
     padding-top: 2rem;
 }
+.topview2 {
+  overflow-x: auto;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 #seatContainer {
   padding: 1rem;
 }
+.round-table {
+    height: 100px; 
+    width: 100px; 
+    background-color: #888; 
+    /* margin: 10px 0;  */
+    border-radius: 50%;
+    text-align: center;
+    margin: auto;
+}
+
+.table-5seater {
+  scale: 0.8;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+
+.table-5seater > #five-seatContainer > button:nth-child(1) {
+    /* transform: rotate(30deg); */
+    margin-left: 6.2rem;
+}
+
+.table-5seater > #five-seatContainer > button:nth-child(2) {
+    transform: rotate(60deg);
+    position: absolute;
+    margin-top: 3rem;
+    margin-left: 1.4rem;
+}
+
+.table-5seater > #five-seatContainer > button:nth-child(3) {
+    transform: rotate(130deg);
+    position: absolute;
+    margin-top: 9rem;
+    margin-left: 0.5rem;
+}
+
+.child_4 {
+    transform: rotate(230deg);
+    position: absolute;
+    margin-top: -1rem;
+    margin-left: 2.2rem;
+}
+
+.child_5{
+    transform: rotate(300deg);
+    position: absolute;
+    margin-top: -7rem;
+    margin-left: 1.5rem;
+}
+
+#five-seatContainer{
+  /* height: 220px; */
+    width: 250px;
+}
+.section-nav {
+
+}
+
 
     </style>
 </head>
@@ -279,6 +346,9 @@ h3 {
 
         <div>
     <canvas class="webgl2"></canvas>
+
+    
+    
     <div id="topview" class="topview">
       <div class="topview1  text-center">
         <h4>Section A</h4>
@@ -447,8 +517,120 @@ h3 {
         </div>
       </div>
 
-      <div class="topview2  text-center" style="display:none">
+      <div class="topview2" style="display:none">
         <h4>Section B</h4>
+        
+        <div class="table-5seater">
+          <div id="five-seatContainer">
+            <button id="6_CompChair_2" class="btn2d">B1</button>
+            <button id="6_CompChair_1" class="btn2d">B2</button>
+            <button id="6_CompChair_5" class="btn2d">B3</button>
+              <div class="round-table"></div> 
+            <button id="6_CompChair_4" class="btn2d child_4">B4</button>
+            <button id="6_CompChair_3" class="btn2d child_5">B5</button>
+          </div>
+          <div id="five-seatContainer">
+            <button id="10_CompChair_5" class="btn2d">B6</button>
+            <button id="10_CompChair_1" class="btn2d">B7</button>
+            <button id="10_CompChair_2" class="btn2d">B8</button>
+              <div class="round-table"></div> 
+            <button id="10_CompChair_4" class="btn2d child_4">B9</button>
+            <button id="10_CompChair_3" class="btn2d child_5">B10</button>
+          </div>
+          <div id="five-seatContainer">
+            <button id="12_CompChair_2" class="btn2d">B11</button>
+            <button id="12_CompChair_1" class="btn2d">B12</button>
+            <button id="12_CompChair_5" class="btn2d">B13</button>
+              <div class="round-table"></div> 
+            <button id="12_CompChair_4" class="btn2d child_4">B14</button>
+            <button id="12_CompChair_3" class="btn2d child_5">B15</button>
+          </div>
+        </div>
+
+        <!-- second row  -->
+        <div class="table-5seater">
+          <div id="five-seatContainer">
+            <button id="5_CompChair_2" class="btn2d">B16</button>
+            <button id="5_CompChair_1" class="btn2d">B17</button>
+            <button id="5_CompChair_5" class="btn2d">B18</button>
+              <div class="round-table"></div> 
+            <button id="5_CompChair_4" class="btn2d child_4">B19</button>
+            <button id="5_CompChair_3" class="btn2d child_5">B20</button>
+          </div>
+          <div id="five-seatContainer">
+            <button id="9_CompChair_5" class="btn2d">B21</button>
+            <button id="9_CompChair_1" class="btn2d">B22</button>
+            <button id="9_CompChair_2" class="btn2d">B23</button>
+              <div class="round-table"></div> 
+            <button id="9_CompChair_4" class="btn2d child_4">B24</button>
+            <button id="9_CompChair_3" class="btn2d child_5">B25</button>
+          </div>
+          <div id="five-seatContainer">
+            <button id="11_CompChair_2" class="btn2d">B26</button>
+            <button id="11_CompChair_1" class="btn2d">B27</button>
+            <button id="11_CompChair_5" class="btn2d">B28</button>
+              <div class="round-table"></div> 
+            <button id="11_CompChair_4" class="btn2d child_4">B29</button>
+            <button id="11_CompChair_3" class="btn2d child_5">B30</button>
+          </div>
+        </div>
+
+         <!-- third row  -->
+         <div class="table-5seater">
+          <div id="five-seatContainer">
+            <button id="4_CompChair_2" class="btn2d">B31</button>
+            <button id="4_CompChair_1" class="btn2d">B32</button>
+            <button id="4_CompChair_5" class="btn2d">B33</button>
+              <div class="round-table"></div> 
+            <button id="4_CompChair_4" class="btn2d child_4">B34</button>
+            <button id="4_CompChair_3" class="btn2d child_5">B35</button>
+          </div>
+          <div id="five-seatContainer">
+            <button id="7_CompChair_5" class="btn2d">B36</button>
+            <button id="7_CompChair_1" class="btn2d">B37</button>
+            <button id="7_CompChair_2" class="btn2d">B38</button>
+              <div class="round-table"></div> 
+            <button id="7_CompChair_4" class="btn2d child_4">B39</button>
+            <button id="7_CompChair_3" class="btn2d child_5">B40</button>
+          </div>
+          <div id="five-seatContainer">
+            <button id="8_CompChair_2" class="btn2d">B41</button>
+            <button id="8_CompChair_1" class="btn2d">B42</button>
+            <button id="8_CompChair_5" class="btn2d">B43</button>
+              <div class="round-table"></div> 
+            <button id="8_CompChair_4" class="btn2d child_4">B44</button>
+            <button id="8_CompChair_3" class="btn2d child_5">B45</button>
+          </div>
+        </div>
+
+        <!-- fourth row  -->
+        <div class="table-5seater">
+          <div id="five-seatContainer">
+            <button id="3_CompChair_2" class="btn2d">B46</button>
+            <button id="3_CompChair_1" class="btn2d">B47</button>
+            <button id="3_CompChair_5" class="btn2d">B48</button>
+              <div class="round-table"></div> 
+            <button id="3_CompChair_4" class="btn2d child_4">B49</button>
+            <button id="3_CompChair_3" class="btn2d child_5">B50</button>
+          </div>
+          <div id="five-seatContainer">
+            <button id="2_CompChair_5" class="btn2d">B51</button>
+            <button id="2_CompChair_1" class="btn2d">B52</button>
+            <button id="2_CompChair_2" class="btn2d">B53</button>
+              <div class="round-table"></div> 
+            <button id="2_CompChair_4" class="btn2d child_4">B54</button>
+            <button id="2_CompChair_3" class="btn2d child_5">B55</button>
+          </div>
+          <div id="five-seatContainer">
+            <button id="1_CompChair_2" class="btn2d">B56</button>
+            <button id="1_CompChair_1" class="btn2d">B57</button>
+            <button id="1_CompChair_5" class="btn2d">B58</button>
+              <div class="round-table"></div> 
+            <button id="1_CompChair_4" class="btn2d child_4">B59</button>
+            <button id="1_CompChair_3" class="btn2d child_5">B60</button>
+          </div>
+        </div>
+
       </div>
 
       <div class="topview3  text-center" style="display:none">
@@ -459,35 +641,30 @@ h3 {
         <h4>Section D</h4>
       </div>
     </div>
+    <div class="section-nav text-center d-none">
+   
+   <button class="filterBtn d-none" >Filter &nbsp; <i class="fas fa-sliders-h" style="color: #ffffff;"></i></button>
+   <button class="section1 btn btn-danger">Section A</button>
+   <button class="section2 btn btn-danger">Section B</button>
+   <button class="section3 btn btn-danger">Section C</button>
+   <button class="section4 btn btn-danger">Section D</button>
+  
+ </div>
+ 
 
-    <div class="container">
+    <div class="container d-none">
       <div class="title-container">
         <div class="title">
           <p class="text-white big-title">Find your <b>ideal seat</b> in <b>3D</b></p>
           <p class="text-white">Welcome to the E-Library's 6th Floor. Please select  date and time <br> to view available seats in order to reserve.</p>
-          <button class="explore btn">Reserve Seat</button>
+          <button class="explore btn d-none">Reserve Seat</button>
         </div>
       </div>
     </div>
 
 
     
-    <div class="section-nav d-none">
-      <div class="dateTimeSelected d-none">
-        <h6> Available Seats on 
-          <b id="chosen_date"></b> 
-          <b id="chosen_time"></b>
-        </h6>
-      </div>
-   
-      <button class="filterBtn" >Filter &nbsp; <i class="fas fa-sliders-h" style="color: #ffffff;"></i></button>
-      <button class="section1">Section A</button>
-      <button class="section2">Section B</button>
-      <button class="section3">Section C</button>
-      <button class="section4">Section D</button>
-     
-    </div>
-    
+ 
     
     <form method="post" id="reservationForm">
         <div class="container2">

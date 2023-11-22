@@ -210,7 +210,7 @@ explore2.addEventListener('click', () => {
           console.log("Maintenance seats:", maintenanceSeats);
           console.log("maintenanceSeatsList", maintenanceSeatsList);
 
-          // showsection();
+          showsection();
           
 
           // Get all the object names of the seats in your 3D scene
@@ -1277,84 +1277,252 @@ function hideReserveDiv() {
 
   switch (objectName) {
     //section B
-    case '1_CompChair_1':
-      showSeatInfo(objectName, date, startTime, endTime);
-      break;
-      case '1_CompChair_2':
-        showSeatInfo(objectName, date, startTime, endTime);
-        break;
-        case '1_CompChair_3':
-          showSeatInfo(objectName, date, startTime, endTime);
-          break;
-          case '1_CompChair_4':
-          showSeatInfo(objectName, date, startTime, endTime);
-          break;
-          case '1_CompChair_5':
-          showSeatInfo(objectName, date, startTime, endTime);
-          break;
-          case '2_CompChair_1':
-      showSeatInfo(objectName, date, startTime, endTime);
-      break;
-      case '2_CompChair_2':
-        showSeatInfo(objectName, date, startTime, endTime);
-        break;
-        case '2_CompChair_3':
-          showSeatInfo(objectName, date, startTime, endTime);
-          break;
-          case '2_CompChair_4':
-          showSeatInfo(objectName, date, startTime, endTime);
-          break;
-          case '2_CompChair_5':
-          showSeatInfo(objectName, date, startTime, endTime);
-          break;
+    case '6_CompChair_2':
+            
+    showSeatInfo(objectName, date, startTime, endTime);
+    
+    break;
+  
+  case '6_CompChair_1':
+  
+    showSeatInfo(objectName, date, startTime, endTime);
+    break
+  
+  case '6_CompChair_5':
+    showSeatInfo(objectName, date, startTime, endTime);
+    break;
 
-          case '3_CompChair_1':
-            showSeatInfo(objectName, date, startTime, endTime);
-            break;
-            case '3_CompChair_2':
-              showSeatInfo(objectName, date, startTime, endTime);
-              break;
-              case '3_CompChair_3':
-                showSeatInfo(objectName, date, startTime, endTime);
-                break;
-                case '3_CompChair_4':
-                showSeatInfo(objectName, date, startTime, endTime);
-                break;
-                case '3_CompChair_5':
-                showSeatInfo(objectName, date, startTime, endTime);
-                break;
+  case '6_CompChair_4':
+  
+    showSeatInfo(objectName, date, startTime, endTime);
+    break;
 
-                case '4_CompChair_1':
-            showSeatInfo(objectName, date, startTime, endTime);
-            break;
-            case '4_CompChair_2':
-              showSeatInfo(objectName, date, startTime, endTime);
-              break;
-              case '4_CompChair_3':
-                showSeatInfo(objectName, date, startTime, endTime);
-                break;
-                case '4_CompChair_4':
-                showSeatInfo(objectName, date, startTime, endTime);
-                break;
-                case '4_CompChair_5':
-                showSeatInfo(objectName, date, startTime, endTime);
-                break;
+    case '6_CompChair_3':
 
-                case '5_CompChair_1':
-                  showSeatInfo(objectName, date, startTime, endTime);
-                  break;
-                  case '5_CompChair_2':
-                    showSeatInfo(objectName, date, startTime, endTime);
-                    break;
-                    case '5_CompChair_3':
-                      showSeatInfo(objectName, date, startTime, endTime);
-                      break;
-                      case '5_CompChair_4':
-                      showSeatInfo(objectName, date, startTime, endTime);
-                      break;
-                      case '5_CompChair_5':
-                      showSeatInfo(objectName, date, startTime, endTime);
-                      break;
+    showSeatInfo(objectName, date, startTime, endTime); 
+    break;
+
+    case '10_CompChair_5':
+    showSeatInfo(objectName, date, startTime, endTime);
+    break;
+
+    case '10_CompChair_1':
+    showSeatInfo(objectName, date, startTime, endTime);
+    break;
+
+    case '10_CompChair_2':
+    showSeatInfo(objectName, date, startTime, endTime);
+    break;
+
+    case '10_CompChair_4':
+    showSeatInfo(objectName, date, startTime, endTime);
+    break;
+
+    case '10_CompChair_3':
+    showSeatInfo(objectName, date, startTime, endTime);
+    break;
+
+    case '12_CompChair_2':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '12_CompChair_1':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '12_CompChair_5':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '12_CompChair_4':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '12_CompChair_3':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '5_CompChair_2':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '5_CompChair_1':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '5_CompChair_5':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '5_CompChair_4':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '5_CompChair_3':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '9_CompChair_5':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '9_CompChair_1':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '9_CompChair_2':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '9_CompChair_4':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '9_CompChair_3':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '11_CompChair_2':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '11_CompChair_1':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '11_CompChair_5':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '11_CompChair_4':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '11_CompChair_3':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '4_CompChair_2':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '4_CompChair_1':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '4_CompChair_5':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '4_CompChair_4':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '4_CompChair_3':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '7_CompChair_5':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '7_CompChair_1':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '7_CompChair_2':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '7_CompChair_4':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '7_CompChair_3':
+showSeatInfo(objectName, date, startTime, endTime);
+break;
+
+case '8_CompChair_2':
+ showSeatInfo(objectName, date, startTime, endTime);
+  break;
+
+case '8_CompChair_1':
+ showSeatInfo(objectName, date, startTime, endTime);
+  break;
+
+case '8_CompChair_5':
+ showSeatInfo(objectName, date, startTime, endTime);
+  break;
+
+case '8_CompChair_4':
+  showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B44');
+  break;
+
+case '8_CompChair_3':
+ showSeatInfo(objectName, date, startTime, endTime);
+  break;
+
+case '3_CompChair_2':
+ showSeatInfo(objectName, date, startTime, endTime);
+  break;
+
+case '3_CompChair_1':
+ showSeatInfo(objectName, date, startTime, endTime);
+  break;
+
+case '3_CompChair_5':
+ showSeatInfo(objectName, date, startTime, endTime);
+  break;
+
+case '3_CompChair_4':
+ showSeatInfo(objectName, date, startTime, endTime);
+  break;
+
+case '3_CompChair_3':
+ showSeatInfo(objectName, date, startTime, endTime);
+  break;
+
+case '2_CompChair_5':
+ showSeatInfo(objectName, date, startTime, endTime);
+  break;
+
+case '2_CompChair_1':
+ showSeatInfo(objectName, date, startTime, endTime);
+  break;
+
+case '2_CompChair_2':
+ showSeatInfo(objectName, date, startTime, endTime);
+  break;
+
+case '2_CompChair_4':
+ showSeatInfo(objectName, date, startTime, endTime);
+  break;
+
+case '2_CompChair_3':
+ showSeatInfo(objectName, date, startTime, endTime);
+  break;
+
+case '1_CompChair_2':
+ showSeatInfo(objectName, date, startTime, endTime);
+  break;
+
+case '1_CompChair_1':
+ showSeatInfo(objectName, date, startTime, endTime);
+  break;
+
+case '1_CompChair_5':
+ showSeatInfo(objectName, date, startTime, endTime);
+  break;
+
+case '1_CompChair_4':
+ showSeatInfo(objectName, date, startTime, endTime);
+  break;
+
+case '1_CompChair_3':
+ showSeatInfo(objectName, date, startTime, endTime);
+  break;
+
+   
               
         
         
@@ -1712,86 +1880,250 @@ function hideReserveDiv() {
   
   switch (objectName) {
     //section B
-    case '1_CompChair_1':
-      showSeatInfo(objectName, date, startTime, endTime);
-      break;
-      case '1_CompChair_2':
-        showSeatInfo(objectName, date, startTime, endTime);
-        break;
-        case '1_CompChair_3':
+    case '6_CompChair_2':
+            
           showSeatInfo(objectName, date, startTime, endTime);
+          
           break;
-          case '1_CompChair_4':
-          showSeatInfo(objectName, date, startTime, endTime);
-          break;
-          case '1_CompChair_5':
-          showSeatInfo(objectName, date, startTime, endTime);
-          break;
-          case '2_CompChair_1':
-      showSeatInfo(objectName, date, startTime, endTime);
-      break;
-      case '2_CompChair_2':
-        showSeatInfo(objectName, date, startTime, endTime);
-        break;
-        case '2_CompChair_3':
-          showSeatInfo(objectName, date, startTime, endTime);
-          break;
-          case '2_CompChair_4':
-          showSeatInfo(objectName, date, startTime, endTime);
-          break;
-          case '2_CompChair_5':
-          showSeatInfo(objectName, date, startTime, endTime);
-          break;
-
-          case '3_CompChair_1':
-            showSeatInfo(objectName, date, startTime, endTime);
-            break;
-            case '3_CompChair_2':
-              showSeatInfo(objectName, date, startTime, endTime);
-              break;
-              case '3_CompChair_3':
-                showSeatInfo(objectName, date, startTime, endTime);
-                break;
-                case '3_CompChair_4':
-                showSeatInfo(objectName, date, startTime, endTime);
-                break;
-                case '3_CompChair_5':
-                showSeatInfo(objectName, date, startTime, endTime);
-                break;
-
-                case '4_CompChair_1':
-            showSeatInfo(objectName, date, startTime, endTime);
-            break;
-            case '4_CompChair_2':
-              showSeatInfo(objectName, date, startTime, endTime);
-              break;
-              case '4_CompChair_3':
-                showSeatInfo(objectName, date, startTime, endTime);
-                break;
-                case '4_CompChair_4':
-                showSeatInfo(objectName, date, startTime, endTime);
-                break;
-                case '4_CompChair_5':
-                showSeatInfo(objectName, date, startTime, endTime);
-                break;
-
-                case '5_CompChair_1':
-                  showSeatInfo(objectName, date, startTime, endTime);
-                  break;
-                  case '5_CompChair_2':
-                    showSeatInfo(objectName, date, startTime, endTime);
-                    break;
-                    case '5_CompChair_3':
-                      showSeatInfo(objectName, date, startTime, endTime);
-                      break;
-                      case '5_CompChair_4':
-                      showSeatInfo(objectName, date, startTime, endTime);
-                      break;
-                      case '5_CompChair_5':
-                      showSeatInfo(objectName, date, startTime, endTime);
-                      break;
-              
         
+        case '6_CompChair_1':
+        
+          showSeatInfo(objectName, date, startTime, endTime);
+          break
+        
+        case '6_CompChair_5':
+          showSeatInfo(objectName, date, startTime, endTime);
+          break;
+      
+        case '6_CompChair_4':
+        
+          showSeatInfo(objectName, date, startTime, endTime);
+          break;
+      
+          case '6_CompChair_3':
+      
+          showSeatInfo(objectName, date, startTime, endTime); 
+          break;
+      
+          case '10_CompChair_5':
+          showSeatInfo(objectName, date, startTime, endTime);
+          break;
+      
+          case '10_CompChair_1':
+          showSeatInfo(objectName, date, startTime, endTime);
+          break;
+      
+          case '10_CompChair_2':
+          showSeatInfo(objectName, date, startTime, endTime);
+          break;
+      
+          case '10_CompChair_4':
+          showSeatInfo(objectName, date, startTime, endTime);
+          break;
+      
+          case '10_CompChair_3':
+          showSeatInfo(objectName, date, startTime, endTime);
+          break;
+      
+          case '12_CompChair_2':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '12_CompChair_1':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '12_CompChair_5':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '12_CompChair_4':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '12_CompChair_3':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '5_CompChair_2':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '5_CompChair_1':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '5_CompChair_5':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '5_CompChair_4':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '5_CompChair_3':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '9_CompChair_5':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '9_CompChair_1':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '9_CompChair_2':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '9_CompChair_4':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '9_CompChair_3':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '11_CompChair_2':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '11_CompChair_1':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '11_CompChair_5':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '11_CompChair_4':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '11_CompChair_3':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '4_CompChair_2':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '4_CompChair_1':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '4_CompChair_5':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '4_CompChair_4':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '4_CompChair_3':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '7_CompChair_5':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '7_CompChair_1':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '7_CompChair_2':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '7_CompChair_4':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '7_CompChair_3':
+      showSeatInfo(objectName, date, startTime, endTime);
+      break;
+      
+      case '8_CompChair_2':
+       showSeatInfo(objectName, date, startTime, endTime);
+        break;
+      
+      case '8_CompChair_1':
+       showSeatInfo(objectName, date, startTime, endTime);
+        break;
+      
+      case '8_CompChair_5':
+       showSeatInfo(objectName, date, startTime, endTime);
+        break;
+      
+      case '8_CompChair_4':
+        showTooltip(event, `${seatStatus}` + ' seat', 'SEAT B44');
+        break;
+      
+      case '8_CompChair_3':
+       showSeatInfo(objectName, date, startTime, endTime);
+        break;
+      
+      case '3_CompChair_2':
+       showSeatInfo(objectName, date, startTime, endTime);
+        break;
+      
+      case '3_CompChair_1':
+       showSeatInfo(objectName, date, startTime, endTime);
+        break;
+      
+      case '3_CompChair_5':
+       showSeatInfo(objectName, date, startTime, endTime);
+        break;
+      
+      case '3_CompChair_4':
+       showSeatInfo(objectName, date, startTime, endTime);
+        break;
+      
+      case '3_CompChair_3':
+       showSeatInfo(objectName, date, startTime, endTime);
+        break;
+      
+      case '2_CompChair_5':
+       showSeatInfo(objectName, date, startTime, endTime);
+        break;
+      
+      case '2_CompChair_1':
+       showSeatInfo(objectName, date, startTime, endTime);
+        break;
+      
+      case '2_CompChair_2':
+       showSeatInfo(objectName, date, startTime, endTime);
+        break;
+      
+      case '2_CompChair_4':
+       showSeatInfo(objectName, date, startTime, endTime);
+        break;
+      
+      case '2_CompChair_3':
+       showSeatInfo(objectName, date, startTime, endTime);
+        break;
+      
+      case '1_CompChair_2':
+       showSeatInfo(objectName, date, startTime, endTime);
+        break;
+      
+      case '1_CompChair_1':
+       showSeatInfo(objectName, date, startTime, endTime);
+        break;
+      
+      case '1_CompChair_5':
+       showSeatInfo(objectName, date, startTime, endTime);
+        break;
+      
+      case '1_CompChair_4':
+       showSeatInfo(objectName, date, startTime, endTime);
+        break;
+      
+      case '1_CompChair_3':
+       showSeatInfo(objectName, date, startTime, endTime);
+        break;
         
       
   
