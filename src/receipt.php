@@ -74,11 +74,12 @@ require 'php/occupancy_timer.php';
         $qrCodeUrl = "https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=" . urlencode($qr_content);
 
         // Display the reservation details in the card
-        echo '<div class="container">
+        echo '
+        <div class="container mt-5 pt-5">
         <div class="card m-3 p-4 col" style="border-top: 10px solid #a81c1c;">
             <div class="row g-0">
-                <div class="col-md-8">
-                    <div class="card-body p-5">
+                <div class="col-sm-7">
+                    <div class="card-body p-4">
                         <div class="d-flex align-items-center">
                             <img src="img/elib logo.png" style="width:70px" class="img-fluid rounded-start" alt="...">
                             <h1 class="card-title p-3">SOAR</h1>
@@ -92,7 +93,7 @@ require 'php/occupancy_timer.php';
                         <p class="card-text fw-bold" style="color: #a81c1c">Reservation No: ' . $reservation_id . '</p>
                     </div>
                 </div>
-                <div class="col-md-4 p-3  d-flex justify-content-center align-items-center">
+                <div class="col-sm-5 p-3  d-flex justify-content-center align-items-center">
                     <img src="' . $qrCodeUrl . '" alt="QR Code" class="img-fluid">
                 </div>
             </div>
@@ -103,7 +104,7 @@ require 'php/occupancy_timer.php';
         echo '<div class="container">
         <div class="text-center">
           
-            <button onclick="printDiv()" class="btn btn-danger mt-3">Print Receipt</button>
+            <button onclick="printDiv()" class="btn btn-danger mt-3" style="background: #a81c1">Print Receipt</button>
         </div>
         </div>';
     } else {
@@ -129,13 +130,32 @@ require 'php/occupancy_timer.php';
         });
     }
     
-    function printDiv() {
-        var printContents = document.querySelector(".card").innerHTML;
-        var originalContents = document.body.innerHTML;
-        document.body.innerHTML = printContents;
-        window.print();
-        document.body.innerHTML = originalContents;
-    }
+function printDiv() {
+    var card = document.querySelector(".card");
+    var printContents = card.innerHTML;
+    var originalContents = document.body.innerHTML;
+
+    // Set the card element to display as inline-block for printing
+    card.style.display = 'inline-block';
+
+    // Set other elements to be hidden during printing
+    document.body.querySelectorAll('*').forEach(function(element) {
+        element.style.visibility = 'hidden';
+    });
+
+    // Make the card and its children visible
+    card.querySelectorAll('*').forEach(function(element) {
+        element.style.visibility = 'visible';
+    });
+
+    window.print();
+
+    // Reset styles after printing
+    card.style.display = '';
+    document.body.innerHTML = originalContents;
+}
+
+
 </script>
 
 
