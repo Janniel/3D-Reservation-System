@@ -18,25 +18,37 @@ if ($count > 0) {
     echo "error";
 } else {
     // Insert the reservation into the database
-    $sql = "INSERT INTO reservation (date, start_time, end_time, user_id, seat_id) 
-            VALUES ('$date', '$start_time', '$end_time',  '$user_id', '$seat_id')";
 
-    if (mysqli_query($conn, $sql)) {
-        // Reservation inserted successfully
-        $message = "reserved seat $seat_id on " . date("F j, Y", strtotime($date)) . " from " . date("h:i A", strtotime($start_time)) . " to " . date("h:i A", strtotime($end_time));
+    $getRFID = "SELECT rfid_no FROM users WHERE user_id = '$user_id'";
+    $result123 = mysqli_query($conn, $getRFID);
 
-        $sql2 = "INSERT INTO notification (user_id, message, date) 
-                 VALUES ('$user_id', '$message', NOW())";
+    if ($result123) {
+        $row = mysqli_fetch_assoc($result123);
+        $rfid_no = $row['rfid_no'];
 
-        if (mysqli_query($conn, $sql2)) {
-            // Notification inserted into the database successfully
-            echo "success";
+        $sql = "INSERT INTO reservation (date, start_time, end_time, user_id, seat_id, rfid_no) 
+                VALUES ('$date', '$start_time', '$end_time',  '$user_id', '$seat_id', '$rfid_no')";
+
+        if (mysqli_query($conn, $sql)) {
+            // Reservation inserted successfully
+            $message = "reserved seat $seat_id on " . date("F j, Y", strtotime($date)) . " from " . date("h:i A", strtotime($start_time)) . " to " . date("h:i A", strtotime($end_time));
+
+            $sql2 = "INSERT INTO notification (user_id, message, date) 
+                     VALUES ('$user_id', '$message', NOW())";
+
+            if (mysqli_query($conn, $sql2)) {
+                // Notification inserted into the database successfully
+                echo "success";
+            } else {
+                // Error occurred during the notification insertion
+                echo "error";
+            }
         } else {
-            // Error occurred during the notification insertion
+            // Error occurred during the reservation insertion
             echo "error";
         }
     } else {
-        // Error occurred during the reservation insertion
+        // Error occurred when trying to fetch RFID information
         echo "error";
     }
 }
